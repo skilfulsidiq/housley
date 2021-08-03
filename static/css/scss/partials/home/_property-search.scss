@@ -1,0 +1,230 @@
+.property-search{
+    // background:linear-gradient(to right,rgba($middle_green,0.3));
+  
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    z-index: 99;
+    width: 100%;
+    // z-index: 999;
+    top: 48%;
+    overflow: hidden;
+
+
+    @include mobile{
+        top:40%;
+    padding: 10px;
+      
+    }
+   
+    @include tablet-portrait{
+        top:40%;
+    padding: 10px;
+      
+    }
+   
+   
+    &-container{
+    width:$pageWidth;  
+
+    @include mobile{
+        top:30%;
+        width: 100%;
+        padding: 10px;
+    }
+
+   
+    
+   
+    z-index: 99;
+
+    justify-content:start;
+    align-items:center;
+
+    .search-bar{
+        display: flex;
+        width: 600px;
+
+        &-tab{
+      
+            background-color:#84ACC9;
+            color: $white;
+            padding: 12px;
+            border:0;
+            border-radius:15px;
+            font-size: 13px;
+            
+            &:hover{
+                cursor: pointer;
+            }
+
+            &:first-child{
+                margin-right: 2px;
+            }
+        }
+
+    }
+    .search-container{
+        background:$white;
+        border-radius:15px;
+        padding: 4px;
+        width: 80%;
+
+        @include mobile{
+            width: 100%;
+
+        }
+
+        @include tablet-portrait{
+            width: 100%!important;
+        }
+
+        &-property{
+            margin:0 auto;
+            padding: 0 5px;
+
+            @include mobile{
+                padding: 10px;
+            }
+
+            @include tablet-portrait{
+                // width: 100%!important;
+                padding: 17px 5px;
+            }
+
+            form{
+               
+                    border: 0px!important;
+                    height: auto;
+                    min-height:auto!important;
+                    padding: 0px important;
+                    border-radius: 0px;
+                    -ms-grid-columns:unset;
+                    grid-template-columns: unset;
+                    grid-template-columns: unset;
+              
+
+
+                display: flex;
+                // gap: 10px;
+                justify-content: space-between;
+                align-items: center;
+
+                @include mobile{
+                    flex-direction: column;
+                    align-items: stretch;
+                }
+
+                @include tablet-portrait{
+                    flex-direction: column;
+                    justify-content: flex-start;
+                
+                }
+
+                div{
+                    border-right: 2px dashed $deep_green;
+                    display: flex;
+                    gap: 10px;
+                    justify-content: center;
+                    // align-items: center;
+                    align-items: center;
+                
+                    padding: 0px;
+                    
+                    @include mobile{
+                    border-right: 0;
+                    margin-bottom: 15px;
+                    }
+
+                    @include tablet-portrait{
+                        border-right: 0;
+                        margin-bottom: 15px;
+                        margin-right: 10px;
+                    }
+                   
+                    .submit-property{
+                        border-radius: 15px;
+                        padding: 17px 45px;
+                        background: $orange;
+                        color: $white;
+                        transform: translateX(7px);
+
+                        @include mobile{
+                            padding: 11px 45px;
+                            height:40px;
+
+                               
+                        }
+                    }
+                   
+                    span{
+                        display: flex;
+                        margin: 0 auto;
+
+                        img{
+                            width:13px!important;
+                        }
+
+                        @include mobile{
+                            width: 10%;
+
+                        }
+                    }
+
+                    input{
+                        padding: 05px;
+                        margin-right: 7px;
+                        margin:5px;
+                        border: 0;
+                        appearance: none;
+                        outline: none;
+                        width:200px;
+
+                        &::placeholder{
+                        font-size: 14px!important;
+                        }
+                        @include tablet-portrait{
+                         width: 600px!important;
+
+                        }
+
+                        @include mobile{
+                          
+                            width: 90%;
+                            height: 33px;
+
+                        }
+
+                       
+                    }
+                    &:nth-child(3){
+                        border:0;
+                        margin-right: 0px;
+
+                    }
+                    &:nth-child(4){
+                        border:0;
+                        margin-right: 0px;
+                        width:150px;
+                        margin-bottom: 0;
+                        width: auto;
+                        // height: 40px!important;
+
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    }        
+    
+}
+
+
+.active-tab{
+    background: $white!important;
+    color: $black!important;
+}

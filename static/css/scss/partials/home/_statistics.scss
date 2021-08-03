@@ -1,0 +1,195 @@
+.statistics {
+  background: $white;
+  transition: all 0.6s;
+  // color: #000;
+  font-size: 13px;
+  position: relative;
+  justify-content: center;
+overflow: hidden;
+  width: 100%;
+  display: flex;
+
+  @extend .align-center;
+
+  &::before {
+    background: url("../../img/home/customer-feedback/greenslash.png");
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-position: right;
+    // background-size: 100%;
+    background-repeat: no-repeat;
+    left: 3%;
+    top: -20%;
+    // padding: 70px 0px;
+  }
+
+
+
+  &-container {
+    max-width: $pageWidth;
+    padding: 20px 0px 70px 0px;
+    overflow: hidden;
+    position: relative;
+
+    display: flex;
+
+    @include tablet-portrait {
+      flex-direction: column;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .item {
+      border: 15px;
+      height: 350px;
+
+      @include tablet-portrait {
+        height: 250px;
+      }
+    }
+
+    .left {
+      background: $fade_blue;
+      padding: 50px 80px 50px 50px;
+      border-radius: 10px;
+
+      flex-basis: 40%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // background: $icon_bg;
+
+      @include mobile {
+        flex-basis: 100%;padding: 30px;
+      }
+
+      h1 {
+        color: $middle_green;
+        font-size: 2em;
+        @include mobile {
+          font-size: 1.4em;
+        }
+      }
+
+      p {
+        color: $middle_green;
+        @include font("poppins", 300);
+        margin-top: 10px;
+      }
+    }
+
+    .right {
+      flex-basis: 60%;
+      background: $white;
+      position: relative;
+
+      @include tablet-portrait {
+        flex-basis: auto;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+
+      @include mobile {
+        flex-basis: auto;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .stats {
+        display: flex;
+        background: $white;
+        border-radius: 10px;
+        z-index: 99;
+        // justify-items:stretch ;
+        position: absolute;
+        top: 20%;
+        transform: translateX(-30px);
+        padding: 20px;
+        
+
+
+        @include tablet-portrait {
+          padding: 0;
+          padding: 20px;
+          justify-content: space-between;
+          width: 100%;
+          transform: none;
+          flex-wrap: wrap;
+        }
+
+
+        @include mobile {
+            justify-content: center;
+          transform: none;
+          padding: 0;
+          padding: 0px;
+          flex-wrap: wrap;
+
+
+          }
+
+        .stat {
+          margin: 27px;
+          position:relative;
+
+          @include tablet-portrait {
+            margin: 10px;
+            justify-items: stretch;
+            // flex-basis: 25%;
+            text-align: center;
+          }
+          @include mobile {
+            margin: 10px;
+            flex-basis: 40%;
+            text-align: center;
+
+
+        }
+
+          h1 {
+            color: $middle_green;
+            font-size: 60px;
+            // margin-left: -10px;
+          }
+          span {
+            color: $middle_green;
+            font-weight: 400;
+          }
+
+          span.k{
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            color: $middle_green;
+            font-size: 20px;
+            font-weight:700;
+          }
+        }
+      }
+
+      &::before {
+        background: url("../../img/home/statistics/pattern.svg");
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 100%;
+        background-position: left;
+        background-repeat: no-repeat;
+        left: 3%;
+        top: 0;
+        // padding: 70px 0px;
+      }
+    }
+  }
+}

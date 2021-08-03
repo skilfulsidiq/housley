@@ -1,0 +1,50 @@
+.news-updates{
+    background:linear-gradient(to right,rgba($middle_green,0.3));
+  
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    z-index: 99;
+    width: 100%;
+    // z-index: 999;
+    bottom: 11vh;
+
+    @include mobile{
+        bottom: 0vh!important
+;
+
+        
+    
+        }
+   
+   
+    &-container{
+    width: $pageWidth;   
+    // position: absolute;
+    // margin-top: -70px;   
+    // padding: 20px 0px;
+    display: flex;
+    left: 19%;
+    z-index: 99;
+    top:15px;
+
+    // 
+ 
+    justify-content:start;
+    align-items:center;
+
+     div{
+        p{
+            color:#fff;
+            @include font('poppins',400);
+            font-size: 13px;
+        }
+
+     }
+
+        
+
+        }        
+    
+}

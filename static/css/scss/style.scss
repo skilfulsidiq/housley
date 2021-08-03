@@ -1,0 +1,171 @@
+/**
+Author: Nolimitbuzz
+Website URL: https://nolimitbuzz.net
+Developer: Engr. Segun
+CSS Framework: SASS
+
+*/
+
+/* FIX*/ 
+
+ol, ul {
+    padding-left: 0px!important;
+}
+
+dl, ol, ul {
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+}
+
+
+// Property  form on mobile
+
+@media (max-width:480px){
+.search-container-property .submit-property {
+    margin-top: 10px;
+    width: 100%;
+}
+
+
+.search-container-property .in-btw {
+     padding: 0px; 
+}
+ 
+.search-container-property input {
+  
+    height: 46px;
+    width: 100%;
+}
+
+.search-container-property form {
+    padding: 18px!important;
+}
+
+.search-container-property .in-btw {
+    padding: 0!important;
+    padding-bottom: 20px!important;
+}
+
+
+.search-container-property .in-btw input {
+    max-width: 100%!important;
+}
+
+}
+
+/*FIX END*/ 
+
+/* PARTIALS */
+@import './partials/reset';
+@import './partials/colors';
+@import './partials/fonts';
+@import './partials/media-query';
+@import './partials/variables';
+@import './partials/loader';
+
+
+
+/* HOUZZLEY HOMAPAGE PAARTIALS */ 
+
+// @extends
+.align-center{
+    justify-content: center;
+}
+
+
+/*Transparent Header*/ 
+@import './partials/header/transparent-header';
+@import './partials/header/hamburger';
+
+
+// /*Slider*/ 
+@import './partials/home/swipper';
+/*Header News*/ 
+@import './partials/home/property-search';
+/*Header News*/ 
+@import './partials/home/news';
+/*Benefits CTAs*/ 
+@import './partials/home/benefits-cta';
+/*How it works*/ 
+@import './partials/home/how-it-works';
+/*How it works*/ 
+@import './partials/home/promotion';
+/*Real Estate Developer*/ 
+@import './partials/home/real-estate-developer';
+/*Statistics*/ 
+@import './partials/home/statistics';
+/*Statistics*/ 
+@import './partials/home/client-feedback';
+
+
+
+
+/* HOUZZLEY About PARTIALS */ 
+/*Popup*/ 
+@import './partials/about/about';
+
+
+/* HOUZZLEY MORTGAGE PAARTIALS */ 
+
+/*Popup*/ 
+// @import './partials/mortgage/popup';
+
+/*Hero Section*/ 
+@import './partials/mortgage/hero';
+/*Partners*/ 
+@import './partials/mortgage/partnership';
+
+
+
+
+
+
+/* HOUZZLEYPROPERTY PARTIALS */ 
+/*Login  Page*/ 
+@import './partials/property/property';
+
+@import './partials/property/property-details';
+
+
+@import './partials/filter-properties/money';
+
+
+/* HOUZZLEY FAQs PARTIALS */ 
+/*Login  Page*/ 
+@import './partials/pre-approval/pre-approval';
+
+
+
+
+/* HOUZZLEY FAQs PARTIALS */ 
+/*Login  Page*/ 
+@import './partials/faq/faq';
+
+
+
+/* HOUZZLEY CONTACT PARTIALS */ 
+/*Contact us Section*/ 
+@import './partials/contact/contact';
+
+
+
+
+/* HOUZZLEY LOGIN PARTIALS */ 
+/*Login  Page*/ 
+@import './partials/login/login';
+
+
+
+/* HOUZZLEY SIGNUP PARTIALS */ 
+/*Login  Page*/ 
+@import './partials/signup/signup';
+
+
+
+
+
+
+
+/*Footer Section*/ 
+@import './partials/footer/footer';
+

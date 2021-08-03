@@ -1,0 +1,250 @@
+.login{
+    background: $white;
+    // padding:10px;
+    transition: all 0.6s;
+    // color: #000;
+    font-size: 13px;
+    position: relative;
+    justify-content: center;
+  overflow: hidden;
+    width: 100%;
+    display: flex;
+    // margin-top: 50px;
+    
+
+  
+  
+    &-container {
+    //   max-width: ;
+      background: $white;
+    //   padding: 20px 0px 70px 0px;
+      overflow: hidden;
+      position: relative;
+        height: 93vh;
+      display: grid;
+      width: 100%;
+      grid-template-columns:1fr 1fr;
+    //   padding: 50px;
+      margin-top: 80px;
+
+
+      @include mobile{
+        grid-template-columns:1fr;
+          }
+
+
+      
+
+      
+
+
+      .right{
+        // align-items: center;
+        padding: 150px 0 0 80px;
+
+        @include tablet-portrait{
+        padding: 150px 0 0 50px;
+
+
+
+       }
+
+       @include mobile{
+        padding: 10px;
+
+        
+     }
+
+        h1{
+            font-size: 20px;
+            color: $deep_green;
+            margin-bottom: 20px;
+            @include mobile{
+                text-align: center;
+            }
+        }
+        .form-container{
+            border: 1px solid #3AAA35;
+            border-radius: 10px;
+            padding: 20px;
+            // width: 70%;
+            width: 450px;
+
+        @include tablet-portrait{
+            width: 95%;
+
+        }
+
+        @include mobile{
+            width: 100%;
+
+        }
+
+
+            form{
+                position:relative;
+
+                span{
+                    img.email{
+                        position: absolute;
+                        z-index: 9;
+                        margin: 20px 10px;
+
+                    }
+                }
+
+                span{
+                    img.lock{
+                        position: absolute;
+                        z-index: 9;
+                        margin: 20px 10px;
+                        left: 0;
+top: 22%;
+
+
+                    }
+                }
+
+                // input#email{
+
+
+                //     ::after{
+                //         background: url('../../img/login/email');
+                //         position:absolute;
+                //         background-color: red;
+                //         background-position: 98% 50%;
+                //         height: 100%;
+                //         width: 100%;
+                //         content: "";
+                //     }
+                // }
+
+
+                input{
+                    border: 1px solid #3aaa35;
+                    height: 60px;
+                    width: 100%;
+                    padding: 10px 0 10px 50px;
+                    font-family: poppins;
+                    background-color: #fff;
+                    margin-bottom: 20px;
+                    border-radius: 7px;
+                    outline: none;
+                    position: relative;
+
+                    color:$middle_green;
+
+
+                
+                }
+
+                
+
+                div.forgot-password{
+                    color:#5E97B1;
+                    margin-top:-15px;
+                    margin-bottom:20px;
+                }
+
+                input[type="submit"]{
+                    background-color: $deep_green;
+                    color: $white;
+                    text-align: center;
+                    padding: 10px 0 10px 0px!important;
+                    border: 0px;
+
+                    &:hover{
+                    background-color: $orange;
+
+                    }
+
+
+                    // @include mobile{
+                    //     padding: 10px 0 10px 0px;
+                    // }
+
+                }
+
+                div.signup{
+                    text-align: center;
+                    color: $middle_green;
+
+
+                    a{
+                        color: $light_green;
+                        font-weight: 500;
+                        text-decoration: none;
+
+                    }
+                }
+
+
+                div.google-signon{
+                    background: transparent;
+                    border:1px solid #9EFF9A;
+                    border-radius: 15px;
+                    padding: 15px;
+                    text-align: center;
+                    margin-top:20px ;
+
+
+                    span{
+                        img{
+                            margin-bottom: -6px;
+                            margin-right: 20px;
+                        }
+                    }
+                }
+
+            }
+        }
+
+
+
+
+
+     
+      }
+    .left{
+        background: url("../../img/login/login-banner.jpg");
+        // background-position: 5% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+
+        @include mobile{
+        height: 0px;
+
+        }
+    }
+  
+      @include tablet-portrait {
+        flex-direction: column;
+      }
+  
+      @include mobile {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+    }
+
+
+
+}
+
+::placeholder { 
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $middle_green;
+    opacity: 1; /* Firefox */
+    font-weight: 500;
+
+  }
+  
+  :-ms-input-placeholder { /* Internet 
+    Explorer 10-11 */
+    color: $middle_green;
+    font-weight: 500;
+
+  }

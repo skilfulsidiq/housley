@@ -1,0 +1,167 @@
+.search-homes.grid {
+  grid-template-columns: 39% 55%;
+  grid-gap: 6%;
+  align-items: center;
+}
+.common-section .info {
+  margin: 19px 0 29px 0;
+  font-family: Poppins;
+}
+.take-test .common-section .info {
+  width: 71%;
+  margin: 19px auto 60px auto;
+}
+
+.about-first .dot1 {
+  bottom: -57px;
+  z-index: -1;
+}
+
+.search-homes-lhs {
+  /* width: 79%; */
+  width: 90%;
+  margin-right: auto;
+}
+.search-homes-lhs .title.big-font {
+  width: 80%;
+}
+.search-homes-lhs .sub-head {
+  margin-bottom: 25px;
+}
+
+.search-homes-rhs .img-grid {
+  justify-items: end;
+  position: relative;
+  overflow: hidden;
+}
+.img-grid .dot {
+  margin: -1px 28px 0 -27px;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.img-grid .home2 {
+  margin-right: -22px;
+  width: 54%;
+}
+.img-grid .home3 {
+  left: -3px;
+  bottom: 33px;
+  z-index: 1;
+  width: 53%;
+}
+
+.img-grid .home1 {
+  width: 85%;
+}
+.search-homes-lhs .dot1 {
+  bottom: 92px;
+  left: 0;
+}
+.take-test {
+  position: relative;
+  padding: 100px 0;
+}
+.take-test .dot {
+  right: 0;
+}
+.take-test .common-section {
+  width: 63%;
+  margin: auto;
+  text-align: center;
+}
+.take-test .common-section .title,
+.take-test2 .common-section .title {
+  font-family: poppins;
+}
+.take-test2 .common-section {
+  width: 87%;
+}
+.take-test3 .common-section {
+  margin-left: auto;
+}
+.take-test3 .common-section .info {
+  width: 80%;
+}
+/* .take-test2 .bg{
+	background-image: url(../img/test1.png);
+}
+.take-test3 .bg{
+	background-image: url(../img/test3.png);
+} */
+.take-test2 {
+  margin-bottom: 130px;
+  position: relative;
+}
+.take-testy2 .abs1 {
+  bottom: -42px;
+  /* z-index: 2; */
+}
+.take-testy2 .abs2 {
+  right: 0;
+  /* z-index: 2; */
+  top: 16px;
+}
+.take-test2 .gridy {
+  grid-template-columns: 55% 40%;
+  grid-gap: 5%;
+  align-items: center;
+  margin: auto;
+  /* width: 80%; */
+}
+.take-test2 .gridy.relative .abs1 {
+  right: 215px;
+  bottom: -117px;
+}
+.take-test2.relative .abs2 {
+  top: 25px;
+  /* z-index: 2; */
+}
+.take-test3 .gridy {
+  grid-template-columns: 40% 55%;
+}
+.take-test1.relative .abs.dot {
+  top: 30%;
+}
+.mission .bg {
+  background-image: url('../../img/about/mission.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 743px;
+  /* position: relative; */
+}
+.mission .padded-content-normal {
+  position: relative;
+  height: inherit;
+}
+.mission .padded-content-normal img.abs {
+  /* z-index: 2; */
+  right: 0;
+}
+.mission-hero {
+  position: absolute;
+  background-color: #fff5e3;
+  padding: 50px 70px;
+  top: 56%;
+  width: 40%;
+  height: auto;
+  left: 67%;
+  transform: translate(-50%, -50%);
+
+  background-color: #fff5e3;
+  padding: 50px 70px;
+  top: 56%;
+  width: 49%;
+  height: auto;
+  left: 70%;
+}
+.mission-hero .title {
+  margin-bottom: 15px;
+}
+.mission-hero .info {
+  font-size: 18px;
+  line-height: 39px;
+  letter-spacing: -0.3px;
+  font-family: poppins;
+}

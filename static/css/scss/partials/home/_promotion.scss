@@ -1,0 +1,417 @@
+/*SLIDER BEGIN*/ 
+
+/*SLIDER 1*/ 
+
+
+.promotion{
+    &-container.one{
+
+
+    &::before   {
+                
+            position: absolute;
+            content: "";
+            background-size: 30% 20%;
+            width: 100%;
+            height: 100%;
+            background: url("../../img/home/promotion/user-pattern.png");
+            background-position: 20% 100%;
+            background-repeat: no-repeat;
+            z-index:auto;
+            // margin-left: 200px;
+            top: -18.3%;
+            
+
+                @include tablet-portrait{
+                    
+                    position: absolute;
+                    content: "";
+                    background-size: 30% 20%;
+                    width: 100%;
+                    height: 100%;
+                    background: url("../../img/home/promotion/user-pattern-table-mobile.png");
+                    background-position: 5% 100%;
+                    background-repeat: no-repeat;
+                    top: -22%;
+
+                }
+
+
+
+
+                @include mobile{
+                    
+                    position: absolute;
+                    content: "";
+                    background-size: 30% 20%;
+                    width: 100%;
+                    height: 100%;
+                    background: url("../../img/home/promotion/user-mobile.png");
+                    background-position: 50%;
+                    background-repeat: no-repeat;
+                    top: -22%;
+
+                }
+
+
+        
+    }
+
+    }
+}
+
+
+/*SLIDER 2*/ 
+
+
+.promotion{
+    &-container.two{
+
+
+    &::before   {
+                
+            position: absolute;
+            content: "";
+            background-size: 30% 20%;
+            width: 100%;
+            height: 100%;
+            background: url("../../img/home/promotion/user2-pattern-web.png");
+            background-position: 20% 100%;
+            background-repeat: no-repeat;
+            z-index:auto;
+            // margin-left: 200px;
+            top: -18.3%;
+
+                @include tablet-portrait{
+                    
+                    position: absolute;
+                    content: "";
+                    background-size: 30% 20%;
+                    width: 100%;
+                    height: 100%;
+                    background: url("../../img/home/promotion//user2-pattern-tablet.png");
+                    background-position: 5% 100%;
+                    background-repeat: no-repeat;
+                    top: -22%;
+
+                }
+
+
+                @include mobile{
+                    
+                    position: absolute;
+                    content: "";
+                    background-size: 30% 20%;
+                    width: 100%;
+                    height: 100%;
+                    background: url("../../img/home/promotion//user2-pattern-mobile.png");
+                    background-position: 50%;
+                    background-repeat: no-repeat;
+                    top: -22%;
+
+                }
+
+
+        
+    }
+
+    }
+}
+
+
+/*SLIDER 3*/ 
+
+.promotion{
+    &-container.three{
+
+
+    &::before   {
+                
+            position: absolute;
+            content: "";
+            background-size: 30% 20%;
+            width: 100%;
+            height: 100%;
+            background: url("../../img/home/promotion/user3-pattern-web.png");
+            background-position: 20% 100%;
+            background-repeat: no-repeat;
+            z-index:auto;
+            // margin-left: 200px;
+            top: -18.3%;
+
+                @include tablet-portrait{
+                    
+                    position: absolute;
+                    content: "";
+                    background-size: 30% 20%;
+                    width: 100%;
+                    height: 100%;
+                    background: url("../../img/home/promotion/user3-pattern-tablet.png");
+                    background-position: 5% 100%;
+                    background-repeat: no-repeat;
+                    top: -22%;
+
+                }
+
+
+
+
+                @include mobile{
+                    
+                    position: absolute;
+                    content: "";
+                    background-size: 30% 20%;
+                    width: 100%;
+                    height: 100%;
+                    background: url("../../img/home/promotion/user3-pattern-mobile.png");
+                    background-position: 50%;
+                    background-repeat: no-repeat;
+                    top: -22%;
+
+                }
+
+
+        
+    }
+
+    }
+}
+
+
+
+
+/*SLIDER END*/ 
+
+
+
+
+
+.promotion{ 
+    background:$fade_green;
+    transition: all 0.6s;
+    // color: #000;
+    font-size: 13px;
+    position: relative;
+    justify-content: center;
+    
+    width: 100%;
+    display: flex;
+     height: 90vh;
+     padding: 150px 0;
+    background-color: $white;
+    @extend .align-center;
+
+    @include mobile{
+        padding: 150px 0;
+
+    }
+
+    @include tablet-portrait{
+        height:auto!important;
+    }
+
+
+   
+    
+        &-container{
+            width: $pageWidth;      
+            // padding: 70px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            background: $butter_color;
+            border-radius: 10px;
+            height: 400px;
+        overflow: hidden;
+
+
+
+            @include tablet-portrait{
+                height: 300px;
+            }
+           
+        //Before here
+
+        }        
+
+ }
+ 
+ 
+
+
+ .promotion-slider{
+    position: relative;
+    justify-content: center;
+    
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+
+
+ 
+
+    &-container{
+        padding: 70px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: $pageWidth;
+        overflow: hidden;
+
+
+        @include tablet-portrait{
+
+            padding: 0px;
+        }
+
+
+        @include mobile{
+
+        flex-direction: column;
+
+
+        }
+        
+
+     
+
+
+        div{
+            flex-basis: 50%;
+        }
+
+ 
+
+        .right{
+            // height: 500px;
+
+            @include tablet-portrait{
+            // padding-right:250px;
+            padding-right:0px;
+            }
+
+            @include mobile{
+                padding: 20px;
+                padding-right:0px;
+                padding-top: 100px;
+                }
+
+
+            padding-right:180px;
+
+            h3{
+                // margin: 20px 0;
+                color: $middle_green;
+                font-weight: 400;
+                font-size: 18px;
+                margin: 20px 0;
+                @include tablet-portrait{
+                    font-size: 14px;
+                }
+
+                @include mobile{
+                    font-size: 12px;
+                    text-align: center;
+                }
+
+            }
+
+            h1{
+                color: $middle_green;
+                font-weight: 600;
+                font-size: 25px;
+
+
+                @include mobile{
+                    font-size: 14px;
+                    text-align: center;
+                    
+
+                }
+
+
+                @include tablet-portrait{
+
+                    font-size: 18px;
+
+                }
+            }
+
+
+            div.button{
+
+                button{
+                    background:transparent;
+                    color: $white;
+                    border: 0;
+                }
+
+
+                a {
+                    color: #fff;
+                    text-decoration: none;
+
+                }
+                background: $deep_green;
+                  
+                    font-size: 13px;
+                    font-weight: 400;
+                      text-align: center;
+                    border-radius: 15px;
+                    padding: 15px;
+                    color: #fff;
+                   
+                    max-width: 70%;
+
+                    @include mobile{
+                    margin: 0 auto;
+                    }
+
+            }
+
+        }
+
+
+        // .left{
+
+        //     // height: 500px;
+        //     // margin-top: -317px;
+         
+        // }
+
+
+
+
+    }
+
+
+
+ }
+
+
+
+ .swiper-pagination.paginate.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+    // left: 12%!important;
+ 
+    margin-top: 150px;
+    top: 50%;
+    right: 20%;
+        
+    
+    @include mobile {
+            top: 60%;
+            right: 45%;
+        }
+
+
+ 
+    
+}
+
+.swiper-pagination.paginate.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-bullets-dynamic >span{
+
+    background: $orange !important;
+}
+

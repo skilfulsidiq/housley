@@ -1,0 +1,126 @@
+.amount-cards{
+text-align:left;
+grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+margin-bottom: 50px;
+align-items: center;
+grid-gap:20px;
+display: grid;
+
+  .amount-card{
+    background: #F3FBFF;
+    border: 1px solid #BDFFBA;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 9px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+     padding: 44px 66px;
+
+     p.info{
+       font-size:14px;
+       margin-top: 15px;
+     }
+  }
+}
+
+
+
+.mailing{
+
+  display: flex;
+  background-color: #F9FFF9;
+  justify-content: center;
+  align-items: center;
+
+
+  &-container{
+position: relative;
+    // height:300px;
+    padding:150px 0;
+    max-width: 800px;
+
+    img
+    {
+      position:absolute;
+      top: 0;
+      right: 8%;
+      z-index: 2;
+      width: 20%;
+    }
+
+    .content{
+      border-radius: 25px;
+      box-shadow: 0px 8px 9px rgba(0, 0, 0, 0.05);
+      display:grid;
+      grid-template-columns: 2fr 1fr;
+z-index: 9;
+      @include mobile{
+      grid-template-columns:  1fr;
+
+      // &::after{
+      //   content: "";
+      //   position: absolute;
+      //   height: 100%;
+      //   width: 100%;
+      //   background-position:contain;
+      //   background-size: 100%;
+      //   background-image: url("../../img/filter-properties/filter-footer.svg");
+      // }
+
+      }
+      
+
+      .left{
+        background-color: $fade_blue;
+        padding:10px 42px;
+        color: $middle_green;
+        display: flex;
+        align-items:center;
+        color: $deep_green;
+        font-weight: 900;
+
+        // h4{
+
+        // }
+        
+        font-size: 15px; 
+        @include mobile{
+          text-align: center;
+          padding: 25px;
+        }
+
+      }
+
+      .right{
+        padding: 20px;
+        background: $white;
+z-index: 9;
+
+
+
+        div.button{
+          margin:05px 10px;
+          text-align: center;
+          background: $deep_green;
+          padding:12px;
+          border-radius:15px;
+          text-decoration: center;
+          a{
+            color:$white;
+            text-decoration: none;
+            font-size: 12px;
+          }
+        }
+        // div.button:hover  button#continue{
+        //   background: $deep_green;
+        // }
+
+
+
+
+      }
+
+
+    }
+  }
+
+
+}

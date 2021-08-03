@@ -1,0 +1,25 @@
+@import './fonts';
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    @include font('poppins',300);
+    font-weight: 300 !important;
+    font-size:15px!important;
+
+}
+p{
+    font-weight: 300 !important;
+    @include font('poppins',300);
+
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: roboto!important;
+}
+
+html {
+    scroll-behavior: smooth;
+  }

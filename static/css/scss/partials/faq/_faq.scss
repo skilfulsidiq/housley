@@ -1,0 +1,59 @@
+.faqs .heading {
+  text-align: center;
+  margin: 88px 0 30px 0;
+}
+.sub-title {
+  font-family: poppins;
+  width: 33%;
+  margin: 7px auto auto auto;
+}
+.faq-container {
+  border: 1px solid #3aaa35;
+  border-radius: 10px;
+  padding: 50px;
+  margin-bottom: 40px;
+}
+
+.accordion {
+  background: #f4fafd;
+  border: 1px solid #3aaa35;
+  color: #0d4566;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 20px 28px;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  margin-bottom: 16px;
+  transition: 0.4s;
+}
+.dropped {
+  border: 1px solid #3aaa35;
+  padding-bottom: 40px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+}
+
+.active {
+  background-color: #fff;
+  border: none;
+  margin-bottom: 0;
+}
+.accordion:after {
+  content: url('../../img/faqs/arrowDown.svg');
+
+  float: right;
+}
+
+.active:after {
+  content: url('../../img/faqs/arrowUp.svg');
+}
+
+.panel {
+  padding: 0 28px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+  color: #0d4566;
+  font-family: Poppins;
+}
