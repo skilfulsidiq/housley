@@ -39,7 +39,7 @@
 
 
         
-        $('div.logo>a>img').attr('src','/assets/img/logo/Houzzley-Logo.svg');
+        $('div.logo>a>img').attr('src','/logo/Houzzley-Logo.svg');
         $(".trasparent-container .navigation nav ul li a").css({"color":"#0d4566"});
         $(".trasparent-container .action-buttons .login a").css({"color":"#0d4566"});
         $(".trasparent-container .action-buttons .signup a").css({"color":"#0d4566"});
@@ -52,7 +52,7 @@
         // $('#topbar').addClass('topbar-scrolled ');
       } else {
         $('#header').removeClass('header-scrolled');
-        $('div.logo>a>img').attr('src','/assets/img/logo/houzzley-white-logo.svg');
+        $('div.logo>a>img').attr('src','/logo/houzzley-white-logo.svg');
         $(".trasparent-container .navigation nav ul li a").css({"color":"#ffffff"});
         $(".trasparent-container .action-buttons .login a").css({"color":"#ffffff"});
         $(".trasparent-container .action-buttons .signup a").css({"color":"#ffffff"});

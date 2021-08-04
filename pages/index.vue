@@ -1,6 +1,13 @@
 <template>
   <div>
-
+      <HomeImageSlider/>
+      <HomeSearchBar/>
+      <HomeBenefit/>
+      <CtaHeading/>
+      <HowItWork/>
+      <HomePromotion/>
+      <HomeDeveloper/>
+      <HomeStatistic/>
   </div>
 </template>
 

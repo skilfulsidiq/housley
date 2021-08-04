@@ -4,14 +4,7 @@
     <!-- <client-only> -->
       <div class="se-pre-con" ref="preloader"></div>
       <AppHeader/>
-      <HomeImageSlider/>
-      <HomeSearchBar/>
-      <HomeBenefit/>
-      <CtaHeading/>
-      <HowItWork/>
-      <HomePromotion/>
-      <HomeDeveloper/>
-      <HomeStatistic/>
+        <nuxt/>
       <AppFooter/>
     <!-- </client-only> -->
   </div>
@@ -40,6 +33,15 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
+// .trasparent{
+//     background: #0D4566;
+//     }
+
+//     .trasparent-container .action-buttons .signup{
+// border: 1px solid #0d4566;
+//     }
+
+
 
 </style>
