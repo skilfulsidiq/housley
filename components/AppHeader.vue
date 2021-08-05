@@ -5,7 +5,7 @@
     <div class="trasparent-container">
       <div class="logo">
         <nuxt-link to="/">
-          <img src="/logo/houzzley-white-logo.svg" />
+          <img src="/img/logo/houzzley-white-logo.svg" />
         </nuxt-link>
       </div>
       <div class="navigation">
@@ -22,11 +22,11 @@
 
         <div class="action-buttons">
           <div class="login">
-            <nuxt-link to="login.html">Login</nuxt-link>
+            <nuxt-link to="/login">Login</nuxt-link>
           </div>
 
           <div class="signup">
-            <nuxt-link to="signup.html">Sign Up</nuxt-link>
+            <nuxt-link to="register">Sign Up</nuxt-link>
           </div>
 
           <div class="mobile-hamburger">
@@ -75,5 +75,11 @@
 </script>
 
 <style lang="scss" scoped>
+// .trasparent{
+//     background: #0D4566;
+//     }
 
+//     .trasparent-container .action-buttons .signup{
+// border: 1px solid #0d4566;
+//     }
 </style>

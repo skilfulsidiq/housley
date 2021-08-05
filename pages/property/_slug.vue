@@ -57,8 +57,8 @@
                       <p class="color1 bold big-text">$ 27,000,000.00</p>
                     </div>
                   </div>
-                  <div class="lower flex j-btw flex-wrap">
-                    <div class="flex icons">
+                  <div class="lower flex-wrap" id="grand-parent">
+                    <div class=" icons" id="icon-parent">
                       <div class="with-icon flex j-btw">
                         <div>
                           <img
@@ -314,17 +314,17 @@
                   <p class="boxed-title bold color1">Property Types</p>
                   <div class="scrolly">
                     <div class="boxed-body boxed-body-table">
-                      <div class="grid row j-btw">
+                      <div class="box">
                         <p class="color1">Terrace</p>
                         <p class="color1">₦ 27,000,000.00</p>
                         <p class="status green bold">Available</p>
                       </div>
-                      <div class="grid row j-btw">
+                      <div class="box">
                         <p class="color1">Semi-detached</p>
                         <p class="color1">₦ 38,000,000.00</p>
                         <p class="status red bold">Sold out</p>
                       </div>
-                      <div class="grid row j-btw no-border">
+                      <div class="box">
                         <p class="color1">Detached</p>
                         <p class="color1">₦ 47,000,000.00</p>
                         <p class="status green bold">Available</p>
@@ -335,7 +335,7 @@
               </div>
               <div class="text-slide">
                 <p class="color1 slide-title">Lender Rate</p>
-                <div class="mySlides flex j-btw">
+                <div class="mySlides flex j-btw" style="display:flex">
                   <img
                     src="/img/properties/firstTrust.png"
                     alt="firstTrust"
@@ -343,7 +343,7 @@
                   <p class="bold color1">12.2%</p>
                 </div>
 
-                <div class="mySlides">
+                <div class="mySlides" style="display:flex">
                   <q
                     >But man is not made for defeat. A man can be destroyed but
                     not defeated.</q
@@ -351,7 +351,7 @@
                   <p class="author">- Ernest Hemingway</p>
                 </div>
 
-                <div class="mySlides">
+                <div class="mySlides" style="display:flex">
                   <q
                     >I have not failed. I've just found 10,000 ways that won't
                     work.</q
@@ -378,10 +378,74 @@
 
 <script>
   export default {
-    auth:false
+    auth:false,
+      head(){
+            return{
+                link:[
+                      { rel: 'stylesheet', href:"/css/custom/header-color.css"  },
+                ]
+            }
+        },
   }
 </script>
 
 <style lang="scss" scoped>
+/*-------------------------------------------------------------------
+      icon div with right button adjustment
+ --------------------------------------------------------------*/
+#grand-parent{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width:100%
+}
+#icon-parent{
+  width: 35%;
+  display: flex;
+}
 
+/*-------------------------------------------------------------------
+      End of Icon with right button
+ --------------------------------------------------------------*/
+
+
+ /*-------------------------------------------------------------------
+      property type div adjustment
+ --------------------------------------------------------------*/
+
+.boxed-details .boxed-body {
+    margin-top: 15px;
+    overflow: hidden;
+}
+.tab button {
+    color: #0d4566!important;
+}
+.box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #3aaa35;
+}
+.box:nth-child(3){
+  border-bottom: none;
+}
+.box >*{
+  width: 200px;
+}
+/*-------------------------------------------------------------------
+      end of property
+ --------------------------------------------------------------*/
+@media(max-width: 500px){
+  #grand-parent{
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  #icon-parent{
+    width: 80%;
+    margin-bottom:0.25rem;
+  }
+}
 </style>

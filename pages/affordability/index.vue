@@ -58,24 +58,24 @@
 
               <section class="step-indicator steps">
                 <div class="step step1 ">
-                    <div class="step-icon number">1</div>
+                    <div class="step-icon number finished">1</div>
                   <p  class="text bold">Affordability Test</p>
                 </div>
               <div id="line1" class="indicator-line "></div>
               <div class="step step2">
-                  <div class="step-icon number">2</div>
+                  <div class="step-icon number finished">2</div>
                 <p class="text bold">Down Payment</p>
               </div>
               <div id="line2" class="indicator-line"></div>
               <div class="step step3">
-                  <div class="step-icon number">3</div>
+                  <div class="step-icon number finished">3</div>
                 <p class="text bold"> Complete Profile</p>
               </div>
             </section>
           
              
               <form id="stepForm"  class="filled-input-with-slider">
-                <div class="taby gridy">
+                <div class="taby gridy" style="display:grid">
                   <div class="grid-child">
                     <label for="propertyValue">Property Value</label>
                     <div class="input-group mb-3">
@@ -149,7 +149,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="taby gridy">
+                <div class="taby gridy" style="display:grid">
                   <div class="grid-child">
                     <label for="propertyValue">Property Value</label>
                     <div class="input-group mb-3">
@@ -205,7 +205,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="taby gridy">
+                <div class="taby gridy" style="display:grid">
                   <div class="grid-child">
                     <label for="propertyValue">Property Value</label>
                     <div class="input-group mb-3">
@@ -664,7 +664,7 @@
                   </div>
                   <div class="tab-step tab-success">
                     <div class="mark-icon flex">
-                      <img src="/img/mark.png" alt="marked" ">
+                      <img src="/img/mark.png" alt="marked" >
                     </div>
                     <div class="heading">
                       <h1 class="big-font green bold">
@@ -678,7 +678,7 @@
                     <div class="flex next-prev">
                       <button
                         type="button"
-                        id="prevBtn"
+                        id="prev"
                         onclick="nextPrev(-1)"
                         class="next xxsm-font white-btn s-bold"
                       >
@@ -709,10 +709,29 @@
 
 <script>
   export default {
-    auth:false
+    auth:false,
+      head(){
+            return{
+                link:[
+                      { rel: 'stylesheet', href:"/css/custom/header-color.css"  },
+                ]
+            }
+        },
   }
 </script>
 
 <style lang="scss" scoped>
+.white-btn2 {
+    background-color: #fff;
+    color: #006633!important;
+    border: 1px solid #006633;
+}
+.white-btn2:hover {
+    background-color: #006633;
+    color: #fff!important;
+}
 
+.step-icon.two{
+   background-color: #006633!important;
+}
 </style>

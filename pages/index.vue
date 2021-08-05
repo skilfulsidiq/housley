@@ -3,6 +3,7 @@
       <HomeImageSlider/>
       <HomeSearchBar/>
       <HomeBenefit/>
+      <!-- <AppButton width="200px" height="45px" text="text btn"/> -->
       <CtaHeading/>
       <HowItWork/>
       <HomePromotion/>

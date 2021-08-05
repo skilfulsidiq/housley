@@ -34,7 +34,14 @@ import PropertySearchBar from '../../components/property/PropertySearchBar.vue'
   export default {
   components: { PropertyCard,PropertyPagePagination,PropertySearchBar },
     auth:false,
-    layout:"default"
+    layout:"default",
+      head(){
+            return{
+                link:[
+                      { rel: 'stylesheet', href:"/css/custom/header-color.css"  },
+                ]
+            }
+        },
   }
 </script>
 

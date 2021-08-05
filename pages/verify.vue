@@ -2,11 +2,7 @@
   <div>
     <section   class="login">
     <div class="login-container">
-        <div class="left item">
-        
-        </div>
-
-        <div class="right item">
+        <div class="right item" id="verify">
             <h1>Verify Account</h1>
            <div class="form-container">
             <form>
@@ -38,7 +34,7 @@
 
 <script>
   export default {
-    auth:false
+    layout:'auth'
   }
 </script>
 

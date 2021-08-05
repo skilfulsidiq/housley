@@ -29,7 +29,7 @@ export default {
      {rel: 'stylesheet',href:"/css/custom/custom.css" },
      { rel: 'stylesheet', href:"/css/custom/main.css"  },
      { rel: 'stylesheet', href:"/css/custom/responsive.css"  },
-    //  { rel: 'stylesheet', href:"/css/custom/header-color.css"  },
+     { rel: 'stylesheet', href:"/override.css"  },
      ],
      script: [
        {src: "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"},
@@ -164,7 +164,7 @@ export default {
 
   },
    router: {
-     middleware: ['auth'],
+    //  middleware: ['auth'],
     //  linkExactActiveClass: 'active',
      // extendRoutes(routes, resolve) {
      //   routes.push({

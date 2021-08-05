@@ -558,30 +558,29 @@
                 </div>
               </div>
             </div>
-
-            <div class="pagination-footer flex-wrap">
-              <button type="button" class="xxsm-font green-btn s-bold" id="modal-trigge" data-toggle="modal" data-target="#exampleModal">
-                Take the Affordability Test
-              </button>
-              <div class="pagination-control flex">
-                <div class="rhs flex  page-numbers">
-                 <div class='page-item'> 
-                   <button class="fade-btn" type="button">
-                  <img src="/img/properties/back.png" alt="back" />
-                </button>
+                <div class="page-content">
+                   <PropertyPagePagination/>
                 </div>
-                  <div class="pg-no page-item">
-                    <p>Page <span class="green">2... </span>of 10</p>
-                  </div>
-                  <div class='page-item'>
-                    <button class="fade-btn" type="button">
-                      <img src="/img/properties/next.png" alt="next" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+               <section class="mailing">
+                <div class="mailing-container">
+                <img src="/assets/img/filter-properties/filter-footer.svg" >
 
+                  <div class="content">
+                  
+                    <div class="left">
+                      <h4>Still don’t get what you are looking for, we can make provision based on your suggestions</h4>
+                    </div>
+
+                    <div class="right">
+                      <div class="button">
+                        <a href="#">Join our waiting list</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </section>
             <!-- firtst Modal -->
             <div id="myModal1" class="modal">
               <!-- Modal content -->
@@ -807,10 +806,20 @@
 
 <script>
   export default {
-    auth:false
+    auth:false,
+      head(){
+            return{
+                link:[
+                      { rel: 'stylesheet', href:"/css/custom/header-color.css"  },
+                ]
+            }
+        },
   }
 </script>
 
 <style lang="scss" scoped>
-
+.page-content {
+    position: relative;
+    margin-top: -12rem;
+}
 </style>

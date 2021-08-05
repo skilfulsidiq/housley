@@ -12,7 +12,7 @@
 
 <script>
   export default {
-
+  
     created(){
 
       //  $(".se-pre-con").fadeOut(1000);
@@ -34,13 +34,7 @@
 </script>
 
 <style lang="scss" >
-// .trasparent{
-//     background: #0D4566;
-//     }
 
-//     .trasparent-container .action-buttons .signup{
-// border: 1px solid #0d4566;
-//     }
 
 
 

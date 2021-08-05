@@ -1,12 +1,16 @@
 <template>
   <div>
-      <section   class="signup">
+      <!-- <section   class="signup">
     <div class="signup-container">
         <div class="left item">
         
         </div>
 
-        <div class="right item">
+        
+
+    </div>
+</section> -->
+<div class="right item">
             <h1>Signup</h1>
            <div class="form-container">
             <form>
@@ -39,15 +43,12 @@
            </div> 
            
         </div>
-
-    </div>
-</section>
   </div>
 </template>
 
 <script>
   export default {
-    auth:false
+    layout:'auth'
   }
 </script>
 

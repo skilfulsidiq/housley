@@ -4,11 +4,11 @@
        <div class="padded-content mt-183">
        <section class="paginate">
       <!-- <div class="grid-ppt-cards grid"> -->
-         <div class="pagination-footer flex-wrap">
+         <div class="pagination-footer flex-wrap" id="pagination">
               <button type="button" class="xxsm-font green-btn s-bold" id="modal-trigge" data-toggle="modal" data-target="#exampleModal">
                 Take the Affordability Test
               </button>
-              <div class="pagination-control flex">
+              <div id="btn-tab">
                 <div class="rhs flex  page-numbers">
                  <div class='page-item'> 
                    <button class="fade-btn" type="button">
@@ -40,5 +40,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+// .page-item:hover button{
+//  transform: scale(1)!important;
+// }
 </style>

@@ -1,12 +1,16 @@
 <template>
   <div>
-    <section   class="login">
+    <!-- <section   class="login">
     <div class="login-container">
         <div class="left item">
         
         </div>
 
-        <div class="right item">
+        
+
+    </div>
+</section> -->
+<div class="right item">
             <h1>Log In</h1>
            <div class="form-container">
             <form>
@@ -32,15 +36,12 @@
            </div> 
            
         </div>
-
-    </div>
-</section>
   </div>
 </template>
 
 <script>
   export default {
-    auth:'guest'
+    layout:'auth'
   }
 </script>
 

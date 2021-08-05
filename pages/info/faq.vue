@@ -181,7 +181,14 @@
 
 <script>
   export default {
-    auth:false
+    auth:false,
+      head(){
+            return{
+                link:[
+                      { rel: 'stylesheet', href:"/css/custom/header-color.css"  },
+                ]
+            }
+        },
   }
 </script>
 
