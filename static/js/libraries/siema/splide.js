@@ -1,6 +1,6 @@
 // https://splidejs.com/
 document.addEventListener( 'DOMContentLoaded', function () {
-  new Splide( '.splide',{
+  new Splide('.splide',{
     type    : 'loop',
     perPage : 4,
     autoplay: true,

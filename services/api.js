@@ -1,102 +1,67 @@
 export default {
 
-  register() {
-    return "auth/register";
+   login() {
+    return   "login";
   },
-  login() {
-    return "auth/login";
+   register() {
+    return   "agent/register";
   },
-  forgotPassword() {
-    return 'auth/forgot-password'
+   changepassword() {
+    return   "lender/change-password";
   },
-  changePassowrdByForgot() {
-    return 'auth/change-password-code'
+   updateprofile() {
+    return   "lender/update-profile";
   },
-
-  getProfileInfo() {
-    return 'auth/profile'
+   allStates() {
+    return  "general/all-states";
   },
-  verifyUserEmail() {
-    return 'user/verify-account'
+   allCitiesInState(state_id) {
+    return  "general/all-cities/" + state_id;
   },
-  resendCode() {
-    return 'user/resend-code'
+   propertyTypeList() {
+    return   "general/all-special-types";
   },
-  getUserProfile() {
-    return "user/get-profile"
+   propertyStatusList() {
+    return   "general/property-status";
   },
-  updateProfileInfo() {
-    return 'user/profile'
+   calculateAffordability() {
+    return   "general/affordability-test";
   },
-  updateAffordabilityInfo() {
-    return 'user/affordability-test'
+   fetchAffordableProperties() {
+    // let r = data.amount + '/' + data.location;
+    return   "general/property-affordability";
   },
-  propertyBelowPrice(price) {
-    return "general/property-below-price/" + price
+   fetchLenderRate() {
+    return   "general/lender-rates";
   },
-  propertiesSuggestion() {
-    return "general/properties-suggestion"
-  },
-  allStates() {
-    return "general/all-states"
-  },
-  allCitiesInState(state_id) {
-    return "general/all-cities/" + state_id
-  },
-  allPaymentOption() {
-    return "general/finance-option"
-  },
-  allPropertyTypes() {
-    return "general/all-general-properties-types"
-  },
-  policeRanks() {
-    return "general/ranks"
+   fetchAllProperties() {
+    return   "general/all-properties";
   },
 
-  saveUserRequest() {
-    return "user/property-request"
+   featuredProperties() {
+    return   "general/featured-properties";
   },
-  //dashboard
-  userMortgageStatus() {
-    return "user/get-user-current-mortgage"
+   recentProperties() {
+    return   "general/recent-properties";
   },
-  userMortgageList() {
-    return "user/user-mortgage-status"
+   belowPriceProperties(price) {
+    return   "general/property-below-price/" + price;
   },
-  userMortgageDetail(slug) {
-    return "user/user-mortgage-detail/" + slug
+  searchProperties(data) {
+    return   "general/search-properties";
   },
-  userDocumentCount() {
-    return "user/document-count"
+   propertyDetail(slug) {
+    return   "general/property-detail/" + slug;
   },
-  userPropertyRequest() {
-    return "user/get-user-request"
-    // return "user/user-property-request"
+   savePrequalified(data) {
+    return   "general/profile-request", data;
   },
-  userFileList() {
-    return "user/user-files"
+   saveBookTour(data) {
+    return   "general/book-tour", data;
   },
-  userUploadFile() {
-    return "user/user-upload-file"
-
-  },
-  userUploadFileFromClient() {
-    return "user/user-upload-file-client"
-
-  },
-  userDeleteFile(id) {
-    return "user/user-delete-file/" + id
-  },
-  getUserRequest() {
-    return "user/get-user-request";
-  },
-  userApplyForMortgage() {
-    return "user/apply-mortgage";
-  },
-  userAgreeToMortgage() {
-    return "user/agree-to-terms";
+   propertyEnquiry(data) {
+    return   "general/property-enquiry";
   }
-
 
 
 

@@ -1,16 +1,5 @@
 <template>
   <div>
-      <!-- <section   class="signup">
-    <div class="signup-container">
-        <div class="left item">
-        
-        </div>
-
-        
-
-    </div>
-</section> -->
-<div class="right item">
             <h1>Signup</h1>
            <div class="form-container">
             <form>
@@ -24,31 +13,37 @@
                 <input required type='password' placeholder="Confirm Password" >
 
 
-                
+
 
 
                 <div class="forgot-password"><span>This must be corrected with the password</span></div>
 
                 <input type='submit'  value="Signup">
-                <div class="signup">Already have an account? <a href="login.html"> &nbsp; Login</a> </div>
+                <div class="signup">Already have an account? <nuxt-link to="/login">&nbsp; Login</nuxt-link>
+                   </div>
 
                 <div class="google-signon">
                     <span><img src='/img/login/google.svg' ></span>
 
                     <span>Continue with Google</span>
                 </div>
-                
+
             </form>
 
-           </div> 
-           
-        </div>
+           </div>
   </div>
 </template>
 
 <script>
   export default {
-    layout:'auth'
+    layout:'auth',
+    head(){
+            return{
+                link:[
+                      { rel: 'stylesheet', href:"/css/custom/header-color.css"  },
+                ]
+            }
+        },
   }
 </script>
 

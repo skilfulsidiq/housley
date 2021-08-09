@@ -1,8 +1,6 @@
 <template>
   <div>
-    <section   class="login">
-    <div class="login-container">
-        <div class="right item" id="verify">
+        <div  id="verify">
             <h1>Verify Account</h1>
            <div class="form-container">
             <form>
@@ -20,21 +18,27 @@
 
                     <span>Continue with Google</span>
                 </div>
-                
+
             </form>
 
-           </div> 
-           
-        </div>
+           </div>
+           </div>
 
-    </div>
-</section>
+
+
   </div>
 </template>
 
 <script>
   export default {
-    layout:'auth'
+    layout:'auth',
+       head(){
+            return{
+                link:[
+                      { rel: 'stylesheet', href:"/css/custom/header-color.css"  },
+                ]
+            }
+        },
   }
 </script>
 

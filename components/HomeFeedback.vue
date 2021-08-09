@@ -22,7 +22,7 @@
 
                             <div class="feedback-item">
                                     <div class="left item">
-                                            <img src="/assets/img/home/customer-feedback/commenter.jpg">
+                                            <img src="/img/home/customer-feedback/commenter.jpg">
                                     </div>
 
                                     <div class="right item">
@@ -48,7 +48,7 @@
 
                             <div class="feedback-item">
                                     <div class="left item">
-                                            <img src="/assets/img/home/customer-feedback/commenter-2.png">
+                                            <img src="/img/home/customer-feedback/commenter-2.png">
                                     </div>
 
                                     <div class="right item">
@@ -91,7 +91,7 @@
 
     </div>
 
- </section>   
+ </section>
   </div>
 </template>
 
@@ -102,5 +102,13 @@
 </script>
 
 <style lang="scss" scoped>
-
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+}
+.swiper-pagination-fraction {
+    text-align: right;
+    margin-left: -45px;
+}
 </style>

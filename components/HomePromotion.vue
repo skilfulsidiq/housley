@@ -24,7 +24,10 @@
                                             <div class="right">
                                                 <h1>Not sure what amount you qualify for? Take the affordability test and get a pre approval. </h1>
                                                 <h3>With your pre-approval, connect with developers and lenders, view available properties and start your journey</h3>
-                                                <div class='button' > <button type="button" id="modal-trigge" data-toggle="modal" data-target="#exampleModal"> Take the Affordability Test </button></div>
+                                           <div class="button">
+                           <app-button btnclass="" btnid="modal-trigger" text=" Take the Affordability Test "
+                      :action="showModal"/>
+                      </div>
 
                                             </div>
 
@@ -64,7 +67,10 @@
                                           <div class="right">
                                               <h1>Not sure what amount you qualify for? Take the affordability test and get a pre approval. </h1>
                                               <h3>With your pre-approval, connect with developers and lenders, view available properties and start your journey</h3>
-                                              <div class='button' > <button type="button" id="modal-trigge" data-toggle="modal" data-target="#exampleModal"> Take the Affordability Test </button></div>
+                                        <div class="button">
+                           <app-button btnclass="" btnid="modal-trigger" text=" Take the Affordability Test "
+                      :action="showModal"/>
+                      </div>
 
                                           </div>
 
@@ -89,45 +95,27 @@
         <!-- SLIDER THREE -->
         <section    class="swiper-slide promotion">
           <div class="promotion-container three">
+            <div class="promotion-slider" id="promotion-slide1">
 
+                <div class="promotion-slider-container" >
+                  <div class="left">
+                  </div>
+                  <div class="right">
+                      <h1>Not sure what amount you qualify for? Take the affordability test and get a pre approval. </h1>
+                      <h3>With your pre-approval, connect with developers and lenders, view available properties and start your journey</h3>
+                      <div class="button">
+                           <app-button btnclass="" btnid="modal-trigger" text=" Take the Affordability Test "
+                      :action="showModal"/>
+                      </div>
 
-                          <!-- Slides -->
-                          <div class="promotion-slider" id="promotion-slide1">
-
-                              <div class="promotion-slider-container" >
-
-
-                                          <div class="left">
-
-                                          <!-- <img src="/img/home/promotion/user.png"> -->
-                                          </div>
-
-                                          <div class="right">
-                                              <h1>Not sure what amount you qualify for? Take the affordability test and get a pre approval. </h1>
-                                              <h3>With your pre-approval, connect with developers and lenders, view available properties and start your journey</h3>
-                                              <div class='button' > <button type="button" id="modal-trigge" data-toggle="modal" data-target="#exampleModal"> Take the Affordability Test </button></div>
-
-
-                                          </div>
-
-                              </div>
-
-
-
-                          </div>
-
-
-
-
-
-
-
-
+                      <!-- <div class='button cursor' @click="showModal"> -->
+                        <!-- <button type="button" id="modal-trigger" data-toggle="modal" data-target="#AffordabilityTestModal"> Take the Affordability Test </button>
+                        </div> -->
+                  </div>
+                </div>
+            </div>
           </div>
-        <!-- Section Container -->
         </section>
-
-
         <div class="swiper-pagination paginate"></div>
 
 
@@ -138,11 +126,29 @@
 </template>
 
 <script>
+import AppButton from './AppButton.vue';
   export default {
-
+  components: { AppButton },
+    methods:{
+      showModal(){
+        // this.$router.push("/pre-approval")
+        $("#AffordabilityTestModal").modal("show");
+      }
+    }
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 
+  .affbtn{
+
+    background: #006633;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 15px;
+    padding: 15px;
+    color: #fff;
+    max-width: 70%;
+  }
 </style>

@@ -1,23 +1,43 @@
 <template>
   <div>
-    <!-- Loader -->
-    <!-- <client-only> -->
       <div class="se-pre-con" ref="preloader"></div>
       <AppHeader/>
-        <nuxt/>
+          <nuxt/>
+        <client-only> <affordability-modal/></client-only>
       <AppFooter/>
-    <!-- </client-only> -->
   </div>
 </template>
 
 <script>
+import headScript from '@/static/headScript'
+import AffordabilityModal from '@/components/affordability/AffordabilityModal.vue';
   export default {
-  
-    created(){
+  components: { AffordabilityModal },
 
+    head(){
+      return headScript;
+    },
+    methods:{
+        fetchGeneralData(){
+      this.$store.dispatch("general/getPropertyTypeAction")
+      this.$store.dispatch("general/getPropertyStatusAction")
+      this.$store.dispatch("general/getAllStatesAction")
+    }
+    },
+    created(){
+      this.fetchGeneralData();
       //  $(".se-pre-con").fadeOut(1000);
     },
     mounted(){
+      $(document).ready(function() {
+    // Animate loader off screen
+        $(".se-pre-con").fadeOut(200);
+      //    const script = document.createElement("script");
+      // script.onload = this.onScriptLoaded;
+      // script.type = "text/javascript";
+      // script.src = "/js/custom/range.js";
+      // document.body.appendChild(script);
+    });
     //       let p = this.$refs.preloader;
     //   var fadeEffect = setInterval(function () {
     //     if (!p.style.opacity) {
@@ -29,6 +49,16 @@
     //         clearInterval(fadeEffect);
     //     }
     // }, 150);
+      // let s = ['/js/libraries/swiper/swiper-bundle.min.js','/js/libraries/swiper/init.js'];
+      // for(let i = 0; i <= s.length;i++){
+      //   let link = s[i];
+      //   const script = document.createElement("script");
+      // script.onload = this.onScriptLoaded;
+      // script.type = "text/javascript";
+      // script.src = link;
+      // document.body.appendChild(script);
+      // }
+
     }
   }
 </script>

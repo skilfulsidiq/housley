@@ -1,9 +1,9 @@
 <template>
     <div>
      <div class="ctas-card">
-          <div :class="img">
+          <div class="img">
             <img
-              src="/img/mortgage/we-find-your-perfect-mortgage.svg"
+              :src="img"
               alt=""
             />
           </div>
@@ -12,7 +12,7 @@
           <p>
            {{details}}
           </p>
-          <div class="button" :width="width" :height="height" :click="action">{{btn}}</div>
+          <div class="button" :width="width" :height="height" @click.prevent="action">{{btn}}</div>
         </div>
     </div>
 </template>

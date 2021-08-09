@@ -13,7 +13,7 @@
           <ul>
             <li><nuxt-link to="/info/about">About Us</nuxt-link></li>
             <li><nuxt-link to="/pre-approval">Pre-approval</nuxt-link></li>
-            <li><nuxt-link to="/property">Property</nuxt-link></li>
+            <li><nuxt-link :to="{name:'properties'}">Property</nuxt-link></li>
             <li><nuxt-link to="/info/mortgage">Mortgage</nuxt-link></li>
             <li><nuxt-link to="/info/contact">Contact Us</nuxt-link></li>
             <li><nuxt-link to="/info/faq">FAQs</nuxt-link></li>
@@ -26,7 +26,7 @@
           </div>
 
           <div class="signup">
-            <nuxt-link to="register">Sign Up</nuxt-link>
+            <nuxt-link to="/register">Sign Up</nuxt-link>
           </div>
 
           <div class="mobile-hamburger">
@@ -42,16 +42,17 @@
 
       <nav class="mobile-nav">
         <ul>
-          <li><nuxt-link to="about.html">About Us</nuxt-link></li>
-          <li><nuxt-link to="pre-approval.html">Pre-approval</nuxt-link></li>
-          <li><nuxt-link to="property.html">Property</nuxt-link></li>
-          <li><nuxt-link to="mortgage.html">Mortgage</nuxt-link></li>
-          <li><nuxt-link to="contact-us.html">Contact Us</nuxt-link></li>
-          <li><nuxt-link to="faq.html">FAQs</nuxt-link></li>
-          <li><nuxt-link to="login.html">Login</nuxt-link></li>
+          ul>
+            <li><nuxt-link to="/info/about">About Us</nuxt-link></li>
+            <li><nuxt-link to="/pre-approval">Pre-approval</nuxt-link></li>
+            <li><nuxt-link to="/property">Property</nuxt-link></li>
+            <li><nuxt-link to="/info/mortgage">Mortgage</nuxt-link></li>
+            <li><nuxt-link to="/info/contact">Contact Us</nuxt-link></li>
+            <li><nuxt-link to="/info/faq">FAQs</nuxt-link></li>
+            <li><nuxt-link to="/login">Login</nuxt-link></li>
           <li>
             <nuxt-link
-              to="signup.html"
+              to="/register"
               style="
                 border: 1px solid #ffffff;
                 padding: 6px 15px;

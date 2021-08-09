@@ -5,13 +5,11 @@
       <div class="hero-container">
         <h1>Looking for <br />Mortgage?</h1>
         <h4>Let Houzzley be your guide! <br />Take the First step.</h4>
-        <button
+        <button @click.prevent="showModal"
           class="fade-btn"
           id="modal-trigger-mortagage"
-          data-toggle="modal"
-          data-target="#mortagage"
         >
-          <div class="button"><a href="#"> Get Prequalified</a></div>
+          <div class="button"><a href="#" @click.prevent="showModal"> Get Prequalified</a></div>
         </button>
       </div>
     </section>
@@ -143,87 +141,18 @@
     <!-- Hero Section END -->
 
     <!-- Benefit Section -->
-    <section class="benefits">
-      <div class="benefits-container">
-        <div class="benefit">
-          <span
-            ><img src="/img/home/benefits-cta/free-service.svg"
-          /></span>
-
-          <h3>100% Free Service</h3>
-        </div>
-
-        <span class="line"
-          ><img src="/img/home/benefits-cta/Line 6.svg"
-        /></span>
-
-        <div class="benefit">
-          <span
-            ><img src="/img/home/benefits-cta/no-commission-fee.svg"
-          /></span>
-
-          <h3>No commission fees</h3>
-        </div>
-
-        <span class="line"
-          ><img src="/img/home/benefits-cta/Line 6.svg"
-        /></span>
-
-        <div class="benefit">
-          <span
-            ><img src="/img/home/benefits-cta/affordable-finance.svg"
-          /></span>
-
-          <h3>Access to Affordable finance</h3>
-        </div>
-      </div>
-    </section>
+   <home-benefit/>
 
     <section class="ctas">
       <div class="ctas-container">
-        <div class="ctas-card">
-          <div class="img">
-            <img
-              src="/img/mortgage/we-find-your-perfect-mortgage.svg"
-              alt=""
-            />
-          </div>
 
-          <h4>We find your perfect mortgage</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur consectetur adipiscing elit.
-            Praesent non nisl sed adipiscing.
-          </p>
-          <div class="button">Search Home</div>
-        </div>
+          <service-step-card img="/img/mortgage/we-find-your-perfect-mortgage.svg" title="We find your perfect mortgage" details="Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit. Praesent non nisl sed adipiscing." btn=">Search Home"/>
 
-        <div class="ctas-card">
-          <div class="img">
-            <img
-              src="/img/mortgage/get-your-mortgage-approved.svg"
-              alt=""
-            />
-          </div>
-          <h4>Get your Mortgage Approved</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur consectetur adipiscing elit.
-            Praesent non nisl sed adipiscing.
-          </p>
-          <div class="button">View Rates</div>
-        </div>
+          <service-step-card img="/img/mortgage/get-your-mortgage-approved.svg" title="Get your Mortgage Approved" details="Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit. Praesent non nisl sed adipiscing." btn=">View Rates"/>
 
-        <div class="ctas-card">
-          <div class="img">
-            <img src="/img/mortgage/get-your-keys.svg" alt="" />
-          </div>
+          <service-step-card img="/img/mortgage/get-your-keys.svg" title="Get your Keys" details="Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit. Praesent non nisl sed adipiscing." btn=">Get screened"/>
 
-          <h4>Get your Keys</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur consectetur adipiscing elit.
-            Praesent non nisl sed adipiscing.
-          </p>
-          <div class="button">Get screened</div>
-        </div>
+
       </div>
     </section>
 
@@ -254,11 +183,13 @@
     </section>
 
     <!-- Real Estate Developers + Statistics END-->
+
     </div>
 </template>
 
 <script>
     export default {
+  components: {},
         auth:false,
         layout:"default",
           head(){
@@ -268,6 +199,11 @@
                 ]
             }
         },
+        methods:{
+          showModal(){
+            $("#AffordabilityTestModal").modal("show");
+          }
+        }
     }
 </script>
 

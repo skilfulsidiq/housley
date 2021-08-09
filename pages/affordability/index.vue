@@ -59,7 +59,7 @@
               <section class="step-indicator steps">
                 <div class="step step1 ">
                     <div class="step-icon number finished">1</div>
-                  <p  class="text bold">Affordability Test</p>
+                    <p  class="text bold">Affordability Test</p>
                 </div>
               <div id="line1" class="indicator-line "></div>
               <div class="step step2">
@@ -72,8 +72,8 @@
                 <p class="text bold"> Complete Profile</p>
               </div>
             </section>
-          
-             
+
+
               <form id="stepForm"  class="filled-input-with-slider">
                 <div class="taby gridy" style="display:grid">
                   <div class="grid-child">
@@ -184,7 +184,7 @@
                       />
                     </div>
                   </div>
-                
+
                   <div class="grid-child">
                     <label for="propertyValue"
                       >Equity Contribution Amount</label
@@ -240,10 +240,10 @@
                       />
                     </div>
                   </div>
-         
+
                 </div>
 
-            
+
               </form>
             <div class="buttons flex-wrap gg-20">
               <button type="button"  class="xxsm-font white-btn2 s-bold" id="prevBtnStep" onclick="nextPrevStep(-1)">Previous</button>
@@ -695,7 +695,7 @@
                     </div>
                   </div>
 
-            
+
                 </form>
               </div>
             </div>
@@ -714,6 +714,16 @@
             return{
                 link:[
                       { rel: 'stylesheet', href:"/css/custom/header-color.css"  },
+                ],
+                script:[
+                   {
+                      src: "/js/custom/range.js",
+                      body: true
+                    },
+                   {
+                      src: "/js/custom/stepForm.js",
+                      body: true
+                    },
                 ]
             }
         },

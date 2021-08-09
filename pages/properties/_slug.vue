@@ -3,11 +3,11 @@
      <main class="page-content">
       <section>
         <div class="padded-content mt-183 relative">
-          <a href="/property.html" class="abs-text flex back bold color1"
+          <nuxt-link to="/properties" class="abs-text flex back bold color1"
             ><img
               src="/img/properties/green-back.svg"
               alt="back to search"
-            /><span>Back to Search</span></a
+            /><span>Back to Search</span></nuxt-link
           >
           <section class="upper-ppt-detail-page">
             <div class="grid gridy-pic">
@@ -96,9 +96,10 @@
                         <p>4 Cars</p>
                       </div>
                     </div>
-                    <button type="button" class="green-btn s-bold">
-                      Get Prequalified
-                    </button>
+
+                      <app-button text="Get Prequalified" btnclass="green-btn s-bold hoverable" :action="chooseProperty">
+                          Get Prequalified
+                    </app-button>
                   </div>
                 </div>
                 <div class="description">
@@ -386,6 +387,35 @@
                 ]
             }
         },
+      // validate({ params, query, store }) {
+      //   if(params.slug=='all'|| params.type=='search'){
+      //     return true;
+      //   }
+      //   return false;
+      // },
+        data(){
+          return{
+
+          }
+        },
+         computed:{
+            property(){
+                let p = this.$store.state.property.property;
+                return p;
+            },
+         },
+        methods: {
+          chooseProperty(){
+            this.$store.commit("property/SELECTED_PROPERTY", this.property);
+            this.$router.push("/affordability")
+          },
+           fetchProperty(slug){
+            this.$store.dispatch("property/propertyDetailAction",slug)
+        },
+      },
+      created(){
+        this.fetchProperty(this.slug)
+      }
   }
 </script>
 

@@ -64,7 +64,17 @@
 
 <script>
   export default {
-
+    // mounted(){
+    //   let s = ['/js/libraries/swiper/swiper-bundle.min.js','/js/libraries/swiper/init.js'];
+    //   for(let i = 0; i <= s.length;i++){
+    //     let link = s[i];
+    //     const script = document.createElement("script");
+    //   script.onload = this.onScriptLoaded;
+    //   script.type = "text/javascript";
+    //   script.src = link;
+    //   document.body.appendChild(script);
+    //   }
+    // }
   }
 </script>
 

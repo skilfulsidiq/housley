@@ -1,32 +1,12 @@
 export default{
   data(){
     return{
-        formStep: ['profiling', 'profiling/employment', 'profiling/affordability', 'request']
+      resultType: 'Years',
+        have_additional: 0,
+        have_loan: 0,
     }
   },
     computed:{
-      step:{
-        get(){
-          return this.$store.state.profile.formStep;
-        },
-        set(v){
-          this.$store.commit("profile/GO_TO_STEP",v);
-        }
-      },
-      totalStep(){
-        return this.$store.state.profile.totalStep;
-      },
-      mortgagestep:{
-        get(){
-          return this.$store.state.mortgage.mortgage_step;
-        },
-        set(v){
-          this.$store.commit("mortgage/GO_TO_STEP",v);
-        }
-      },
-      mortgageTotalStep(){
-        return this.$store.state.mortgage.mortgageTotalStep;
-      },
       min() {
           if (this.resultType != '%') {
             return this.min_range;
@@ -43,32 +23,38 @@ export default{
         },
     },
     methods:{
-          goNextFormStep(route){
-            let r = this.formStep.indexOf(route);
-            let next = r+1;
-            // this.goNextStep(next);
-            this.$router.push(this.formStep[next]);
+        calculateAge(date_of_birth) {
+            let today = new Date();
+            let birthday = new Date(date_of_birth);
+            let age = today.getFullYear() - birthday.getFullYear();
+            return age;
           },
-          goBcakFormStep(route){
-            let r = this.formStep.indexOf(route);
-            let next = r - 1;
-            console.log('step num: ', r);
-            this.$router.push(this.formStep[next]);
+          calculateMaxTenure(v) {
+            let retire_age = 55;
+            let age_diff = retire_age - v;
+            if (age_diff > 30) {
+              return 30;
+            }
+            return age_diff;
           },
-          goNextStep(step){
-            this.$store.commit("profile/GO_TO_STEP", step);
-          },
-          goBackStep(){
-            this.$store.commit("profile/GO_BACK_STEP",-1);
-            this.$router.go(-1);
-          },
-          goMortgageNextStep(step) {
-             this.$store.commit("mortgage/GO_TO_STEP", step);
-           },
-          goMortgageBackStep(){
-            this.$store.commit("mortgage/GO_BACK_STEP",-1);
-            this.$router.go(-1);
-          },
+            removeCommaFromNumber(v) {
+                var stringValue = v.toString();
+                return parseInt(stringValue.replace(/,/g, ""));
+              },
+            formatToCommaSeperated(val) {
+
+                const result = val.toString().replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                return result;
+
+
+              },
+
+            currencyFormat(v) {
+                if (!isNaN(v)) {
+                  return Number(v).toLocaleString("en");
+                }
+              },
+          
           mapIncomingDataToForm(form, data) {
             // console.log(data);
             let ob = Object.entries(data);

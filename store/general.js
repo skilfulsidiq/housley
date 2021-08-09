@@ -1,68 +1,62 @@
 import api from '../services/api'
 export  const state = ()=>({
-  states: [],
-    ranks: [],
-    finance_options: [],
-    cities: [],
-    property_types: [],
-    properties_suggestions: []
+ property_types: '',
+   property_status_list: [],
+   states: [],
+   cities: [],
+   lender_rates: []
 })
 export const mutations ={
-    UPDATE_STATES(state,payload){
+    UPDATE_STATES(state, payload) {
         state.states = payload
-    },
-    UPDATE_RANKS(state, payload) {
-    state.ranks = payload
-    },
-    UPDATE_FINANCE_OPTION(state, payload) {
-    state.finance_options = payload
-    },
-    UPDATE_CITIES(state, payload) {
-    state.cities = payload
-    },
-    UPDATE_PROPERTY_TYPE(state, payload) {
-    state.property_types = payload
-    },
-    UPDATE_PROPERTIES_SUGGESTION(state,payload){
-        state.properties_suggestions = payload
-    }
+      },
+      UPDATE_CITIES(state, payload) {
+        state.cities = payload
+      },
+      PROPERTY_TYPE(state, payload) {
+        state.property_types = payload
+      },
+      PROPERTY_STATUS_LIST(state, payload) {
+        state.property_status_list = payload;
+      },
+      LENDER_RATE(state, payload) {
+        state.lender_rates = payload;
+      }
 }
 export const actions={
- async  getAllStatesAction({commit}){
-        let res = await this.$axios.$get(api.allStates());
-        let y = res.data;
-        commit("UPDATE_STATES", y);
+ async getLenderRateAction({commit}){
+    await this.$axios.$get(api.fetchLenderRate()).then((res)=>{
+        let r = res.data;
+        commit("LENDER_RATE",r);
+    })
+  },
+  async getAllStatesAction({commit }) {
+      await this.$axios.$get(api.allStates()).then((res) => {
+          let y = res.data;
+          commit("UPDATE_STATES", y);
+          return y;
+      });
+  },
+  async getAllCitiesAction({commit}, state_id) {
+       let res = await this.$axios.$get(api.allCitiesInState(state_id));
+          let y = res.data;
+          commit("UPDATE_CITIES", y);
+     return r;
+  },
+ async getPropertyTypeAction({commit}){
+     let res = await this.$axios.$get(api.propertyTypeList());
 
-    },
-  async getAllRanksAction({commit}){
-       let res = await this.$axios.$get(api.policeRanks());
-            let y = res.data;
-            commit("UPDATE_RANKS", y);
+            let r = res.data;
+            commit("PROPERTY_TYPE",r);
+      return r;
 
+  },
+  getPropertyStatusAction({commit}){
+        this.$axios.$get(api.propertyStatusList()).then((res) => {
+            // console.log(res);
+            let r = res.data;
+            commit("PROPERTY_STATUS_LIST", r);
+        })
     },
-  async getAllFinanceOptionAction({commit}){
-          let res = await this.$axios.$get(api.allPaymentOption());
-            let y = res.data;
-            commit("UPDATE_FINANCE_OPTION", y);
-
-    },
-  async  getAllCitiesAction({commit},state_id){
-      let res = await this.$axios.$get(api.allCitiesInState(state_id));
-      let y = res.data;
-      commit("UPDATE_CITIES", y);
-
-    },
-   async getAllPropertyTypeAction({commit},state_id){
-          let res = await this.$axios.$get(api.allPropertyTypes());
-             let y = res.data;
-            commit("UPDATE_PROPERTY_TYPE", y);
-
-    },
-    getPropertiesSuggestionAction({commit}){
-        api.propertiesSuggestion().then((res)=>{
-             let y = res.data;
-             commit("UPDATE_PROPERTIES_SUGGESTION", y);
-        });
-    }
 }
 export const getters={}

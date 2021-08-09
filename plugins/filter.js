@@ -15,6 +15,24 @@ Vue.filter('easy_currency', function (value) {
     return '₦ ' + value.toLocaleString('en')
   }
 });
+Vue.filter('price', function (value) {
+  if (!isNaN(value)) {
+    let formatter = Intl.NumberFormat("NGN", {
+      // style: "currency",
+      minimumFractionDigits: 0
+    }); //'₦ '+
+    return '₦ ' + formatter.format(value);
+  }
+  return '₦ 00';
+
+})
+Vue.filter('truncate', function (text, length) {
+  if (text.length > length) {
+    return text.substring(0, length) + '...';
+  } else {
+    return text;
+  }
+})
 Vue.filter('formatDate', function (value) {
 
   return moment(value).format('Do MMMM  YYYY , h:mm:ss a');

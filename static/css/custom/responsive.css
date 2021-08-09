@@ -207,8 +207,8 @@
   .steps{
     width: 100%;
   }
-  
-  
+
+
   input[type="range"]{
     margin-bottom: 4rem;
   }
@@ -242,13 +242,15 @@
   .search-container-property .bordered {
     border: none;
   }
-  .search-container-property input {
+  .search-container-property input{
     border-bottom: 1px solid #006633;
   }
   .search-container-property .in-btw input {
     max-width: -moz-fit-content;
     max-width: fit-content;
   }
+
+
   .modal-content{
     width: 95%;
     margin: auto;

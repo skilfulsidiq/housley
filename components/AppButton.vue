@@ -1,21 +1,32 @@
 <template>
     <div>
-        <button type="button" class="">
-                Search Homes
-        </button>
+        <button
+            :type="type"
+            @click.prevent="action"
+           
+            :class="btnclass"
+            :id="btnid"
+          >
+          {{loading?"loading...":text}}
+          </button>
     </div>
 </template>
 
 <script>
+import general_mixin from "@/mixins/general_mixin"
     export default {
+      mixins:[general_mixin],
         props:{
-            text:{type:String},
+          type:{type:String,default:"button"},
+            text:{type:String,required:true},
+            btnclass:{type :String},
+            btnid:{type :String},
             bg:{type:String},
             color:{type:String},
             width:{type:String,default:""},
             height:{type:String,default:''},
             action:{type:Function},
-            
+
         }
     }
 </script>

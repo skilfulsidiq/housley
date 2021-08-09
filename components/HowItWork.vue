@@ -151,9 +151,10 @@
 
 
     </div>
-    <div class="timeline-end" type="butto" id="modal-trigge" data-toggle="modal" data-target="#exampleModal">
+    <app-button  btnclass="timeline-end hoverable" btnid="model-trigge" text="Start your journey" :action="showModal"    />
+    <!-- <button class="timeline-end" type="button" id="modal-trigge" data-toggle="modal" data-target="#AffordabilityTestModal">
      Start your journey
-    </div>
+    </button> -->
 </section>
 
 
@@ -164,7 +165,14 @@
 </template>
 
 <script>
+import AppButton from './AppButton.vue'
   export default {
+  components: { AppButton },
+  methods:{
+    showModal(){
+      $("#AffordabilityTestModal").modal("show")
+    }
+  }
 
   }
 </script>

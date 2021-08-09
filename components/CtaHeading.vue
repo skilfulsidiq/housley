@@ -7,43 +7,20 @@
     </section>
     <section   class="ctas">
   <div class="ctas-container">
+    <service-step-card img="/img/home/benefits-cta/find-home.svg" title="Find a home" details="Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit. Praesent non nisl sed adipiscing." btn="Search Home"/>
 
-    <div class="ctas-card">
-        <div class='img'>
-            <img src="/img/home/benefits-cta/find-home.svg" alt="">
-        </div>
-        <h4>Find a home</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit. Praesent non nisl sed adipiscing.</p>
-        <div class="button">Search Home</div>
-    </div>
+    <service-step-card img="/img/home/benefits-cta/find-lender.svg" title="Find a lender" details="Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit. Praesent non nisl sed adipiscing." btn="View rates"/>
 
-    <div class="ctas-card">
-        <div class='img'>
-            <img src="/img/home/benefits-cta/find-lender.svg" alt="">
-        </div>
-        <h4>Find a Lender</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit. Praesent non nisl sed adipiscing.</p>
-        <div class="button">View Rates</div>
-    </div>
-
-
-    <div class="ctas-card">
-        <div class='img'>
-            <img src="/img/home/benefits-cta/own-home.svg" alt="">
-        </div>
-        <h4>Own a Home</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit. Praesent non nisl sed adipiscing.</p>
-        <div class="button">Get screened</div>
-    </div>
-
-
+    <service-step-card img="/img/home/benefits-cta/own-home.svg" title="Own a Home" details="Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit. Praesent non nisl sed adipiscing." btn="Get screened"/>
     </div>
 </section>
   </div>
 </template>
 
 <script>
+import ServiceStepCard from './ServiceStepCard.vue'
   export default {
+  components: { ServiceStepCard },
 
   }
 </script>

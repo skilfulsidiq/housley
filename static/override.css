@@ -1,18 +1,18 @@
-/* --------------------------------------------------- 
+/* ---------------------------------------------------
                     Home page  search tab css
                     Input margin 5px to 0 8.5px
 ------------------------------------------------------*/
 .property-search-container .search-container-property form div {
     margin: 0 8.5px!important;
 }
-/* Home page .property-search-container .search-container-property form 
+/* Home page .property-search-container .search-container-property form
     margin-left: 0px!important; to -2rem
 } */
 .property-search-container .search-container-property form {
     margin-left: -2rem;
 
 }
-/* Home page .property-search-container .search-container 
+/* Home page .property-search-container .search-container
     padding 0 added
 } */
 .property-search-container .search-container {
@@ -24,9 +24,9 @@
 }
 
 
-/* --------------------------------------------------- 
+/* ---------------------------------------------------
                     Home page Carousel text content css
-                    padding from 180px to 0px and 
+                    padding from 180px to 0px and
                     flex-basis from 50% to 35%
 ------------------------------------------------------*/
 .promotion-slider-container .right {
@@ -40,26 +40,40 @@
 
 
 
-/* --------------------------------------------------- 
+/* ---------------------------------------------------
                     About Us page css
                     button color change to white
 ------------------------------------------------------*/
-[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+/* [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
     cursor: pointer;
     color: #fff!important;
+} */
+.green-btn {
+  cursor: pointer;
+  color: #fff !important;
 }
 
-
-/* --------------------------------------------------- 
+/* ---------------------------------------------------
                     About Us page css
                     button:hover color added
 ------------------------------------------------------*/
-[type=button]:not(:disabled):hover, [type=reset]:not(:disabled):hover, [type=submit]:not(:disabled):hover, button:not(:disabled):hover {
+/* [type=button]:not(:disabled):hover, [type=reset]:not(:disabled):hover, [type=submit]:not(:disabled):hover, button:not(:disabled):hover {
     cursor: pointer;
     color: #006633!important;
+} */
+.hoverable:hover{
+    cursor: pointer;
+    color: #006633!important;
+    /* color: #006633; */
+    transition: 0.3s;
+    background-color: #fff !important;
+    cursor: pointer;
+    box-shadow: rgb(0 0 0 / 20%) 0px 3px 5px -1px,
+    rgb(0 0 0 / 14%) 0px 5px 8px 0px,
+    rgb(0 0 0 / 12%) 0px 1px 14px 0px;
 }
 
-/* --------------------------------------------------- 
+/* ---------------------------------------------------
                     Property page css
                    pagination parent flex between children
                    and change of class to id
@@ -80,7 +94,7 @@
     margin:0 1rem!important;
 }
 
-/* --------------------------------------------------- 
+/* ---------------------------------------------------
                     Property page css
                    first input-field on tab width added
 ------------------------------------------------------*/
@@ -93,21 +107,32 @@
     padding adjusted from 150px 0 0  to 50px
 --------------------------------------------------*/
 .login-container .right {
-    padding: 50px 0 0 80px;
+    padding: 0px 0 0 0px;
 }
 
 .login-container #verify {
-    padding: 0px 0 0 80px;
+    padding: 0px 0 0 0px;
 }
 
 .signup-container .right {
-    padding: 50px 0 0 80px;
+    padding: 0px 0 0 0px;
+}
+
+.login-container .right .form-container form div.forgot-password {
+  color: #5E97B1;
+  margin-top: -15px;
+  margin-bottom: 20px;
+}
+.login-container .right .form-container form div.forgot-password .anchor {
+  text-decoration: none;
+   color: #5E97B1;
 }
 
 
+
 @media(max-width:500px){
-    
-/* --------------------------------------------------- 
+
+/* ---------------------------------------------------
                     Property page css
                    pagination parent flex between children
 ------------------------------------------------------*/

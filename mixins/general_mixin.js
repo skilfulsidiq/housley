@@ -52,7 +52,9 @@ export default{
         total: '',
         count: '',
         path: '',
-        currentPage: ''
+        currentPage: '',
+        next_page_url:'',
+        prev_page_url:''
       },
     }
 
@@ -62,24 +64,21 @@ export default{
           let l = this.$store.state.app.isLoading;
           return l;
         },
-       property_types() {
-         return this.$store.state.general.property_types;
-       },
-       allStates() {
-         let s = this.$store.state.general.states;
-         return s;
-       },
-       allCities() {
-         let s = this.$store.state.general.cities;
-         return s;
-       },
-      ranks() {
-            let s = this.$store.state.general.ranks;
+        property_type_list() {
+            let t = this.$store.state.general.property_types;
+
+            return t;
+          },
+        property_status_list() {
+            let t = this.$store.state.general.property_status_list;
+            // console.log('type:'+t)
+            return t;
+          },
+        states() {
+            let s = this.$store.state.general.states;
             return s;
         },
-      financeOptions() {
-             return this.$store.state.general.finance_options
-      },
+
       user(){
         let u = this.$store.state.auth.user;
         return u;
@@ -90,7 +89,10 @@ export default{
       },
       getUserInitial() {
           // return 'AB'
-          return this.user.firstname.charAt(0) + this.user.lastname.charAt(0);
+          if(this.user){
+              return this.user.firstname.charAt(0) + this.user.lastname.charAt(0);
+          }
+
         }
      },
   methods:{
@@ -106,6 +108,22 @@ export default{
        activateModal(event_name, value) {
          this.$nuxt.$emit(event_name, value)
        },
+
+      showModal() {
+          console.log('show modal')
+          this.$nuxt.$emit('show-modal', true);
+        },
+        hideModal() {
+          console.log('hide modal')
+          this.$nuxt.$emit('hide-modal', false);
+        },
+        showAffordabilityModal() {
+          this.$nuxt.$emit('open-affordability-modal', true);
+        },
+        showRequestModal() {
+          console.log('request open')
+          this.$nuxt.$emit('open-request-modal', true);
+        },
     capitalizeFirst(s) {
         if (typeof s !== "string") return "";
         return s.toLowerCase();
@@ -119,6 +137,7 @@ export default{
         else if (formatted === 'NaN') return '';
         return formatted;
       },
+
       fillPagination(data) {
         this.pagination.links = data.links;
         this.pagination.total = data.total

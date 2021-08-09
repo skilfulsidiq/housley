@@ -5,24 +5,22 @@
          <section   :class="classMonitor.top">
             <div :class="classMonitor.down">
                 <div class="left item">
-                
-                </div>
 
+                </div>
+                <div class="right item">
                 <nuxt/>
+                </div>
             </div>
          </section>
   </div>
 </template>
-
 <script>
-    export default {
-        head(){
-            return{
-                link:[
-                      { rel: 'stylesheet', href:"/css/custom/header-color.css"  },
-                ]
-            }
-        },
+import headScript from '@/static/headScript'
+  export default {
+
+    head(){
+      return headScript;
+    },
         auth:false,
         computed:{
             classMonitor(){
@@ -31,10 +29,21 @@
                 }
                 return {top:'login',down:'login-container'};
             },
-           
+
+        },
+        mounted(){
+             $(document).ready(function() {
+    // Animate loader off screen
+    $(".se-pre-con").fadeOut(200);
+    });
         }
     }
 </script>
 
-<style lang="scss" scoped>;
+<style lang="scss" scoped>
+  .right{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>

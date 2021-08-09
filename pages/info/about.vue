@@ -19,7 +19,7 @@
                 will democratize access to affordable housing by matching
                 homebuyers with developers and affordable home loans in Nigeria
               </p>
-              <button type="button" class="xxsm-font green-btn s-bold">
+              <button type="button" class="xxsm-font green-btn s-bold ">
                 Search Homes
               </button>
             </div>

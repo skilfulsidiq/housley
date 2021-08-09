@@ -1,16 +1,3 @@
-// import VuexPersistence from 'vuex-persist'
-
-// export default ({
-//   store
-// }) => {
-//   new VuexPersistence({
-//     storage: window.localStorage
-//     /* your options */
-//   }).plugin(store);
-// }
-
-
-
 import createPersistedState from 'vuex-persistedstate'
 import * as Cookies from 'js-cookie'
 import cookie from 'cookie'

@@ -1,104 +1,58 @@
-import api from '../services/api'
+import api from '@/services/api'
 export  const state = ()=>({
-    suggested_properties: [
-      {
-        property_id:1,
-        property_value:3000000,
-        property_name:"Locus Court",
-        state_id:25,
-        city_id:775,
-        property_bedrooms:3,
-        property_bathrooms:2
-      },
-      {
-         property_id: 2,
-        property_value:45000000,
-        property_name:"Curious House",
-        state_id:25,
-        city_id:775,
-        property_bedrooms:3,
-        property_bathrooms:4
-      },
-      {
-         property_id: 3,
-        property_value:52000000,
-        property_name:"Tower House",
-        state_id:25,
-        city_id:775,
-        property_bedrooms:4,
-        property_bathrooms:5
-      },
-      {
-         property_id: 4,
-        property_value:70000000,
-        property_name:"King Masion",
-        state_id:25,
-        city_id:775,
-        property_bedrooms:6,
-        property_bathrooms:7
-      },
-      {
-         property_id: 5,
-        property_value:25000000,
-        property_name:"Mari M",
-        state_id:25,
-        city_id:775,
-        property_bedrooms:3,
-        property_bathrooms:2
-      },
-      {
-         property_id: 6,
-        property_value:15000000,
-        property_name:"Brain Quater",
-        state_id:25,
-        city_id:775,
-        property_bedrooms:2,
-        property_bathrooms:2
-      },
-      {
-         property_id: 7,
-        property_value:38500000,
-        property_name:"Musy PI",
-        state_id:25,
-        city_id:775,
-        property_bedroom:3,
-        property_bathroom:2
-      },
-      {
-         property_id: 8,
-        property_value:17000000,
-        property_name:"Hapy Court",
-        state_id:25,
-        city_id:775,
-        property_bedrooms:3,
-        property_bathrooms:2
-      },
-      {
-         property_id: 9,
-        property_value:62800000,
-        property_name:"Lady Best",
-        state_id:25,
-        city_id:775,
-        property_bedrooms:5,
-        property_bathrooms:6
-      },
-    ],
-    selected_property:'',
-    affordable_properties:''
+    selectedProperty: '',
+      list_style: 'all',
+      affordable_properties: [],
+      properties: [],
+      featured_properties: [],
+      recent_properties: [],
+      below_price_properties: [],
+      property: ''
 })
 export const mutations ={
-    SUGGESTED_PROPERTY(state,payload){
-        state.suggested_properties = payload
+  LIST_STYLE(state, payload) {
+      state.list_style = payload
     },
-    SELECTED_PROPERTY(state,payload){
-      state.selected_property=payload
+    AFFORDABILITY_RESULT(state, payload) {
+      state.affordabilityResult = payload
     },
-    REMOVE_SELECTED_PROPERTY(state,payload){
-      state.selected_property='';
+    ALL_PROPERTIES(state, payload) {
+      state.properties = payload
     },
-  AFFORDABLE_PROPERTIES(state, payload) {
-    state.affordable_properties = payload;
-  },
+    SEARCH_PROPERTIES(state, payload) {
+      state.properties = payload
+    },
+    FEATURED_PROPERTIES(state, payload) {
+      state.featured_properties = payload
+    },
+    RECENT_PROPERTIES(state, payload) {
+      state.recent_properties = payload
+    },
+    BELOW_PRICE_PROPERTIES(state, payload) {
+      state.below_price_properties = payload
+    },
+    PROPERTY_DETAIL(state, payload) {
+      state.property = payload;
+    },
+    SELECTED_PROPERTY(state, payload) {
+      state.selectedProperty = payload
+
+    },
+    CALCULATION_REQUEST(state) {
+      state.calculating = true;
+    },
+    AFFORDABLE_PROPERTIES(state, payload) {
+      state.affordable_properties = payload;
+    },
+
+    AFFORDABILITY_REQUEST_SUCCESS(state, data) {
+      state.calculating = false;
+      hasAffordability = true;
+    },
+    ELIGIBILITY_REQUEST_SUCCESS(state, data) {
+      state.calculating = false;
+      hasEligibility = true;
+    },
 
 }
 export const actions={
@@ -116,16 +70,96 @@ export const actions={
     let r = res.data;
       commit(mutator, r);
   },
-  async getAffordablePropertiesAction({commit},price){
-    let res = await this.$axios.get(api.propertyBelowPrice(price));
-    let r =  res.data.data;
-    commit("AFFORDABLE_PROPERTIES",r);
-    console.log(r);
-    return r;
+  async calculateAffordabilityAction({commit }, form) {
+      commit("AFFORDABILITY_RESULT", form);
+  },
+  selectPropertyAction({commit }, pro) {
+    commit("SELECTED_PROPERTY", pro);
 
   },
- async  getSelectProperty({commit},property){
-    commit("SELECTED_PROPERTY", property);
+  async affordablePropertiesAction({commit }, data) {
+    await this.$axios.$post(api.fetchAffordableProperties()).then((res) => {
+    let r = res.data;
+    commit("AFFORDABLE_PROPERTIES", r);
+    })
   },
+  async allPropertiesAction({ commit }) {
+    await this.$axios.$get(api.fetchAllProperties()).then((res) => {
+        let r = res.data;
+        commit("ALL_PROPERTIES", r);
+    })
+  },
+  async paginationAction({commit},data){
+        let url = data.url;
+        let mutator = data.mutator;
+        let method = data.method
+        let form = data.form;
+        let res = "";
+        if(method=="post"){
+          res = await this.$axios.$post(url,form);
+        }else{
+          res = await this.$axios.$get(url);
+        }
+        let r = res.data;
+        console.log(r)
+        // commit("LIST_STYLE", 'all');
+        commit(mutator, r);
+        return r;
+
+  },
+  searchPropertiesAction({ commit }, data) {
+    return new Promise((resolve, reject) => {
+        return this.$axios.$post(api.searchProperties(),data).then((res) => {
+            let r = res.data;
+            commit("SEARCH_PROPERTIES", r);
+            resolve(r);
+        }).catch(err=>{
+          reject(err)
+        })
+    })
+
+  },
+  async featuredPropertiesAction({commit  }) {
+    await this.$axios.$get(api.featuredProperties()).then((res) => {
+        let r = res.data;
+        commit("FEATURED_PROPERTIES", r);
+    })
+  },
+  async belowPricePropertiesAction({ commit }, price) {
+      await this.$axios.$get(api.belowPriceProperties(price)).then((res) => {
+          let r = res.data.data;
+          commit("BELOW_PRICE_PROPERTIES", r);
+      })
+  },
+  async recentPropertiesAction({  commit}) {
+      await this.$axios.$get(api.recentProperties()).then((res) => {
+          let r = res.data;
+          commit("RECENT_PROPERTIES", r);
+      })
+  },
+  async propertyDetailAction({commit}, slug) {
+      await this.$axios.$get(api.propertyDetail(slug)).then((res) => {
+          let r = res.data;
+          commit("PROPERTY_DETAIL", r);
+      })
+  },
+  async saveTourScheduleAction({commit},data){
+      return new Promise((resolve,reject)=>{
+          this.$axios.$post(api.saveBookTour(data)).then((res) => {
+              resolve(res);
+          })
+      }).catch(err=>{
+        reject(err);
+      })
+  },
+  async savePropertyEnquiryAction({commit},data){
+      return new Promise((resolve,reject)=>{
+         this.$axios.$post( api.propertyEnquiry(data)).then((res) => {
+              resolve(res);
+          })
+      }).catch(err=>{
+        reject(err);
+      })
+  }
 }
 export const getters={}
