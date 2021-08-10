@@ -13,8 +13,8 @@
             </p>
           </div>
 
-             <property-list :properties="properties"/>
-               <property-page-pagination :pagination="pagination"  mutator="AFFORDABLE_PROPERTIES" method="get" />
+             <property-list :properties="properties" :isChoose="true"/>
+               <property-page-pagination :pagination="pagination"  mutator="AFFORDABLE_PROPERTIES" method="post" source="filter" />
         </div>
       </section>
     </main>
@@ -37,9 +37,15 @@ import FinanceSummaryCard from '@/components/affordability/FinanceSummaryCard.vu
                 ]
             }
         },
+        data(){
+          return{
+            fetching:false
+          }
+        },
         computed:{
+
             properties(){
-                let all = this.$store.state.property.properties;
+                let all = this.$store.state.property.affordable_properties;
                 console.log(all)
                 let property= all.data;
                 this.fillPagination(all);
@@ -47,6 +53,19 @@ import FinanceSummaryCard from '@/components/affordability/FinanceSummaryCard.vu
 
                 return property;
               }
+        },
+        methods:{
+            fetchProperties(){
+                let p = this.$store.state.calculator.form;
+                let data = {price:p.max_loan_amount,location:p.location};
+                console.log("afod form: ",data);
+                this.$store.dispatch("property/affordablePropertiesAction",data).then((res)=>{
+
+                });
+              },
+        },
+        created(){
+          this.fetchProperties()
         }
   }
 </script>

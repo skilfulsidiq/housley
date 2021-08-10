@@ -234,6 +234,7 @@
       },
       closeModal(){
          $('#detailModal').modal('hide');
+        //  this.$nuxt.$emit("show_detail_modal",false);
       },
       moreDetail(){
         this.closeModal();

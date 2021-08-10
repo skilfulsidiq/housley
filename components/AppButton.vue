@@ -1,9 +1,9 @@
 <template>
     <div>
-        <button
+        <button 
             :type="type"
             @click.prevent="action"
-           
+
             :class="btnclass"
             :id="btnid"
           >

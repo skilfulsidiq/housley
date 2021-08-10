@@ -78,8 +78,9 @@ import general_mixin from "@/mixins/general_mixin"
 
         searchProperty(){
              if(this.form.location != ''|| this.form.property_type!=''|| this.form.price != ''){
+                 this.$store.commit("property/SEARCH_FORM",this.form)
                  this.$store.dispatch("property/searchPropertiesAction",this.form).then((r)=>{
-
+                          this.$store.commit("property/LIST_STYLE","search");
                  });
              }
 

@@ -1,7 +1,7 @@
 <template>
   <div>
      <main class="page-content">
-      <section>
+      <section v-if="property">
         <div class="padded-content mt-183 relative">
           <nuxt-link to="/properties" class="abs-text flex back bold color1"
             ><img
@@ -9,22 +9,22 @@
               alt="back to search"
             /><span>Back to Search</span></nuxt-link
           >
-          <section class="upper-ppt-detail-page">
+          <section class="upper-ppt-detail-page" v-if="property.property_photos">
             <div class="grid gridy-pic">
               <img
                 class="a"
-                src="/img/properties/home1.png"
+                :src="property.property_photos[0]"
                 alt="building"
               />
               <!-- <div class="smaller-pics flex"> -->
               <img
                 class="b"
-                src="/img/properties/couch.png"
+                :src="property.property_photos[1]"
                 alt="couch"
               />
               <img
                 class="c"
-                src="/img/properties/kitchen.png"
+                :src="property.property_photos[2]"
                 alt="kitchen"
               />
 
@@ -41,20 +41,20 @@
                   <div class="upper grid">
                     <div class="lhs">
                       <p class="bold color1 big-text">
-                        4 Bedrooms semi-detached duplex with BQ
+                       {{property.property_name}}
                       </p>
                       <div class="located flex">
                         <img
                           src="/img/properties/locationIcon.svg"
                           alt="locationIcon"
                         /><span class="color1"
-                          >Lekki Pearl Estate II, Lagos, Nigeria</span
+                          >  {{property.city.name}} {{property.state.name}}, Nigeria</span
                         >
                       </div>
                     </div>
                     <div class="rhs">
                       <p class="color1 bold">From</p>
-                      <p class="color1 bold big-text">$ 27,000,000.00</p>
+                      <p class="color1 bold big-text">{{property.property_price | price}}.00</p>
                     </div>
                   </div>
                   <div class="lower flex-wrap" id="grand-parent">
@@ -66,7 +66,7 @@
                             alt="bed"
                           />
                         </div>
-                        <p class="color1">4 Beds</p>
+                        <p class="color1">{{property.property_bedrooms}} Beds</p>
                       </div>
                       <div class="with-icon flex j-btw">
                         <div>
@@ -75,7 +75,7 @@
                             alt="bed"
                           />
                         </div>
-                        <p class="color1">4 Baths</p>
+                        <p class="color1">{{property.property_bathrooms}} Baths</p>
                       </div>
                       <div class="with-icon flex j-btw">
                         <div>
@@ -84,7 +84,7 @@
                             alt="bed"
                           />
                         </div>
-                        <p class="color1">4 2980 sqft</p>
+                        <p class="color1">{{property.property_size}} sqft</p>
                       </div>
                       <div class="with-icon flex j-btw">
                         <div>
@@ -93,7 +93,7 @@
                             alt="bed"
                           />
                         </div>
-                        <p>4 Cars</p>
+                        <p>{{property.property_garages}} Cars</p>
                       </div>
                     </div>
 
@@ -106,7 +106,7 @@
                   <div class="brief-detail grid">
                     <div>
                       <p class="color1">Property Status</p>
-                      <p class="color1 bold">Under Construction</p>
+                      <p v-if="property.property_status" class="color1 bold">{{property.property_status.name}}</p>
                     </div>
                     <div>
                       <p class="color1">Property Title</p>
@@ -119,199 +119,24 @@
                   </div>
                   <div class="ppt-descriptive">
                     <p class="color1 bold">Description</p>
-                    <p class="color1">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Enim, sit commodo adipiscing in. Pretium pulvinar
-                      fringilla eu, ornare ullamcorper. Ultrices porttitor
-                      cursus turpis laoreet id aliquet dictum convallis libero.
-                      Eget massa nulla morbi in amet sollicitudin sit vitae ut.
-                      Praesent interdum sed eu cras neque fusce sit tempor orci.
-                      Risus senectus nec amet et pellentesque dolor. Orci, sed
-                      ultricies viverra neque, nullam quis in ultricies. At
-                      neque sed risus placerat enim cursus id pulvinar. At diam
-                      at aliquam gravida. Rhoncus, nunc tempor interdum sed
-                      amet, nunc, viverra. Eu lacus, leo neque diam . Orci, sed
-                      ultricies viverra neque, nullam quis in ultricies. At
-                      neque sed risus placerat enim cursus id pulvinar. At diam
-                      at aliquam gravida. Rhoncus, nun.
-                    </p>
+                    <p class="color1">{{property.property_description}}</p>
                   </div>
                 </div>
               </div>
 
-              <div class="tab-form">
-                <div class="tab flex">
-                  <button
-                    class="tablinks xsm-font"
-                    onclick="openCity(event, 'scheduleTour')"
-                    id="defaultOpen"
-                  >
-                    Schedule Tour
-                  </button>
-                  <button
-                    class="tablinks xsm-font"
-                    onclick="openCity(event, 'requestInfo')"
-                  >
-                    Request info
-                  </button>
-                </div>
-
-                <div id="scheduleTour" class="tabcontent">
-                  <form action="" class="form-tab">
-                    <input
-                      type="text"
-                      name="date"
-                      id="date"
-                      class="color1"
-                      placeholder="Select a prefered date"
-                    />
-                    <input
-                      type="text"
-                      name="time"
-                      id="time"
-                      class="color1"
-                      placeholder="Select a prefered time"
-                    />
-                    <input
-                      type="text"
-                      name="fullName"
-                      id="fullName"
-                      class="color1"
-                      placeholder="Full Name"
-                    />
-
-                    <input
-                      type="number"
-                      name="phone"
-                      id="phone"
-                      class="color1"
-                      placeholder="Phone"
-                    />
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      class="color1"
-                      placeholder="Email"
-                    />
-                    <div class="grid radios">
-                      <p>
-                        <input
-                          type="radio"
-                          id="inPerson"
-                          name="radio-group"
-                          checked
-                        />
-                        <label class="color1 xsm-font" for="inPerson"
-                          >In Person</label
-                        >
-                      </p>
-                      <p>
-                        <input
-                          type="radio"
-                          id="videoChat"
-                          name="radio-group"
-                        />
-                        <label class="color1 xsm-font" for="videoChat"
-                          >Video Chat</label
-                        >
-                      </p>
-                    </div>
-                    <button
-                      type="button"
-                      class="xxsm-font green-btn s-bold"
-                    >
-                      Schedule a Tour
-                    </button>
-                  </form>
-                </div>
-
-                <div
-                  id="requestInfo"
-                  class="tabcontent"
-                  style="display: none"
-                >
-                  <form action="" class="form-tab">
-                    <input
-                      type="text"
-                      name="fullName"
-                      id="fullName"
-                      class="color1"
-                      placeholder="Full Name"
-                    />
-
-                    <input
-                      type="number"
-                      name="phone"
-                      id="phone"
-                      class="color1"
-                      placeholder="Phone"
-                    />
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      class="color1"
-                      placeholder="Email"
-                    />
-                    <textarea
-                      name="request"
-                      id="request"
-                      placeholder="Type in your request"
-                      rows="10"
-                    ></textarea>
-                    <button
-                      type="button"
-                      class="xxsm-font green-btn s-bold"
-                    >
-                      Request info
-                    </button>
-                  </form>
-                </div>
-              </div>
+             <schedule-tour-form  :property="property"/>
             </div>
             <div class="amenities-grid">
               <div class="boxed-details">
                 <p class="boxed-title bold color1 upward">Amenities1</p>
-                <div class="boxed-body boxed-body-grid grid">
-                  <div class="ticked flex">
+                <div class="boxed-body boxed-body-grid grid" v-if="property.property_amenities">
+                  <div class="ticked flex" v-for="(item,i) in property.property_amenities" :key="i">>
                     <img src="/img/properties/tick.svg" alt="tick" />
-                    <p class="ticked-text color1">Fitted Kitchen</p>
+                    <!-- <p class="ticked-text color1">{{item.name}}</p> -->
                   </div>
-                  <div class="ticked flex">
-                    <img src="/img/properties/tick.svg" alt="tick" />
-                    <p class="ticked-text color1">Car Port</p>
-                  </div>
-                  <div class="ticked flex">
-                    <img src="/img/properties/tick.svg" alt="tick" />
-                    <p class="ticked-text color1">Treated Water</p>
-                  </div>
-                  <div class="ticked flex">
-                    <img src="/img/properties/tick.svg" alt="tick" />
-                    <p class="ticked-text color1">Seweage Treatment</p>
-                  </div>
-                  <div class="ticked flex">
-                    <img src="/img/properties/tick.svg" alt="tick" />
-                    <p class="ticked-text color1">Drainage</p>
-                  </div>
-                  <div class="ticked flex">
-                    <img src="/img/properties/tick.svg" alt="tick" />
-                    <p class="ticked-text color1">Paved Road</p>
-                  </div>
-                  <div class="ticked flex">
-                    <img src="/img/properties/tick.svg" alt="tick" />
-                    <p class="ticked-text color1">Power Transformer</p>
-                  </div>
-                  <div class="ticked flex">
-                    <img src="/img/properties/tick.svg" alt="tick" />
-                    <p class="ticked-text color1">Fitted Kitchen</p>
-                  </div>
-                  <div class="ticked flex">
-                    <img src="/img/properties/tick.svg" alt="tick" />
-                    <p class="ticked-text color1">Tared Street</p>
-                  </div>
+
                 </div>
-                <div class="boxed-details boxed-details-scroll">
+                <!-- <div class="boxed-details boxed-details-scroll">
                   <p class="boxed-title bold color1">Property Types</p>
                   <div class="scrolly">
                     <div class="boxed-body boxed-body-table">
@@ -332,7 +157,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
               <div class="text-slide">
                 <p class="color1 slide-title">Lender Rate</p>
@@ -378,7 +203,9 @@
 </template>
 
 <script>
+import ScheduleTourForm from '@/components/property/ScheduleTourForm.vue';
   export default {
+  components: { ScheduleTourForm },
     auth:false,
       head(){
             return{
@@ -395,7 +222,7 @@
       // },
         data(){
           return{
-
+            slug:this.$route.params.slug
           }
         },
          computed:{
@@ -403,6 +230,14 @@
                 let p = this.$store.state.property.property;
                 return p;
             },
+               selected_id:{
+            get(){
+                return this.property.id;
+            },
+            set(v){
+                this.form.property_id = v;
+            }
+        }
          },
         methods: {
           chooseProperty(){
@@ -415,6 +250,7 @@
       },
       created(){
         this.fetchProperty(this.slug)
+        this.$store.dispatch("calculator/formStepAction",1);
       }
   }
 </script>

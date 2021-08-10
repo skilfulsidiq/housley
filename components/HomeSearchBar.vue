@@ -74,8 +74,10 @@ import general from "@/mixins/general_mixin"
 
         searchPro(){
              if(this.form.location != ''|| this.form.property_type!=''|| this.form.price != ''){
+                this.$store.commit("property/SEARCH_FORM",this.form)
                  this.$store.dispatch("property/searchPropertiesAction",this.form).then((r)=>{
-                     this.$router.push({name:'property-type',params:{type:'search'}})
+                   this.$store.commit("property/LIST_STYLE","search");
+                     this.$router.push({name:'properties',params:{type:'search'}})
                  });
              }
 

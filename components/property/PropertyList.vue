@@ -3,7 +3,7 @@
          <section class="paginate">
             <div class="grid-ppt-cards grid">
                 <property-card v-for="property in properties" :key="property.id"
-                  :property="property"  :isChoose="false"
+                  :property="property"  :isChoose="isChoose"
                 />
 
 
@@ -19,7 +19,8 @@ import PropertyCard from './PropertyCard.vue'
   export default {
   components: { PropertyCard, DetailModal },
     props:{
-      properties:{type:Array}
+      properties:{type:Array},
+       isChoose:{type:Boolean,default:false}
     }
   }
 </script>

@@ -173,7 +173,8 @@ export const actions = {
 
 calculateAffordabilityAction({commit }, form) {
     return new Promise((resolve, reject) => {
-      this.$axios.$post(api.calculateAffordability(form)).then((res) => {
+      console.log("submitted affordability: ", form)
+      this.$axios.$post(api.calculateAffordability(),form).then((res) => {
         let d = res.data;
         console.log(d);
         commit("AFFORDABILITY_RESULT", d);

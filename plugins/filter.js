@@ -23,7 +23,7 @@ Vue.filter('price', function (value) {
     }); //'₦ '+
     return '₦ ' + formatter.format(value);
   }
-  return '₦ 00';
+  return '₦ ';
 
 })
 Vue.filter('truncate', function (text, length) {

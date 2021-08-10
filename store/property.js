@@ -7,11 +7,15 @@ export  const state = ()=>({
       featured_properties: [],
       recent_properties: [],
       below_price_properties: [],
-      property: ''
+      property: '',
+      search_form:''
 })
 export const mutations ={
   LIST_STYLE(state, payload) {
       state.list_style = payload
+    },
+    SEARCH_FORM(state,payload){
+      state.search_form = payload
     },
     AFFORDABILITY_RESULT(state, payload) {
       state.affordabilityResult = payload
@@ -78,9 +82,10 @@ export const actions={
 
   },
   async affordablePropertiesAction({commit }, data) {
-    await this.$axios.$post(api.fetchAffordableProperties()).then((res) => {
+    await this.$axios.$post(api.fetchAffordableProperties(),data).then((res) => {
     let r = res.data;
     commit("AFFORDABLE_PROPERTIES", r);
+    return r;
     })
   },
   async allPropertiesAction({ commit }) {

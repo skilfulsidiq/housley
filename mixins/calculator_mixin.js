@@ -72,6 +72,7 @@ export default{
     submitModalAffordability() {
       this.$nuxt.$emit('submitModalAffordability', true);
       window.scrollTo(0, 0);
+      // this.$nuxt.$emit('open-affordability-modal', false);
     },
     submitEligibility() {
       this.$nuxt.$emit('submitEligibility', true);
@@ -82,7 +83,7 @@ export default{
 
     },
     processStepFunction(affordability, eligibility) {
-      this.$store.dispatch("processStatusAction", {
+      this.$store.dispatch("calculator/processStatusAction", {
         hasAffordability: affordability,
         hasEligibility: eligibility
       });

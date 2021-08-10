@@ -51,7 +51,7 @@
                       </div>
                     </div>
                     <button
-                     
+
                       class="dark-btn see-details"
                       @click="showDetail()"
                     >
@@ -73,6 +73,14 @@
                         <span class="slash faded"> / Years</span>
                       </div>
                     </div>
+                  </div>
+
+                  <div :class="isChoose?'property-action-btn':''" v-if="isChoose">
+                     <!-- <button class="action-btn solid-action-btn" @click="showDetailModal"> -->
+                       <!-- <span v-show="loading">loading..</span> <span v-show="!loading">View</span> -->
+                       <!-- </button> -->
+                         <button class="action-btn outline-action-btn" @click="chooseProperty">Select</button>
+
                   </div>
                 </div>
         </div>
@@ -103,9 +111,10 @@
         chooseProperty(){
             console.log("choose property")
             if(this.isChoose){
-                this.$store.dispatch("selectPropertyAction",this.property);
-                 this.$store.commit("SAVE_SELECTED_PROPERTY",this.property)
-                 this.$store.dispatch("formStepAction",2);
+                this.$store.dispatch("property/selectPropertyAction",this.property);
+                //  this.$store.commit("property/SAVE_SELECTED_PROPERTY",this.property)
+                 this.$store.dispatch("calculator/formStepAction",2);
+                 this.$router.push("/affordability");
 
             }else{
                 // go detail page
@@ -124,5 +133,41 @@ img{
 #property_img{
   width:367px;
   height: 256px;
+}
+
+
+.property-action-btn{
+  /* border-top:1px solid #f2f2f2; */
+  /* ma */
+  display: flex;
+  justify-content: center;
+  padding:1rem 0.5rem;
+}
+.action-btn{
+  padding: 0.4rem 1.5rem !important;
+  height: 36px;
+  width:100%;
+   line-height: 1.5;
+  // font-family: "Airbnb Cereal App Light";
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
+}
+// .solid-action-btn{
+//   background-color: #6FA73D;
+//     background: linear-gradient(249deg, #6FA73D, #00b1ab);
+//     color: #ffffff;
+//     border: 1px solid transparent;
+
+// }
+.outline-action-btn{
+   background: transparent;
+
+    color: #0d4566  !important;
+    border: 1px solid #0d4566;
+}
+.outline-action-btn:hover{
+  color:#fff !important;
+  background-color: #0d4566;
 }
 </style>

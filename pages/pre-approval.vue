@@ -7,7 +7,7 @@
           <affordability-form :formType="true" :showLocation="true">
                   <template v-slot:button>
 
-                      <app-button btnid="continue" btnclass="next xxsm-font green-btn s-bold" text="Continue" :action="submitModalAffordability" />
+                      <app-button btnid="continue" btnclass="next xxsm-font green-btn s-bold hoverable" text="Continue" :action="submitModalAffordability" />
 
                       </template>
           </affordability-form>

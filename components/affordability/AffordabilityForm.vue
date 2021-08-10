@@ -9,56 +9,66 @@
                       repayments.
                     </p>
                   </div>
-                  <div class="input-group mb-3">
+                  <div class="form-group">
+                     <label class="color1 xsm-font" for="incomeYes" >Monthly Net income</label >
+                      <div class="input-group mb-3">
                     <span
                       class="input-group-text color1"
                       id="inputGroup-sizing-default"
                       >₦</span
                     >
                     <input
-                      type="text"
-                      class="form-control"
+                      type="text" v-model="monthly_income"
+                      class="form-control" :class="{ 'is-invalid': submitted && $v.form.monthly_net_pay.$error }"
                       aria-label="Sizing example input"
-                      value="$ 27,000,000.00"
                       aria-describedby="inputGroup-sizing-default"
                     />
+
                   </div>
+                  <div v-if="submitted && !$v.form.monthly_net_pay.required" class="form-error">Monthly income is required</div>
+                  </div>
+
                   <div class="q-radio">
                     <p class="name color1">Do you have Additional Income?</p>
                     <div class="modal-radios flex flex-wrap">
                       <p class="mr-radio">
-                        <input
+                        <input  v-model="form.have_additional" value="1"
                           type="radio"
                           id="incomeYes"
-                          name="incomeYes"
                           checked
+                          name="additional"
                         />
                         <label class="color1 xsm-font" for="incomeYes"
                           >Yes I do</label
                         >
                       </p>
                       <p>
-                        <input type="radio" id="incomeNo" name="incomeNo" />
+                        <input type="radio" id="incomeNo" name="additional" v-model="form.have_additional" value="0"/>
                         <label class="color1 xsm-font" for="incomeNo"
                           >No I do not</label
                         >
                       </p>
                     </div>
+                     <div v-if="submitted && !$v.form.have_additional.required" class="form-error">Select an option</div>
                   </div>
 
-                  <div class="input-group mb-3">
+                  <div class="form-group" v-show="form.have_additional==1">
+                      <label class="color1 xsm-font" for="incomeYes" >Additional income</label >
+                    <div class="input-group mb-3">
                     <span
                       class="input-group-text color1"
                       id="inputGroup-sizing-default"
                       >₦</span
                     >
-                    <input
+                    <input v-model="additional_income"
+                        :class="{ 'is-invalid': submitted && $v.form.additional_income.$error }"
                       type="text"
                       class="form-control"
                       aria-label="Sizing example input"
-                      value="$ 27,000,000.00"
                       aria-describedby="inputGroup-sizing-default"
                     />
+                  </div>
+                   <div v-if="submitted && !$v.form.additional_income.required" class="form-error">Additional income is required</div>
                   </div>
                   <div class="q-radio">
                     <p class="name color1">
@@ -67,10 +77,11 @@
                     <div class="modal-radios flex flex-wrap">
                       <p class="mr-radio">
                         <input
+                           v-model="form.have_existing_obligation"  value="1"
                           type="radio"
                           id="obligationsYes"
                           name="obligationsYes"
-                          checked
+
                         />
                         <label class="color1 xsm-font" for="obligationsYes"
                           >Yes I do</label
@@ -78,7 +89,8 @@
                       </p>
                       <p>
                         <input
-                          type="radio"
+                           v-model="form.have_existing_obligation"  value="0"
+                          type="radio" checked
                           id="obligationsNo"
                           name="obligationsNo"
                         />
@@ -87,34 +99,26 @@
                         >
                       </p>
                     </div>
+                     <div v-if="submitted && !$v.form.have_existing_obligation.required" class="form-error">Select an option</div>
                   </div>
-                  <div class="input-group mb-3">
-                    <span
-                      class="input-group-text color1"
-                      id="inputGroup-sizing-default"
-                      >₦</span
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      aria-label="Sizing example input"
-                      value="$ 27,000,000.00"
-                      aria-describedby="inputGroup-sizing-default"
-                    />
-                  </div>
-                  <div class="input-group mb-3">
-                    <span
-                      class="input-group-text color1"
-                      id="inputGroup-sizing-default"
-                      ><img src="/img/date.png" alt="date"
-                    /></span>
-                    <input
-                      type="text"
-                      value="27/03/1989"
-                      class="form-control"
-                      aria-label="Sizing example input"
-                      aria-describedby="inputGroup-sizing-default"
-                    />
+                  <div class="form-group" v-show="form.have_existing_obligation==1">
+                     <label class="color1 xsm-font" for="incomeYes" >Outstanding Loan value</label >
+                       <div class="input-group mb-3">
+                          <span
+                            class="input-group-text color1"
+                            id="inputGroup-sizing-default"
+                            >₦</span
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default"
+                            v-model="outstanding_loans"
+                                      :class="{ 'is-invalid': submitted && $v.form.outstanding_loans.$error }"
+                          />
+                        </div>
+                   <div v-if="submitted && !$v.form.outstanding_loans.required" class="form-error">Outstanding Loan is required</div>
                   </div>
                   <div class="q-radio">
                     <p class="name color1">
@@ -122,7 +126,7 @@
                     </p>
                     <div class="modal-radios flex flex-wrap">
                       <p class="mr-radio">
-                        <input
+                        <input v-model="form.have_co_borrower" value="1"
                           type="radio"
                           id="partnerYes"
                           name="partnerYes"
@@ -133,14 +137,18 @@
                         >
                       </p>
                       <p>
-                        <input type="radio" id="partnerNo" name="partnerNo" />
+                        <input type="radio" id="partnerNo" name="partnerNo" v-model="form.have_co_borrower"
+                                        value="0" />
                         <label class="color1 xsm-font" for="partnerNo"
                           >No, I am Borrowing Alone</label
                         >
                       </p>
                     </div>
+                     <div v-if="submitted && !$v.form.have_co_borrower.required" class="form-error">Select an option</div>
                   </div>
-                  <div class="input-group mb-3">
+                  <div class="form-group" v-show="form.have_co_borrower==1">
+                       <label class="color1 xsm-font" for="incomeYes" >Co Borrower Monthly income</label >
+                         <div class="input-group mb-3">
                     <span
                       class="input-group-text color1"
                       id="inputGroup-sizing-default"
@@ -150,10 +158,38 @@
                       type="text"
                       class="form-control"
                       aria-label="Sizing example input"
-                      value="$ 27,000,000.00"
+                       v-model="co_borrower"
+                                  :class="{ 'is-invalid': submitted && $v.form.co_borrower_monthly_income.$error }"
                       aria-describedby="inputGroup-sizing-default"
                     />
                   </div>
+                  <div v-if="submitted && !$v.form.co_borrower_monthly_income.required" class="form-error">Co Borrower Monthly income is required</div>
+                  </div>
+                  <div class="form-group">
+                     <label class="color1 xsm-font" for="incomeYes" >Date of Birth</label >
+                       <div class="input-group mb-3">
+                    <span
+                      class="input-group-text color1"
+                      id="inputGroup-sizing-default"
+                      ><img src="/img/date.png" alt="date"
+                    /></span>
+                    <input @blur="$v.form.dob.$touch()"
+                      type="date"
+                      class="form-control"
+                      aria-label="Sizing example input"
+                      aria-describedby="inputGroup-sizing-default"
+                      :class="{ 'is-invalid': submitted && $v.form.dob.$error }"
+                                v-model="form.dob"
+                    />
+                  </div>
+                   <div v-if="submitted && !$v.form.dob.required" class="form-error">Date of birth is required</div>
+                        <div v-if="submitted && !$v.form.dob.too_young" class="form-error">You are not 18 yrs +</div>
+                  </div>
+
+
+
+
+
                   <div class="q-radio">
                     <p class="name color1">
                       How long do you want this Loan for?
@@ -176,23 +212,25 @@
                     </div>
                   </div>
 
-                  <div class="input-group input-group-select2 mb-5 mt-70" v-if="showLocation">
-                    <span
-                      class="input-group-text color1"
-                      id="inputGroup-sizing-default"
-                      ><img
-                        src="/img/home/header/location.svg"
-                        alt="location"
-                    /></span>
-                    <div class="select select-modal2">
-                      <select id="location">
-                        <option value="Lagos">Lagos</option>
-                        <option value="Abia">Abia</option>
-                        <option value="Ogun">Ogun</option>
-                      </select>
-                      <span class="focus"></span>
-                    </div>
+                  <div class="form-group mt-5" v-if="showLocation">
+                          <label class="color1 xsm-font" for="incomeYes" >Preferred Property Location</label >
+                            <div class="input-group mb-3">
+                          <span
+                              class="input-group-text color1"
+                              id="inputGroup-sizing-default"
+                              ><img
+                                src="/img/home/header/location.svg"
+                                alt="location"
+                            /></span>
+                            <input v-model="form.location"
+                              type="text"
+                              class="form-control"
+                              aria-label="Sizing example input"
+                              aria-describedby="inputGroup-sizing-default"
+                            />
+                            </div>
                   </div>
+
 
 
                 <div class="continue">
@@ -240,11 +278,11 @@ export default {
           submitted:false,
           form:{
               monthly_net_pay:'',
-              have_additional:'',
+              have_additional:'0',
               additional_income:'',
-              have_existing_obligation:'',
+              have_existing_obligation:'0',
               outstanding_loans:'',
-              have_co_borrower:'',
+              have_co_borrower:'0',
               co_borrower_monthly_income:'',
               dob:'',
               loan_tenure:'5',
@@ -279,11 +317,11 @@ export default {
         'form.dob':function(v){
          this.form.age = this.calculateAge(v);
         this.max_range =  this.calculateMaxTenure(this.form.age);
-        // this.setBubble()
+          // this.setitUp()
         this.form.loan_tenure = this.max_range;
         },
         'form.loan_tenure':function(val){
-            // this.setitUp()
+            this.setitUp()
         },
     },
     computed:{
@@ -342,14 +380,14 @@ export default {
             if (this.$v.$invalid) {
                 return;
             }
-                this.$store.dispatch("saveAffordabilityFormAction",this.form)
-        this.$store.dispatch("calculateAffordabilityAction",this.form).then((r)=>{
-          this.processStepFunction(true,false);
-          this.$nuxt.$emit('open-affordability-modal',false);
+                this.$store.dispatch("calculator/saveAffordabilityFormAction",this.form)
+                this.$store.dispatch("calculator/calculateAffordabilityAction",this.form).then((r)=>{
+                    this.processStepFunction(true,false);
+                    this.$nuxt.$emit('open-affordability-modal',false);
 
-          if(this.$route.name != 'FilterProperties'){
-              this.$router.push({name:'FilterProperties'});
-          }
+                    if(this.$route.name != 'properties-affordability'){
+                        this.$router.push({name:'properties-affordability'});
+                    }
           });
 
       },
@@ -360,11 +398,11 @@ export default {
             if (this.$v.$invalid) {
                 return;
             }
-           this.$store.dispatch("saveAffordabilityFormAction",this.form)
-          this.$store.dispatch("calculateAffordabilityAction",this.form).then((r)=>{
+           this.$store.dispatch("calculator/saveAffordabilityFormAction",this.form)
+          this.$store.dispatch("calculator/calculateAffordabilityAction",this.form).then((r)=>{
              this.processStepFunction(true,false);
-           this.$nuxt.$emit('open-affordability-modal',false);
-            this.$store.dispatch("formStepAction",2);
+          //  this.$nuxt.$emit('open-affordability-modal',false);
+            this.$store.dispatch("calculator/formStepAction",2);
           });
 
 

@@ -76,6 +76,7 @@ export default {
    { src:"~plugins/filter.js",ssr:false},
     {src:"~plugins/vuex-persist.js",ssr:false},
     {src:"~plugins/app_toast.js",ssr:false},
+    {src:"~plugins/vuelidate.js",ssr:true},
 
   ],
 

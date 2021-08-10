@@ -61,7 +61,8 @@
         pagination:{type:Object, required:true},
         title:{type:String},
         mutator:{type:String},
-        method:{type:String,default:'get'}
+        method:{type:String,default:'get'},
+        source:{type:String,default:'all'}
     },
     data(){
         return{
@@ -94,10 +95,13 @@
             let u = url.replace(base,'');
             let form =null;
             if(this.method=='post'){
-                form = {
-                    // price : this.$store.state.property_module.form.max_loan_amount,
-                    // location:this.$store.state.property_module.form.location
+                if(this.source=='filter'){
+                    let p = this.$store.state.calculator.form;
+                    form = {price:p.max_loan_amount,location:p.location};
+                }else{
+                  form = this.$store.state.property.search_form
                 }
+
             }
             let data = {url :u, mutator:this.mutator,method:this.method,form:form}
             this.$store.dispatch("property/paginationAction",data);

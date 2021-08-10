@@ -31,7 +31,7 @@
              </section>
      </main>
      <!-- </client-only> -->
-    <property-page-pagination :pagination="pagination"  mutator="ALL_PROPERTIES" method="get" />
+    <property-page-pagination :pagination="pagination"  mutator="ALL_PROPERTIES" :method="list_type=='all'?'get':'post'" />
     </client-only>
   </div>
 </template>
@@ -61,7 +61,6 @@ import PropertyList from '@/components/property/PropertyList.vue'
 
           property_length:'-',
           pageOfItems: [],
-          list_type:this.$route.params.type,
         }
       },
      computed:{
@@ -73,6 +72,10 @@ import PropertyList from '@/components/property/PropertyList.vue'
         this.property_length = all.total;
 
         return property;
+      },
+      list_type(){
+              let type = this.$store.state.property.list_style;
+              return type;
       }
      },
       methods:{
@@ -81,13 +84,14 @@ import PropertyList from '@/components/property/PropertyList.vue'
             this.pageOfItems = pageOfItems;
     },
     fetchProperties(){
-      // let t = this.$store.state.property.list_style
-      //   if(this.$route.query.type != 'search'){
-      //   }else{
-      //      this.$store.dispatch("property/allPropertiesAction")
-      //   }
 
-      this.$store.dispatch("property/allPropertiesAction")
+        if(this.list_type == 'all'){
+           this.$store.dispatch("property/allPropertiesAction")
+        }else{
+
+        }
+
+      // this.$store.dispatch("property/allPropertiesAction")
 
     }
   },
@@ -96,8 +100,8 @@ import PropertyList from '@/components/property/PropertyList.vue'
      window.scrollTo(0,0);
   },
   created(){
-    console.log(this.list_type)
     this.fetchProperties();
+
   }
   }
 </script>
