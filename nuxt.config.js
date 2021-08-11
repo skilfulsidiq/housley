@@ -61,6 +61,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/dotenv'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -74,7 +75,8 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-      baseURL: process.env.NODE_ENV == 'production' ? 'https://profilerapi.afreal.one/api/' : 'http://mainhsf.test/api/'
+      baseURL: process.env.API_URL
+      
       // baseURL: 'http://police.test/api/'
     },
 

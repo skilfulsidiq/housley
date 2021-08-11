@@ -87,9 +87,9 @@
       },
       dontGo(){},
         nextPag(url){
-            // let link =  process.env.ApiUrl;
+            // let link =
               if(url){
-                   let base =  'http://mainhsf.test/api/';
+                   let base =  process.env.API_URL;
             console.log('pganitaion url: ',base);
             // let path = this.pagination.path;
             let u = url.replace(base,'');

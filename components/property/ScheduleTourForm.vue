@@ -244,5 +244,6 @@ export default {
 <style lang="scss" scoped>
   .tour-form-label{
     float:left;
+    // width:.125rem;
   }
 </style>
