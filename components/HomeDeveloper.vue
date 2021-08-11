@@ -45,9 +45,14 @@
 
 <script>
 export default {
+    watch:{
+      '$route':function(v){
 
-    mounted(){
-      let s = [  'js/slide.js','/js/libraries/siema/slide.js'];
+      }
+    },
+    methods:{
+      // runScript(){
+      //   let s = [  'js/slide.js','/js/libraries/siema/slide.js'];
       // for(let i = 0; i <= s.length;i++){
       //   let link = s[i];
       //   const script = document.createElement("script");
@@ -56,6 +61,10 @@ export default {
       // script.src = link;
       // document.body.appendChild(script);
       // }
+      // }
+    },
+    mounted(){
+        // this.runScript()
     }
   }
 </script>

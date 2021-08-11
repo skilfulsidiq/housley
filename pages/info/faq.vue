@@ -186,6 +186,9 @@
             return{
                 link:[
                       { rel: 'stylesheet', href:"/css/custom/header-color.css"  },
+                ],
+                script:[
+                  {src:'/js/custom/accordion.js',body:true}
                 ]
             }
         },

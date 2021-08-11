@@ -2,8 +2,9 @@
   <div>
       <div class="se-pre-con" ref="preloader"></div>
       <AppHeader/>
+       <client-only>
           <nuxt/>
-        <client-only> <affordability-modal/></client-only>
+        <affordability-modal/></client-only>
       <AppFooter/>
   </div>
 </template>
@@ -17,6 +18,7 @@ import AffordabilityModal from '@/components/affordability/AffordabilityModal.vu
     head(){
       return headScript;
     },
+
     methods:{
         fetchGeneralData(){
       this.$store.dispatch("general/getPropertyTypeAction")

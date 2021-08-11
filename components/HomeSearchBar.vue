@@ -11,7 +11,7 @@
             </div>
             <div class='form-input'>
                 <span><img  src='/img/home/header/home.svg' ></span>
-                <select style="border:none" class="form-control2" aria-describedby="All Home Types" v-model="form.property_type">
+                <select style="border:none; margin-left:0.8rem" class="form-control2 " aria-describedby="All Home Types" v-model="form.property_type">
                     <option value="">Property type</option>
                     <option :value="i.name" v-for="i in property_type_list" :key="i.id">{{i.name}}</option>
                 </select>

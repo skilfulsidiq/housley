@@ -42,14 +42,13 @@
 
       <nav class="mobile-nav">
         <ul>
-          ul>
-            <li><nuxt-link to="/info/about">About Us</nuxt-link></li>
-            <li><nuxt-link to="/pre-approval">Pre-approval</nuxt-link></li>
-            <li><nuxt-link to="/property">Property</nuxt-link></li>
-            <li><nuxt-link to="/info/mortgage">Mortgage</nuxt-link></li>
-            <li><nuxt-link to="/info/contact">Contact Us</nuxt-link></li>
-            <li><nuxt-link to="/info/faq">FAQs</nuxt-link></li>
-            <li><nuxt-link to="/login">Login</nuxt-link></li>
+            <li @click.prevent="goPage"><nuxt-link to="/info/about">About Us</nuxt-link></li>
+            <li @click.prevent="goPage"><nuxt-link to="/pre-approval">Pre-approval</nuxt-link></li>
+            <li @click.prevent="goPage"><nuxt-link :to="{name:'properties'}">Property</nuxt-link></li>
+            <li @click.prevent="goPage"><nuxt-link to="/info/mortgage">Mortgage</nuxt-link></li>
+            <li @click.prevent="goPage"><nuxt-link to="/info/contact">Contact Us</nuxt-link></li>
+            <li @click.prevent="goPage"><nuxt-link to="/info/faq">FAQs</nuxt-link></li>
+            <li @click.prevent="goPage"><nuxt-link to="/login">Login</nuxt-link></li>
           <li>
             <nuxt-link
               to="/register"
@@ -71,7 +70,19 @@
 
 <script>
   export default {
+      watch: {
+     '$route': function (value) {
+       window.scrollTo(0,0)
 
+      }
+    },
+    methods:{
+      goPage(){
+        $(".mobile-nav").toggleClass('mobile-nav-state');
+         $(".mobile-nav-overly").toggleClass('mobile-nav-overly-state');
+        $('.hamburger').toggleClass("is-active");
+      }
+    }
   }
 </script>
 

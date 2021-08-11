@@ -5,37 +5,51 @@
 
 /* ---------------------------------------------------
                     Home page  search tab css
-                    Input margin 5px to 0 8.5px
+                    Input margin .3125rem to 0 .53125rem
 ------------------------------------------------------*/
 .property-search-container .search-container-property form div {
-    margin: 0 8.5px!important;
+    margin: 0 .53125rem!important;
+}
+
+@media(max-width:56.25rem) {
+  .property-search-container .search-container-property form div {
+    margin-bottom: .9375rem !important;
+  }
+
 }
 /* Home page .property-search-container .search-container-property form
-    margin-left: 0px!important; to -2rem
+    margin-left: 0rem!important; to -2rem
 } */
 .property-search-container .search-container-property form {
-    margin-left: -2rem;
+    /* margin-left: -2rem; */
 
 }
 /* Home page .property-search-container .search-container
     padding 0 added
 } */
 .property-search-container .search-container {
-    padding:0px!important;
+    padding:0rem!important;
 }
 
 .property-search-container {
-    width: 1197px;
+    width: 74.8125rem;
+}
+
+.search-container-property input,
+.search-container-property input::placeholder,select::placeholder {
+  font-family: poppins;
+  font-size: .9375rem;
+  line-height: 1.5rem;
 }
 
 
 /* ---------------------------------------------------
                     Home page Carousel text content css
-                    padding from 180px to 0px and
+                    padding from 11.25rem to 0rem and
                     flex-basis from 50% to 35%
 ------------------------------------------------------*/
 .promotion-slider-container .right {
-    padding-right:0px!important;
+    padding-right:0rem!important;
 }
 .promotion-slider-container div {
     -ms-flex-preferred-size: 35%;
@@ -73,11 +87,25 @@
     transition: 0.3s;
     background-color: #fff !important;
     cursor: pointer;
-    box-shadow: rgb(0 0 0 / 20%) 0px 3px 5px -1px,
-    rgb(0 0 0 / 14%) 0px 5px 8px 0px,
-    rgb(0 0 0 / 12%) 0px 1px 14px 0px;
+    box-shadow: rgb(0 0 0 / 20%) 0rem .1875rem .3125rem -0.0625rem,
+    rgb(0 0 0 / 14%) 0rem .3125rem .5rem 0rem,
+    rgb(0 0 0 / 12%) 0rem .0625rem .875rem 0rem;
 }
 
+/* ---------------------------------------------------
+                    Pre Approval page css
+                   pagination parent flex between children
+                   and change of class to id
+------------------------------------------------------*/
+.preapproval-content {
+  /* margin-top: 10rem; */
+}
+.placeholder {
+  font-family: poppins;
+  font-size: .9375rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+}
 /* ---------------------------------------------------
                     Property page css
                    pagination parent flex between children
@@ -109,24 +137,24 @@
 
 /* -----------------------------------------------------
     log-in,very and forgot page
-    padding adjusted from 150px 0 0  to 50px
+    padding adjusted from 9.375rem 0 0  to 3.125rem
 --------------------------------------------------*/
 .login-container .right {
-    padding: 0px 0 0 0px;
+    padding: 0rem 0 0 0rem;
 }
 
 .login-container #verify {
-    padding: 0px 0 0 0px;
+    padding: 0rem 0 0 0rem;
 }
 
 .signup-container .right {
-    padding: 0px 0 0 0px;
+    padding: 0rem 0 0 0rem;
 }
 
 .login-container .right .form-container form div.forgot-password {
   color: #5E97B1;
-  margin-top: -15px;
-  margin-bottom: 20px;
+  margin-top: -0.9375rem;
+  margin-bottom: 1.25rem;
 }
 .login-container .right .form-container form div.forgot-password .anchor {
   text-decoration: none;
@@ -135,7 +163,7 @@
 
 
 
-@media(max-width:500px){
+@media(max-width:56.25rem){
 
 /* ---------------------------------------------------
                     Property page css

@@ -35,7 +35,7 @@
                         rows="7"
                       ></textarea>
 
-                      <button type="button" class="xxsm-font green-btn s-bold">
+                      <button type="button" class="xxsm-font green-btn s-bold hoverable">
                         Send Message
                       </button>
                     </form>

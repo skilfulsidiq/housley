@@ -19,7 +19,7 @@
                 will democratize access to affordable housing by matching
                 homebuyers with developers and affordable home loans in Nigeria
               </p>
-              <button type="button" class="xxsm-font green-btn s-bold ">
+              <button type="button" class="xxsm-font green-btn s-bold hoverable" @click="searchHome">
                 Search Homes
               </button>
             </div>
@@ -67,7 +67,7 @@
                 We are leading efforts to simplify and eliminate multiple costs
                 and processes for homebuyers and make fees more transparent.
               </p>
-              <button type="button" class="xxsm-font green-btn s-bold">
+              <button type="button" class="xxsm-font green-btn s-bold hoverable" @click="showModal">
                 Take the Affordability Test
               </button>
             </div>
@@ -104,7 +104,7 @@
                   health, safety and environment (HSE), building standards, and
                   proven track record.
                 </p>
-                <button type="button" class="xxsm-font green-btn s-bold">
+                <button type="button" class="xxsm-font green-btn s-bold hoverable" @click="showModal">
                   Take the Affordability Test
                 </button>
               </div>
@@ -134,7 +134,7 @@
                   access blended single-digit home loans on our platform from
                   participating licensed lending banks
                 </p>
-                <button type="button" class="xxsm-font green-btn s-bold">
+                <button type="button" class="xxsm-font green-btn s-bold" @click="showModal">
                   Take the Affordability Test
                 </button>
               </div>
@@ -186,6 +186,14 @@
                 ]
             }
         },
+        methods:{
+          showModal(){
+            $("#AffordabilityTestModal").modal("show")
+          },
+          searchHome(){
+            this.$router.push('/properties')
+          }
+  }
   }
 </script>
 

@@ -1,5 +1,5 @@
 // https://splidejs.com/
-document.addEventListener( 'DOMContentLoaded', function () {
+// document.addEventListener( 'DOMContentLoaded', function () {
   new Splide('.splide',{
     type    : 'loop',
     perPage : 4,
@@ -17,4 +17,4 @@ document.addEventListener( 'DOMContentLoaded', function () {
     }
 
   } ).mount();
-} );
+// } );

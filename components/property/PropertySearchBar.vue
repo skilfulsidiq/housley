@@ -12,8 +12,8 @@
                     <span><img src="/img/home/header/home.svg" /></span>&nbsp;&nbsp;
 
                     <!-- <input type="text" value="Property Type" /> -->
-                     <select style="border:none" class="form-control2" aria-describedby="Property type" v-model="form.property_type">
-                      <option value="">Property type</option>
+                     <select  class="select-input" aria-describedby="Property type" v-model="form.property_type">
+                      <option value="" class="placeholder">Property type</option>
                       <option :value="i.name" v-for="i in property_type_list" :key="i.id">{{i.name}}</option>
                     </select>
                   </div>
@@ -23,7 +23,7 @@
                   </div>
                   <div class="form-input bordered in-btw no-border flex">
                     <span><img src="/img/home/header/home.svg" /></span> &nbsp;&nbsp;
-                    <select class="form-control2"  v-model="form.property_status" aria-describedby="Property Status">
+                    <select class="select-input"  v-model="form.property_status" aria-describedby="Property Status">
                       <option value="" class="bold-me">Property Status</option>
                       <option :value="i.id" v-for="i in property_status_list" :key="i.id">{{i.name}}</option>
                   </select>
@@ -99,5 +99,14 @@ font-family: poppins;
     line-height: 24px;
     font-weight: 800;
 }
-
+.select-input{
+  border:none;
+}
+@media (max-width:900px){
+  //
+  .select-input{
+    height: 2.875rem;
+    border-bottom: 1px solid #006633;
+  }
+}
 </style>
