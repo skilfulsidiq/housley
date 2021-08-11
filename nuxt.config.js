@@ -75,8 +75,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-      baseURL: process.env.API_URL
-
+      baseURL: process.env.NODE_ENV == 'production' ? 'https://api.afreal.one/api/' : 'http://mainhsf.test/api/'
       // baseURL: 'http://police.test/api/'
     },
 
@@ -149,19 +148,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-      babel: {
-        plugins: [
-          ["@babel/plugin-proposal-class-properties", {
-            "loose": true
-          }],
-          ["@babel/plugin-proposal-private-methods", {
-            "loose": true
-          }],
-          ["@babel/plugin-proposal-private-property-in-object", {
-            "loose": true
-          }]
-        ]
-      }
 
   },
    router: {
