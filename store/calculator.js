@@ -200,13 +200,17 @@ calculateAffordabilityAction({commit }, form) {
     // EventBus.$emit('next-step',step);
 
   },
-  submitPreQualifiedAction({commit  }, data) {
+  async submitPreQualifiedAction({commit  }, data) {
         console.log(data);
+        // let res = await this.$axios.$post(api.savePrequalified(), data);
         return new Promise((resolve, reject) => {
-          this.$axios.$post(api.savePrequalified(data)).then((res) => {
-            let r = res.data.data;
+          this.$axios.$post(api.savePrequalified(),data).then((res) => {
+            let r = res.data;
             commit("PREQUALIFIED_FORM", r)
             resolve(r);
+            // return r;
+          }).catch(err=>{
+            reject(err);
           })
         })
       }

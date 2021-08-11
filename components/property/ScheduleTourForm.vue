@@ -179,7 +179,7 @@ export default {
     },
     methods: {
          submitBookTour(){
-            console.log("am sub")
+
              this.book_tour_submitted=true
             this.$v.$touch();
             if (this.$v.$invalid) {
@@ -187,7 +187,7 @@ export default {
             }
             this.savingTour = true;
             this.$store.dispatch("property/saveTourScheduleAction",this.book_form).then((res)=>{
-
+                console.log("am sub")
                 this.book_tour_submitted =false;
                  this.savingTour = false;
                 this.book_form ={

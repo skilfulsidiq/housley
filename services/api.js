@@ -53,13 +53,13 @@ export default {
    propertyDetail(slug) {
     return   "general/property-detail/" + slug;
   },
-   savePrequalified(data) {
-    return   "general/profile-request", data;
+   savePrequalified() {
+    return   "general/profile-request";
   },
-   saveBookTour(data) {
-    return   "general/book-tour", data;
+   saveBookTour() {
+    return   "general/book-tour";
   },
-   propertyEnquiry(data) {
+   propertyEnquiry() {
     return   "general/property-enquiry";
   }
 

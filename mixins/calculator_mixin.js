@@ -80,6 +80,7 @@ export default{
     },
     submitProfile() {
       this.$nuxt.$emit('profileSubmit', true);
+       window.scrollTo(0, 0);
 
     },
     processStepFunction(affordability, eligibility) {

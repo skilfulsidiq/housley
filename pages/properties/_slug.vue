@@ -3,30 +3,43 @@
      <main class="page-content">
       <section v-if="property">
         <div class="padded-content mt-183 relative">
-          <nuxt-link to="/properties" class="abs-text flex back bold color1"
-            ><img
+          <nuxt-link to="/properties" class="abs-text flex back bold color1" >
+
+
+          <img
               src="/img/properties/green-back.svg"
               alt="back to search"
             /><span>Back to Search</span></nuxt-link
           >
           <section class="upper-ppt-detail-page" v-if="property.property_photos">
             <div class="grid gridy-pic">
-              <img
+                <div class="property-photo a"
+                :style="{backgroundImage:'url('+property.property_photos[0]+')'}">
+               </div>
+
+                <div class="b property-photo "
+                :style="{backgroundImage:'url('+property.property_photos[1]+')'}">
+                 </div>
+
+                <div class="c property-photo"
+                :style="{backgroundImage:'url('+property.property_photos[2]+')'}">
+                </div>
+              <!-- <img
                 class="a"
                 :src="property.property_photos[0]"
                 alt="building"
-              />
+              /> -->
               <!-- <div class="smaller-pics flex"> -->
-              <img
+              <!-- <img
                 class="b"
                 :src="property.property_photos[1]"
                 alt="couch"
-              />
-              <img
+              /> -->
+              <!-- <img
                 class="c"
                 :src="property.property_photos[2]"
                 alt="kitchen"
-              />
+              /> -->
 
               <!-- <div class="bg"></div>
                 <div class="bg bg2"></div> -->
@@ -242,6 +255,7 @@ import ScheduleTourForm from '@/components/property/ScheduleTourForm.vue';
         methods: {
           chooseProperty(){
             this.$store.commit("property/SELECTED_PROPERTY", this.property);
+            this.$store.commit("calculator/GO_TO_STEP",1);
             this.$router.push("/affordability")
           },
            fetchProperty(slug){
@@ -250,7 +264,10 @@ import ScheduleTourForm from '@/components/property/ScheduleTourForm.vue';
       },
       created(){
         this.fetchProperty(this.slug)
-        this.$store.dispatch("calculator/formStepAction",1);
+
+      },
+      mounted(){
+        this.$store.commit("calculator/GO_TO_STEP",1);
       }
   }
 </script>
@@ -300,6 +317,16 @@ import ScheduleTourForm from '@/components/property/ScheduleTourForm.vue';
 }
 .box >*{
   width: 200px;
+}
+.property-photo{
+  background-position: center;
+  background-size: cover;
+  width:100%;
+  min-height: 12rem;
+  background-repeat: no-repeat;
+}
+.property-photo .a{
+  height: 100%;
 }
 /*-------------------------------------------------------------------
       end of property

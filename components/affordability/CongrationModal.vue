@@ -4,10 +4,10 @@
 
              <div
       class="modal preapprovalform modal fade"
-      id="confirmationModal"
+      id="congratulationModal"
       tabindex="-1"
       role="dialog"
-      aria-labelledby="AffordabilityTestModalLabel"
+      aria-labelledby="congratulationModalLabel"
       aria-hidden="true"
       >
         <div class="modal-dialog" role="document" style="width:45rem">
@@ -19,23 +19,19 @@
                 data-dismiss="modal"
                 alt="close"
               />
-              <div class="confirmation-wrapper">
-                    <figure><img src="/img/questionImg.png" alt="Question Icon"></figure>
-                    <p class="mb-3">Are you sure you want to continue?</p>
-                    <div class="equity-content-wrapper">
-                        <h3>Your Equity Contribution is <strong>{{percentage}}%</strong></h3>
-                        <h2>{{down_payment|price}}. <small>00</small></h2>
-                    </div>
-                </div>
+              <div class="congratulation-wrapper">
+                  <figure><img src="/img/congratsIcon.png" alt="Congratulations Icon">
+                  </figure>
+                  <h3>You have been Pre-Qualified to Apply for a Mortgage</h3>
+              </div>
                 <div class="action-button">
-                  <button type="button" class="xxsm-font white-btn2 s-bold proceed-cta-btn " @click.prevent="goToProperties" >Check other
-                                properties </button>
+                  <button type="button" class="xxsm-font white-btn2 s-bold proceed-cta-btn " @click.prevent="close" >Close </button>
 
                             <button
                             type="button"
                             id="nextBtnStep"
                             class="xxsm-font green-btn s-bold hoverable proceed-cta-btn "
-                              @click.prevent="proceedToNextStep">Continue</button>
+                              @click.prevent="startApplication">Create Account</button>
                 </div>
             </div>
           </div>
@@ -44,65 +40,39 @@
     </div>
 </template>
 <script>
-import AffordabilityForm from './AffordabilityForm.vue'
 import FormMixin from '@/mixins/form_mixin'/*  */
 import CalculatorMixin from '@/mixins/calculator_mixin'/*  */
 import general_mixin from '@/mixins/general_mixin'
 export default {
-  components: {  AffordabilityForm },
     name:"DownPaymentModal",
     mixins:[FormMixin,CalculatorMixin, general_mixin],
-    props:{
-
-    },
-    data(){
-        return{
-            modal:null,
-
-
-        }
-    },
-    computed:{
-        percentage(){
-            let p = this.$store.state.calculator.form.down_rate;
-            return p;
+        methods:{
+        showModal(){
+            $("#congratulationModal").modal('show')
         },
-        down_payment(){
-             let p = this.$store.state.calculator.form.down_payment;
-            return p;
+        hideModal(){
+            $("#congratulationModal").modal('hide')
+        },
+        startApplication(){
+            this.$store.commit("calculator/GO_TO_STEP",1);
+            this.hideModal();
+            this.$router.push("/register");
+        },
+        close(){
+            this.$store.commit("calculator/GO_TO_STEP",1);
+            this.hideModal();
+            this.$router.push("/");
         }
-    },
-    methods:{
-      test(){},
-      showModal(){
-        $("#confirmationModal").modal('show');
-      },
-      hideModal(){
-        $("#confirmationModal").modal('hide')
-      },
-      proceedToNextStep(){
-           this.hideModal();
-           this.processStepFunction(true,true);
-        this.$store.dispatch("calculator/formStepAction",3);
-      },
-      goToProperties(){
-          this.hideModal();
-          this.processStepFunction(false,false);
-          this.$store.dispatch("calculator/formStepAction",1);
-          this.$router.push({name:'properties'});
-      }
     },
     created(){
-        this.$nuxt.$on('open-down-payment-modal',(t)=>{
+        this.$nuxt.$on('prequalified-modal',(t)=>{
             if(t){
-                  this.showModal()
+                this.showModal();
             }else{
-                 this.hideModal();
+                this.hideModal();
             }
-
-            console.log('show from afford')
-        });
-    },
+        })
+    }
 
 }
 </script>

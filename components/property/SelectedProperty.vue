@@ -14,7 +14,7 @@
                   <p class="color1" >{{property.property_type}}</p>
                   <p class="color1" v-if="property.city && property.state">{{property.city.name}}, {{property.state.name}}</p>
                   <p class="color1" v-if="property.client">{{property.client.client_name}}</p>
-                  <p class="color1">{{property.property_price | price}}</p>
+                  <p class="color1">{{ property.property_price | price}}</p>
                   <div class="btn">
                     <button class="yellow bold" @click="showDetail">View</button>
                   </div>
@@ -27,8 +27,10 @@
 
 <script>
 import DetailModal from './DetailModal.vue';
+import form_mixin from '@/mixins/form_mixin'
   export default {
   components: { DetailModal },
+  mixins:[form_mixin],
 
     computed:{
       property(){

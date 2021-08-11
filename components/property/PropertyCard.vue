@@ -1,5 +1,5 @@
 <template>
-        <div class="ppt-card">
+        <div class="ppt-card" @click="chooseProperty">
                 <!-- <img id="property_img" src="/img/properties/house-card.jpg" alt="" /> -->
                 <img id="property_img" :src="property.property_cover_image" alt="" />
                 <div class="ppt-card-details">
@@ -113,12 +113,12 @@
             if(this.isChoose){
                 this.$store.dispatch("property/selectPropertyAction",this.property);
                 //  this.$store.commit("property/SAVE_SELECTED_PROPERTY",this.property)
-                 this.$store.dispatch("calculator/formStepAction",2);
+                 this.$store.commit("calculator/GO_TO_STEP",2);
                  this.$router.push("/affordability");
 
             }else{
                 // go detail page
-                this.$router.push({name:"PropertyDetail",params:{slug:this.property.slug}})
+                this.$router.push({name:"properties-slug",params:{slug:this.property.slug}})
             }
         }
     }

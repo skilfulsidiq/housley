@@ -43,40 +43,14 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
-   plugins: [{
-       src: '~/plugins/app_toast',
-       ssr: false
-     },
-     {
-       src: '~/plugins/moment',
-       mode: 'client'
-     },
-     {
-       src: '~/plugins/filter',
-      mode: 'client'
-     },
-     {
-       src: '~/plugins/vuex-persist',
-       // mode: 'client',
-       mode: 'client'
-     },
-    //  {
-    //    src: '~/plugins/slide.js',
-    //     ssr: false
-    //  },
-    //  {
-    //    src: '~/plugins/swiper.js',
-    //    mode: 'client'
-    //  },
 
-   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-   { src:"~plugins/filter.js",ssr:false},
-    {src:"~plugins/vuex-persist.js",ssr:false},
-    {src:"~plugins/app_toast.js",ssr:false},
-    {src:"~plugins/vuelidate.js",ssr:true},
+   { src:"~plugins/filter.js", mode: 'client'},
+    {src:"~plugins/vuex-persist.js", mode: 'client'},
+    {src:"~plugins/app_toast.js", mode: 'client'},
+    {src:"~plugins/vuelidate.js", mode: 'client'},
 
   ],
 

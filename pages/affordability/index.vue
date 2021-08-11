@@ -1,5 +1,6 @@
 <template>
   <div>
+    <client-only>
     <main class="page-content">
       <section>
         <div class="padded-content">
@@ -29,8 +30,8 @@
                 </div>
                 <div id="line2" class="indicator-line"></div>
                 <div class="step step3">
-                    <div class="step-icon number finished">3</div>
-                  <p class="text bold"> Complete Profile</p>
+                    <div class="step-icon number " :class="[step==3?'active':'']">3</div>
+                  <p class="text bold" :class="[step==3?'active ':'']"> Complete Profile</p>
                 </div>
             </section>
 
@@ -38,7 +39,7 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                       <div id="stepForm"  class="filled-input-with-slider">
-                        <affordability-form v-if="step==1"/>
+                        <affordability-form :showLocation="false" v-if="step==1"/>
                         <elgibility-form v-if="step==2"/>
                         <profile-form v-if="step==3"/>
 
@@ -47,7 +48,8 @@
                       </div>
 
                         <div class="buttons flex-wrap gg-20">
-                <app-button type="button" text="Previous"  btnclass="xxsm-font white-btn2 s-bold" id="prevBtnStep" ></app-button>
+                <app-button v-show="step>1" type="button" text="Previous"  btnclass="xxsm-font white-btn2 s-bold " :action="stepBackward"
+                ></app-button>
 
                 <app-button text="Continue"
                 type="button"
@@ -84,6 +86,8 @@
       </section>
     </main>
     <down-payment-modal/>
+    <congration-modal/>
+    </client-only>
   </div>
 </template>
 
@@ -95,8 +99,9 @@ import ElgibilityForm from '@/components/affordability/ElgibilityForm.vue'
 import ProfileForm from '@/components/affordability/ProfileForm.vue'
 import DownPaymentModal from '@/components/affordability/DownPaymentModal.vue'
 import calculator_mixin from '@/mixins/calculator_mixin'
+import CongrationModal from '@/components/affordability/CongrationModal.vue'
   export default {
-  components: { FinanceSummaryCard,SelectedProperty,AffordabilityForm,ElgibilityForm,ProfileForm,DownPaymentModal },
+  components: { FinanceSummaryCard,SelectedProperty,AffordabilityForm,ElgibilityForm,ProfileForm,DownPaymentModal,CongrationModal },
     auth:false,
     mixins:[calculator_mixin],
        head(){
@@ -137,10 +142,10 @@ import calculator_mixin from '@/mixins/calculator_mixin'
         },
         },
         methods:{
-        validateStep(step){
-            switch(step){
+        validateStep(){
+            switch(this.step){
                 case 1:
-                   this.$store.dispatch("calculator/formStepAction",step);
+                   this.$store.dispatch("calculator/formStepAction",1);
                 case 2:
                     if(!this.stepStatus.hasAffordability){
                         this.$store.dispatch("calculator/formStepAction",1);
@@ -165,14 +170,30 @@ import calculator_mixin from '@/mixins/calculator_mixin'
                 case 3:
                     this.submitProfile();
                     break;
-        }
+                }
         },
-        stepBackward(){},
-        goStep(step){
+        stepBackward(){
 
+               switch(this.step){
+                case 1:
+                    // this.submitAffordability();
+                    break;
+                case 2:
+                   this.$store.commit("calculator/GO_TO_STEP",1);
+                    break;
+                case 3:
+                   this.$store.commit("calculator/GO_TO_STEP",2);
+                    break;
+                }
+
+
+        },
+        goStep(step){
+          this.$store.commit("calculator/GO_TO_STEP",1);
         }
         },
         created(){
+            this.validateStep();
             this.$nuxt.$on('process-status',(status)=>{
                 this.stepStatus = status;
                 console.log(this.stepStatus);
@@ -182,7 +203,7 @@ import calculator_mixin from '@/mixins/calculator_mixin'
         destroyed () {
         //  this.processStepFunction(false,false)
           this.step =1;
-          this.$store.commit("calculator/CLEAR_FORM")
+          // this.$store.commit("calculator/CLEAR_FORM")
         },
   }
 </script>
@@ -206,7 +227,5 @@ import calculator_mixin from '@/mixins/calculator_mixin'
   content:'' !important;
 }
 
-.form-tab input, .form-tab textarea{
-  height: 51px;
-}
+
 </style>

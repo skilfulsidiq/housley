@@ -1,7 +1,7 @@
 <template>
   <div>
        <form id="regForm" class="form-tab">
-                  <div class="heading">
+                  <div class="heading" v-if="showLocation">
                     <h1 class="big-font green bold">How much can I Afford</h1>
                     <p class="sub-title color1">
                       Calculate the home loan you qualify for, and how much
@@ -19,7 +19,7 @@
                     >
                     <input
                       type="text" v-model="monthly_income"
-                      class="form-control" :class="{ 'is-invalid': submitted && $v.form.monthly_net_pay.$error }"
+                      class="form-control test-form" :class="{'is-invalid': submitted && $v.form.monthly_net_pay.$error }"
                       aria-label="Sizing example input"
                       aria-describedby="inputGroup-sizing-default"
                     />
@@ -61,9 +61,9 @@
                       >₦</span
                     >
                     <input v-model="additional_income"
-                        :class="{ 'is-invalid': submitted && $v.form.additional_income.$error }"
+                        :class="{'is-invalid': submitted && $v.form.additional_income.$error }"
                       type="text"
-                      class="form-control"
+                      class="form-control test-form"
                       aria-label="Sizing example input"
                       aria-describedby="inputGroup-sizing-default"
                     />
@@ -111,7 +111,7 @@
                           >
                           <input
                             type="text"
-                            class="form-control"
+                            class="form-control test-form"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default"
                             v-model="outstanding_loans"
@@ -156,7 +156,7 @@
                     >
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control test-form"
                       aria-label="Sizing example input"
                        v-model="co_borrower"
                                   :class="{ 'is-invalid': submitted && $v.form.co_borrower_monthly_income.$error }"
@@ -175,7 +175,7 @@
                     /></span>
                     <input @blur="$v.form.dob.$touch()"
                       type="date"
-                      class="form-control"
+                      class="form-control test-form"
                       aria-label="Sizing example input"
                       aria-describedby="inputGroup-sizing-default"
                       :class="{ 'is-invalid': submitted && $v.form.dob.$error }"
@@ -269,7 +269,7 @@ export default {
     props:{
         inputBg:{type:String,default:'#fff'},
         formType:{type:Boolean,default:false},
-        showLocation:{type:Boolean,default:false}
+        showLocation:{type:Boolean,default:false},
     },
     data(){
         return{
@@ -323,6 +323,9 @@ export default {
         'form.loan_tenure':function(val){
             this.setitUp()
         },
+        // 'step':function(){
+        //   window.scrollTo(20,20)
+        // }
     },
     computed:{
 
@@ -383,6 +386,7 @@ export default {
                 this.$store.dispatch("calculator/saveAffordabilityFormAction",this.form)
                 this.$store.dispatch("calculator/calculateAffordabilityAction",this.form).then((r)=>{
                     this.processStepFunction(true,false);
+                    // this.$store.dispatch("calculator/formStepAction",2);
                     this.$nuxt.$emit('open-affordability-modal',false);
 
                     if(this.$route.name != 'properties-affordability'){
@@ -424,13 +428,19 @@ export default {
         this.$nuxt.$on('submitModalAffordability',(t)=>{
           this.submitFromModal();
         })
+        this.setitUp();
     },
     mounted(){
-         this.setitUp();
+
+         this.processStepFunction(false,false);
+         this.mapIncomingDataToForm(this.form,this.$store.state.calculator.form)
+        //  this.form = {...}
     }
 }
 </script>
 
 <style lang="scss" scoped>
-
+  .test-form{
+    height: 51px !important;
+  }
 </style>

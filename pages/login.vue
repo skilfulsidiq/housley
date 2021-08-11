@@ -43,6 +43,7 @@
 </template>
 
 <script>
+ import { required, email, minLength, sameAs,requiredIf,numeric } from "vuelidate/lib/validators";
   export default {
     layout:'auth',
        head(){

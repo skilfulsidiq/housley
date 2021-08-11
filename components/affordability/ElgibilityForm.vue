@@ -69,6 +69,7 @@
                         class="form-control"
                         aria-label="Sizing example input"
                         v-model="down_payment"
+                        readonly
                         aria-describedby="inputGroup-sizing-default"
                       />
                     </div>
@@ -155,7 +156,7 @@ import rangeMixin from "@/mixins/range"
         submitEligibility(){
           this.form.down_rate = this.down_rate;
           this.$store.dispatch("calculator/saveEligibilityFormAction",this.form);
-          // this.processStepFunction(true,true);
+
           this.$nuxt.$emit('open-down-payment-modal',true);
           //  this.$store.dispatch("formStepAction",3);
         },
@@ -232,6 +233,7 @@ import rangeMixin from "@/mixins/range"
     },
     mounted(){
         this.setitUp();
+        this.processStepFunction(false,false);
     },
       destroyed () {
           this.form =  {

@@ -150,7 +150,7 @@ export const actions={
   },
   async saveTourScheduleAction({commit},data){
       return new Promise((resolve,reject)=>{
-          this.$axios.$post(api.saveBookTour(data)).then((res) => {
+          this.$axios.$post(api.saveBookTour(),data).then((res) => {
               resolve(res);
           })
       }).catch(err=>{
@@ -159,7 +159,7 @@ export const actions={
   },
   async savePropertyEnquiryAction({commit},data){
       return new Promise((resolve,reject)=>{
-         this.$axios.$post( api.propertyEnquiry(data)).then((res) => {
+         this.$axios.$post( api.propertyEnquiry(),data).then((res) => {
               resolve(res);
           })
       }).catch(err=>{

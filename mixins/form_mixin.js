@@ -1,3 +1,4 @@
+
 export default{
   data(){
     return{
@@ -42,9 +43,12 @@ export default{
                 return parseInt(stringValue.replace(/,/g, ""));
               },
             formatToCommaSeperated(val) {
+                if(val){
+                    const result = val.toString().replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    return result;
+                }
+                return ''
 
-                const result = val.toString().replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                return result;
 
 
               },
@@ -54,7 +58,7 @@ export default{
                   return Number(v).toLocaleString("en");
                 }
               },
-          
+
           mapIncomingDataToForm(form, data) {
             // console.log(data);
             let ob = Object.entries(data);
