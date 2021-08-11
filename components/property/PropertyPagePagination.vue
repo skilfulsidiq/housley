@@ -89,7 +89,7 @@
         nextPag(url){
             // let link =
               if(url){
-                   let base =  process.env.API_URL;
+                   let base =  (process.env.NODE_ENV == 'production') ? 'https://api.afreal.one/api/' : 'http://mainhsf.test/api/';
             console.log('pganitaion url: ',base);
             // let path = this.pagination.path;
             let u = url.replace(base,'');
