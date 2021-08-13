@@ -1,5 +1,5 @@
 <template>
-        <div class="ppt-card" @click="chooseProperty">
+        <div class="ppt-card" >
                 <!-- <img id="property_img" src="/img/properties/house-card.jpg" alt="" /> -->
                 <img id="property_img" :src="property.property_cover_image" alt="" />
                 <div class="ppt-card-details">

@@ -5,7 +5,7 @@
        <section class="paginate">
       <!-- <div class="grid-ppt-cards grid"> -->
          <div class="pagination-footer flex-wrap" id="pagination">
-              <button type="button" class="xxsm-font green-btn s-bold" id="modal-trigge" data-toggle="modal" data-target="#exampleModal">
+              <button type="button" class="xxsm-font green-btn s-bold hoverable" @click="showModal">
                 Take the Affordability Test
               </button>
               <!-- <div id="btn-tab">
@@ -74,6 +74,9 @@
 
     },
     methods:{
+      showModal(){
+      this.$nuxt.$emit("open-affordability-modal",true);
+      },
        calculateDisable(index){
         if(this.pagination.currentPage <=1 && index==0){
             return true;

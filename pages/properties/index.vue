@@ -11,22 +11,21 @@
 
                         </p>
                     </div> -->
-                     <div class="ppt-heading" v-if="properties">
+                    <div class="" v-if="properties.length>0">
+                          <div class="ppt-heading" >
                         <h3 class="title bold big-font">Neighborhood, City, State</h3>
                         <p class="sub-title color1">
                           {{property_length}} + properties from Brains & Hammers listed on Houzzley
                         </p>
                       </div>
                         <property-list :properties="properties"/>
-                     <!-- <section class="paginate">
-                          <div class="grid-ppt-cards grid">
-                              <property-card v-for="property in properties" :key="property.id"
-                                :property="property"  :isChoose="false"
-                              />
+                    </div>
+                    <div v-if="properties.length<=0">
+                          <no-property title="No Property Found" :showRequestBtn="false" rightBtnText="View All Properties"
+                          :rightAction="viewAllProperty"
+                          />
+                    </div>
 
-
-                          </div>
-                     </section> -->
                   </div>
              </section>
      </main>
@@ -46,9 +45,10 @@ import form from "@/mixins/form_mixin"
 import general_mixin from "@/mixins/general_mixin"
 import PropertyList from '@/components/property/PropertyList.vue'
 import RequestMailingCard from '@/components/RequestMailingCard.vue'
+import NoProperty from '@/components/property/NoProperty.vue'
   export default {
     mixins:[form,general_mixin],
-  components: { PropertyCard,PropertySearchBar,PropertyPagePagination,PropertyList,RequestMailingCard},
+  components: { PropertyCard,PropertySearchBar,PropertyPagePagination,PropertyList,RequestMailingCard,NoProperty},
     auth:false,
     layout:"default",
       head(){
@@ -85,6 +85,9 @@ import RequestMailingCard from '@/components/RequestMailingCard.vue'
     onChangePage(pageOfItems) {
             // update page of items
             this.pageOfItems = pageOfItems;
+    },
+    viewAllProperty(){
+       this.$store.dispatch("property/allPropertiesAction")
     },
     fetchProperties(){
 

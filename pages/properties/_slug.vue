@@ -24,26 +24,6 @@
                 <div class="c property-photo"
                 :style="{backgroundImage:'url('+property.property_photos[2]+')'}">
                 </div>
-              <!-- <img
-                class="a"
-                :src="property.property_photos[0]"
-                alt="building"
-              /> -->
-              <!-- <div class="smaller-pics flex"> -->
-              <!-- <img
-                class="b"
-                :src="property.property_photos[1]"
-                alt="couch"
-              /> -->
-              <!-- <img
-                class="c"
-                :src="property.property_photos[2]"
-                alt="kitchen"
-              /> -->
-
-              <!-- <div class="bg"></div>
-                <div class="bg bg2"></div> -->
-              <!-- </div> -->
             </div>
           </section>
 
@@ -141,11 +121,11 @@
             </div>
             <div class="amenities-grid">
               <div class="boxed-details">
-                <p class="boxed-title bold color1 upward">Amenities1</p>
+                <p class="boxed-title bold color1 upward">Amenities</p>
                 <div class="boxed-body boxed-body-grid grid" v-if="property.property_amenities">
-                  <div class="ticked flex" v-for="(item,i) in property.property_amenities" :key="i">>
+                  <div class="ticked flex" v-for="(item,i) in property.property_amenities" :key="i">
                     <img src="/img/properties/tick.svg" alt="tick" />
-                    <!-- <p class="ticked-text color1">{{item.name}}</p> -->
+                    <p class="ticked-text color1">{{item.name}}</p>
                   </div>
 
                 </div>

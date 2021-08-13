@@ -172,6 +172,7 @@ export const mutations = {
 export const actions = {
 
 calculateAffordabilityAction({commit }, form) {
+   commit("SAVE_AFFORDABILITY_FORM", form);
     return new Promise((resolve, reject) => {
       console.log("submitted affordability: ", form)
       this.$axios.$post(api.calculateAffordability(),form).then((res) => {

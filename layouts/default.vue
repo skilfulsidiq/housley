@@ -34,6 +34,11 @@ import CongrationModal from '@/components/affordability/CongrationModal.vue';
       this.$store.dispatch("general/getAllFinanceOptionAction")
     }
     },
+    watch:{
+      '$route':function(v){
+        // if(v.path=='')
+      }
+    },
     created(){
       this.fetchGeneralData();
       //  $(".se-pre-con").fadeOut(1000);

@@ -81,6 +81,14 @@ import general_mixin from "@/mixins/general_mixin"
                  this.$store.commit("property/SEARCH_FORM",this.form)
                  this.$store.dispatch("property/searchPropertiesAction",this.form).then((r)=>{
                           this.$store.commit("property/LIST_STYLE","search");
+                          this.form={
+                              location:'',
+                              bedrooms:'',
+                              bathrooms:'',
+                              price:'',
+                              property_type:'',
+                              property_status:''
+                          }
                  });
              }
 

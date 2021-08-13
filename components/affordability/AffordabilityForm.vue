@@ -388,14 +388,29 @@ export default {
                     this.processStepFunction(true,false);
                     // this.$store.dispatch("calculator/formStepAction",2);
                     this.$nuxt.$emit('open-affordability-modal',false);
-
+                      this.clearForm();
                     if(this.$route.name != 'properties-affordability'){
                         this.$router.push({name:'properties-affordability'});
                     }
           });
 
       },
-  //
+      clearForm(){
+        this.form={
+              monthly_net_pay:'',
+              have_additional:'0',
+              additional_income:'',
+              have_existing_obligation:'0',
+              outstanding_loans:'',
+              have_co_borrower:'0',
+              co_borrower_monthly_income:'',
+              dob:'',
+              loan_tenure:'5',
+              location:'',
+              age:''
+          }
+      },
+  
       submitAffordability(){
             this.submitted=true
             this.$v.$touch();
@@ -405,6 +420,7 @@ export default {
            this.$store.dispatch("calculator/saveAffordabilityFormAction",this.form)
           this.$store.dispatch("calculator/calculateAffordabilityAction",this.form).then((r)=>{
              this.processStepFunction(true,false);
+            //  this.clearForm();
           //  this.$nuxt.$emit('open-affordability-modal',false);
             this.$store.dispatch("calculator/formStepAction",2);
           });

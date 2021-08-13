@@ -13,7 +13,7 @@
           <ul>
             <li><nuxt-link to="/info/about">About Us</nuxt-link></li>
             <li><nuxt-link to="/pre-approval">Pre-approval</nuxt-link></li>
-            <li><nuxt-link :to="{name:'properties'}">Property</nuxt-link></li>
+            <li><nuxt-link  @click="goToPropertiesPage" :to="{name:'properties'}">Property</nuxt-link></li>
             <li><nuxt-link to="/info/mortgage">Mortgage</nuxt-link></li>
             <li><nuxt-link to="/info/contact">Contact Us</nuxt-link></li>
             <li><nuxt-link to="/info/faq">FAQs</nuxt-link></li>
@@ -77,7 +77,12 @@
       }
     },
     methods:{
+      goToPropertiesPage(){
+           this.$store.commit("property/LIST_STYLE",'all');
+        this.$router.push('/properties');
+      },
       goPage(){
+         this.$store.commit("property/LIST_STYLE",'all');
         $(".mobile-nav").toggleClass('mobile-nav-state');
          $(".mobile-nav-overly").toggleClass('mobile-nav-overly-state');
         $('.hamburger').toggleClass("is-active");

@@ -5,16 +5,24 @@
         <div class="padded-content mt-183">
 
           <finance-summary-card/>
+            <div class="" v-if="properties.length>0">
+                 <div class="ppt-heading">
+                    <h3 class="title bold big-font">Filtered result for you</h3>
+                    <p class="sub-titl color1">
+                      Based on your affordability result, we have filtered down <br>properties that are suitable and affordable to you
+                    </p>
+                  </div>
 
-          <div class="ppt-heading">
-            <h3 class="title bold big-font">Filtered result for you</h3>
-            <p class="sub-titl color1">
-              Based on your affordability result, we have filtered down <br>properties that are suitable and affordable to you
-            </p>
-          </div>
+                 <property-list :properties="properties" :isChoose="true"/>
+                   <property-page-pagination :pagination="pagination"  mutator="AFFORDABLE_PROPERTIES" method="post" source="filter" />
+            </div>
 
-             <property-list :properties="properties" :isChoose="true"/>
-               <property-page-pagination :pagination="pagination"  mutator="AFFORDABLE_PROPERTIES" method="post" source="filter" />
+
+            <div v-if="properties.length<=0">
+              <no-property title="Can't find property within your Loanable Amount" :showRequestBtn="true" btnText="View All Properties" rightBtnText="Request for Property"
+              :action="showAllProperty" :rightAction="showRequestModal"
+              />
+            </div>
         </div>
       </section>
       <request-mailing-card/>
@@ -28,8 +36,9 @@ import form from "@/mixins/form_mixin"
 import general_mixin from "@/mixins/general_mixin"
 import FinanceSummaryCard from '@/components/affordability/FinanceSummaryCard.vue'
 import RequestMailingCard from '@/components/RequestMailingCard.vue'
+import NoProperty from '@/components/property/NoProperty.vue'
   export default {
-  components: { PropertyList,FinanceSummaryCard,RequestMailingCard },
+  components: { PropertyList,FinanceSummaryCard,RequestMailingCard,NoProperty },
   mixins:[form,general_mixin],
     auth:false,
       head(){
@@ -57,6 +66,13 @@ import RequestMailingCard from '@/components/RequestMailingCard.vue'
               }
         },
         methods:{
+                showRequestModal(){
+                  this.$nuxt.$emit("show_request_modal",true);
+                },
+               showAllProperty(){
+                    //
+                    this.$router.push("/properties")
+                  },
             fetchProperties(){
                 let p = this.$store.state.calculator.form;
                 let data = {price:p.max_loan_amount,location:p.location};
