@@ -15,6 +15,9 @@ export default {
    allStates() {
     return  "general/all-states";
   },
+   allPaymentOption() {
+     return "general/finance-option"
+   },
    allCitiesInState(state_id) {
     return  "general/all-cities/" + state_id;
   },
@@ -61,6 +64,9 @@ export default {
   },
    propertyEnquiry() {
     return   "general/property-enquiry";
+  },
+   saveUserRequestWithoutAuth() {
+    return   "general/save-property-request-no-auth";
   }
 
 

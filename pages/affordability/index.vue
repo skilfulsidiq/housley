@@ -1,6 +1,5 @@
 <template>
   <div>
-    <client-only>
     <main class="page-content">
       <section>
         <div class="padded-content">
@@ -85,9 +84,7 @@
         <!-- </div> -->
       </section>
     </main>
-    <down-payment-modal/>
-    <congration-modal/>
-    </client-only>
+       <down-payment-modal/>
   </div>
 </template>
 

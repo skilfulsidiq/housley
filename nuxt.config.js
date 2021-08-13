@@ -75,7 +75,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-      baseURL: process.env.NODE_ENV == 'production' ? 'https://api.afreal.one/api/' : 'http://mainhsf.test/api/'
+      baseURL: process.env.NODE_ENV != 'production' ? process.env.LOCAL_API_URL : process.env.API_URL
       // baseURL: 'http://police.test/api/'
     },
 

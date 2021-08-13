@@ -123,6 +123,10 @@ export default{
             {
               src: "/js/custom/textslide.js",body:true
             },
+
+            // {
+            //   src: "/js/custom/stepForm.js",body:true
+            // },
             // {
             //   src: "/js/custom/pagination.js", body: true
             // },

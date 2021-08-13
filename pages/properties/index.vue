@@ -32,6 +32,8 @@
      </main>
      <!-- </client-only> -->
     <property-page-pagination :pagination="pagination"  mutator="ALL_PROPERTIES" :method="list_type=='all'?'get':'post'" />
+
+       <request-mailing-card/>
     </client-only>
   </div>
 </template>
@@ -43,9 +45,10 @@ import PropertySearchBar from '@/components/property/PropertySearchBar.vue'
 import form from "@/mixins/form_mixin"
 import general_mixin from "@/mixins/general_mixin"
 import PropertyList from '@/components/property/PropertyList.vue'
+import RequestMailingCard from '@/components/RequestMailingCard.vue'
   export default {
     mixins:[form,general_mixin],
-  components: { PropertyCard,PropertySearchBar,PropertyPagePagination,PropertyList},
+  components: { PropertyCard,PropertySearchBar,PropertyPagePagination,PropertyList,RequestMailingCard},
     auth:false,
     layout:"default",
       head(){
@@ -101,6 +104,7 @@ import PropertyList from '@/components/property/PropertyList.vue'
   },
   created(){
     this.fetchProperties();
+    console.log(process.env.NODE_ENV)
 
   }
   }

@@ -4,7 +4,12 @@
       <AppHeader/>
        <client-only>
           <nuxt/>
-        <affordability-modal/></client-only>
+        <affordability-modal/>
+        <property-request-modal/>
+
+            <congration-modal/>
+
+        </client-only>
       <AppFooter/>
   </div>
 </template>
@@ -12,8 +17,10 @@
 <script>
 import headScript from '@/static/headScript'
 import AffordabilityModal from '@/components/affordability/AffordabilityModal.vue';
+import PropertyRequestModal from '@/components/property/PropertyRequestModal.vue';
+import CongrationModal from '@/components/affordability/CongrationModal.vue';
   export default {
-  components: { AffordabilityModal },
+  components: { AffordabilityModal,PropertyRequestModal,CongrationModal },
 
     head(){
       return headScript;
@@ -24,6 +31,7 @@ import AffordabilityModal from '@/components/affordability/AffordabilityModal.vu
       this.$store.dispatch("general/getPropertyTypeAction")
       this.$store.dispatch("general/getPropertyStatusAction")
       this.$store.dispatch("general/getAllStatesAction")
+      this.$store.dispatch("general/getAllFinanceOptionAction")
     }
     },
     created(){

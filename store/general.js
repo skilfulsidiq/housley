@@ -4,7 +4,8 @@ export  const state = ()=>({
    property_status_list: [],
    states: [],
    cities: [],
-   lender_rates: []
+   lender_rates: [],
+   payment_options:[]
 })
 export const mutations ={
     UPDATE_STATES(state, payload) {
@@ -21,7 +22,10 @@ export const mutations ={
       },
       LENDER_RATE(state, payload) {
         state.lender_rates = payload;
-      }
+      },
+       UPDATE_FINANCE_OPTION(state, payload) {
+         state.payment_options = payload
+       },
 }
 export const actions={
  async getLenderRateAction({commit}){
@@ -41,7 +45,7 @@ export const actions={
        let res = await this.$axios.$get(api.allCitiesInState(state_id));
           let y = res.data;
           commit("UPDATE_CITIES", y);
-     return r;
+     return y;
   },
  async getPropertyTypeAction({commit}){
      let res = await this.$axios.$get(api.propertyTypeList());
@@ -51,6 +55,15 @@ export const actions={
       return r;
 
   },
+   async getAllFinanceOptionAction({
+     commit
+   }) {
+     let res = await this.$axios.$get(api.allPaymentOption());
+     let y = res.data;
+     commit("UPDATE_FINANCE_OPTION", y);
+     return y;
+
+   },
   getPropertyStatusAction({commit}){
         this.$axios.$get(api.propertyStatusList()).then((res) => {
             // console.log(res);
@@ -58,5 +71,6 @@ export const actions={
             commit("PROPERTY_STATUS_LIST", r);
         })
     },
+
 }
 export const getters={}

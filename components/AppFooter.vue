@@ -18,7 +18,7 @@
                                 <input name='email' type='text' value='' placeholder="Enter your email address">
                         </div>
                         <div class='subscription-submit'>
-                                <input name="submit" type="submit" value="Submit">
+                                <input name="submit" type="submit" value="Submit" >
                         </div>
 
 

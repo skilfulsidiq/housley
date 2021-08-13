@@ -2,7 +2,7 @@
   <div>
        <div
           class="modal preapprovalform modal fade"
-          id="exampleModal"
+          id="requestModal"
           tabindex="-1"
           role="dialog"
           aria-labelledby="exampleModalLabel"
@@ -11,16 +11,12 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="pre-approval-form-container">
-                <img
-                  class="modal-close"
-                  src="/img/close.svg"
-                  data-dismiss="modal"
-                  alt="close"
-                />
+                <img class="modal-close" src="/img/close.svg" data-dismiss="modal"
+                  alt="close"/>
 
-                <form id="regForm" class="form-tab">
+                <div id="regForm" class="form-tab" >
                   <!-- One "tab" for each step in the form: -->
-                  <div class="tab-step">
+                  <div class="request-form">
                     <div class="heading">
                       <h1 class="big-font green bold">Property Request</h1>
                       <p class="sub-title color1">
@@ -31,400 +27,158 @@
                     <div class="doub-grid">
                       <div>
                         <label for="firstName">First Name</label>
-
-                        <input
+                        <input v-model="form.firstname"
                           type="text"
                           name="firstName"
                           id="firstName"
                           class="color1"
-                        />
+                          :class="{ 'is-invalid': submitted && $v.form.firstname.$error }" />
+                         <div v-if="submitted && !$v.form.firstname.required" class="form-error">FirstName is required</div>
                       </div>
                       <div>
                         <label for="lastName">Last Name</label>
 
-                        <input
+                        <input v-model="form.lastname"
                           type="text"
                           name="lastName"
                           id="lastName"
                           class="color1"
-                        />
+                         :class="{ 'is-invalid': submitted && $v.form.lastname.$error }" />
+                         <div v-if="submitted && !$v.form.lastname.required" class="form-error">Lastname is required</div>
                       </div>
                     </div>
 
                     <div class="doub-grid">
                       <div>
                         <label for="Email">Email</label>
-                        <input
+                        <input v-model="form.email"
                           type="email"
                           name="Email"
                           id="Email"
                           class="color1"
-                        />
+                       :class="{ 'is-invalid': submitted && $v.form.email.$error }" />
+                         <div v-if="submitted && !$v.form.email.required" class="form-error">Email is required</div>
+                         <div v-if="submitted && !$v.form.email.email" class="form-error">Enter a valid Email</div>
                       </div>
                       <div>
-                        <label for="phoneNumber">Home Type</label>
+                        <label for="phoneNumber">Phone</label>
 
-                        <input
+                        <input v-model="form.phone"
+                        min="1"
                           type="number"
                           name="phoneNumber"
                           id="phoneNumber"
                           class="color1"
-                        />
+                        :class="{ 'is-invalid': submitted && $v.form.phone.$error }" />
+                         <div v-if="submitted && !$v.form.phone.required" class="form-error">Phone is required</div>
+                         <div v-if="submitted && !$v.form.phone.numeric" class="form-error">Phone number must be a number</div>
+                         <div v-if="submitted && !$v.form.phone.minLength" class="form-error">Enter valid Phone number</div>
                       </div>
                     </div>
 
-                    <div>
-                      <label for="homeType">Home Type</label>
-                      <div class="select">
-                        <select id="homeType">
-                          <option class="selected" value="selected">
-                            Please select the type of property
-                          </option>
-                          <option value="Option 1">Option 1</option>
-                          <option value="Option 2">Option 2</option>
-                          <option value="Option 3">Option 3</option>
-                        </select>
-                        <span class="focus"></span>
+
+                       <div class="doub-grid">
+                         <div>
+                          <label for="homeType">Property Type</label>
+                          <div class="select">
+                            <select id="homeType" v-model="form.property_type_id" :class="{ 'is-invalid': submitted && $v.form.property_type_id.$error }" >
+
+                              <option class="selected" value="selected">
+                                select property type
+                              </option>
+                               <option :value="type.id" v-for="type in property_types" :key="type.id">{{type.name}}</option>
+                            </select>
+                            <span class="focus"></span>
+
+                          </div>
+                            <div v-if="submitted && !$v.form.property_type_id.required" class="form-error">Property Type is required</div>
+                        </div>
+                         <div>
+                        <label for="phoneNumber">Number of Bedrooms</label>
+
+                        <input v-model="form.property_bedroom"
+                        min="1"
+                          type="number"
+                          name="bedroom"
+                          id="phoneNumber"
+                          class="color1"
+                        :class="{ 'is-invalid': submitted && $v.form.property_bedroom.$error }" />
+                         <div v-if="submitted && !$v.form.property_bedroom.required" class="form-error">Property bedroom is required</div>
                       </div>
-                    </div>
-                    <div>
-                      <label for="homeType">Number of Bedrooms</label>
-                      <div class="select">
-                        <select id="homeType">
-                          <option class="selected" value="selected">
-                            Please select the number of bedrooms
-                          </option>
-                          <option value="Option 1">Option 1</option>
-                          <option value="Option 2">Option 2</option>
-                          <option value="Option 3">Option 3</option>
-                        </select>
-                        <span class="focus"></span>
-                      </div>
-                    </div>
-                    <div>
-                      <label for="homeType">Number of Bathrooms</label>
-                      <div class="select">
-                        <select id="homeType">
-                          <option class="selected" value="selected">
-                            Please select the number of bathrooms
-                          </option>
-                          <option value="Option 1">Option 1</option>
-                          <option value="Option 2">Option 2</option>
-                          <option value="Option 3">Option 3</option>
-                        </select>
-                        <span class="focus"></span>
-                      </div>
-                    </div>
-                    <div>
+
+                       </div>
+                        <div class="doub-grid">
+
+                        <div>
                       <label for="homeType">Payment Options</label>
                       <div class="select">
-                        <select id="homeType">
+                        <select id="homeType" v-model="form.payment_option" :class="{ 'is-invalid': submitted && $v.form.payment_option.$error }" >
                           <option class="selected" value="selected">
-                            Please select the payment option you would prefer
+                            select payment option
                           </option>
-                          <option value="Option 1">Option 1</option>
-                          <option value="Option 2">Option 2</option>
-                          <option value="Option 3">Option 3</option>
+                           <option :value="option.option" v-for="option in payment_options" :key="option.id">{{option.option}}</option>
                         </select>
                         <span class="focus"></span>
-                      </div>
-                    </div>
-                    <div>
-                      <label for="homeType">Desired State</label>
-                      <div class="select">
-                        <select id="homeType">
-                          <option class="selected" value="selected">
-                            Please select the most preferred state
-                          </option>
-                          <option value="Option 1">Option 1</option>
-                          <option value="Option 2">Option 2</option>
-                          <option value="Option 3">Option 3</option>
-                        </select>
-                        <span class="focus"></span>
-                      </div>
-                    </div>
-                    <div>
-                      <label for="homeType">Desired City</label>
-                      <div class="select">
-                        <select id="homeType">
-                          <option class="selected" value="selected">
-                            Please select the most preferred city
-                          </option>
-                          <option value="Option 1">Option 1</option>
-                          <option value="Option 2">Option 2</option>
-                          <option value="Option 3">Option 3</option>
-                        </select>
-                        <span class="focus"></span>
-                      </div>
-                    </div>
-                    <div class="flex next-prev">
-                      <button
-                        type="button"
-                        id="prevBtn"
-                        onclick="nextPrev(-1)"
-                        class="next xxsm-font white-btn s-bold"
-                      >
-                        Previous
-                      </button>
-                      <button
-                        type="button"
-                        id="nextBtn"
-                        onclick="nextPrev(1)"
-                        class="next xxsm-font green-btn s-bold"
-                      >
-                        Submit
-                      </button>
-                    </div>
-                  </div>
-                  <div class="tab-step">
-                    <div class="heading">
-                      <h1 class="big-font green bold">How much can I Afford</h1>
-                      <p class="sub-title color1">
-                        Calculate the home loan you qualify for, and how much
-                        you can expect to pay monthly on your home loan
-                        repayments.
-                      </p>
-                    </div>
-                    <div class="input-group mb-3">
-                      <span
-                        class="input-group-text color1"
-                        id="inputGroup-sizing-default"
-                        >₦</span
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        aria-label="Sizing example input"
-                        value="$ 27,000,000.00"
-                        aria-describedby="inputGroup-sizing-default"
-                      />
-                    </div>
-                    <div class="q-radio">
-                      <p class="name color1">Do you have Additional Income?</p>
-                      <div class="modal-radios flex flex-wrap">
-                        <p class="mr-radio">
-                          <input
-                            type="radio"
-                            id="incomeYes"
-                            name="incomeYes"
-                            checked
-                          />
-                          <label class="color1 xsm-font" for="incomeYes"
-                            >Yes I do</label
-                          >
-                        </p>
-                        <p>
-                          <input type="radio" id="incomeNo" name="incomeNo" />
-                          <label class="color1 xsm-font" for="incomeNo"
-                            >No I do not</label
-                          >
-                        </p>
-                      </div>
-                    </div>
 
-                    <div class="input-group mb-3">
-                      <span
-                        class="input-group-text color1"
-                        id="inputGroup-sizing-default"
-                        >₦</span
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        aria-label="Sizing example input"
-                        value="$ 27,000,000.00"
-                        aria-describedby="inputGroup-sizing-default"
-                      />
-                    </div>
-                    <div class="q-radio">
-                      <p class="name color1">
-                        Do you have other Loan Obligations?
-                      </p>
-                      <div class="modal-radios flex flex-wrap">
-                        <p class="mr-radio">
-                          <input
-                            type="radio"
-                            id="obligationsYes"
-                            name="obligationsYes"
-                            checked
-                          />
-                          <label class="color1 xsm-font" for="obligationsYes"
-                            >Yes I do</label
-                          >
-                        </p>
-                        <p>
-                          <input
-                            type="radio"
-                            id="obligationsNo"
-                            name="obligationsNo"
-                          />
-                          <label class="color1 xsm-font" for="obligationsNo"
-                            >No I do not</label
-                          >
-                        </p>
                       </div>
-                    </div>
-                    <div class="input-group mb-3">
-                      <span
-                        class="input-group-text color1"
-                        id="inputGroup-sizing-default"
-                        >₦</span
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        aria-label="Sizing example input"
-                        value="$ 27,000,000.00"
-                        aria-describedby="inputGroup-sizing-default"
-                      />
-                    </div>
-                    <div class="input-group mb-3">
-                      <span
-                        class="input-group-text color1"
-                        id="inputGroup-sizing-default"
-                        ><img src="/img/date.png" alt="date"
-                      /></span>
-                      <input
-                        type="text"
-                        value="27/03/1989"
-                        class="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-default"
-                      />
-                    </div>
-                    <div class="q-radio">
-                      <p class="name color1">
-                        Are you borrowing with a Partner?
-                      </p>
-                      <div class="modal-radios flex flex-wrap">
-                        <p class="mr-radio">
-                          <input
-                            type="radio"
-                            id="partnerYes"
-                            name="partnerYes"
-                            checked
-                          />
-                          <label class="color1 xsm-font" for="partnerYes"
-                            >Yes, with Partner</label
-                          >
-                        </p>
-                        <p>
-                          <input type="radio" id="partnerNo" name="partnerNo" />
-                          <label class="color1 xsm-font" for="partnerNo"
-                            >No, I am Borrowing Alone</label
-                          >
-                        </p>
-                      </div>
-                    </div>
-                    <div class="input-group mb-3">
-                      <span
-                        class="input-group-text color1"
-                        id="inputGroup-sizing-default"
-                        >₦</span
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        aria-label="Sizing example input"
-                        value="$ 27,000,000.00"
-                        aria-describedby="inputGroup-sizing-default"
-                      />
-                    </div>
-                    <div class="q-radio">
-                      <p class="name color1">
-                        How long do you want this Loan for?
-                      </p>
-                    </div>
-                    <div class="range-wrap flex">
-                      <input
-                        class="range"
-                        type="range"
-                        value="8"
+                      <div v-if="submitted && !$v.form.payment_option.required" class="form-error">Payment Option is required</div>
+                        </div>
+                         <div>
+                        <label for="phoneNumber">Budgeted Property value</label>
+
+                        <input v-model="price"
                         min="1"
-                        max="30"
-                        step="1"
-                      />
-                      <p class="min color1 abs-value">1Year</p>
-                      <p class="max color1 abs-value">30Years</p>
-
-                      <div class="flex bubbled">
-                        <output class="color1 bubble"></output
-                        ><span>Years</span>
+                          type="text"
+                          id="phoneNumber"
+                          class="color1"
+                         :class="{ 'is-invalid': submitted && $v.form.property_value.$error }" />
+                         <div v-if="submitted && !$v.form.property_value.required" class="form-error">Property Value is required</div>
                       </div>
-                    </div>
+                        </div>
 
-                    <div class="input-group input-group-select2 mb-5 mt-70">
-                      <span
-                        class="input-group-text color1"
-                        id="inputGroup-sizing-default"
-                        ><img
-                          src="/img/home/header/location.svg"
-                          alt="location"
-                      /></span>
-                      <div class="select select-modal2">
-                        <select id="location">
-                          <option value="Lagos">Lagos</option>
-                          <option value="Abia">Abia</option>
-                          <option value="Ogun">Ogun</option>
-                        </select>
-                        <span class="focus"></span>
-                      </div>
-                    </div>
-
+                       <div class="doub-grid">
+                          <div>
+                            <label for="homeType">Desired State</label>
+                            <div class="select">
+                              <select id="homeType" v-model="form.state_id"  :class="{ 'is-invalid': submitted && $v.form.state_id.$error }" >
+                                <option class="selected" selected>
+                                  Select state
+                                </option>
+                                <option :value="state.id" v-for="state in all_states" :key="state.id">{{state.name}}</option>
+                              </select>
+                              <span class="focus"></span>
+                            </div>
+                            <div v-if="submitted && !$v.form.state_id.required" class="form-error">State is required</div>
+                          </div>
+                          <div>
+                            <label for="homeType">Desired City</label>
+                            <div class="select">
+                              <select id="homeType" v-model="form.city_id"  :class="{ 'is-invalid': submitted && $v.form.city_id.$error }" >
+                                <option class="selected" value="selected">
+                                  Select preferred city
+                                </option>
+                                 <option :value="city.id" v-for="city in all_cities" :key="city.id">{{city.name}}</option>
+                              </select>
+                              <span class="focus"></span>
+                            </div>
+                              <div v-if="submitted && !$v.form.city_id.required" class="form-error">City is required</div>
+                          </div>
+                       </div>
                     <div class="flex next-prev">
                       <button
                         type="button"
-                        id="prevBtn"
-                        onclick="nextPrev(-1)"
-                        class="next xxsm-font white-btn s-bold"
+                        @click.stop="submitForm"
+                        class="next xxsm-font green-btn s-bold hoverable"
+
                       >
-                        Previous
-                      </button>
-                      <button
-                        type="button"
-                        id="nextBtn"
-                        onclick="nextPrev(1)"
-                        class="next xxsm-font green-btn s-bold"
-                      >
-                        Check Loan Affordability
-                      </button>
-                    </div>
-                  </div>
-                  <div class="tab-step tab-success">
-                    <div class="mark-icon flex">
-                      <img src="/img/mark.png" alt="marked" >
-                    </div>
-                    <div class="heading">
-                      <h1 class="big-font green bold">
-                        You have been Pre-Qualified to Apply for a Mortgage
-                      </h1>
-                      <p class="sub-title color1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Accumsan auctor aliquam leo posuere.
-                      </p>
-                    </div>
-                    <div class="flex next-prev">
-                      <button
-                        type="button"
-                        id="prev"
-                        onclick="nextPrev(-1)"
-                        class="next xxsm-font white-btn s-bold"
-                      >
-                        Previous
-                      </button>
-                      <button
-                        type="button"
-                        id="nextBtn"
-                        onclick="nextPrev(1)"
-                        class="next xxsm-font green-btn s-bold"
-                      >
-                        Start Application
+                           Submit
                       </button>
                     </div>
                   </div>
 
 
-                </form>
+
+                </div>
               </div>
             </div>
           </div>
@@ -433,11 +187,134 @@
 </template>
 
 <script>
+ import { required, email, minLength, sameAs,requiredIf,numeric } from "vuelidate/lib/validators";
+ import form_mixin from "@/mixins/form_mixin";
+ import general_mixin from "@/mixins/general_mixin";
   export default {
-
+    mixins:[form_mixin,general_mixin],
+    data(){
+      return{
+        submitted:false,
+          submiting:false,
+          form:{
+            firstname:'',
+            lastname:'',
+            email:'',
+            phone:'',
+            property_value:'',
+            found_property:0,
+            state_id:'',
+            city_id:'',
+            property_bedroom:'',
+            found_property:'',
+            property_type_id:'',
+            payment_option:''
+          }
+      }
+    },
+       validations: {
+            form: {
+                  firstname: { required },
+                  lastname: { required },
+                  email: { required, email },
+                  phone: { required, numeric,minLength:minLength(10) },
+                  property_value:{required},
+                  property_bedroom:{required},
+                  state_id:{required},
+                  city_id:{required},
+                  property_type_id:{required},
+                  payment_option:{required}
+            }
+      },
+      computed:{
+        all_states(){
+          return this.$store.state.general.states
+        },
+        property_types(){
+          return this.$store.state.general.property_types
+        },
+        all_cities(){
+          return this.$store.state.general.cities
+        },
+        payment_options(){
+          return this.$store.state.general.payment_options
+        },
+        price:{
+          get(){
+            return this.formatToCommaSeperated(this.form.property_value);
+          },
+          set(v){
+            this.form.property_value = this.removeCommaFromNumber(v);
+          }
+        }
+      },
+      watch:{
+        'form.state_id':function(v){
+          this.fetchCities(v);
+        }
+      },
+    methods:{
+      showModal(){
+        $("#requestModal").modal('show');
+      },
+      closeModal(){
+        $("#requestModal").modal('hide');
+      },
+      clearForm(){
+        this.form={
+           firstname:'',
+            lastname:'',
+            email:'',
+            phone:'',
+            property_value:'',
+            found_property:0,
+            state_id:'',
+            city_id:'',
+            property_bedroom:'',
+            found_property:'',
+            property_type_id:'',
+            payment_option:''
+        }
+      },
+      submitForm(){
+           console.log("submittign activated")
+         this.submitted=true
+          this.$v.$touch();
+          if (this.$v.$invalid) {
+                return;
+          }
+             console.log("before api calls")
+          // this.submiting=true;
+          this.$store.dispatch("calculator/saveUserRequestWithAuthAction",this.form).then((res)=>{
+              // this.submiting=false
+              this.closeModal();
+              this.clearForm();
+              console.log(res);
+          }).catch(e=>{
+            this.submiting=false;
+            console.log(e.response);
+          })
+      }
+    },
+    created(){
+        this.$nuxt.$on("show_request_modal",(param)=>{
+          if(param){
+            this.showModal();
+          }else{
+            this.closeModal();
+          }
+        })
+        this.$nuxt.$on("submitForm",(param)=>{
+          if(param){
+            this.submitForm();
+          }
+        })
+    }
   }
 </script>
 
 <style lang="scss" scoped>
-
+.tab-step{
+  display: block;
+}
 </style>

@@ -17,6 +17,7 @@
                <property-page-pagination :pagination="pagination"  mutator="AFFORDABLE_PROPERTIES" method="post" source="filter" />
         </div>
       </section>
+      <request-mailing-card/>
     </main>
   </div>
 </template>
@@ -26,8 +27,9 @@ import PropertyList from '@/components/property/PropertyList.vue'
 import form from "@/mixins/form_mixin"
 import general_mixin from "@/mixins/general_mixin"
 import FinanceSummaryCard from '@/components/affordability/FinanceSummaryCard.vue'
+import RequestMailingCard from '@/components/RequestMailingCard.vue'
   export default {
-  components: { PropertyList,FinanceSummaryCard },
+  components: { PropertyList,FinanceSummaryCard,RequestMailingCard },
   mixins:[form,general_mixin],
     auth:false,
       head(){

@@ -297,17 +297,19 @@ export const actions = {
 
          //     commit("AFFORDABILITY_RESULT", profile);
     },
-    saveUserRequestAction({ commit }, profile) {
-             return new Promise((resolve, reject) => {
-               this.$axios.$post(api.saveUserRequest(),profile).then((res)=>{
-                 let y = res.data.data;
-                 commit("UPDATE_USER_REQUEST", y);
+    saveUserRequestAction({
+      commit
+    }, profile) {
+      return new Promise((resolve, reject) => {
+        this.$axios.$post(api.saveUserRequest(), profile).then((res) => {
+          let y = res.data.data;
+          commit("UPDATE_USER_REQUEST", y);
 
-                 resolve(y)
-               }).catch((err)=>{
-                 reject(err);
-               })
-             })
+          resolve(y)
+        }).catch((err) => {
+          reject(err);
+        })
+      })
 
     },
       saveAffordabilityFormAction({

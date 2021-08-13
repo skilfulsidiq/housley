@@ -1,13 +1,13 @@
 <template>
     <div>
-        <button 
+        <button
             :type="type"
             @click.prevent="action"
 
             :class="btnclass"
             :id="btnid"
           >
-          {{loading?"loading...":text}}
+          {{btnloading?"loading...":text}}
           </button>
     </div>
 </template>
@@ -26,6 +26,7 @@ import general_mixin from "@/mixins/general_mixin"
             width:{type:String,default:""},
             height:{type:String,default:''},
             action:{type:Function},
+            btnloading:{type:Boolean,default:false}
 
         }
     }

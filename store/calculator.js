@@ -213,7 +213,20 @@ calculateAffordabilityAction({commit }, form) {
             reject(err);
           })
         })
-      }
+  },
+  saveUserRequestWithAuthAction({commit }, profile) {
+      return new Promise((resolve, reject) => {
+        this.$axios.$post(api.saveUserRequestWithoutAuth(), profile).then((res) => {
+          let y = res.data;
+          // commit("UPDATE_USER_REQUEST", y);
+
+          resolve(y)
+        }).catch((err) => {
+          reject(err);
+        })
+      })
+
+    },
 
 
 }

@@ -159,9 +159,9 @@ export default {
                   let all = this.$store.state.calculator.form;
 
                   this.$store.dispatch("calculator/submitPreQualifiedAction",all).then((res)=>{
-                        // this.$nuxt.$emit('prequalified-modal',true);
-                        console.log("profile saved")
-                        this.$router.push("/register")
+                        this.$nuxt.$emit('prequalified-modal',true);
+                        // console.log("profile saved")
+                        // this.$router.push("/register")
 
                         // $("#congratulationModal").modal('show');
                   })

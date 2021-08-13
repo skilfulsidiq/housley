@@ -10,30 +10,40 @@
       aria-labelledby="congratulationModalLabel"
       aria-hidden="true"
       >
-        <div class="modal-dialog" role="document" style="width:45rem">
+        <div class="modal-dialog" role="document" style="width:35rem">
           <div class="modal-content">
-            <div class="pre-approval-form-container">
-              <img style="margin-top:-3rem"
-                class="modal-close cursor pointer"
-                src="/img/close.svg"
-                data-dismiss="modal"
-                alt="close"
-              />
-              <div class="congratulation-wrapper">
-                  <figure><img src="/img/congratsIcon.png" alt="Congratulations Icon">
-                  </figure>
-                  <h3>You have been Pre-Qualified to Apply for a Mortgage</h3>
-              </div>
-                <div class="action-button">
-                  <button type="button" class="xxsm-font white-btn2 s-bold proceed-cta-btn " @click.prevent="close" >Close </button>
-
-                            <button
+             <div class="pre-approval-form-container">
+                <div class="tab-step2 tab-success">
+                        <div class="mark-icon flex">
+                          <img src="/img/mark.png" alt="marked" >
+                        </div>
+                        <div class="heading">
+                          <h1 class="big-font green bold">
+                            You have been Pre-Qualified to Apply for a Mortgage
+                          </h1>
+                          <p class="sub-title color1">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Accumsan auctor aliquam leo posuere.
+                          </p>
+                        </div>
+                        <div class="flex next-prev">
+                          <button @click.prevent="hideModal"
                             type="button"
-                            id="nextBtnStep"
-                            class="xxsm-font green-btn s-bold hoverable proceed-cta-btn "
-                              @click.prevent="startApplication">Create Account</button>
+                            id="prev"
+                            class="next xxsm-font white-btn s-bold"
+                          >
+                            Close
+                          </button>
+                          <button @click.prevent="startApplication"
+                            type="button"
+                            id="nextBtn"
+                            class="next xxsm-font green-btn s-bold hoverable"
+                          >
+                            Start Application
+                          </button>
+                        </div>
                 </div>
-            </div>
+             </div>
           </div>
         </div>
   </div>
@@ -77,80 +87,38 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .confirmation-wrapper {
-    justify-content: center;
-    text-align: center;
-    padding: 0 1rem 3rem;
-}
-.confirmation-wrapper figure img {
-    width: 65px;
-    height: 65px;
-    margin-top: -20px;
-}
-.confirmation-wrapper p {
-    margin-top: 10px;
-    color: #16465c;
-    font-weight: 400;
-}
-.equity-content-wrapper {
-    background: #e9f7fe;
-    border: 1px dashed $secondary;
-    box-sizing: border-box;
-    border-radius: 12px;
-    padding: 1rem;
-}
-.equity-content-wrapper h3 {
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 35px;
-    text-align: center;
-    color: #16465c;
-}
-.equity-content-wrapper h2 {
-    font-weight: 800;
-    // font-size: 15px;
-    line-height: 35px;
-    text-align: center;
-    color: $secondary;
-}
-.modal-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0;
-    border-top: none;
-    margin-top: -50px;
+  .modal-content {
     padding: 2rem;
-    flex-wrap: nowrap;
-}
-.action-button{
-  display: flex;
-  justify-content: space-between;
-}
-.proceed-cta-btn {
-    // border: 1px solid #16465c;
-    // font-weight: 500;
-    // font-size: 15px;
-    // padding: 20px 25px;
-    // letter-spacing: .04em;
-    // border-radius: 12px;
-    min-width: 40%;
-}
+  }
+  .big-font {
+    font-size: 2rem;
+    line-height: 40px;
+    letter-spacing: -0.5px;
+  }
+  .pre-approval-form-container .sub-title {
+    font-family: poppins;
+    width: 100%;
+    margin: 1rem auto auto auto;
+  }
+
+  .pre-approval-form-container .green-btn {
+     padding: 0.5rem 1.5rem;
+    }
+
+
 
 @media (max-width:800px){
+    .modal-content {
+    padding: 1rem;
+  }
+   .big-font {
+    font-size: 1.5rem;
+    line-height: 40px;
+    letter-spacing: -0.5px;
+  }
 
-  .confirmation-wrapper{
-    padding:2rem 0.2rem;
-  }
-  .action-button{
-    display: flex;
-    justify-content: space-around;
-    align-items:center;
-    flex-direction: column;
-  }
-  .proceed-cta-btn {
-    margin-bottom:0.5rem;
-    min-width: 100%;
-  }
+
+
+
 }
 </style>
