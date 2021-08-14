@@ -1,6 +1,6 @@
 <template>
   <div>
-       <form id="regForm" class="form-tab">
+       <form  ref="form" id="regForm" class="form-tab">
                   <div class="heading" v-if="showLocation">
                     <h1 class="big-font green bold">How much can I Afford</h1>
                     <p class="sub-title color1">
@@ -211,7 +211,7 @@
                       ><span> &nbsp;Years</span>
                     </div>
                   </div> -->
-                      <range-slider class="slider" :min="min_range" :max="max_range" step="1" v-model="form.loan_tenure">
+                      <range-slider class="range-slider" :min="min_range" :max="max_range" step="1" v-model="form.loan_tenure">
                                     <template slot="knob">
                                         <div class="knobby">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="40" height="40">
@@ -268,6 +268,7 @@ import Vue from 'vue';
 import FormMixin from '@/mixins/form_mixin'/*  */
 import CalculatorMixin from '@/mixins/calculator_mixin'/*  */
 import rangeMixin from "@/mixins/range"
+import generalMixin from "@/mixins/general_mixin"
 
 import { required, email, minLength, sameAs,requiredIf,numeric } from "vuelidate/lib/validators";
 import RangeSlider from "vue-range-slider";
@@ -284,7 +285,7 @@ const too_young = (value, vm) =>{
 };
 export default {
   components:{RangeSlider},
-  mixins:[FormMixin,CalculatorMixin,rangeMixin],
+  mixins:[FormMixin,CalculatorMixin,rangeMixin,generalMixin],
     name:"AffordabilityForm",
     props:{
         inputBg:{type:String,default:'#fff'},
@@ -305,7 +306,7 @@ export default {
               have_co_borrower:'0',
               co_borrower_monthly_income:'',
               dob:'',
-              loan_tenure:'5',
+              loan_tenure:5,
               location:'',
               age:''
           },
@@ -401,6 +402,8 @@ export default {
           this.submitted=true
             this.$v.$touch();
             if (this.$v.$invalid) {
+              // let p = this.getPosition(this.$refs.form);
+              // window.scrollTo(p.x,p.y);
                 return;
             }
                 this.$store.dispatch("calculator/saveAffordabilityFormAction",this.form)

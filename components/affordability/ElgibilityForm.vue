@@ -53,7 +53,7 @@
                         <output class="color1 bubble"></output><span>%</span>
                       </div>
                     </div> -->
-                       <range-slider class="slider" :min="min_range" :max="max_range" step="1" v-model="down_rate">
+                       <range-slider class="range-slider" :min="min_range" :max="max_range" step="1" v-model="down_rate">
                                             <template slot="knob">
                                               <div class="knobby">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">

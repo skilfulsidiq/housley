@@ -62,7 +62,7 @@
                   </div>
 
                     <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
-                           <label class="form-control-label">Do you have NHF number ?</label>
+                           <label class="form-control-label"> Are you a RSA holder ?</label>
                         <select  v-model="form.is_rsa_holder" class='form-control' :class="{ 'is-invalid': submitted && $v.form.is_rsa_holder.$error }">
                               <option value="" selected></option>
                               <option value="1">Yes</option>
@@ -72,10 +72,10 @@
                   </div>
 
                     <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 topme' v-show="form.is_rsa_holder==1">
-                           <label class="form-control-label">NHF Number</label>
+                           <label class="form-control-label">Pension Fund Administrator</label>
                         <input type='text' v-model="form.pfa_name" class='form-control '
-                        placeholder='NHF Number' :class="{ 'is-invalid': submitted && $v.form.pfa_name.$error }" />
-                          <div v-if="submitted && !$v.form.pfa_name.required" class="form-error">NHF number is required</div>
+                        placeholder='PFA' :class="{ 'is-invalid': submitted && $v.form.pfa_name.$error }" />
+                          <div v-if="submitted && !$v.form.pfa_name.required" class="form-error">PFA Name is required</div>
 
                   </div>
                       </div>
@@ -152,6 +152,7 @@ export default {
                   this.submitted=true
                   this.$v.$touch();
                   if (this.$v.$invalid) {
+                        window.scrollTo(0,0)
                         return;
                   }
                   console.log("profile react")

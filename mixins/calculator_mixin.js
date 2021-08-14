@@ -17,6 +17,9 @@ export default{
       if (age_diff > 30) {
         return 30;
       }
+     else if(age_diff < 5){
+        return 5;
+      }
       return age_diff;
     },
 

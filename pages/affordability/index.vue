@@ -46,17 +46,17 @@
 
                       </div>
 
-                        <div class="buttons flex-wrap gg-20">
-                <app-button v-show="step>1" type="button" text="Previous"  btnclass="xxsm-font white-btn2 s-bold " :action="stepBackward"
-                ></app-button>
+                        <div class="buttons step-buttons">
+                            <app-button v-show="step>1" type="button" text="Previous"  btnclass="xxsm-font white-btn2 s-bold " :action="stepBackward"
+                            ></app-button>
 
-                <app-button text="Continue"
-                type="button"
-                id="nextBtnStep"
-                btnclass="xxsm-font green-btn s-bold hoverable"
-                  :action="stepForward">
+                            <app-button text="Continue"
+                            type="button"
+                            id="nextBtnStep"
+                            btnclass="xxsm-font green-btn s-bold hoverable"
+                              :action="stepForward">
 
-              </app-button>
+                          </app-button>
 
 
               </div>
@@ -224,5 +224,8 @@ import CongrationModal from '@/components/affordability/CongrationModal.vue'
   content:'' !important;
 }
 
-
+.step-buttons{
+  display: flex;
+  justify-content: space-between;
+}
 </style>
