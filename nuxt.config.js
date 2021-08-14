@@ -15,6 +15,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    ]
 
   },
 
@@ -29,6 +30,7 @@ export default {
     {src:"~plugins/vuex-persist.js", mode: 'client'},
     {src:"~plugins/app_toast.js", mode: 'client'},
     {src:"~plugins/vuelidate.js", mode: 'client'},
+    // {src:"~plugins/range_slider.js", mode: 'client'},
 
   ],
 

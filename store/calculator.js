@@ -179,7 +179,8 @@ calculateAffordabilityAction({commit }, form) {
         let d = res.data;
         console.log(d);
         commit("AFFORDABILITY_RESULT", d);
-        resolve(d)
+        resolve(d);
+        return d;
       })
     });
     //     commit("AFFORDABILITY_RESULT", form);

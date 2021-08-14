@@ -79,7 +79,7 @@ import CongrationModal from '@/components/affordability/CongrationModal.vue';
 </script>
 
 <style lang="scss" >
-
+@include range_slider();
 
 
 

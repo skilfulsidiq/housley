@@ -121,7 +121,7 @@
                     </div>
                     <app-button
                       type="button"
-                      btnclass="xxsm-font green-btn s-bold"
+                      btnclass="xxsm-font green-btn s-bold hoverable"
                       text=" Request info"
                     >
 

@@ -11,21 +11,24 @@
 
                         </p>
                     </div> -->
-                    <div class="" v-if="properties.length>0">
+                    <div v-if="!loading">
+                         <div class="" v-if="properties&& properties.length>0">
                           <div class="ppt-heading" >
-                        <h3 class="title bold big-font">Neighborhood, City, State</h3>
-                        <p class="sub-title color1">
-                          {{property_length}} + properties from Brains & Hammers listed on Houzzley
-                        </p>
-                      </div>
-                        <property-list :properties="properties"/>
-                    </div>
-                    <div v-if="properties.length<=0">
-                          <no-property title="No Property Found" :showRequestBtn="false" rightBtnText="View All Properties"
-                          :rightAction="viewAllProperty"
-                          />
+                            <h3 class="title bold big-font">Neighborhood, City, State</h3>
+                            <p class="sub-title color1">
+                              {{property_length}} + properties from Brains & Hammers listed on Houzzley
+                            </p>
+                          </div>
+                            <property-list :properties="properties"/>
+                        </div>
+                        <div v-if="!properties || properties.length<=0">
+                              <no-property title="No Property Found" :showRequestBtn="false" rightBtnText="View All Properties"
+                              :rightAction="viewAllProperty"
+                              />
+                        </div>
                     </div>
 
+                    <property-loading v-if="loading"/>
                   </div>
              </section>
      </main>
@@ -46,9 +49,10 @@ import general_mixin from "@/mixins/general_mixin"
 import PropertyList from '@/components/property/PropertyList.vue'
 import RequestMailingCard from '@/components/RequestMailingCard.vue'
 import NoProperty from '@/components/property/NoProperty.vue'
+import PropertyLoading from '@/components/property/PropertyLoading.vue'
   export default {
     mixins:[form,general_mixin],
-  components: { PropertyCard,PropertySearchBar,PropertyPagePagination,PropertyList,RequestMailingCard,NoProperty},
+  components: { PropertyCard,PropertySearchBar,PropertyPagePagination,PropertyList,RequestMailingCard,NoProperty,PropertyLoading},
     auth:false,
     layout:"default",
       head(){

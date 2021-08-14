@@ -53,11 +53,13 @@ export default{
           rangeEl.addEventListener("input", function (e) {
             rangeEl.value = e.target.value;
           });
+
         } else {
           this.updateRangeEl(rangeEl);
-         var t = (b)=> this.updateRangeEl(b);
-          rangeEl.addEventListener("input", function (e) {
+         var t = (b) => this.updateRangeEl(b);
+          rangeEl.addEventListener("change", function (e) {
             t(e.target);
+            // this.updateRangeEl(e.target);
             rangeEl.value = e.target.value;
           });
         }
@@ -81,8 +83,13 @@ export default{
           const bubble = wrap.querySelector(".bubble");
           const bubbled = wrap.querySelector(".bubbled");
 
+          // range.addEventListener("change", () => {
+          //   this.setBubble(range, bubble, bubbled);
+          // });
+          // var bb = (t)=>this.setBubble(t);
           range.addEventListener("input", () => {
             this.setBubble(range, bubble, bubbled);
+
           });
           this.setBubble(range, bubble, bubbled);
         });

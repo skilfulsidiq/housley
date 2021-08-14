@@ -3,26 +3,29 @@
     <main class="page-content mt-2">
       <section>
         <div class="padded-content mt-183">
+          <div v-if="!loading">
+                <finance-summary-card/>
+                  <div class="" v-if="properties && properties.length>0">
+                      <div class="ppt-heading">
+                          <h3 class="title bold big-font">Filtered result for you</h3>
+                          <p class="sub-titl color1">
+                            Based on your affordability result, we have filtered down <br>properties that are suitable and affordable to you
+                          </p>
+                        </div>
 
-          <finance-summary-card/>
-            <div class="" v-if="properties.length>0">
-                 <div class="ppt-heading">
-                    <h3 class="title bold big-font">Filtered result for you</h3>
-                    <p class="sub-titl color1">
-                      Based on your affordability result, we have filtered down <br>properties that are suitable and affordable to you
-                    </p>
+                      <property-list :properties="properties" :isChoose="true"/>
+                        <property-page-pagination :pagination="pagination"  mutator="AFFORDABLE_PROPERTIES" method="post" source="filter" />
                   </div>
 
-                 <property-list :properties="properties" :isChoose="true"/>
-                   <property-page-pagination :pagination="pagination"  mutator="AFFORDABLE_PROPERTIES" method="post" source="filter" />
-            </div>
 
+                <div v-if="!properties || properties.length<=0">
+                  <no-property title="Can't find property within your Loanable Amount" :showRequestBtn="true" btnText="View All Properties" rightBtnText="Request for Property"
+                  :action="showAllProperty" :rightAction="showRequestModal"
+                  />
+                </div>
+          </div>
+          <property-loading v-if="loading"/>
 
-            <div v-if="properties.length<=0">
-              <no-property title="Can't find property within your Loanable Amount" :showRequestBtn="true" btnText="View All Properties" rightBtnText="Request for Property"
-              :action="showAllProperty" :rightAction="showRequestModal"
-              />
-            </div>
         </div>
       </section>
       <request-mailing-card/>
@@ -37,8 +40,9 @@ import general_mixin from "@/mixins/general_mixin"
 import FinanceSummaryCard from '@/components/affordability/FinanceSummaryCard.vue'
 import RequestMailingCard from '@/components/RequestMailingCard.vue'
 import NoProperty from '@/components/property/NoProperty.vue'
+import PropertyLoading from '../../components/property/PropertyLoading.vue'
   export default {
-  components: { PropertyList,FinanceSummaryCard,RequestMailingCard,NoProperty },
+  components: { PropertyList,FinanceSummaryCard,RequestMailingCard,NoProperty,PropertyLoading },
   mixins:[form,general_mixin],
     auth:false,
       head(){
@@ -50,17 +54,21 @@ import NoProperty from '@/components/property/NoProperty.vue'
         },
         data(){
           return{
-            fetching:false
+            fetching:false,
+            property_length:0
           }
         },
         computed:{
 
             properties(){
                 let all = this.$store.state.property.affordable_properties;
-                console.log(all)
                 let property= all.data;
                 this.fillPagination(all);
                 this.property_length = all.total;
+                // console.log("property_lenth",this.property_length);
+                // if(property && property.length>0){
+                //   return property;
+                // }
 
                 return property;
               }
@@ -77,7 +85,10 @@ import NoProperty from '@/components/property/NoProperty.vue'
                 let p = this.$store.state.calculator.form;
                 let data = {price:p.max_loan_amount,location:p.location};
                 console.log("afod form: ",data);
+                this.appLoading(true);
+
                 this.$store.dispatch("property/affordablePropertiesAction",data).then((res)=>{
+                this.appLoading(false);
 
                 });
               },
@@ -93,4 +104,5 @@ import NoProperty from '@/components/property/NoProperty.vue'
     position: relative;
     margin-top: -12rem;
 }
+
 </style>

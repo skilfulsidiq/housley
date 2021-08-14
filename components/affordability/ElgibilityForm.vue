@@ -38,7 +38,7 @@
                   </div>
                   <div class="grid-child">
                     <label for="propertyValue">Equity Contribution</label>
-                    <div class="range-wrap flex">
+                    <!-- <div class="range-wrap flex">
                       <input
                         class="range"
                         type="range"
@@ -52,7 +52,25 @@
                       <div class="flex bubbled">
                         <output class="color1 bubble"></output><span>%</span>
                       </div>
-                    </div>
+                    </div> -->
+                       <range-slider class="slider" :min="min_range" :max="max_range" step="1" v-model="down_rate">
+                                            <template slot="knob">
+                                              <div class="knobby">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                                                  <path
+                                                    fill="#CDD8C3"
+                                                    fill-rule="evenodd"
+                                                    d="M9.864 20c5.243-5.195 7.864-9.24 7.864-12.136A7.863 7.863 0 009.864 0 7.863 7.863 0 002 7.864C2 10.759 4.621 14.804 9.864 20z"
+                                                  ></path>
+                                                  <text x="10" y="10" fill="currentColor" text-anchor="middle">{{ down_rate + '%' }}</text>
+                                                </svg>
+                                              </div>
+                                            </template>
+                                          </range-slider>
+                                          <div class="range-value d-flex justify-content-between">
+                                                  <span>{{min}} </span>
+                                                  <span>{{max}} </span>
+                                          </div>
                   </div>
                   <div class="grid-child">
                     <label for="propertyValue"
@@ -82,7 +100,10 @@
 import FormMixin from '@/mixins/form_mixin'/*  */
 import CalculatorMixin from '@/mixins/calculator_mixin'/*  */
 import rangeMixin from "@/mixins/range"
+import RangeSlider from "vue-range-slider";
+import "vue-range-slider/dist/vue-range-slider.css";
   export default {
+      components:{RangeSlider},
      mixins:[FormMixin,CalculatorMixin,rangeMixin],
     data(){
         return{
@@ -106,7 +127,7 @@ import rangeMixin from "@/mixins/range"
 
     'down_rate':function(val){
         // this.setBubble();
-        this.setitUp()
+        // this.setitUp()
         this.reCalculateDownPayment(val);
     }
     },
@@ -232,7 +253,7 @@ import rangeMixin from "@/mixins/range"
         // this.setBubble();
     },
     mounted(){
-        this.setitUp();
+        // this.setitUp();
         this.processStepFunction(false,false);
     },
       destroyed () {

@@ -1,0 +1,49 @@
+@mixin range_slider() {
+  /* range slider */
+  .range-slider {
+    width: 100% !important;
+  }
+
+  .slider {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .slider .range-slider-rail {
+    height: 11px;
+    background-color: #bdbec4;
+    border-radius: 5px;
+  }
+
+  .slider .range-slider-fill {
+    height: 10px;
+    margin: 0 4px;
+    background-color: #006633 !important;
+  }
+
+  .slider .range-slider-knob {
+    height: 22px;
+    width: 22px;
+    color: #16465C;
+    background-color: #006633;
+    border: 0;
+    box-shadow: 0 0 0 10px rgb(137 189 161 / 24%)
+  }
+
+  .slider .knobby {
+    position: relative;
+  }
+
+  .slider .knobby svg {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: -65px;
+    left: -14px;
+  }
+
+  .slider .knobby svg text {
+    font-size: 5px;
+    font-weight: bold;
+  }
+}

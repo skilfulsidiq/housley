@@ -195,7 +195,7 @@
                       How long do you want this Loan for?
                     </p>
                   </div>
-                  <div ref="range_wrap" class="range-wrap flex">
+                  <!-- <div ref="range_wrap" class="range-wrap flex">
                     <input v-model="form.loan_tenure"
                       class="range"
                       type="range"
@@ -208,10 +208,27 @@
 
                     <div class="flex bubbled">
                       <output class="color1 bubble"></output
-                      ><span> &nbsp; Years</span>
+                      ><span> &nbsp;Years</span>
                     </div>
-                  </div>
-
+                  </div> -->
+                      <range-slider class="slider" :min="min_range" :max="max_range" step="1" v-model="form.loan_tenure">
+                                    <template slot="knob">
+                                        <div class="knobby">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="40" height="40">
+                                            <path
+                                            fill="#CDD8C3"
+                                            fill-rule="evenodd"
+                                            d="M9.864 20c5.243-5.195 7.864-9.24 7.864-12.136A7.863 7.863 0 009.864 0 7.863 7.863 0 002 7.864C2 10.759 4.621 14.804 9.864 20z"
+                                            ></path>
+                                            <text x="10" y="10" fill="currentColor" text-anchor="middle">{{ form.loan_tenure + ' yrs' }}</text>
+                                        </svg>
+                                        </div>
+                                    </template>
+                                </range-slider>
+                                <div class="range-value d-flex justify-content-between">
+                                        <span>{{min}} </span>
+                                        <span>{{max}} </span>
+                                </div>
                   <div class="form-group mt-5" v-if="showLocation">
                           <label class="color1 xsm-font" for="incomeYes" >Preferred Property Location</label >
                             <div class="input-group mb-3">
@@ -253,6 +270,8 @@ import CalculatorMixin from '@/mixins/calculator_mixin'/*  */
 import rangeMixin from "@/mixins/range"
 
 import { required, email, minLength, sameAs,requiredIf,numeric } from "vuelidate/lib/validators";
+import RangeSlider from "vue-range-slider";
+import "vue-range-slider/dist/vue-range-slider.css";
 const too_young = (value, vm) =>{
     let today = new Date();
     let birthday = new Date(value);
@@ -264,6 +283,7 @@ const too_young = (value, vm) =>{
     return true;
 };
 export default {
+  components:{RangeSlider},
   mixins:[FormMixin,CalculatorMixin,rangeMixin],
     name:"AffordabilityForm",
     props:{
@@ -321,7 +341,7 @@ export default {
         this.form.loan_tenure = this.max_range;
         },
         'form.loan_tenure':function(val){
-            this.setitUp()
+            // this.setitUp()
         },
         // 'step':function(){
         //   window.scrollTo(20,20)
@@ -410,7 +430,7 @@ export default {
               age:''
           }
       },
-  
+
       submitAffordability(){
             this.submitted=true
             this.$v.$touch();
@@ -444,7 +464,8 @@ export default {
         this.$nuxt.$on('submitModalAffordability',(t)=>{
           this.submitFromModal();
         })
-        this.setitUp();
+        // this.setitUp();
+        // this.initRangeEl()
     },
     mounted(){
 
@@ -456,6 +477,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
   .test-form{
     height: 51px !important;
   }
