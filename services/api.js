@@ -1,72 +1,72 @@
 export default {
 
    login() {
-    return   "login";
+    return   "/api/login";
   },
    register() {
-    return   "agent/register";
+    return   "/api/register";
   },
    changepassword() {
-    return   "lender/change-password";
+    return   "/api/lender/change-password";
   },
    updateprofile() {
-    return   "lender/update-profile";
+    return   "api/lender/update-profile";
   },
    allStates() {
-    return  "general/all-states";
+    return  "/api/general/all-states";
   },
    allPaymentOption() {
-     return "general/finance-option"
+     return "/api/general/finance-option"
    },
    allCitiesInState(state_id) {
-    return  "general/all-cities/" + state_id;
+    return  "/api/general/all-cities/" + state_id;
   },
    propertyTypeList() {
-    return   "general/all-special-types";
+    return   "/api/general/all-special-types";
   },
    propertyStatusList() {
-    return   "general/property-status";
+    return   "/api/general/property-status";
   },
    calculateAffordability() {
-    return   "general/affordability-test";
+    return   "/api/general/affordability-test";
   },
    fetchAffordableProperties() {
     // let r = data.amount + '/' + data.location;
-    return   "general/property-affordability";
+    return   "/api/general/property-affordability";
   },
    fetchLenderRate() {
-    return   "general/lender-rates";
+    return   "/api/general/lender-rates";
   },
    fetchAllProperties() {
-    return   "general/all-properties";
+    return   "/api/general/all-properties";
   },
 
    featuredProperties() {
-    return   "general/featured-properties";
+    return   "/api/general/featured-properties";
   },
    recentProperties() {
-    return   "general/recent-properties";
+    return   "/api/general/recent-properties";
   },
    belowPriceProperties(price) {
-    return   "general/property-below-price/" + price;
+    return   "/api/general/property-below-price/" + price;
   },
   searchProperties(data) {
-    return   "general/search-properties";
+    return   "/api/general/search-properties";
   },
    propertyDetail(slug) {
-    return   "general/property-detail/" + slug;
+    return   "/api/general/property-detail/" + slug;
   },
    savePrequalified() {
-    return   "general/profile-request";
+    return   "/api/general/profile-request";
   },
    saveBookTour() {
-    return   "general/book-tour";
+    return   "/api/general/book-tour";
   },
    propertyEnquiry() {
-    return   "general/property-enquiry";
+    return   "/api/general/property-enquiry";
   },
    saveUserRequestWithoutAuth() {
-    return   "general/save-property-request-no-auth";
+    return   "/api/general/save-property-request-no-auth";
   }
 
 

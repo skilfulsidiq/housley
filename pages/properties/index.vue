@@ -96,7 +96,10 @@ import PropertyLoading from '@/components/property/PropertyLoading.vue'
     fetchProperties(){
 
         if(this.list_type == 'all'){
-           this.$store.dispatch("property/allPropertiesAction")
+           this.appLoading(true);
+           this.$store.dispatch("property/allPropertiesAction").then((res)=>{
+             this.appLoading(false);
+           })
         }else{
 
         }

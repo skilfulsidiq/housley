@@ -14,7 +14,7 @@
             <li><nuxt-link to="/info/about">About Us</nuxt-link></li>
             <li><nuxt-link to="/pre-approval">Pre-approval</nuxt-link></li>
             <li><nuxt-link  @click="goToPropertiesPage" :to="{name:'properties'}">Properties</nuxt-link></li>
-            <li><nuxt-link to="/info/mortgage">Mortgage</nuxt-link></li>
+            <li><nuxt-link to="/info/mortgage">Home Loans</nuxt-link></li>
             <li><nuxt-link to="/info/contact">Contact Us</nuxt-link></li>
             <li><nuxt-link to="/info/faq">FAQs</nuxt-link></li>
           </ul>
@@ -45,7 +45,7 @@
             <li @click.prevent="goPage"><nuxt-link to="/info/about">About Us</nuxt-link></li>
             <li @click.prevent="goPage"><nuxt-link to="/pre-approval">Pre-approval</nuxt-link></li>
             <li @click.prevent="goPage"><nuxt-link :to="{name:'properties'}">Properties</nuxt-link></li>
-            <li @click.prevent="goPage"><nuxt-link to="/info/mortgage">Mortgage</nuxt-link></li>
+            <li @click.prevent="goPage"><nuxt-link to="/info/mortgage">Home Loans</nuxt-link></li>
             <li @click.prevent="goPage"><nuxt-link to="/info/contact">Contact Us</nuxt-link></li>
             <li @click.prevent="goPage"><nuxt-link to="/info/faq">FAQs</nuxt-link></li>
             <li @click.prevent="goPage"><nuxt-link to="/login">Login</nuxt-link></li>

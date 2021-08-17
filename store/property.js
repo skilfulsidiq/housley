@@ -92,6 +92,7 @@ export const actions={
     await this.$axios.$get(api.fetchAllProperties()).then((res) => {
         let r = res.data;
         commit("ALL_PROPERTIES", r);
+        return r;
     })
   },
   async paginationAction({commit},data){

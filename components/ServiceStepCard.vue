@@ -12,7 +12,7 @@
           <p>
            {{details}}
           </p>
-          <div class="button" :width="width" :height="height" @click.prevent="action">{{btn}}</div>
+          <div class="button" :width="width" :height="height" @click.prevent="go">{{btn}}</div>
         </div>
     </div>
 </template>
@@ -31,7 +31,7 @@
                 type:String
             },
             action:{
-                type:Function
+                type:String
             },
             btn:{
                 type:String
@@ -45,6 +45,21 @@
             color:{
                 type:String,default:'color'
             },
+        },
+        methods:{
+          go(){
+            switch(this.action){
+              case 'search':
+                this.$router.push("/properties");
+              break;
+              case 'lender':
+                this.$router.push("/info/mortgage");
+              break;
+              case 'screened':
+                this.$router.push("pre-approval")
+              break;
+            }
+          }
         }
     }
 </script>

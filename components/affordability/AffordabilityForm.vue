@@ -1,6 +1,6 @@
 <template>
   <div>
-       <form  ref="form" id="regForm" class="form-tab">
+       <form  ref="aform" id="regForm" class="form-tab">
                   <div class="heading" v-if="showLocation">
                     <h1 class="big-font green bold">How much can I Afford</h1>
                     <p class="sub-title color1">
@@ -402,8 +402,7 @@ export default {
           this.submitted=true
             this.$v.$touch();
             if (this.$v.$invalid) {
-              // let p = this.getPosition(this.$refs.form);
-              // window.scrollTo(p.x,p.y);
+               this.scrollErrorSection();
                 return;
             }
                 this.$store.dispatch("calculator/saveAffordabilityFormAction",this.form)
@@ -438,6 +437,7 @@ export default {
             this.submitted=true
             this.$v.$touch();
             if (this.$v.$invalid) {
+              this.scrollErrorSection();
                 return;
             }
            this.$store.dispatch("calculator/saveAffordabilityFormAction",this.form)
@@ -471,7 +471,7 @@ export default {
         // this.initRangeEl()
     },
     mounted(){
-
+          window.scrollTo(0,0);
          this.processStepFunction(false,false);
          this.mapIncomingDataToForm(this.form,this.$store.state.calculator.form)
         //  this.form = {...}

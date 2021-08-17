@@ -34,9 +34,9 @@
                 </div>
             </section>
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-md-2"></div>
-                <div class="col-md-8">
+                <div class="col-md-8"> -->
                       <div id="stepForm"  class="filled-input-with-slider">
                         <affordability-form :showLocation="false" v-if="step==1"/>
                         <elgibility-form v-if="step==2"/>
@@ -59,10 +59,10 @@
                           </app-button>
 
 
-              </div>
-                </div>
-                 <div class="col-md-2"></div>
-              </div>
+                       </div>
+                <!-- </div> -->
+                 <!-- <div class="col-md-2"></div>
+              </div> -->
 
 
             </div>

@@ -1,5 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 const webpack = require("webpack");
+const APIURL = process.env.NODE_ENV != 'production' ? process.env.LOCAL_API_URL : process.env.API_URL;
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -54,11 +55,17 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-      baseURL: process.env.NODE_ENV != 'production' ? process.env.LOCAL_API_URL : process.env.API_URL
-      // baseURL: 'http://police.test/api/'
+  // axios: {
+  //     baseURL: process.env.NODE_ENV != 'production' ? process.env.LOCAL_API_URL : process.env.API_URL
+  //     // baseURL: 'http://police.test/api/'
+  //   },
+    axios: {
+      proxy: true // Can be also an object with default options
     },
 
+    proxy: {
+        '/api/': { target: APIURL, pathRewrite: {'^/api/': ''} }
+    },
     auth: {
       redirect: {
         login: '/login',

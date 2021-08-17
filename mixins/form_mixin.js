@@ -70,6 +70,16 @@ export default{
             }
 
           },
+          scrollErrorSection(){
+            this.$nextTick(() => {
+              window.scrollTo(document.querySelector('.is-invalid').offsetTop, 0);
+              // let domRect = document.querySelector('.is-invalid').getBoundingClientRect();
+              // window.scrollTo(
+              //   domRect.left + document.documentElement.scrollLeft,
+              //   domRect.top + document.documentElement.scrollTop
+              // );
+            })
+          }
 
 
     }
