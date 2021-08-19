@@ -22,6 +22,17 @@ export default{
             return this.max_range + ' ' + this.resultType;
           }
         },
+        mortgagestep: {
+            get() {
+              return this.$store.state.mortgage.mortgage_step;
+            },
+            set(v) {
+              this.$store.commit("mortgage/GO_TO_STEP", v);
+            }
+          },
+          mortgageTotalStep() {
+            return this.$store.state.mortgage.mortgageTotalStep;
+          },
     },
     methods:{
         calculateAge(date_of_birth) {

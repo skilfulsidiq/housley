@@ -50,6 +50,8 @@
  import { required, email, minLength, sameAs,requiredIf,numeric } from "vuelidate/lib/validators";
   export default {
     layout:'auth',
+    auth:'guest',
+    middleware:['app_guest'],
     head(){
             return{
                 link:[

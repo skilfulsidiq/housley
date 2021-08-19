@@ -1,4 +1,4 @@
-import api from '../services/api'
+import api from '@/services/api'
 export const state=()=>({
     authenticating: false,
     isLoading:false,
@@ -9,8 +9,10 @@ export const state=()=>({
     user: {},
     services: [],
     roles: [],
+
 });
 export const mutations = {
+
     IS_LOADING(state,payload){
       state.isLoading = payload;
     },
@@ -55,15 +57,7 @@ export const mutations = {
     }
 }
 export const actions = {
-    async setCookie({
-        commit
-    }) {
-        return new Promise((resolve, reject) => {
-            return api.get_cokkie().then((res) => {
-                resolve(res);
-            })
-        })
-    },
+
 
 
     async login({
@@ -151,7 +145,7 @@ export const actions = {
       commit
     }, data) {
       let res = await this.$axios.$post(api.forgotPassword(),data);
-      return res.data.data;
+      return res.data;
       // return new Promise((resolve, reject) => {
       //   api.forgotPassword(data).then((res) => {
       //     let r = res.data.data;
@@ -163,7 +157,7 @@ export const actions = {
         commit
       }, data) {
         let res =await this.$axios.$post(api.changePassowrdByForgot(),data);
-        return res.data.data;
+        return res.data;
 
   },
     async getProfileAction({

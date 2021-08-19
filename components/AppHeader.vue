@@ -17,17 +17,31 @@
             <li><nuxt-link to="/info/mortgage">Home Loans</nuxt-link></li>
             <li><nuxt-link to="/info/contact">Contact Us</nuxt-link></li>
             <li><nuxt-link to="/info/faq">FAQs</nuxt-link></li>
+              <li class="nav-item dropdown " v-if="$auth.user">
+                        <a class="nav-link dropdown-toggle auth-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <!-- <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="25" height="25" class="rounded-circle"> -->
+                          <!-- -->
+                          <span class="mdi mdi-account-outline icon-size">{{$auth.user.firstname}} </span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <nuxt-link  to="/dashboard" class="dropdown-item" >Dashboard</nuxt-link>
+                          <!-- <a class="dropdown-item" href="#">Edit Profile</a> -->
+                          <a class="dropdown-item " href="#" @click.prevent="logout">Log Out</a>
+                        </div>
+              </li>
           </ul>
         </nav>
 
         <div class="action-buttons">
-          <div class="login">
+          <div class="login" v-if="!$auth.user">
             <nuxt-link to="/login">Login</nuxt-link>
           </div>
 
-          <div class="signup">
+          <div class="signup" v-if="!$auth.user">
             <nuxt-link to="/register">Sign Up</nuxt-link>
           </div>
+
+
 
           <div class="mobile-hamburger">
             <button class="hamburger hamburger--collapse" type="button">
@@ -48,18 +62,20 @@
             <li @click.prevent="goPage"><nuxt-link to="/info/mortgage">Home Loans</nuxt-link></li>
             <li @click.prevent="goPage"><nuxt-link to="/info/contact">Contact Us</nuxt-link></li>
             <li @click.prevent="goPage"><nuxt-link to="/info/faq">FAQs</nuxt-link></li>
-            <li @click.prevent="goPage"><nuxt-link to="/login">Login</nuxt-link></li>
-          <li>
-            <nuxt-link
-              to="/register"
-              style="
-                border: 1px solid #ffffff;
-                padding: 6px 15px;
-                border-radius: 12px;
-              "
-              >Signup</nuxt-link
-            >
-          </li>
+            <li v-if="!$auth.user" @click.prevent="goPage"><nuxt-link to="/login">Login</nuxt-link></li>
+            <li v-if="!$auth.user">
+              <nuxt-link to="/register"
+                style="
+                  border: 1px solid #ffffff;
+                  padding: 6px 15px;
+                  border-radius: 12px;
+                "
+                >Signup</nuxt-link
+              >
+            </li>
+             <li v-if="$auth.user" @click.prevent="goPage"><nuxt-link to="/dashboard">Dashboard</nuxt-link></li>
+             <li v-if="$auth.user" @click.prevent="logout">Logout</li>
+
         </ul>
       </nav>
       <div class="mobile-nav-overly"></div>
@@ -86,6 +102,9 @@
         $(".mobile-nav").toggleClass('mobile-nav-state');
          $(".mobile-nav-overly").toggleClass('mobile-nav-overly-state');
         $('.hamburger').toggleClass("is-active");
+      },
+      logout(){
+        this.$auth.logout();
       }
     }
   }
@@ -99,4 +118,20 @@
 //     .trasparent-container .action-buttons .signup{
 // border: 1px solid #0d4566;
 //     }
+
+.auth-ul{
+  list-style: none;
+}
+.auth-link{
+      margin-left:1.5rem;
+      // width:5rem;
+      margin-top:-0.5rem;
+}
+.icon-size{
+  width:24px;
+  height: 24px;
+}
+.dropdown-item{
+  color:#000 !important;
+}
 </style>

@@ -1,10 +1,10 @@
 import colors from 'vuetify/es5/util/colors'
 const webpack = require("webpack");
-const APIURL = process.env.NODE_ENV != 'production' ? process.env.LOCAL_API_URL : process.env.API_URL;
+const APIURL = process.env.NODE_ENV !== 'production' ? process.env.LOCAL_API_URL : process.env.API_URL;
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  target:'static',
+  // target:'static',
   head: {
     titleTemplate: '%s - housley',
     title: 'housley',
@@ -22,6 +22,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    "~/assets/css/print.css"
   ],
 
 
@@ -55,17 +56,18 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  // axios: {
-  //     baseURL: process.env.NODE_ENV != 'production' ? process.env.LOCAL_API_URL : process.env.API_URL
-  //     // baseURL: 'http://police.test/api/'
-  //   },
-    axios: {
-      proxy: true // Can be also an object with default options
+  axios: {
+      baseURL: process.env.NODE_ENV != 'production' ? process.env.LOCAL_API_URL : process.env.API_URL
+      // baseURL: 'http://police.test/api/'
     },
+    // axios: {
+    //   proxy: true // Can be also an object with default options
 
-    proxy: {
-        '/api/': { target: APIURL, pathRewrite: {'^/api/': ''} }
-    },
+    // },
+
+    // proxy: {
+    //     '/api/': { target: APIURL, pathRewrite: {'^/api/': ''} }
+    // },
     auth: {
       redirect: {
         login: '/login',
@@ -120,6 +122,19 @@ export default {
     theme: {
       dark: false,
       themes: {
+        light: {
+          // primary: '#0D4566',
+          // secondary: '#006633',
+          primary: '#0D4566',
+          secondary: '#006633',
+          accent: '#039c71',
+          accent_text: '#0D4566',
+          error: '#FF5252',
+          info: '#C4C4C4',
+          success: '#C4C4C4',
+          warning: '#FFC107',
+          link: '#FF5252'
+        },
         dark: {
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,
@@ -150,7 +165,7 @@ export default {
      }
   },
    router: {
-    //  middleware: ['auth'],
+     middleware: ['auth'],
     //  linkExactActiveClass: 'active',
      // extendRoutes(routes, resolve) {
      //   routes.push({

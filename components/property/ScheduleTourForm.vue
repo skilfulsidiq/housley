@@ -9,12 +9,12 @@
                   >
                     Schedule Tour
                   </button>
-                  <button
+                  <!-- <button
                     class="tablinks xsm-font"
                     onclick="openCity(event, 'requestInfo')"
                   >
                     Request info
-                  </button>
+                  </button> -->
                 </div>
 
                 <div id="scheduleTour" class="tabcontent">
@@ -35,25 +35,30 @@
                           <div v-if="book_tour_submitted && !$v.book_form.book_time.required" class="form-error">Time is required</div>
                     </div>
                     <div>
+                        <label for="" class="tour-form-label">Full Name</label>
                        <input type="text" class="color1"
                                         placeholder="Full Name" v-model="book_form.name"
                                             :class="{ 'is-invalid': book_tour_submitted && $v.book_form.name.$error }" />
                                                 <div v-if="book_tour_submitted && !$v.book_form.name.required" class="form-error">Name is required</div>
                     </div>
                     <div>
+                        <label for="" class="tour-form-label">Phone number</label>
                        <input type="text" class="color1" v-model="book_form.phone"
                                         placeholder="Phone"   :class="{ 'is-invalid': book_tour_submitted && $v.book_form.phone.$error }" />
 
                                             <div v-if="book_tour_submitted && !$v.book_form.phone.required" class="form-error">Phone is required</div>
+                                            <div v-if="book_tour_submitted && !$v.book_form.phone.numeric" class="form-error">Valid Phone is required</div>
                     </div>
 
 
                       <div>
+                          <label for="" class="tour-form-label">Email Address</label>
                           <input type="email" class="form-control"
                                         placeholder="Email Address" v-model="book_form.email"  :class="{ 'is-invalid': book_tour_submitted && $v.book_form.email.$error }" />
 
 
                                 <div v-if="book_tour_submitted && !$v.book_form.email.required" class="form-error">Email is required</div>
+                                <div v-if="book_tour_submitted && !$v.book_form.email.email" class="form-error">Valid Email is required</div>
                       </div>
                     <div class="grid radios">
                       <p>
@@ -93,7 +98,7 @@
                   </form>
                 </div>
 
-                <div
+                <!-- <div
                   id="requestInfo"
                   class="tabcontent"
                   style="display: none"
@@ -123,11 +128,12 @@
                       type="button"
                       btnclass="xxsm-font green-btn s-bold hoverable"
                       text=" Request info"
+
                     >
 
                     </app-button>
                   </form>
-                </div>
+                </div> -->
               </div>
   </div>
 </template>
@@ -170,21 +176,23 @@ export default {
             book_time:{required},
             medium:{required}
         },
-        enquiry_form:{
-            name:{required},
-            email:{required,email},
-            phone:{required,numeric},
-            message:{required}
-        }
+        // enquiry_form:{
+        //     name:{required},
+        //     email:{required,email},
+        //     phone:{required,numeric},
+        //     message:{required}
+        // }
     },
     methods: {
          submitBookTour(){
-
+            console.log("am clickk")
              this.book_tour_submitted=true
             this.$v.$touch();
             if (this.$v.$invalid) {
                 return;
             }
+             console.log("am valid")
+            this.book_form.property_id = this.property.id
             this.savingTour = true;
             this.$store.dispatch("property/saveTourScheduleAction",this.book_form).then((res)=>{
                 console.log("am sub")

@@ -1,0 +1,50 @@
+  a {
+     text-decoration: none;
+  }
+
+  .a-link {
+    text-decoration: none;
+  }
+.v-application ul {
+  padding-left: 0;
+}
+
+.v-text-field__suffix {
+  background-color: #e6e6e6;
+  color: #999;
+  padding-left: 20px !important;
+  padding: 18px 20px;
+  margin-right: -10px;
+}
+.cursor{
+  cursor: pointer;
+}
+.move-up{
+  margin-top:-3rem;
+}
+.mg-top {
+  margin-top: -1.5rem;
+  display: flex;
+}
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.4s;
+}
+
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+.layout-enter-active,
+.layout-leave-active {
+  transition: opacity 0.3s;
+}
+
+.layout-enter,
+.layout-leave-active {
+  opacity: 0;
+}
+
+//range slider begins
+
+// End of range slider

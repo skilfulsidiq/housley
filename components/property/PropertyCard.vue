@@ -106,7 +106,8 @@
     methods:{
         showDetail(){
           let d = {status:true,property:this.property};
-          this.$nuxt.$emit("show_detail_modal",d);
+          // this.$nuxt.$emit("show_detail_modal",d);
+             this.$router.push({name:"properties-slug",params:{slug:this.property.slug}})
         },
         chooseProperty(){
             console.log("choose property")

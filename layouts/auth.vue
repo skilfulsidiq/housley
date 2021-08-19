@@ -46,4 +46,7 @@ import headScript from '@/static/headScript'
     justify-content: center;
     align-items: center;
   }
+  .login-container {
+    margin-top: 70px;
+}
 </style>

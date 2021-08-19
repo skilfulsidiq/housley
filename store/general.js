@@ -1,5 +1,6 @@
 import api from '../services/api'
 export  const state = ()=>({
+  client: '',
  property_types: '',
    property_status_list: [],
    states: [],
@@ -8,6 +9,9 @@ export  const state = ()=>({
    payment_options:[]
 })
 export const mutations ={
+  APP_CLIENT(state, payload) {
+    state.client = payload
+  },
     UPDATE_STATES(state, payload) {
         state.states = payload
       },
@@ -28,6 +32,14 @@ export const mutations ={
        },
 }
 export const actions={
+   async getClientAction({
+     commit
+   }) {
+     let res = await this.$axios.$get(api.getAppClient());
+     let c = res.data;
+     commit("APP_CLIENT", c);
+     return c;
+   },
  async getLenderRateAction({commit}){
     await this.$axios.$get(api.fetchLenderRate()).then((res)=>{
         let r = res.data;

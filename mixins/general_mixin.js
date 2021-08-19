@@ -83,6 +83,10 @@ export default{
         let u = this.$store.state.auth.user;
         return u;
       },
+      appclient(){
+        let u = this.$store.state.app.client;
+        return u;
+      },
       authStatus(){
           let u = this.$store.state.auth.loggedIn;
           return u;
@@ -119,6 +123,13 @@ export default{
      },
       appLoading(status){
         this.$store.commit("app/IS_LOADING",status);
+      },
+      showErrorMsg(err,msg){
+          if (err.response.data.data) {
+            this.$apptoast.error(err.response.data.data);
+          } else {
+            this.$apptoast.error(msg);
+          }
       },
        activateModal(event_name, value) {
          this.$nuxt.$emit(event_name, value)

@@ -28,6 +28,7 @@ import CongrationModal from '@/components/affordability/CongrationModal.vue';
 
     methods:{
         fetchGeneralData(){
+      this.$store.dispatch("general/getClientAction")
       this.$store.dispatch("general/getPropertyTypeAction")
       this.$store.dispatch("general/getPropertyStatusAction")
       this.$store.dispatch("general/getAllStatesAction")
