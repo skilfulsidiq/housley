@@ -117,7 +117,7 @@ import "vue-range-slider/dist/vue-range-slider.css";
               property_value:'',
               loan_amount:'',
               down_payment:'',
-
+              
             }
 
         }

@@ -4,7 +4,7 @@
       <section>
         <div class="padded-content mt-183">
           <div v-if="!loading">
-                <finance-summary-card/>
+                <finance-summary-card :result="finance"/>
                   <div class="" v-if="properties && properties.length>0">
                       <div class="ppt-heading">
                           <h3 class="title bold big-font">Filtered result for you</h3>
@@ -59,7 +59,10 @@ import PropertyLoading from '../../components/property/PropertyLoading.vue'
           }
         },
         computed:{
-
+              finance(){
+              let result = this.$store.state.calculator.form;
+              return result;
+            },
             properties(){
                 let all = this.$store.state.property.affordable_properties;
                 let property= all.data;

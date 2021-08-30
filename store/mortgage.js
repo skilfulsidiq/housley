@@ -93,7 +93,7 @@ export const actions = {
     commit
   }) {
     let res = await this.$axios.$get(api.userMortgageList());
-    let r = res.data;
+    let r = res.data.data;
     console.log("mortgage list: ", r)
 
     commit("MORTGAGE_LIST", r);

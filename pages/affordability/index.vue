@@ -4,7 +4,7 @@
       <section>
         <div class="padded-content">
           <section class="preapproval">
-            <finance-summary-card/>
+            <finance-summary-card :result="finance"/>
             <selected-property/>
 
             <div class="heading-step">
@@ -47,6 +47,7 @@
                       </div>
 
                         <div class="buttons step-buttons">
+                            <div style="width:100px" v-if="step==1"></div>
                             <app-button v-show="step>1" type="button" text="Previous"  btnclass="xxsm-font white-btn2 s-bold " :action="stepBackward"
                             ></app-button>
 
@@ -119,6 +120,10 @@ import CongrationModal from '@/components/affordability/CongrationModal.vue'
             }
         },
         computed:{
+          finance(){
+              let result = this.$store.state.calculator.form;
+              return result;
+          },
            step:{
             get(){
                 let r = this.$store.state.calculator.formStep;

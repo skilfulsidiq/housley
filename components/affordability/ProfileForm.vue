@@ -1,96 +1,122 @@
 <template>
   <div>
        <div class="form-wrapper confirmation">
-       <form action="#">
+         <FormulateForm  name="profileForm" v-model="form" @submit="submit">
                <div class='row'>
                   <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
-                            <label class="form-control-label">First Name</label>
-                        <input type='text' v-model="form.firstname" class='form-control'
-                        placeholder='First Name' :class="{ 'is-invalid': submitted && $v.form.firstname.$error }" />
-                         <div v-if="submitted && !$v.form.firstname.required" class="form-error">First name is required</div>
+                      <FormulateInput v-model="form.firstname"
+                      label="First Name"
+                          name="firstname"
+                          input-class="form-control"
+                          error-class="form-error"
+                          validation="required"
+                          error-behavior="value"
+                        />
                   </div>
-
-                  <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
-                            <label class="form-control-label">Last Name</label>
-                        <input type='text' v-model="form.lastname" class='form-control'
-                        placeholder='Last Name'  :class="{ 'is-invalid': submitted && $v.form.lastname.$error }"/>
-                          <div v-if="submitted && !$v.form.lastname.required" class="form-error">Last name is required</div>
+                  <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                      <FormulateInput v-model="form.lastname"
+                      label="Last Name"
+                          name="lastname"
+                           error-class="form-error"
+                          input-class="form-control"
+                          validation="required"
+                        />
                   </div>
-
-                  <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
-                            <label class="form-control-label">Email</label>
-                        <input type='email' v-model="form.email" class='form-control'
-                        placeholder='Email Address'  :class="{ 'is-invalid': submitted && $v.form.email.$error }"/>
-                         <div v-if="submitted && !$v.form.email.required" class="form-error">Email is required</div>
-                         <div v-if="submitted && !$v.form.email.email" class="form-error">Email is invalid</div>
+                  <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                      <FormulateInput type="email" v-model="form.email"
+                      label="Email"
+                          name="email"
+                          input-class="form-control"
+                           error-class="form-error"
+                          validation="required|email"
+                        />
                   </div>
-
-                  <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 '>
-                            <label class="form-control-label">Date of Birth</label>
-                        <input type='text' readonly v-model="dob" class='form-control '
-                        placeholder='Date of Birth' />
+                  <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                      <FormulateInput type="date" v-model="dob"
+                      label="Date of birth" readonly
+                          name="dob"
+                          input-class="form-control"
+                        />
                   </div>
-
-                  <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 '>
-                         <label class="form-control-label">Phone Number</label>
-                        <input type='text' v-model="form.phone" class='form-control '
-                        placeholder='phone number' :class="{ 'is-invalid': submitted && $v.form.phone.$error }" />
-                          <div v-if="submitted && !$v.form.phone.required" class="form-error">Phone number is required</div>
-                          <div v-if="submitted && !$v.form.phone.numeric" class="form-error">Phone number must be a number</div>
+                  <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                      <FormulateInput v-model="form.phone"
+                      label="Phone"
+                          name="phone"
+                          input-class="form-control"
+                          validation="required|number|min:10,length"
+                           error-class="form-error"
+                          validation-name="Phone number"
+                        />
                   </div>
-
-                  <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
-                         <label class="form-control-label">Employment Status</label>
-                        <select  v-model="form.employment_status" class='form-control' :class="{ 'is-invalid': submitted && $v.form.employment_status.$error }">
-                              <option value="">Employment Status</option>
-                              <option value="employed">Employed</option>
-                              <option value="unemployed">Unemployed</option>
-                              <option value="self employed">Self Employed</option>
-                        </select>
-                        <div v-if="submitted && !$v.form.employment_status.required" class="form-error">Employment Status is required</div>
+                  <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                      <FormulateInput type="select" v-model="form.employment_status"
+                      label="Employment Status"
+                          name="employment_status"
+                          placeholder="select an option"
+                          input-class="form-control"
+                          validation="required"
+                           error-class="form-error"
+                          validation-name="Employment Status"
+                          :options="[
+                              { value: 'employed', label:'Employed' },
+                              { value: 'unemployed', label: 'Unemployed' },
+                              { value: 'self-employed', label: 'Self Employed'},
+                            ]"
+                        />
+                  </div>
+                   <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12' v-if="form.employment_status=='employed'">
+                      <FormulateInput type="text" v-model="form.employer_name"
+                      label="Employer Name"
+                          name="employer_name"
+                          input-class="form-control"
+                          validation="required"
+                           error-class="form-error"
+                          :validation-rules="{
+                              requiredIf: ({ value }) => form.employment_status=='employed'
+                            }"
+                          validation-name="Employer Name"
+                        />
+                  </div>
+                     <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                      <FormulateInput type="select" v-model="form.is_rsa_holder"
+                      label="Are you a RSA Holder?"
+                          name="is_rsa_holder"
+                          placeholder="select an option"
+                          input-class="form-control"
+                          validation="required"
+                           error-class="form-error"
+                          :options="[
+                              { value: '1', label:'Yes' },
+                              { value: '0', label: 'No' }
+                            ]"
+                        />
+                  </div>
+                     <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12' v-if="form.is_rsa_holder=='1'">
+                      <FormulateInput type="text" v-model="form.pfa_name"
+                      label="PFA"
+                          name="pfa_name"
+                          input-class="form-control"
+                          validation="required"
+                           error-class="form-error"
+                          :validation-rules="{
+                              requiredIf: ({ value }) => form.is_rsa_holder=='1'
+                            }"
+                          validation-name="Pension Fund Administrator"
+                        />
+                  </div>
+                    <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                      <FormulateInput v-model="form.address"
+                      label="Address"
+                          name="address"
+                          input-class="form-control"
+                          validation="required"
+                           error-class="form-error"
+                        />
                   </div>
 
                </div>
-                    <div class='form-group row'>
+         </FormulateForm>
 
-                   <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 ' v-show="form.employment_status=='employed'">
-                          <label class="form-control-label">Employer Name</label>
-                        <input type='text' v-model="form.employer_name" class='form-control '
-                        placeholder='Employer name' :class="{ 'is-invalid': submitted && $v.form.employer_name.$error }" />
-                          <div v-if="submitted && !$v.form.employer_name.required" class="form-error">Employer name is required</div>
-
-                  </div>
-
-                    <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
-                           <label class="form-control-label"> Are you a RSA holder ?</label>
-                        <select  v-model="form.is_rsa_holder" class='form-control' :class="{ 'is-invalid': submitted && $v.form.is_rsa_holder.$error }">
-                              <option value="" selected></option>
-                              <option value="1">Yes</option>
-                              <option value="0">No</option>
-                        </select>
-                        <div v-if="submitted && !$v.form.is_rsa_holder.required" class="form-error">Option is required</div>
-                  </div>
-
-                    <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 topme' v-show="form.is_rsa_holder==1">
-                           <label class="form-control-label">Pension Fund Administrator</label>
-                        <input type='text' v-model="form.pfa_name" class='form-control '
-                        placeholder='PFA' :class="{ 'is-invalid': submitted && $v.form.pfa_name.$error }" />
-                          <div v-if="submitted && !$v.form.pfa_name.required" class="form-error">PFA Name is required</div>
-
-                  </div>
-                      </div>
-
-
-
-            <div class='form-group row'>
-                  <div class='col-lg-12 col-md-6 col-sm-12 col-xs-12 '>
-                         <label class="form-control-label">Address</label>
-                        <input type='text' v-model="form.address" class='form-control '
-                        placeholder='Address' :class="{ 'is-invalid': submitted && $v.form.address.$error }" />
-                           <div v-if="submitted && !$v.form.address.required" class="form-error">Address is required</div>
-                  </div>
-            </div>
-       </form>
 
 
     </div>
@@ -99,10 +125,11 @@
 
 <script>
  import { required, email, minLength, sameAs,requiredIf,numeric } from "vuelidate/lib/validators";
-//  import form_mixin from '@/mixins/form_mixin';
+ import general_mixin from '@/mixins/general_mixin';
+ import form_mixin from '@/mixins/form_mixin';
 export default {
     name:"ProfileForm",
-    // mixins:[form_mixin],
+    mixins:[general_mixin,form_mixin],
     props:{
         inputBg:{type:String,default:'#fff'}
     },
@@ -127,55 +154,91 @@ export default {
         }
     },
     computed:{
-          dob(){
+      dob:{
+           get(){
                 let d = this.$store.state.calculator.form.dob;
                 this.form.dob = d;
-                return d;
+                return this.form.dob;
+
+          },
+          set(v){
+            let d = this.$store.state.calculator.form.dob;
+             this.form.dob = d;
           }
+      }
+
     },
-    validations: {
-            form: {
-                  firstname: { required },
-                  lastname: { required },
-                  dob: { required },
-                  employment_status: { required },
-                  employer_name:{required:requiredIf((form) =>form.employment_status=='employed')},
-                  address: { required },
-                  email: { required, email },
-                  phone: { required, numeric,minLength:minLength(10) },
-                  is_rsa_holder:{required},
-                  pfa_name:{required:requiredIf((form) =>form.is_rsa_holder==1)}
-            }
-      },
+    // validations: {
+    //         form: {
+    //               firstname: { required },
+    //               lastname: { required },
+    //               // dob: { required },
+    //               employment_status: { required },
+    //               employer_name:{required:requiredIf((form) =>form.employment_status=='employed')},
+    //               address: { required },
+    //               email: { required, email },
+    //               phone: { required, numeric,minLength:minLength(10) },
+    //               is_rsa_holder:{required},
+    //               pfa_name:{required:requiredIf((form) =>form.is_rsa_holder==1)}
+    //         }
+    //   },
       methods:{
-            submit(){
-                  this.submitted=true
-                  this.$v.$touch();
-                  if (this.$v.$invalid) {
-                        window.scrollTo(0,0)
-                        return;
-                  }
-                  console.log("profile react")
-                  this.$store.dispatch("calculator/saveProfileFormAction",this.form)
+            validateForm(){
+              this.$formulate.submit("profileForm");
+            },
+            submit(data){
+
+                  // this.submitted=true
+                  // this.$v.$touch();
+                  // if (this.$v.$invalid) {
+                  //       window.scrollTo(0,0)
+                  //       console.log("error me",this.$v)
+                  //       return;
+                  // }
+                  this.$store.dispatch("calculator/saveProfileFormAction",data);
                   let all = this.$store.state.calculator.form;
 
                   this.$store.dispatch("calculator/submitPreQualifiedAction",all).then((res)=>{
                         this.$nuxt.$emit('prequalified-modal',true);
                         // console.log("profile saved")
-                        // this.$router.push("/register")
+                        this.$router.push("/")
 
                         // $("#congratulationModal").modal('show');
+                  }).catch((err)=>{
+                    console.log(err.response);
                   })
+            },
+            fillAuthUserData(){
+              if(this.$auth.user){
+                this.form.firstname = this.user.firstname;
+                this.form.lastname = this.user.lastname;
+                this.form.email = this.user.email;
+                this.form.phone = this.user.phone;
+                this.form.employment_status = this.user.employment_status;
+                // this.form.employer_name = this.user.employer_name;
+                this.form.is_rsa_holder = this.user.is_rsa_holder;
+                // this.form.pfa_name = this.user.pfa_name;
+                this.form.address = this.user.address;
+                // this.mapIncomingDataToForm(this.form,this.$auth.user);
+              }
             }
       },
       created(){
             this.$nuxt.$on('profileSubmit',(t)=>{
-                  this.submit();
+              if(t){
+                  this.validateForm();
+              }
+
             })
+          this.fillAuthUserData();
       }
 }
 </script>
 
 <style lang="scss" scoped>
-
+  // .form-error{
+  //   color:red;
+  //   text-decoration: none;
+  //   list-style: none;
+  // }
 </style>

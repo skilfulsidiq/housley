@@ -67,8 +67,9 @@
                 We are leading efforts to simplify and eliminate multiple costs
                 and processes for homebuyers and make fees more transparent.
               </p>
-              <button type="button" class="xxsm-font green-btn s-bold hoverable" @click="showModal">
-                Take the Affordability Test
+              <!-- <button type="button" class="xxsm-font green-btn s-bold hoverable" @click="showModal"> -->
+              <button type="button" class="xxsm-font green-btn s-bold hoverable" >
+                Contact a Home Loan Advisor
               </button>
             </div>
           </div>
@@ -105,7 +106,7 @@
                   proven track record.
                 </p>
                 <button type="button" class="xxsm-font green-btn s-bold hoverable" @click="showModal">
-                  Take the Affordability Test
+                  Find an Affordable Home
                 </button>
               </div>
             </div>
@@ -130,7 +131,7 @@
                   Affordability is essential for inclusive homeownership,
                 </h2>
                 <p class="info color1 xsm-font">
-                  through our partnership with Housing Solution Fund, you can
+                  through our partnership with <a href="#">Housing Solution Fund</a> , you can
                   access blended single-digit home loans on our platform from
                   participating licensed lending banks
                 </p>

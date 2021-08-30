@@ -1,7 +1,8 @@
 <template>
   <div>
      <main class="page-content">
-      <section v-if="property">
+       <div v-if="!loading">
+           <section v-if="property">
         <div class="padded-content mt-183 relative">
           <nuxt-link to="/properties" class="abs-text flex back bold color1" >
 
@@ -191,14 +192,19 @@
           </section>
         </div>
       </section>
+       </div>
+
+       <property-loading v-if="loading"/>
     </main>
   </div>
 </template>
 
 <script>
 import ScheduleTourForm from '@/components/property/ScheduleTourForm.vue';
+import general_mixin from "@/mixins/general_mixin"
   export default {
   components: { ScheduleTourForm },
+  mixins:[general_mixin],
     auth:false,
       head(){
             return{
@@ -239,7 +245,10 @@ import ScheduleTourForm from '@/components/property/ScheduleTourForm.vue';
             this.$router.push("/affordability")
           },
            fetchProperty(slug){
-            this.$store.dispatch("property/propertyDetailAction",slug)
+              this.appLoading(true);
+            this.$store.dispatch("property/propertyDetailAction",slug).then(res=>{
+               this.appLoading(false);
+            })
         },
       },
       created(){

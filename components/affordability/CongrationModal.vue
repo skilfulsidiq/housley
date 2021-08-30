@@ -66,7 +66,14 @@ export default {
         startApplication(){
             this.$store.commit("calculator/GO_TO_STEP",1);
             this.hideModal();
-            this.$router.push("/register");
+            if(this.$auth.user){
+              this.$router.push("/dashboard");
+            }else{
+              this.$nuxt.$emit("have_register_data",true);
+              this.$router.push("/register");
+            }
+
+
         },
         close(){
             this.$store.commit("calculator/GO_TO_STEP",1);

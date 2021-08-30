@@ -2,6 +2,11 @@
  <v-app id="inspire">
      <dashboard-header/>
      <v-main>
+        <breadcrumb page="Mortgage Application Form">
+            <template v-slot:right>
+
+            </template>
+        </breadcrumb>
        <client-only>
         <div>
     <v-container>
@@ -66,8 +71,21 @@ import MortgageFormTitle from '@/components/dashboard/mortgage/MortgageFormTitle
       },
       stepPercent(){
         switch(this.mortgagestep){
-          case 1:return this.percent;
-          case 2:case 3:case 4: case 5: return this.percent+=20;
+          case 1:
+            this.percent = 20;
+             return this.percent;
+          case 2:
+            this.percent = 40;
+               return this.percent;
+          case 3:
+            this.percent = 60;
+               return this.percent;
+          case 4:
+            this.percent = 80;
+              return this.percent;
+          case 5: this.percent = 100;
+            return this.percent;
+
         }
       }
     },
@@ -77,10 +95,12 @@ import MortgageFormTitle from '@/components/dashboard/mortgage/MortgageFormTitle
           this.goMortgageBackStep();
         },
         nextAction(){
+
                let param = {status:true,next:this.form_pages[1]}
             switch(this.mortgagestep){
               case 1:
                 param =  {status:true,next:this.form_pages[1]}
+                console.log("am click")
                 this.$nuxt.$emit('submit_first_mortgage_form',param);
                 break;
               case 2:

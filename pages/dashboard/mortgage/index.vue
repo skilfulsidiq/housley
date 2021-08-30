@@ -158,6 +158,7 @@ import mortgage_mixin from '@/mixins/mortgage_mixin'
         }
       },
       computed:{
+
       },
       methods:{
 
@@ -169,6 +170,7 @@ import mortgage_mixin from '@/mixins/mortgage_mixin'
               return;
           }
           this.appLoading(true);
+          console.log("am submitting")
           this.$store.dispatch("profile/savePersonalAndEmploymentDataAction",this.personal_form).then((res)=>{
              this.appLoading(false);
               this.goMortgageNextStep(2);

@@ -255,8 +255,8 @@ export const actions = {
         return p;
 
     },
-    prefillPersonalFormAction({commit},profile){
-      commit("PREFILL_PERSONAL_FORM",profile);
+   async prefillPersonalFormAction({commit},profile){
+      await commit("PREFILL_PERSONAL_FORM",profile);
       return profile;
     },
     async savePersonalInfoFormAction({commit},profile){

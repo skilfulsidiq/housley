@@ -151,7 +151,7 @@
 
 
     </div>
-    <app-button  btnclass="timeline-end hoverable" btnid="model-trigge" text="Start your journey" :action="showModal"    />
+    <!-- <app-button  btnclass="timeline-end hoverable" btnid="model-trigge" text="Start your journey" :action="showModal"    /> -->
     <!-- <button class="timeline-end" type="button" id="modal-trigge" data-toggle="modal" data-target="#AffordabilityTestModal">
      Start your journey
     </button> -->

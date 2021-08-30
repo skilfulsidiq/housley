@@ -202,7 +202,7 @@
             email:'',
             phone:'',
             property_value:'',
-            found_property:0,
+            found_property: 0,
             state_id:'',
             city_id:'',
             property_bedroom:'',
@@ -290,6 +290,8 @@
               this.closeModal();
               this.clearForm();
               console.log(res);
+              this.$apptoast.success("Request Submitted")
+              this.$router.push('/')
           }).catch(e=>{
             this.submiting=false;
             console.log(e.response);

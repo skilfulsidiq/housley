@@ -7,7 +7,7 @@
         <affordability-modal/>
         <property-request-modal/>
 
-            <congration-modal/>
+        <congration-modal/>
 
         </client-only>
       <AppFooter/>

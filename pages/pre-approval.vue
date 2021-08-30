@@ -7,9 +7,11 @@
           <affordability-form :formType="true" :showLocation="true">
                   <template v-slot:button>
 
-                      <app-button btnid="continue" btnclass="next xxsm-font green-btn s-bold hoverable" text="Continue" :action="submitModalAffordability" :btnloading="loading" />
+                           <app-button btnid="continue" btnclass="next xxsm-font green-btn s-bold hoverable" text="Continue" :action="submitModalAffordability" :btnloading="loading" />
 
-                      </template>
+
+
+                  </template>
           </affordability-form>
       </div>
 
@@ -39,15 +41,19 @@ import general_mixin from '@/mixins/general_mixin'
             }
         },
         created(){
-          window.scrollTo(0,0)
+          window.scrollTo(0,0);
         }
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
+.preapproval-content #continue {
+       width: 100% !important;
+  }
   @media (max-width:900){
 .preapproval-content #continue {
      width: 100% !important;
 }
   }
+
 </style>

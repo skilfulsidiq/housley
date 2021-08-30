@@ -36,11 +36,11 @@
                 <input type='submit' id="email" name="email" value="Login">
                 <div class="signup mt-3">Do not have an account? <nuxt-link to="/register">&nbsp; Sign Up</nuxt-link> </div>
 
-                <div class="google-signon">
+                <!-- <div class="google-signon">
                     <span><img src='/img/login/google.svg' ></span>
 
                     <span>Continue with Google</span>
-                </div>
+                </div> -->
 
             </form>
 
@@ -125,7 +125,7 @@
               //  this.$auth.setUser(data.data.user);
             if(data.token){
               this.appLoading(false);
-              this.$router.push("/dashboard")
+              this.$router.push("/")
               this.$apptoast.success('Successfully authenticated');
             }else{
                 this.appLoading(false);

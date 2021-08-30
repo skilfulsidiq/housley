@@ -2,23 +2,15 @@
   <div>
             <h1>Forgot Password</h1>
            <div class="form-container">
-            <form>
-                 <div class="form-group" v-if="!show_change_password_form">
-                      <span><img class="email" src='/img/login/email.svg' ></span>
-                    <input  type='email' placeholder="Email address" id="email" v-model="forgot_form.email" :class="{'is-invalid': submitted && $v.forgot_form.email.$error }">
-                      <div v-if="submitted && !$v.forgot_form.email.required" class="form-error">Email is required</div>
-                      <div v-if="submitted && !$v.forgot_form.email.email" class="form-error">valid Email is required</div>
+            <div>
 
-                      <button type="button" class="app-btn" @click="forgotPassword">
-                         <span v-if="!loading">Reset Password</span>
-                          <span v-if="loading">Loading....</span>
-                      </button>
-                  </div>
+                   <forgot-form v-if="!show_change_password_form"/>
 
-                  <div v-if="show_change_password_form">
+                  <form >
+                      <div v-if="show_change_password_form">
                     <div class="form-group">
                       <span><img class="email" src='/img/login/email.svg' ></span>
-                      <input  type='email' disabled placeholder="Email address" id="email" v-model="change_password_form.email">
+                      <input  type='email' disabled placeholder="Email address" id="email" v-model="change_password_form.email" >
                     </div>
                     <div class="form-group">
                       <span><img class="email" src='/img/login/email.svg' ></span>
@@ -37,6 +29,8 @@
                       <span v-if="loading">Loading....</span>
                     </button>
                   </div>
+                  </form>
+
                   <div class=" mt-5 space-row">
                      <div class="cursor" @click="retry">Retry</div>
                      <div class="cursor">Back to  <nuxt-link to="/login">&nbsp; Login</nuxt-link> </div>
@@ -49,7 +43,7 @@
                     <span>Continue with Google</span>
                 </div> -->
 
-            </form>
+            </div>
             <!-- <form action="">
 
             </form> -->
@@ -64,7 +58,9 @@
  import { required, email, minLength, sameAs,requiredIf,numeric } from "vuelidate/lib/validators";
  import general_mixin from "@/mixins/general_mixin";
  import form_mixin from "@/mixins/form_mixin";
+import ForgotForm from '../components/forms/ForgotForm.vue';
   export default {
+  components: { ForgotForm },
     layout:'auth',
     auth:'guest',
     middleware:['app_guest'],
@@ -82,6 +78,7 @@
             // loading:false,
             show_pass:false,
             submitted:false,
+            forgot_error:false,
             forgot_form:{
                 email:'',
                 // source:'back'
@@ -96,25 +93,18 @@
         }
     },
     validations:{
-       forgot_form:{
-                email:{required,email},
-                // source:'back'
-            },
-            change_password_form:{
-                email:{required,email},
-                code:{required,numeric},
-                password:{required},
-            },
+      //  forgot_form:{
+      //           email:{required,email},
+      //           // source:'back'
+      //       },
+      change_password_form:{
+          code:{required,numeric},
+          password:{required},
+      },
     },
 
     methods: {
     forgotPassword(){
-          this.submitted=true
-          this.$v.$touch();
-          if (this.$v.forgot_form.email.invalid) {
-              return;
-          }
-
           this.appLoading(true);
         this.change_password_form.email = this.forgot_form.email;
         console.log(this.forgot_form);
@@ -123,8 +113,10 @@
             this.show_change_password_form = true;
             this.$apptoast.success('An Email has been sent')
               this.appLoading(false);
+               this.submitted=false;
         }).catch((e)=>{
               console.log(e.response.data.data)
+               this.submitted=false
                 this.appLoading(false);
             this.show_change_password_form = false;
               this.showErrorMsg(e,'Invalid Email')
@@ -136,11 +128,12 @@
     },
     changePassword(){
       this.submitted=true
-        if (this.$v.change_password_form.code.invalid || this.$v.change_password_form.password.invalid || this.$v.change_password_form.email.invalid) {
+      this.$v.$touch();
+        if (this.$v.invalid) {
               return;
           }
           this.appLoading(true);
-        this.$store.dispatch('app/changePasswordByForgotAction',this.change_password_form).then((res)=>{
+           this.$store.dispatch('app/changePasswordByForgotAction',this.change_password_form).then((res)=>{
                   this.appLoading(false);
             this.show_change_password_form = false;
             this.forgot_form={}
@@ -150,6 +143,9 @@
         }).catch((e)=>{
               this.appLoading(false);
             this.show_change_password_form = true;
+            let r = e;
+            console.log(e);
+            //  this.$apptoast.error(r.data.data)
               this.showErrorMsg(e,'Error changing password,try again');
         })
     },
@@ -157,32 +153,18 @@
         this.show_change_password_form=false;
     },
 
-    // changePassword(){
-    //     if(!this.$refs.change_pass_form.validate()){
-    //         return;
-    //     }
-    //       this.appLoading(true);
-    //     this.$store.dispatch('app/changePasswordByForgotAction',this.change_password_form).then((res)=>{
-    //               this.appLoading(false);
-    //         this.show_change_password_form = false;
-    //         this.forgot_form={}
-    //         this.change_password_form={}
-    //             this.$apptoast.success('Password changed successfully')
-    //         this.$router.replace('/login');
-    //     }).catch((e)=>{
-    //           this.appLoading(false);
-    //         this.show_change_password_form = true;
-    //           let err = e.response.data.data;
-    //           console.log(err);
-    //           this.$apptoast.error(err)
-    //     })
-    // },
-    // retry(){
-    //     this.show_change_password_form=false;
-    // }
+
   },
   created(){
     this.appLoading(false);
+    this.$nuxt.$on("forgot_is_submitted",(param)=>{
+      console.log("forgot is submited",param)
+      if(param.status){
+         this.forgot_form.email = param.email
+        this.forgotPassword();
+
+      }
+    });
   }
   }
 </script>
@@ -216,4 +198,31 @@
   display: flex;
   justify-content: space-between;
 }
+// .login-container .right .form-container form input {
+//   border:none;
+//   background-color: transparent !important;
+// }
+// .custom-label-color{
+//    background-color: transparent !important;
+// }
+// overide vuetify
+// .theme--light.v-input {
+//     color: #006633;
+// }
+
+// .error--text{
+//   color:#FF5252;
+// }
+// .v-messages__message {
+// color:#FF5252 !important;
+// }
+
+// .custom-label-color .v-label {
+//     margin-left: 0.5rem !important;
+// }
+// v-text-field input {
+//     padding: 1px 0 8px 0.5rem !important ;
+// }
+
+
 </style>

@@ -16,9 +16,9 @@
 
 import DashboardMenu from "../components/DashboardMenu.vue"
 import NavList from '@/components/navigation/NavList.vue'
-import SideNavProfile from '../components/navigation/SideNavProfile.vue'
-import Breadcrumb from '../components/Breadcrumb.vue'
-import DashboardHeader from '../components/navigation/DashboardHeader.vue'
+import SideNavProfile from '@/components/navigation/SideNavProfile.vue'
+import Breadcrumb from '@/components/Breadcrumb.vue'
+import DashboardHeader from '@/components/navigation/DashboardHeader.vue'
     export default {
       middleware:['verify'],
       components:{DashboardMenu, NavList, SideNavProfile, Breadcrumb, DashboardHeader},
@@ -29,6 +29,7 @@ import DashboardHeader from '../components/navigation/DashboardHeader.vue'
                    {icon:'mdi-view-dashboard', text:'Dashboard',link:'/dashboard'},
                    {icon:'mdi-lan-connect', text:'My Applications',link:'/dashboard/application'},
                   //  {icon:'mdi-home-flood', text:'Mortgage',link:'/mortgage'},
+                   {icon:'mdi-file-document-outline', text:'Property Request',link:'/request'},
                    {icon:'mdi-file-document-outline', text:'My Docunments',link:'/dashboard/upload'},
                   //  {icon:'mdi-ticket-confirmation-outline', text:'Property Request',link:'/propertyrequest'},
                   //  {icon:'mdi-ticket-confirmation-outline', text:'Property Request Form',link:'/propertyrequestform'},
@@ -84,10 +85,12 @@ import DashboardHeader from '../components/navigation/DashboardHeader.vue'
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
   .v-main {
     background: #f2f2f2;
   }
 
-
+.theme--light.v-card{
+    padding:1.5rem !important;
+  }
 </style>

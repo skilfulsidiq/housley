@@ -84,7 +84,7 @@ export default{
         return u;
       },
       appclient(){
-        let u = this.$store.state.app.client;
+        let u = this.$store.state.general.client;
         return u;
       },
       authStatus(){

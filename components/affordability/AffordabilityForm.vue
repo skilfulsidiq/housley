@@ -1,5 +1,36 @@
 <template>
   <div>
+       <!-- <FormulateForm  name="profileForm" v-model="form" @submit.prevent="submit" class="form-tab">
+           <div class="form-group">
+                     <label class="color1 xsm-font" for="incomeYes" >Monthly Net income</label >
+                      <div class="input-group mb-3">
+                          <span
+                            class="input-group-text color1"
+                            id="inputGroup-sizing-default"
+                            >₦</span
+                          >
+                     <FormulateInput name="monthly_net_pay" wrapper-class="input-group"
+                    v-model="monthly_income"
+                          input-class="form-control test-form s-form"
+                          error-class="form-error"
+                          validation="required"
+                          error-behavior="value"
+                          validation-name="Monthly Income"
+                        />
+
+                  </div>
+           </div>
+           <div class="q-radio">
+                    <p class="name color1">Do you have Additional Income?</p>
+                    <FormulateInput wrapper-class="modal-radios flex flex-wrap"
+                        name="have_additional"
+                        input-class="color1 xsm-font"
+                        :options="[{value:'1',label:'Yes'},{value:'0',label:'No'}]"
+                        type="radio"
+                      />
+           </div>
+
+       </FormulateForm> -->
        <form  ref="aform" id="regForm" class="form-tab">
                   <div class="heading" v-if="showLocation">
                     <h1 class="big-font green bold">How much can I Afford</h1>
@@ -12,17 +43,17 @@
                   <div class="form-group">
                      <label class="color1 xsm-font" for="incomeYes" >Monthly Net income</label >
                       <div class="input-group mb-3">
-                    <span
-                      class="input-group-text color1"
-                      id="inputGroup-sizing-default"
-                      >₦</span
-                    >
-                    <input
-                      type="text" v-model="monthly_income"
-                      class="form-control test-form" :class="{'is-invalid': submitted && $v.form.monthly_net_pay.$error }"
-                      aria-label="Sizing example input"
-                      aria-describedby="inputGroup-sizing-default"
-                    />
+                          <span
+                            class="input-group-text color1"
+                            id="inputGroup-sizing-default"
+                            >₦</span
+                          >
+                          <input
+                            type="text" v-model="monthly_income"
+                            class="form-control test-form" :class="{'is-invalid': submitted && $v.form.monthly_net_pay.$error }"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default"
+                          />
 
                   </div>
                   <div v-if="submitted && !$v.form.monthly_net_pay.required" class="form-error">Monthly income is required</div>
@@ -249,11 +280,13 @@
                   </div>
 
 
-
-                <div class="continue">
+                <div class="center-btn">
+                      <div class="continue2">
                      <slot name="button"></slot>
 
+                       </div>
                 </div>
+
 
 
 
@@ -324,10 +357,8 @@ export default {
             loan_tenure: { required },
             additional_income: { required: requiredIf((form) =>form.have_additional==1)},
             outstanding_loans: { required: requiredIf((form) =>form.have_existing_obligation==1)},
-            co_borrower_monthly_income: { required: requiredIf((form) =>form.have_co_borrower==1)},
-            // email: { required, email },
-            // password: { required, minLength: minLength(6) },
-            // confirmPassword: { required, sameAsPassword: sameAs('password') }
+            co_borrower_monthly_income: { required: requiredIf((form) =>form.have_co_borrower==1)}
+
         }
     },
     watch:{
@@ -408,7 +439,7 @@ export default {
                 this.$store.dispatch("calculator/saveAffordabilityFormAction",this.form)
                 this.$store.dispatch("calculator/calculateAffordabilityAction",this.form).then((r)=>{
                     this.processStepFunction(true,false);
-                    // this.$store.dispatch("calculator/formStepAction",2);
+                    this.$store.dispatch("calculator/formStepAction",2);
                     this.$nuxt.$emit('open-affordability-modal',false);
                       this.clearForm();
                     if(this.$route.name != 'properties-affordability'){
@@ -443,7 +474,7 @@ export default {
            this.$store.dispatch("calculator/saveAffordabilityFormAction",this.form)
           this.$store.dispatch("calculator/calculateAffordabilityAction",this.form).then((r)=>{
              this.processStepFunction(true,false);
-            //  this.clearForm();
+             this.clearForm();
           //  this.$nuxt.$emit('open-affordability-modal',false);
             this.$store.dispatch("calculator/formStepAction",2);
           });
@@ -469,11 +500,15 @@ export default {
         })
         // this.setitUp();
         // this.initRangeEl()
+        this.clearForm();
+    },
+    destroyed(){
+       this.clearForm();
     },
     mounted(){
           window.scrollTo(0,0);
          this.processStepFunction(false,false);
-         this.mapIncomingDataToForm(this.form,this.$store.state.calculator.form)
+        //  this.mapIncomingDataToForm(this.form,this.$store.state.calculator.form)
         //  this.form = {...}
     }
 }
@@ -484,4 +519,15 @@ export default {
   .test-form{
     height: 51px !important;
   }
+  .s-form{
+    margin-left: -1px;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+
+    .center-btn{
+    display: flex;
+    justify-content: center;
+  }
+
 </style>

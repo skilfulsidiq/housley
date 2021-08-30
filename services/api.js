@@ -1,124 +1,136 @@
 export default {
 
-   login() {
-    return   "/auth/login";
+  login() {
+    return "/auth/login";
   },
-   register() {
-    return   "/auth/register";
+  register() {
+    return "/auth/register";
   },
-   forgotPassword() {
+  registerUpdate() {
+    return "/auth/register-update";
+  },
+  forgotPassword() {
     return "/auth/forgot-password";
   },
-   verifyUserEmail() {
-     return 'user/verify-account'
-   },
-   changepassword() {
-    return   "/auth/change-password";
+  verifyUserEmail() {
+    return 'user/verify-account'
   },
-   updateprofile() {
-    return   "/lender/update-profile";
+  changePasswordByForgot() {
+    return "/auth/change-password-code";
+  },
+  updateprofile() {
+    return "/lender/update-profile";
   },
 
-   getAppClient() {
-     return 'general/app-client'
-   },
-   allStates() {
-    return  "/general/all-states";
+  getAppClient() {
+    return 'general/app-client'
   },
-   allPaymentOption() {
-     return "/general/finance-option"
-   },
-   allCitiesInState(state_id) {
-    return  "/general/all-cities/" + state_id;
+  allStates() {
+    return "/general/all-states";
   },
-   propertyTypeList() {
-    return   "/general/all-special-types";
+  allPaymentOption() {
+    return "/general/finance-option"
   },
-   propertyStatusList() {
-    return   "/general/property-status";
+  allCitiesInState(state_id) {
+    return "/general/all-cities/" + state_id;
   },
-   calculateAffordability() {
-    return   "/general/affordability-test";
+  propertyTypeList() {
+    return "/general/all-special-types";
   },
-   fetchAffordableProperties() {
+  propertyStatusList() {
+    return "/general/property-status";
+  },
+  calculateAffordability() {
+    return "/general/affordability-test";
+  },
+  fetchAffordableProperties() {
     // let r = data.amount + '/' + data.location;
-    return   "/general/property-affordability";
+    return "/general/property-affordability";
   },
-   fetchLenderRate() {
-    return   "/general/lender-rates";
+  fetchLenderRate() {
+    return "/general/lender-rates";
   },
-   fetchAllProperties() {
-    return   "/general/all-properties";
+  fetchAllProperties() {
+    return "/general/all-properties";
   },
 
-   featuredProperties() {
-    return   "/general/featured-properties";
+  featuredProperties() {
+    return "/general/featured-properties";
   },
-   recentProperties() {
-    return   "/general/recent-properties";
+  recentProperties() {
+    return "/general/recent-properties";
   },
-   belowPriceProperties(price) {
-    return   "/general/property-below-price/" + price;
+  belowPriceProperties(price) {
+    return "/general/property-below-price/" + price;
   },
   searchProperties(data) {
-    return   "/general/search-properties";
+    return "/general/search-properties";
   },
-   propertyDetail(slug) {
-    return   "/general/property-detail/" + slug;
+  propertyDetail(slug) {
+    return "/general/property-detail/" + slug;
   },
-   savePrequalified() {
-    return   "/general/profile-request";
+  savePrequalified() {
+    return "/general/profile-request";
   },
-   saveBookTour() {
-    return   "/general/book-tour";
+  saveBookTour() {
+    return "/general/book-tour";
   },
-   propertyEnquiry() {
-    return   "/general/property-enquiry";
+  propertyEnquiry() {
+    return "/general/property-enquiry";
   },
-   saveUserRequestWithoutAuth() {
-    return   "/general/save-property-request-no-auth";
+  saveUserRequestWithoutAuth() {
+    return "/general/save-property-request-no-auth";
   },
 
-
+  //dashboard
+  getUserProfile() {
+    return "user/get-profile"
+  },
+  updateProfileInfo() {
+    return 'user/profile'
+  },
+  updateAffordabilityInfo() {
+    return 'user/affordability-test'
+  },
   userMortgageStatus() {
-      return "user/get-user-current-mortgage"
-    },
-    userMortgageList() {
-      return "user/user-mortgage-status"
-    },
-    userMortgageDetail(slug) {
-      return "user/user-mortgage-detail/" + slug
-    },
-    userDocumentCount() {
-      return "user/document-count"
-    },
-    userPropertyRequest() {
-      return "user/get-user-request"
-      // return "user/user-property-request"
-    },
-    userFileList() {
-      return "user/user-files"
-    },
-    userUploadFile() {
-      return "user/user-upload-file"
+    return "user/get-user-current-mortgage"
+  },
+  userMortgageList() {
+    return "user/user-mortgage-status"
+  },
+  userMortgageDetail(slug) {
+    return "user/user-mortgage-detail/" + slug
+  },
+  userDocumentCount() {
+    return "user/document-count"
+  },
+  userPropertyRequest() {
+    return "user/get-user-request"
+    // return "user/user-property-request"
+  },
+  userFileList() {
+    return "user/user-files"
+  },
+  userUploadFile() {
+    return "user/user-upload-file"
 
-    },
-    userUploadFileFromClient() {
-      return "user/user-upload-file-client"
+  },
+  userUploadFileFromClient() {
+    return "user/user-upload-file-client"
 
-    },
-    userDeleteFile(id) {
-      return "user/user-delete-file/" + id
-    },
-    getUserRequest() {
-      return "user/get-user-request";
-    },
-    userApplyForMortgage() {
-      return "user/apply-mortgage";
-    },
-    userAgreeToMortgage() {
-      return "user/agree-to-terms";
-    }
+  },
+  userDeleteFile(id) {
+    return "user/user-delete-file/" + id
+  },
+  getUserRequest() {
+    return "user/get-user-request";
+  },
+  userApplyForMortgage() {
+    return "user/apply-mortgage";
+  },
+  userAgreeToMortgage() {
+    return "user/agree-to-terms";
+  }
 
 
 

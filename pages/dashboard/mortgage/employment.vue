@@ -18,7 +18,7 @@
                   label="Employment State"
                   item-text="name"
                   item-value="name"
-                  :items="allStates"
+                  :items="states"
                   outlined
                   ></v-select>
                   </div>

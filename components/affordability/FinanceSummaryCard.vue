@@ -28,13 +28,13 @@ import form_mxin from '@/mixins/form_mixin'
   export default {
     mixins:[form_mxin],
     props:{
-      // result:{type:Object}
+      result:{type:Object}
     },
     computed:{
-        result(){
-              let result = this.$store.state.calculator.form;
-              return result;
-            },
+        // result(){
+        //       let result = this.$store.state.calculator.form;
+        //       return result;
+        //     },
     }
   }
 </script>

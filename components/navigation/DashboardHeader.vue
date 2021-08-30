@@ -3,8 +3,9 @@
      <v-navigation-drawer   v-model="drawer"  app left class="no-print">
 
             <!-- add logo with margin-bottom of 5 -->
-          <!-- <div class="logo my-5">  <v-img src="/logo/logo.png"></v-img></div> -->
-          <!-- <div class="logo my-5">  <v-img :src="appclient.client_logo"></v-img></div> -->
+          <!-- <div class="logo my-5" v-if="!appclient.client_logo">  <v-img src="/logo/app_icon.png"></v-img></div> -->
+          <div class="logo-text my-5" v-if="!appclient.client_logo"> <h3>AfrealOne</h3></div>
+          <div class="logo my-5" v-if="appclient.client_logo">  <v-img :src="appclient.client_logo"></v-img></div>
           <v-divider></v-divider>
            <!-- <side-nav-profile /> -->
              <v-list dense class="mt-5">
@@ -47,7 +48,7 @@ import general_mixin from '@/mixins/general_mixin';
                 app_menu: [
                    {icon:'mdi-view-dashboard', text:'Dashboard',link:'/dashboard'},
                    {icon:'mdi-lan-connect', text:'My Applications',link:'/dashboard/application'},
-                  //  {icon:'mdi-home-flood', text:'Mortgage',link:'/mortgage'},
+                    // {icon:'mdi-file-document-outline', text:'Property Request',link:'/request'},
                    {icon:'mdi-file-document-outline', text:'My Docunments',link:'/dashboard/upload'},
                   //  {icon:'mdi-ticket-confirmation-outline', text:'Property Request',link:'/propertyrequest'},
                   //  {icon:'mdi-ticket-confirmation-outline', text:'Property Request Form',link:'/propertyrequestform'},
@@ -99,6 +100,17 @@ import general_mixin from '@/mixins/general_mixin';
     height: 40px;
     margin-left: 1rem;
     margin-top: 1rem;
+  }
+  .logo-text{
+    display: flex;
+    justify-content: center;
+    width:120px;
+    height: 40px;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    h3{
+      font-weight: 800;
+    }
   }
    .owner_div{
         position: absolute;

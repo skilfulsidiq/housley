@@ -8,19 +8,12 @@
 
                 <!-- Slides -->
                 <div class="swiper-slide" id="slide1">
-                    <div class='slider' >
-                       <div class="slider-container" >
-                        <h2>Your journey to <br> home ownership<br> starts here.</h2>
-                       </div>
-                       <div>
-
-                       </div>
-
-                    </div>
+                   <home-slider-text/>
 
                 </div>
                 <div class="swiper-slide" id="slide2">
-                    <div class='slider' >
+                    <home-slider-text/>
+                    <!-- <div class='slider' >
                         <div class="slider-container" >
                          <h2>Your journey to <br> home ownership<br> starts here.</h2>
                         </div>
@@ -28,11 +21,12 @@
 
                         </div>
 
-                     </div>
+                     </div> -->
 
                 </div>
                 <div class="swiper-slide" id="slide3">
-                    <div class='slider' >
+                   <home-slider-text/>
+                    <!-- <div class='slider' >
                         <div class="slider-container" >
                          <h2>Your journey to <br> home ownership<br> starts here.</h2>
                         </div>
@@ -40,7 +34,7 @@
 
                 </div>
 
-                     </div>
+                     </div> -->
 
                 </div>
 

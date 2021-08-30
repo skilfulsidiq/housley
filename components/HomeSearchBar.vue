@@ -23,7 +23,7 @@
             </div>
             <div class='form-input'>
 
-                <input class="submit-property" value='Search' type='submit' id='' name=''>
+                <input class="submit-property hoverable" value='Search' type='submit' id='' name=''>
             </div>
         </form>
        </div>
@@ -89,5 +89,27 @@ import general from "@/mixins/general_mixin"
 <style lang="scss" scoped>
 img{
   max-width:13px;
+}
+.property-search {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 25px;
+    z-index: 99;
+    width: 100%;
+    top: 48%;
+    overflow: hidden;
+}
+.property-search-container {
+    width: 74.8125rem;
+    display: flex;
+    justify-content: center;
+}
+.search-container-property{
+  border:1px dotted $secondary;
 }
 </style>

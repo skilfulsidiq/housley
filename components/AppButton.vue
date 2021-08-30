@@ -46,4 +46,5 @@ import general_mixin from "@/mixins/general_mixin"
     cursor: pointer;
     line-height: 24px;
 }
+
 </style>

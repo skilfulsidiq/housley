@@ -69,7 +69,32 @@ export default{
                   return Number(v).toLocaleString("en");
                 }
               },
-
+                   goNextFormStep(route) {
+                       let r = this.formStep.indexOf(route);
+                       let next = r + 1;
+                       // this.goNextStep(next);
+                       this.$router.push(this.formStep[next]);
+                     },
+                     goBcakFormStep(route) {
+                       let r = this.formStep.indexOf(route);
+                       let next = r - 1;
+                       console.log('step num: ', r);
+                       this.$router.push(this.formStep[next]);
+                     },
+                     goNextStep(step) {
+                       this.$store.commit("profile/GO_TO_STEP", step);
+                     },
+                     goBackStep() {
+                       this.$store.commit("profile/GO_BACK_STEP", -1);
+                       this.$router.go(-1);
+                     },
+                     goMortgageNextStep(step) {
+                       this.$store.commit("mortgage/GO_TO_STEP", step);
+                     },
+                     goMortgageBackStep() {
+                       this.$store.commit("mortgage/GO_BACK_STEP", -1);
+                       this.$router.go(-1);
+                     },
           mapIncomingDataToForm(form, data) {
             // console.log(data);
             let ob = Object.entries(data);

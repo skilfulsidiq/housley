@@ -1,9 +1,9 @@
 <template>
         <div class="ppt-card" >
                 <!-- <img id="property_img" src="/img/properties/house-card.jpg" alt="" /> -->
-                <img id="property_img" :src="property.property_cover_image" alt="" />
+                <img id="property_img" :src="property.property_cover_image" alt="" class="cursor" @click="showDetail"/>
                 <div class="ppt-card-details">
-                  <div class="upper">
+                  <div class="upper cursor" @click="showDetail">
                     <div class="lhs">
                       <p class="bold color1 font-16">{{property.property_price| price}}</p>
                       <div class="located flex">
@@ -53,7 +53,7 @@
                     <button
 
                       class="dark-btn see-details"
-                      @click="showDetail()"
+                      @click.prevent="showDetail()"
                     >
                       See details
                     </button>
@@ -105,7 +105,7 @@
     },
     methods:{
         showDetail(){
-          let d = {status:true,property:this.property};
+          // let d = {status:true,property:this.property};
           // this.$nuxt.$emit("show_detail_modal",d);
              this.$router.push({name:"properties-slug",params:{slug:this.property.slug}})
         },
