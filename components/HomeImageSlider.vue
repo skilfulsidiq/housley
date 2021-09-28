@@ -43,13 +43,13 @@
 
         </div>
 
-        <section   class="news-updates">
+        <!-- <section   class="news-updates">
             <div class="news-updates-container">
                <div>
                 <p>Mortgage Rate: Imperial Homes Mortgage Bank Limited = Prime at 15%</p>
                </div>
             </div>
-        </section>
+        </section> -->
 
 
   </section>

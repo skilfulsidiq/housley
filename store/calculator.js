@@ -1,6 +1,7 @@
 import api from '@/services/api'
 export const state = () => ({
   form: {
+    client_id:'',
     total_annual_pay: '',
     monthly_net_pay: '',
     additional_income: '',
@@ -43,7 +44,8 @@ export const state = () => ({
     hasEligibility: false,
   },
   formStep: 1,
-  totalStep: 3,
+  totalStep: 5,
+  propertyIsSelected:false
 })
 export const mutations = {
   PREQUALIFIED_FORM(state, payload) {
@@ -103,6 +105,9 @@ export const mutations = {
     state.form.co_borrower_monthly_income = payload.co_borrower_monthly_income;
     state.form.dob = payload.dob;
     state.form.age = payload.age;
+  },
+  SAVE_SELECTED_LENDER(state,payload){
+    state.client_id = payload
   },
   SAVE_ELIGIBILITY_FORM(state, payload) {
     state.form.loan_amount = payload.loan_amount;
@@ -165,26 +170,31 @@ export const mutations = {
   property_value(state, payload) {
     state.form.property_value = payload
   },
+  PROPERTY_IS_SELECTED(state, payload) {
+    state.propertyIsSelected = payload
+  },
 
 
 
 }
 export const actions = {
 
-  calculateAffordabilityAction({
-    commit
-  }, form) {
+  async calculateAffordabilityAction({ commit}, form) {
     commit("SAVE_AFFORDABILITY_FORM", form);
-    return new Promise((resolve, reject) => {
-      console.log("submitted affordability: ", form)
-      this.$axios.$post(api.calculateAffordability(), form).then((res) => {
-        let d = res.data;
-        console.log(d);
-        commit("AFFORDABILITY_RESULT", d);
-        resolve(d);
-        return d;
-      })
-    });
+    let res = await this.$axios.$post(api.calculateAffordability(), form);
+    let d = res.data;
+    commit("AFFORDABILITY_RESULT", d);
+    return res;
+    // return new Promise((resolve, reject) => {
+    //   console.log("submitted affordability: ", form)
+    //   this.$axios.$post(api.calculateAffordability(), form).then((res) => {
+    //     let d = res.data;
+    //     console.log(d);
+    //     commit("AFFORDABILITY_RESULT", d);
+    //     resolve(d);
+    //     return d;
+    //   })
+    // });
     //     commit("AFFORDABILITY_RESULT", form);
   },
   saveAffordabilityFormAction({

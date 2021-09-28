@@ -77,6 +77,16 @@ export default{
       window.scrollTo(0, 0);
       // this.$nuxt.$emit('open-affordability-modal', false);
     },
+    submitSelectedLender() {
+      this.$nuxt.$emit('submitLender', true);
+      window.scrollTo(0, 0);
+      // this.$nuxt.$emit('open-affordability-modal', false);
+    },
+    submitSelectedBroker() {
+      this.$nuxt.$emit('submitBroker', true);
+      window.scrollTo(0, 0);
+      // this.$nuxt.$emit('open-affordability-modal', false);
+    },
     submitEligibility() {
       this.$nuxt.$emit('submitEligibility', true);
       window.scrollTo(0, 0);

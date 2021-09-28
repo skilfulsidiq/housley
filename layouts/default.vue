@@ -41,6 +41,7 @@ import CongrationModal from '@/components/affordability/CongrationModal.vue';
       }
     },
     created(){
+       this.$store.commit("calculator/PROPERTY_IS_SELECTED",false);
       this.fetchGeneralData();
       //  $(".se-pre-con").fadeOut(1000);
     },

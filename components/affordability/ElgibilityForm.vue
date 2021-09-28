@@ -117,7 +117,7 @@ import "vue-range-slider/dist/vue-range-slider.css";
               property_value:'',
               loan_amount:'',
               down_payment:'',
-              
+
             }
 
         }
@@ -139,6 +139,9 @@ import "vue-range-slider/dist/vue-range-slider.css";
         store_form(){
           let t = this.$store.state.calculator.form;
           return t;
+        },
+        selectedStatus(){
+          return this.$store.state.calculator.propertyIsSelected;
         },
         property_value: {
           get() {
@@ -243,8 +246,11 @@ import "vue-range-slider/dist/vue-range-slider.css";
         }
     },
     created(){
-        let s = this. $store.state.property.selectedProperty;
-        this.$store.commit("calculator/property_value",s.property_price);
+          if(this.selectedStatus){
+            let s = this.$store.state.property.selectedProperty;
+            this.$store.commit("calculator/property_value",s.property_price);
+          }
+
         // this.$store.commit("down_payment",a.max_loan_amount);
        this.$nuxt.$on('submitEligibility',(t)=>{
           this.submitEligibility();

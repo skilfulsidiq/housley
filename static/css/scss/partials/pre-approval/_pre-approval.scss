@@ -314,7 +314,7 @@ input.invalid {
   margin-right: 20px;
 }
 .gg-20.buttons{
-  display: flex;
+  display: flex!important;
 }
 
 /* Make circles that indicate the steps of the form: */
@@ -322,7 +322,7 @@ input.invalid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
-  width: 60%;
+  width: 80%;
   margin: 60px auto 100px auto;
 }
 
@@ -359,6 +359,13 @@ color: #0D4566;
   display: flex;
   align-items: center;
   padding: 0 40px;
+
+  @media (max-width:480px){
+
+  padding: 0 10px;
+}
+
+
 }
 
 .step {
@@ -367,6 +374,18 @@ color: #0D4566;
   flex-direction: column;
   position: relative;
   z-index: 1;
+  
+
+  @media (max-width:480px){
+
+    p{
+      width: 71px!important;
+        bottom: -60px;
+        font-size: 11px;
+        margin: 0 7px;
+    }
+  }
+
 }
 
 .step-indicator .step-icon {

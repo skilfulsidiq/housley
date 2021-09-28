@@ -183,7 +183,145 @@
     </section>
 
     <!-- Real Estate Developers + Statistics END-->
+     <section class="partnership">
+      <div class="partnership-container">
+        <div class="left item butter-color">
+          <h1>Our Loan Advisors</h1>
+          <p>
+            Our team of expert advisers are on hand 7 days a week to provide customers with tailored home loan solutions that fit.
+          </p>
+        </div>
 
+        <div class="right item">
+          <div class="stats splide " data-splide='{"type":"loop","perPage":2}'>
+
+            <div class="splide__track">
+              <div class=" splide__list">
+
+                <div class="stat advisor splide__slide">
+
+                  <div>
+                    <img src="/img/mortgage/advisor.png" alt="">
+
+                  </div>
+
+                  <div class="content">
+
+                    <h3>Mercy Ayoade</h3>
+                    <div class="tel"> <i class="fas fa-phone-alt"></i> + 234 8153 7396</div>
+                    <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  (74)
+                    </div>
+
+
+                  </div>
+
+
+                </div>
+
+                <div class="stat advisor splide__slide">
+
+                <div>
+                  <img src="/img/mortgage/advisor.png" alt="">
+
+                </div>
+                  <div class="content">
+
+                    <h3>Abeeb Sunkanmi</h3>
+                    <div class="tel"><i class="fas fa-phone-alt"></i> + 234 8153 7396</div >
+                    <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  (74)
+                    </div>
+
+
+                  </div>
+
+
+                </div>
+
+                <div class="stat advisor splide__slide">
+
+                  <div>
+                    <img src="/img/mortgage/advisor.png" alt="">
+
+                  </div>
+
+                  <div class="content">
+
+                    <h3>Opeyemi Akinyemi</h3>
+                    <div class="tel"> <i class="fas fa-phone-alt"></i> + 234 8153 7396</div>
+                    <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  (74)
+                    </div>
+
+
+                  </div>
+
+
+                </div>
+
+                <div class="stat advisor splide__slide">
+
+                <div>
+                  <img src="/img/mortgage/advisor.png" alt="">
+
+                </div>
+                  <div class="content">
+
+                    <h3>Felix Samuel</h3>
+                    <div class="tel"><i class="fas fa-phone-alt"></i> + 234 8153 7396</div >
+                    <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  (74)
+                    </div>
+
+
+                  </div>
+
+
+                </div>
+
+                <div class="stat advisor splide__slide">
+
+                  <div>
+                    <img src="/img/mortgage/advisor.png" alt="">
+
+                  </div>
+                    <div class="content">
+
+                      <h3>Abeeb Sunkanmi</h3>
+                      <div class="tel"><i class="fas fa-phone-alt"></i> + 234 8153 7396</div >
+                      <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  (74)
+                      </div>
+
+
+                    </div>
+
+
+                  </div>
+
+                  <div class="stat advisor splide__slide">
+
+                    <div>
+                      <img src="/img/mortgage/advisor.png" alt="">
+
+                    </div>
+
+                    <div class="content">
+
+                      <h3>Opeyemi Akinyemi</h3>
+                      <div class="tel"> <i class="fas fa-phone-alt"></i> + 234 8153 7396</div>
+                      <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  (74)
+                      </div>
+
+
+                    </div>
+
+
+                  </div>
+
+            </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+  </section>
     </div>
 </template>
 

@@ -1,50 +1,69 @@
 .news-updates{
-    background:linear-gradient(to right,rgba($middle_green,0.3));
-  
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    padding: 25px;
-    z-index: 99;
-    width: 100%;
-    // z-index: 999;
-    bottom: 11vh;
-
-    @include mobile{
-        bottom: 0vh!important
-;
-
-        
     
-        }
-   
-   
+
+
+
+
     &-container{
-    width: $pageWidth;   
-    // position: absolute;
-    // margin-top: -70px;   
-    // padding: 20px 0px;
-    display: flex;
-    left: 19%;
-    z-index: 99;
-    top:15px;
+        padding:6px;
+        border:1px solid $middle_green;
 
-    // 
- 
-    justify-content:start;
-    align-items:center;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-     div{
-        p{
-            color:#fff;
-            @include font('poppins',400);
-            font-size: 13px;
+        .jctkr-label{
+            padding: 5px 15px;
+            color: $orange;
+
+            &:hover{
+                cursor: pointer;
+            }
         }
 
-     }
+        .mortgage-rates{
+            width: 100%;
 
-        
+            ul{
 
-        }        
-    
+                padding-top:6px;
+
+                li.seperator{
+                    margin: 0 20px;
+                    
+                    span{
+                        width: 1px;
+                        height: 25px;
+                        background-color: #0D456696;
+                        display: block;
+                        margin-bottom:-10px;
+                    }
+                }
+
+
+                li{
+                    color: $middle_green;
+                    text-decoration: none;
+                    font-size: 14px;
+                    font-weight: 500;
+
+
+                    
+                   
+                    
+
+                        a{
+                            text-decoration: none;
+                            color: $middle_green;
+
+                            
+                        }
+                }
+            }
+        }
+
+    }
+
 }
+
+ 

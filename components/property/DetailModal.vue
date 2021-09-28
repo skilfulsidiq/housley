@@ -84,136 +84,7 @@
                       </a>
                     <!-- </nuxt-link> -->
                   </div>
-                  <div class="tab-form">
-                    <div class="tab flex">
-                      <button
-                        class="tablinks xsm-font"
-                        onclick="openCity(event, 'scheduleTour')"
-                        id="defaultOpen"
-                      >
-                        Schedule Tour
-                      </button>
-                      <button
-                        class="tablinks xsm-font"
-                        onclick="openCity(event, 'requestInfo')"
-                      >
-                        Request info
-                      </button>
-                    </div>
-
-                    <div id="scheduleTour" class="tabcontent">
-                      <form action="" class="form-tab">
-                        <input
-                          type="text"
-                          name="date"
-                          id="date"
-                          class="color1"
-                          placeholder="Select a prefered date"
-                        />
-                        <input
-                          type="text"
-                          name="time"
-                          id="time"
-                          class="color1"
-                          placeholder="Select a prefered time"
-                        />
-                        <input
-                          type="text"
-                          name="fullName"
-                          id="fullName"
-                          class="color1"
-                          placeholder="Full Name"
-                        />
-
-                        <input
-                          type="number"
-                          name="phone"
-                          id="phone"
-                          class="color1"
-                          placeholder="Phone"
-                        />
-                        <input
-                          type="email"
-                          name="email"
-                          id="email"
-                          class="color1"
-                          placeholder="Email"
-                        />
-                        <div class="grid radios">
-                          <p>
-                            <input
-                              type="radio"
-                              id="inPerson"
-                              name="radio-group"
-                              checked
-                            />
-                            <label class="color1 xsm-font" for="inPerson"
-                              >In Person</label
-                            >
-                          </p>
-                          <p>
-                            <input
-                              type="radio"
-                              id="videoChat"
-                              name="radio-group"
-                            />
-                            <label class="color1 xsm-font" for="videoChat"
-                              >Video Chat</label
-                            >
-                          </p>
-                        </div>
-                        <button
-                          type="button"
-                          class="xxsm-font green-btn s-bold"
-                        >
-                          Schedule a Tour
-                        </button>
-                      </form>
-                    </div>
-
-                    <div
-                      id="requestInfo"
-                      class="tabcontent"
-                      style="display: none"
-                    >
-                      <form action="" class="form-tab">
-                        <input
-                          type="text"
-                          name="fullName"
-                          id="fullName"
-                          class="color1"
-                          placeholder="Full Name"
-                        />
-
-                        <input
-                          type="number"
-                          name="phone"
-                          id="phone"
-                          class="color1"
-                          placeholder="Phone"
-                        />
-                        <input
-                          type="email"
-                          name="email"
-                          id="email"
-                          class="color1"
-                          placeholder="Email"
-                        />
-                        <textarea
-                          name="request"
-                          id="request"
-                          placeholder="Type in your request"
-                          rows="10"
-                        ></textarea>
-                        <button
-                          type="button"
-                          class="xxsm-font green-btn s-bold"
-                        >
-                          Request info
-                        </button>
-                      </form>
-                    </div>
-                  </div>
+                  <schedule-tour-form :property="property"/>
                 </div>
               </div>
             </div>
@@ -221,7 +92,9 @@
 </template>
 
 <script>
+import ScheduleTourForm from './ScheduleTourForm.vue';
   export default {
+  components: { ScheduleTourForm },
     data(){
       return{
         property:''

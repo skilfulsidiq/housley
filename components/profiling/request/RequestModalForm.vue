@@ -195,9 +195,12 @@ import form_mixin from '@/mixins/form_mixin'
                        return;
                 }
                 this.appLoading(true);
+
+
+                this.$store.commit("calculator/SAVE_SELECTED_PROPERTY",this.form);
                 this.$store.dispatch("profile/saveUserRequestAction",this.form).then((res)=>{
                     this.appLoading(false);
-                    this.$router.replace('/dashboard')
+                    // this.$router.replace('/dashboard')
                 }).catch((err)=>{
                   console.log(err.response)
                     this.appLoading(false);

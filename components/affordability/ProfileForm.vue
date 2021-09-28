@@ -154,6 +154,12 @@ export default {
         }
     },
     computed:{
+       selectedStatus(){
+        return this.$store.state.calculator.propertyIsSelected;
+      },
+       main_form(){
+        return this.$store.state.calculator.form;
+      },
       dob:{
            get(){
                 let d = this.$store.state.calculator.form.dob;
@@ -220,6 +226,12 @@ export default {
                 // this.form.pfa_name = this.user.pfa_name;
                 this.form.address = this.user.address;
                 // this.mapIncomingDataToForm(this.form,this.$auth.user);
+              }
+              if(!this.selectedStatus){
+                 this.form.firstname = this.main_form.firstname;
+                this.form.lastname = this.main_form.lastname;
+                this.form.email = this.main_form.email;
+                this.form.phone = this.main_form.phone;
               }
             }
       },

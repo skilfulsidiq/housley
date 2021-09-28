@@ -79,6 +79,7 @@ import PropertyImagesCarousel from './PropertyImagesCarousel.vue';
 import PropertyOption from './PropertyOption.vue';
 import general_mixin from '@/mixins/general_mixin'
   export default {
+    name:"PropertyDetailModal",
     mixins:[general_mixin],
   components: { PropertyImagesCarousel, AmenityCard, PropertyOption },
     data(){

@@ -65,13 +65,16 @@ export default {
         },
         startApplication(){
             this.$store.commit("calculator/GO_TO_STEP",1);
+            this.$store.commit("calculator/CLEAR_FORM");
+
             this.hideModal();
-            if(this.$auth.user){
-              this.$router.push("/dashboard");
-            }else{
-              this.$nuxt.$emit("have_register_data",true);
-              this.$router.push("/register");
-            }
+            this.$router.push("/");
+            // if(this.$auth.user){
+            //   this.$router.push("/dashboard");
+            // }else{
+            //   this.$nuxt.$emit("have_register_data",true);
+            //   this.$router.push("/register");
+            // }
 
 
         },

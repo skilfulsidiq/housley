@@ -42,6 +42,7 @@ overflow: hidden;
     @include mobile {
       flex-direction: column;
       padding: 10px;
+      padding-bottom: 100px;
     }
 
     .item {
@@ -116,6 +117,7 @@ overflow: hidden;
         top: 20%;
         transform: translateX(-30px);
         padding: 20px;
+         
         
 
 
@@ -139,8 +141,21 @@ overflow: hidden;
 
           }
 
+.stat:not(last-child){
+  margin: 43px;
+
+
+  @include mobile {
+    margin: 8px;
+
+  }
+
+
+
+}
+
         .stat {
-          margin: 27px;
+          // margin: 27px;
           position:relative;
 
           @include tablet-portrait {
@@ -160,20 +175,46 @@ overflow: hidden;
           h1 {
             color: $middle_green;
             font-size: 60px;
+            width: 95px;
             // margin-left: -10px;
+
+            @include tablet-portrait{
+            width: 0px;
+            }
+
+            @include mobile{
+              width: 0;
+            }
+
           }
           span {
             color: $middle_green;
             font-weight: 400;
           }
 
-          span.k{
+          div.k{
             position: absolute;
-            top: -10%;
-            right: -10%;
-            color: $middle_green;
-            font-size: 20px;
-            font-weight:700;
+            top: -7%;
+            right: -43%;
+            color: #0D4566;
+            font-size: 60px;
+            font-weight: 700;
+
+            @include tablet-portrait{
+              font-size: 20px;
+              top: -24%;
+            right: -53%;
+            
+              }
+
+            @include mobile {
+              font-size: 20px;
+              top: -15%;
+            right: 20%;
+
+            }
+
+
           }
         }
       }

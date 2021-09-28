@@ -241,6 +241,7 @@ import general_mixin from "@/mixins/general_mixin"
         methods: {
           chooseProperty(){
             this.$store.commit("property/SELECTED_PROPERTY", this.property);
+             this.$store.commit("calculator/PROPERTY_IS_SELECTED",true);
             this.$store.commit("calculator/GO_TO_STEP",1);
             this.$router.push("/affordability")
           },

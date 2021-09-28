@@ -114,6 +114,7 @@
             if(this.isChoose){
                 this.$store.dispatch("property/selectPropertyAction",this.property);
                 //  this.$store.commit("property/SAVE_SELECTED_PROPERTY",this.property)
+                 this.$store.commit("calculator/PROPERTY_IS_SELECTED",true);
                  this.$store.commit("calculator/GO_TO_STEP",2);
                  this.$router.push("/affordability");
 

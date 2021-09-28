@@ -1,5 +1,5 @@
 .how-it-works{
-    background:$fade_green;
+    background:#FAFFFA;
     transition: all 0.6s;
     // color: #000;
     font-size: 13px;
@@ -180,6 +180,12 @@
 
     h3.timeline-heading{
         margin-left:60px;
+        
+        margin-bottom: 10px;
+
+
+     
+
     }
 
 p.timeline-content{
@@ -192,6 +198,9 @@ p.timeline-content{
     img.timeline-img{
    
         width: 500px;
+        height: 300px;
+        object-fit: contain;
+    
 
         @include mobile{
             width: 250px;
@@ -203,11 +212,18 @@ p.timeline-content{
     }
 
 
-    img.timeline-img:nth-child(odd){
+    // img.timeline-img:nth-child(odd){
 
-    margin-top:50px;
-    }
+    // margin-top:50px;
+  
+    // }
 
+
+    // img.timeline-img:nth-child(even){
+
+    //   // margin-top:50px;
+    //   // margin-bottom: 150px;
+    //   }
 
 
 
@@ -220,14 +236,17 @@ p.timeline-content{
     font-size: 16px;
     font-weight: 400;
     // text-transform: uppercase;
-    background: $deep_green;
+    // background: $deep_green;
     border-radius: 15px;
     padding: 15px 23px;
     color: #fff;
-    max-width: 25%;
+    max-width: 38%;
     width: 100%;
     text-align: center;
     margin: 0 auto;
+
+
+
 
     &:hover{
 cursor: pointer;
@@ -235,7 +254,7 @@ cursor: pointer;
 
 @include tablet-portrait{
     // width: 100%;
-    max-width: 80%!important;
+    max-width: 93%!important;
     margin: 0 auto !important;
 
 }
@@ -251,14 +270,77 @@ cursor: pointer;
   }
   #conference-timeline .conference-center-line {
     position: absolute;
-    width: 2px;
-    height: 80%;
-    top: 10%;
+    width: 1px;
+    height: 86%;
+    top: 6%;
     left: 50%;
     margin-left: -2px;
     background: $middle_green;
     z-index: 1;
+
+
+    @include mobile{
+      height: 90%;
+    top: 4%;
+    }
+
   }
+
+
+  #conference-timeline {
+    margin-bottom: 150px;
+
+
+    @include mobile{
+    margin-bottom: 40px;
+
+
+    }
+}
+
+  .timeline-end{
+    position: relative;
+    img{
+        z-index: 999999;
+        position: absolute;
+        left: 43%;
+        background: #fafffa;
+        z-index: 1;
+
+        @include tablet-portrait{
+          left: 0%;
+          top: -63px;
+        }
+
+        @include mobile{
+          left: -6%;
+          top: -67px;
+        }
+    }
+  }
+
+  .timeline-en.final{
+    text-align: center;
+transform: translateY(100px);
+font-size: 20px;
+color: $body_text1;
+font-weight: 500;
+
+@include tablet-portrait{
+  padding-left: 30px;
+  text-align: left;
+transform: translateY(0);
+
+}
+@include mobile{
+  padding-left: 30px;
+  text-align: left;
+transform: translateY(0);
+
+}
+
+  }
+
   #conference-timeline .conference-timeline-content {
     padding-top: 67px;
     padding-bottom: 67px;
@@ -279,11 +361,18 @@ cursor: pointer;
 
 
   }
+
+  .timeline-article:nth-of-type(2n) {
+    margin-bottom: 150px;
+}
+
   .timeline-article {
     width: 100%;
     height: 100%;
     position: relative;
     overflow: hidden;
+    
+
 
 @include  mobile{
 
@@ -325,7 +414,8 @@ cursor: pointer;
     margin: 0 0 0 60px;
     padding: 0;
     font-weight: 400;
-    color: #242424;
+  
+    color: $body_text1;
     font-size: 14px;
     line-height: 24px;
     position: relative;
@@ -333,6 +423,7 @@ cursor: pointer;
     @include mobile{
       padding: 30px 0;
     }
+
 
 
   }
@@ -368,14 +459,14 @@ cursor: pointer;
 //   }
   .timeline-article .meta-date {
     position: absolute;
-    top: 20%;
+    top: 39%;
     left: 49%;
     width: 80px;
     height: 80px;
     margin-left: -31px;
     color: #fff;
     border-radius: 100%;
-    background: $fade_green;
+    background: #FAFFFA;
     z-index: 2;
     padding-top: -30px;
 
@@ -403,7 +494,7 @@ cursor: pointer;
     font-size: 15px;
     line-height: 40px;
     color:$middle_green;
-    background: $fade_green;
+    background: #FAFFFA;
   }
   .timeline-article .meta-date .month {
       

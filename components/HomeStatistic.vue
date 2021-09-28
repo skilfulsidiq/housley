@@ -12,15 +12,15 @@
 
             <div class="stats">
                 <div class="stat">
-                    <h1 class="counter"> 10</h1>
-                    <span class="k">k</span>
+                    <h1 class="counter"> 100</h1>
+                    <div class="k">k</div>
 
                     <span>Homes <br>for sale</span>
                 </div>
 
                 <div class="stat">
                     <h1 class="counter">400</h1>
-                    <span class="k">k</span>
+                    <div class="k">+</div>
 
                     <span>Registered <br>Users</span>
                 </div>

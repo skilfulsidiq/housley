@@ -24,7 +24,7 @@
                           <span class="mdi mdi-account-outline icon-size">{{$auth.user.firstname}} </span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <nuxt-link  to="/dashboard" class="dropdown-item" >Dashboard</nuxt-link>
+                          <!-- <nuxt-link  to="/dashboard" class="dropdown-item" >Dashboard</nuxt-link> -->
                           <!-- <a class="dropdown-item" href="#">Edit Profile</a> -->
                           <a class="dropdown-item " href="#" @click.prevent="logout">Log Out</a>
                         </div>

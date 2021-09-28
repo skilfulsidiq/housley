@@ -131,8 +131,8 @@
                           type="text"
                           id="phoneNumber"
                           class="color1"
-                         :class="{ 'is-invalid': submitted && $v.form.property_value.$error }" />
-                         <div v-if="submitted && !$v.form.property_value.required" class="form-error">Property Value is required</div>
+                         :class="{ 'is-invalid': submitted && $v.price.$error }" />
+                         <div v-if="submitted && !$v.price.required" class="form-error">Property Value is required</div>
                       </div>
                         </div>
 
@@ -224,7 +224,8 @@
                   city_id:{required},
                   property_type_id:{required},
                   payment_option:{required}
-            }
+            },
+            price:{required}
       },
       computed:{
         all_states(){
@@ -283,19 +284,23 @@
           if (this.$v.$invalid) {
                 return;
           }
-             console.log("before api calls")
-          // this.submiting=true;
-          this.$store.dispatch("calculator/saveUserRequestWithAuthAction",this.form).then((res)=>{
-              // this.submiting=false
-              this.closeModal();
+           this.$store.commit("calculator/SAVE_PROPERTY_REQUEST_DATA",this.form);
+            this.$store.commit("calculator/PROPERTY_IS_SELECTED",false);
+                 this.$store.commit("calculator/GO_TO_STEP",2);
+                  this.closeModal();
               this.clearForm();
-              console.log(res);
-              this.$apptoast.success("Request Submitted")
-              this.$router.push('/')
-          }).catch(e=>{
-            this.submiting=false;
-            console.log(e.response);
-          })
+                 this.$router.push("/affordability");
+          // this.$store.dispatch("calculator/saveUserRequestWithAuthAction",this.form).then((res)=>{
+          //     // this.submiting=false
+          //     this.closeModal();
+          //     this.clearForm();
+          //     console.log(res);
+          //     this.$apptoast.success("Request Submitted")
+          //     this.$router.push('/')
+          // }).catch(e=>{
+          //   this.submiting=false;
+          //   console.log(e.response);
+          // })
       }
     },
     created(){

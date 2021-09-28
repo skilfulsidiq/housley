@@ -83,7 +83,7 @@ export default {
       proceedToNextStep(){
            this.hideModal();
            this.processStepFunction(true,true);
-        this.$store.dispatch("calculator/formStepAction",3);
+        this.$store.dispatch("calculator/formStepAction",5);
       },
       goToProperties(){
           this.hideModal();

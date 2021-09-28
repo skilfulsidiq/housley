@@ -1,3 +1,6 @@
+// @import  './variables';
+
+
 // Color Pallete
 $body_text1:#0D4566;
 $orange:#F49800;
@@ -12,3 +15,15 @@ $butter_color:#FFF5E3;
 $fade_blue:#F3FBFF;
 $faded_green:#F4FAFD;
 
+
+.orange{
+    color: $orange;
+}
+
+.deep-green{
+    color: $deep_green;
+}
+
+.army-green{
+    color: $middle_green;
+}

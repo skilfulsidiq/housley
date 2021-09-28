@@ -135,7 +135,7 @@
                   access blended single-digit home loans on our platform from
                   participating licensed lending banks
                 </p>
-                <button type="button" class="xxsm-font green-btn s-bold" @click="showModal">
+                <button type="button" class="xxsm-font green-btn s-bold hoverable" @click="showModal">
                   Take the Affordability Test
                 </button>
               </div>

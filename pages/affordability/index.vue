@@ -25,12 +25,22 @@
                 <div id="line1" class="indicator-line "></div>
                 <div class="step step2">
                     <div class="step-icon number" :class="[step==2?'active':step>2?'finish':'']">{{step>2?'✓':'2'}} </div>
-                  <p class="text bold" :class="[step==2?'active ':step>1?'finish':'']">Down Payment</p>
+                  <p class="text bold" :class="[step==2?'active ':step>1?'finish':'']"> Select Lending Institution</p>
+                </div>
+                <div id="line1" class="indicator-line "></div>
+                <div class="step step3">
+                    <div class="step-icon number" :class="[step==3?'active':step>3?'finish':'']">{{step>3?'✓':'3'}} </div>
+                  <p class="text bold" :class="[step==3?'active ':step>3?'finish':'']">Select Home Loan Advisor</p>
+                </div>
+                <div id="line1" class="indicator-line "></div>
+                <div class="step step5">
+                    <div class="step-icon number" :class="[step==4?'active':step>4?'finish':'']">{{step>4?'✓':'4'}} </div>
+                  <p class="text bold" :class="[step==4?'active ':step>4?'finish':'']">Down Payment</p>
                 </div>
                 <div id="line2" class="indicator-line"></div>
-                <div class="step step3">
-                    <div class="step-icon number " :class="[step==3?'active':'']">3</div>
-                  <p class="text bold" :class="[step==3?'active ':'']"> Complete Profile</p>
+                <div class="step step5">
+                    <div class="step-icon number " :class="[step==5?'active':'']">5</div>
+                  <p class="text bold" :class="[step==5?'active ':'']"> Complete Profile</p>
                 </div>
             </section>
 
@@ -39,8 +49,10 @@
                 <div class="col-md-8"> -->
                       <div id="stepForm"  class="filled-input-with-slider">
                         <affordability-form :showLocation="false" v-if="step==1"/>
-                        <elgibility-form v-if="step==2"/>
-                        <profile-form v-if="step==3"/>
+                        <select-lender v-if="step==2"/>
+                        <select-broker v-if="step==3"/>
+                        <elgibility-form v-if="step==4"/>
+                        <profile-form v-if="step==5"/>
 
 
 
@@ -98,8 +110,10 @@ import ProfileForm from '@/components/affordability/ProfileForm.vue'
 import DownPaymentModal from '@/components/affordability/DownPaymentModal.vue'
 import calculator_mixin from '@/mixins/calculator_mixin'
 import CongrationModal from '@/components/affordability/CongrationModal.vue'
+import SelectLender from '@/components/affordability/SelectLender.vue'
+import SelectBroker from '@/components/affordability/SelectBroker.vue'
   export default {
-  components: { FinanceSummaryCard,SelectedProperty,AffordabilityForm,ElgibilityForm,ProfileForm,DownPaymentModal,CongrationModal },
+  components: { FinanceSummaryCard,SelectedProperty,AffordabilityForm,ElgibilityForm,ProfileForm,DownPaymentModal,CongrationModal,SelectLender,SelectBroker },
     auth:false,
     mixins:[calculator_mixin],
        head(){
@@ -167,9 +181,15 @@ import CongrationModal from '@/components/affordability/CongrationModal.vue'
                     this.submitAffordability();
                     break;
                 case 2:
-                    this.submitEligibility();
+                    this.submitSelectedLender();
                     break;
                 case 3:
+                    this.submitSelectedBroker();
+                    break;
+                case 4:
+                    this.submitEligibility();
+                    break;
+                case 5:
                     this.submitProfile();
                     break;
                 }
@@ -185,6 +205,12 @@ import CongrationModal from '@/components/affordability/CongrationModal.vue'
                     break;
                 case 3:
                    this.$store.commit("calculator/GO_TO_STEP",2);
+                    break;
+                case 4:
+                   this.$store.commit("calculator/GO_TO_STEP",3);
+                    break;
+                case 5:
+                   this.$store.commit("calculator/GO_TO_STEP",4);
                     break;
                 }
 
