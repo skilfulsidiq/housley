@@ -35,6 +35,9 @@ export default{
           },
     },
     methods:{
+        showValidationToast(msg){
+           this.$apptoast.error("Fill the required fields");
+        },
         calculateAge(date_of_birth) {
             let today = new Date();
             let birthday = new Date(date_of_birth);

@@ -6,7 +6,10 @@ export  const state = ()=>({
    states: [],
    cities: [],
    lender_rates: [],
-   payment_options:[]
+   payment_options:[],
+   lenders: [],
+     brokers: [],
+     developers: []
 })
 export const mutations ={
   APP_CLIENT(state, payload) {
@@ -27,6 +30,15 @@ export const mutations ={
       LENDER_RATE(state, payload) {
         state.lender_rates = payload;
       },
+    ALL_LENDERS(state, payload) {
+        state.lenders = payload
+      },
+      ALL_DEVELOPERS(state, payload) {
+        state.developers = payload
+      },
+      ALL_BROKERS(state, payload) {
+        state.brokers = payload
+      },
        UPDATE_FINANCE_OPTION(state, payload) {
          state.payment_options = payload
        },
@@ -46,6 +58,20 @@ export const actions={
         commit("LENDER_RATE",r);
     })
   },
+   async getPartnerType({commit}, type) {
+     let res = await this.$axios.$get(api.fetchPartnersType(type));
+     let r = res.data;
+     if (type == 'lender') {
+       commit("ALL_LENDERS", r);
+     }
+     if (type == 'developer') {
+       commit("ALL_DEVELOPERS", r);
+     }
+     if (type == 'broker') {
+       commit("ALL_BROKERS", r);
+     }
+     return res;
+   },
   async getAllStatesAction({commit }) {
       await this.$axios.$get(api.allStates()).then((res) => {
           let y = res.data;

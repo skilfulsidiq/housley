@@ -1,7 +1,8 @@
 import api from '@/services/api'
 export const state = () => ({
   form: {
-    client_id:'',
+    lender_id:'',
+    broker_id:'',
     total_annual_pay: '',
     monthly_net_pay: '',
     additional_income: '',
@@ -107,7 +108,10 @@ export const mutations = {
     state.form.age = payload.age;
   },
   SAVE_SELECTED_LENDER(state,payload){
-    state.client_id = payload
+    state.form.lender_id = payload
+  },
+  SAVE_SELECTED_BROKER(state,payload){
+    state.form.broker_id = payload
   },
   SAVE_ELIGIBILITY_FORM(state, payload) {
     state.form.loan_amount = payload.loan_amount;

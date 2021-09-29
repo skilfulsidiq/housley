@@ -193,7 +193,133 @@
         </div>
 
         <div class="right item">
-          <div class="stats splide " data-splide='{"type":"loop","perPage":2}'>
+          <splide :options="options" class="stats">
+              <splide-slide>
+                <div class="stat advisor splide__slide">
+
+                  <div>
+                    <img src="/img/mortgage/advisor.png" alt="">
+
+                  </div>
+
+                  <div class="content">
+
+                    <h3>Mercy Ayoade</h3>
+                    <div class="tel"> <i class="fas fa-phone-alt"></i> + 234 8153 7396</div>
+                    <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  (74)
+                    </div>
+
+
+                  </div>
+
+
+                </div>
+              </splide-slide>
+              <splide-slide>
+               <div class="stat advisor splide__slide">
+
+                <div>
+                  <img src="/img/mortgage/advisor.png" alt="">
+
+                </div>
+                  <div class="content">
+
+                    <h3>Abeeb Sunkanmi</h3>
+                    <div class="tel"><i class="fas fa-phone-alt"></i> + 234 8153 7396</div >
+                    <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  (74)
+                    </div>
+
+
+                  </div>
+
+
+                </div>
+              </splide-slide>
+              <splide-slide>
+                  <div class="stat advisor splide__slide">
+
+                  <div>
+                    <img src="/img/mortgage/advisor.png" alt="">
+
+                  </div>
+
+                  <div class="content">
+
+                    <h3>Opeyemi Akinyemi</h3>
+                    <div class="tel"> <i class="fas fa-phone-alt"></i> + 234 8153 7396</div>
+                    <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  (74)
+                    </div>
+
+
+                  </div>
+
+
+                </div>
+              </splide-slide>
+              <splide-slide>
+                 <div class="stat advisor splide__slide">
+
+                <div>
+                  <img src="/img/mortgage/advisor.png" alt="">
+
+                </div>
+                  <div class="content">
+
+                    <h3>Felix Samuel</h3>
+                    <div class="tel"><i class="fas fa-phone-alt"></i> + 234 8153 7396</div >
+                    <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  (74)
+                    </div>
+
+
+                  </div>
+
+
+                </div>
+              </splide-slide>
+              <splide-slide>
+                     <div class="stat advisor splide__slide">
+
+                  <div>
+                    <img src="/img/mortgage/advisor.png" alt="">
+
+                  </div>
+                    <div class="content">
+
+                      <h3>Abeeb Sunkanmi</h3>
+                      <div class="tel"><i class="fas fa-phone-alt"></i> + 234 8153 7396</div >
+                      <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  (74)
+                      </div>
+
+
+                    </div>
+
+
+                  </div>
+              </splide-slide>
+              <splide-slide>
+                 <div class="stat advisor splide__slide">
+
+                    <div>
+                      <img src="/img/mortgage/advisor.png" alt="">
+
+                    </div>
+
+                    <div class="content">
+
+                      <h3>Opeyemi Akinyemi</h3>
+                      <div class="tel"> <i class="fas fa-phone-alt"></i> + 234 8153 7396</div>
+                      <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  <i class="fa fa-star" aria-hidden="true"></i>  (74)
+                      </div>
+
+
+                    </div>
+
+
+                  </div>
+              </splide-slide>
+            </splide>
+
+           <!-- <div class="stats splide " data-splide='{"type":"loop","perPage":2}'>
 
             <div class="splide__track">
               <div class=" splide__list">
@@ -318,7 +444,7 @@
             </div>
             </div>
 
-          </div>
+          </div> -->
         </div>
       </div>
   </section>
@@ -337,6 +463,28 @@
                 ]
             }
         },
+          data() {
+		  return {
+			  options: {
+			  	// rewind : true,
+				  gap    : '1rem',
+          type: 'loop',
+          perPage: 2,
+          autoplay: true,
+
+          breakpoints: {
+            '768': {
+              perPage: 2,
+              gap: '1rem',
+            },
+            '480': {
+              perPage: 1,
+              gap: '1rem',
+            },
+          }
+			  },
+		  };
+	  },
         methods:{
           showModal(){
             $("#AffordabilityTestModal").modal("show");

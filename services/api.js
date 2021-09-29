@@ -50,6 +50,9 @@ export default {
   fetchLenderRate() {
     return "/general/lender-rates";
   },
+  fetchPartnersType(type) {
+    return "/general/partner-type/"+type;
+  },
   fetchAllProperties() {
     return "/general/all-properties";
   },

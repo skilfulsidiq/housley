@@ -433,6 +433,7 @@ export default {
           this.submitted=true
             this.$v.$touch();
             if (this.$v.$invalid) {
+             this.showValidationToast();
                this.scrollErrorSection();
                 return;
             }
@@ -468,6 +469,7 @@ export default {
             this.submitted=true
             this.$v.$touch();
             if (this.$v.$invalid) {
+                this.showValidationToast();
               this.scrollErrorSection();
                 return;
             }

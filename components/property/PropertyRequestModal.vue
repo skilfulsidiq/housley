@@ -282,6 +282,7 @@
          this.submitted=true
           this.$v.$touch();
           if (this.$v.$invalid) {
+              this.showValidationToast();
                 return;
           }
            this.$store.commit("calculator/SAVE_PROPERTY_REQUEST_DATA",this.form);

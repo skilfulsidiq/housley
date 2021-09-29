@@ -33,6 +33,11 @@ import CongrationModal from '@/components/affordability/CongrationModal.vue';
       this.$store.dispatch("general/getPropertyStatusAction")
       this.$store.dispatch("general/getAllStatesAction")
       this.$store.dispatch("general/getAllFinanceOptionAction")
+
+      this.$store.dispatch("general/getLenderRateAction")
+      this.$store.dispatch("general/getPartnerType",'lender')
+      this.$store.dispatch("general/getPartnerType",'developer')
+      this.$store.dispatch("general/getPartnerType",'broker')
     }
     },
     watch:{

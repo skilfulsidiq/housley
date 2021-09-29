@@ -5,39 +5,43 @@
           <div class="real-estate-developer-container">
 
                 <div class="heading">
-              <h2>Real Estate Developer</h2> <span class="line"></span>
+                  <h2>Real Estate Developer</h2> <span class="line"></span>
 
                 </div>
+                 <splide :options="options" class="developers">
+                  <splide-slide>
+                    <div class="developer splide__slide">
+                        <img src="/img/home/real-estate-developer/alpha.svg">
+                        <div class="button"><a href="#">View Properties 1</a></div>
+                    </div>
+                  </splide-slide>
+                  <splide-slide>
+                   <div class="developer splide__slide">
+                        <img src="/img/home/real-estate-developer/brain.svg">
+                        <div class="button"><a href="#">View Properties 1 & 1</a></div>
+                    </div>
+                  </splide-slide>
+                  <splide-slide>
+                   <div class="developer splide__slide">
+                          <img src="/img/home/real-estate-developer/mixta.svg">
+                          <div class="button"><a href="#">View Properties 2</a></div>
+                      </div>
+                  </splide-slide>
+                  <splide-slide>
+                   <div class="developer splide__slide">
+                        <img src="/img/home/real-estate-developer/urban.svg">
+                        <div class="button"><a href="#">View Properties 3</a></div>
+                    </div>
+                  </splide-slide>
+                  <splide-slide>
+                    <div class="developer splide__slide">
+                        <img src="/img/home/real-estate-developer/alpha.svg">
+                        <div class="button"><a href="#">View Properties 4</a></div>
+                    </div>
+                  </splide-slide>
+                </splide>
 
-                <div class="developers splide">
-                        <div class="splide__track">
-                            <div class=" splide__list">
 
-                                <div class="developer splide__slide">
-                                    <img src="/img/home/real-estate-developer/alpha.svg">
-                                    <div class="button"><a href="#">View Properties 1</a></div>
-                                </div>
-
-                                <div class="developer splide__slide">
-                                    <img src="/img/home/real-estate-developer/brain.svg">
-                                    <div class="button"><a href="#">View Properties 1 & 1</a></div>
-                                </div>
-                                <div class="developer splide__slide">
-                                    <img src="/img/home/real-estate-developer/mixta.svg">
-                                    <div class="button"><a href="#">View Properties 2</a></div>
-                                </div>
-                                <div class="developer splide__slide">
-                                    <img src="/img/home/real-estate-developer/urban.svg">
-                                    <div class="button"><a href="#">View Properties 3</a></div>
-                                </div>
-                                <div class="developer splide__slide">
-                                    <img src="/img/home/real-estate-developer/alpha.svg">
-                                    <div class="button"><a href="#">View Properties 4</a></div>
-                                </div>
-
-                            </div>
-                        </div>
-                </div>
 
           </div>
 
@@ -78,7 +82,35 @@
 </template>
 
 <script>
+// import { Splide, SplideSlide } from '@splidejs/vue-splide';
+// import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 export default {
+  //  components: {
+  //   Splide,
+  //   SplideSlide,
+  // },
+    data() {
+		  return {
+			  options: {
+			  	// rewind : true,
+				  gap    : '1rem',
+          type: 'loop',
+          perPage: 4,
+          autoplay: true,
+
+          breakpoints: {
+            '768': {
+              perPage: 2,
+              gap: '1rem',
+            },
+            '480': {
+              perPage: 1,
+              gap: '1rem',
+            },
+          }
+			  },
+		  };
+	  },
     watch:{
       '$route':function(v){
 
@@ -99,7 +131,7 @@ export default {
     },
     created(){
         // this.runScript()
-        
+
     }
   }
 </script>

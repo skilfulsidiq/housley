@@ -62,7 +62,8 @@ export default{
               href: "/override.css"
             },
           ],
-          // script: [{
+          script: [
+            // {
           //     src: "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js",body:false
           //   },
           //   {
@@ -93,14 +94,12 @@ export default{
           //   //   src: "/js/libraries/swiper/init.js",
           //   //   body: true
           //   // },
-          //   // {
-          //   //   src: "js/slide.js",
-          //   //   body: true
-          //   // },
-          //   // {
-          //   //   src: "/js/libraries/siema/splide.js",
-          //   //   body: true
-          //   // },
+
+          
+            // {
+            //   src: "/js/libraries/siema/splide.js",
+            //   body: true
+            // },
           //   // {
           //   //   src: "/js/custom/range.js",
           //   //   body: true
@@ -146,6 +145,6 @@ export default{
           //   //   src: "/js/custom/loader.js"
           //   // },
           //   //  {src: "/js/custom/loader.js", body:true},
-          // ]
+          ]
 
 }
