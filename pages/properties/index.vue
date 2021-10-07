@@ -114,6 +114,8 @@ import PropertyLoading from '@/components/property/PropertyLoading.vue'
   },
   created(){
     this.fetchProperties();
+     this.$store.commit("property/CLEAR_SELECTED_PROPERTY",'');
+      this.$store.commit("calculator/PROPERTY_IS_SELECTED",true);
     console.log(process.env.NODE_ENV)
 
   }

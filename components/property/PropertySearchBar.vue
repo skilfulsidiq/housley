@@ -1,10 +1,10 @@
 <template>
     <div>
-                 <div class="search-container">
+        <div class="search-container">
             <div class="search-container-property">
               <form class="grid" @submit.prevent="searchProperty">
-                <div class="form-input bordered no-border flex">
-                  <span><img src="/img/home/header/location.svg" /></span>
+                <div class="form-input bordered no-border flex ">
+                  <span class="keyword-img"><img src="/img/home/header/location.svg" /></span>
                   <input type="text" placeholder="Name, State, City..." v-model="form.location" />
                 </div>
                 <div class="grid grid-btw">
@@ -40,7 +40,8 @@
                 </div>
               </form>
             </div>
-          </div>
+        </div>
+
     </div>
 </template>
 
@@ -101,20 +102,32 @@ import general_mixin from "@/mixins/general_mixin"
 img{
   max-width:13px;
 }
+.grid{
+  padding:6px 6px 6px 40px ;
+}
+
 .bold-me{
-font-family: poppins;
-    font-size: 15px;
+    font-family: poppins;
+    font-size: .9375rem;
     line-height: 24px;
     font-weight: 800;
 }
+// .search-container-property .in-btw select {
+//     max-width: 123px;
+// }
 .select-input{
   border:none;
+  max-width: 130px;
 }
 @media (max-width:900px){
   //
+  .grid{
+  padding:0 ;
+}
   .select-input{
     height: 2.875rem;
     border-bottom: 1px solid #006633;
+    max-width:100%;
   }
 }
 </style>

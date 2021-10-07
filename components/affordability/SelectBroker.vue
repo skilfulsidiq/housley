@@ -45,7 +45,7 @@ import form_mixin from '@/mixins/form_mixin.js'
           this.submitted=true
             this.$v.$touch();
             if (this.$v.$invalid) {
-                this.showValidationToast();
+                // this.showValidationToast();
               //  this.scrollErrorSection();
                 return;
             }

@@ -50,17 +50,17 @@
                         <p class="color1">{{property.property_size}} sqft</p>
                       </div>
                     </div>
-                    <button
+                    <button type="button"
 
                       class="dark-btn see-details"
-                      @click.prevent="showDetail()"
+                      @click="showDetail"
                     >
                       See details
                     </button>
                   </div>
                   <div class="bottom flex flex-wrap j-btw">
                     <div class="lhs">
-                      <p class="upper-case faded">Buy on Mortgage</p>
+                      <p class="upper-case faded">Buy on Home Loan</p>
                       <div class="located flex">
                         <p class="bold color1 font-16">{{property.estimated_repayment.monthly_payment|price}}</p>
                         <span class="slash faded"> / Month</span>
@@ -105,9 +105,9 @@
     },
     methods:{
         showDetail(){
-          // let d = {status:true,property:this.property};
-          // this.$nuxt.$emit("show_detail_modal",d);
-             this.$router.push({name:"properties-slug",params:{slug:this.property.slug}})
+          let d = {status:true,property:this.property};
+          this.$nuxt.$emit("show_detail_modal",d);
+            //  this.$router.push({name:"properties-slug",params:{slug:this.property.slug}})
         },
         chooseProperty(){
             console.log("choose property")

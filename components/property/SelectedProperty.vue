@@ -20,7 +20,7 @@
                      <span v-if="property.client">{{property.client.client_name}}</span>
                     <span v-else>*******</span>
                   <p class="color1" >
-                    <span v-if="selectedStatus">{{property.property_price | price}}</span>
+                    <span v-if="selectedStatus || property.property_price ">{{property.property_price | price}}</span>
                     <span v-if="!selectedStatus&&property_value">{{property_value|price}}</span>
                     </p>
                   <div class="btn">

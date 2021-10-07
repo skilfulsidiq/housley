@@ -95,7 +95,7 @@ export default{
           //   //   body: true
           //   // },
 
-          
+
             // {
             //   src: "/js/libraries/siema/splide.js",
             //   body: true

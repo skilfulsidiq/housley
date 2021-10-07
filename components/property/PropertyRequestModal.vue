@@ -282,11 +282,12 @@
          this.submitted=true
           this.$v.$touch();
           if (this.$v.$invalid) {
-              this.showValidationToast();
+              // this.showValidationToast();
                 return;
           }
            this.$store.commit("calculator/SAVE_PROPERTY_REQUEST_DATA",this.form);
             this.$store.commit("calculator/PROPERTY_IS_SELECTED",false);
+            this.$store.commit("property/CLEAR_SELECTED_PROPERTY",'');
                  this.$store.commit("calculator/GO_TO_STEP",2);
                   this.closeModal();
               this.clearForm();

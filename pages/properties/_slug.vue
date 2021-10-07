@@ -14,7 +14,23 @@
           >
           <section class="upper-ppt-detail-page" v-if="property.property_photos">
             <div class="grid gridy-pic">
-                <div class="property-photo a"
+               <img
+                class="a pro-img"
+                :src="property.property_photos[0]"
+                alt="building"
+              />
+              <!-- <div class="smaller-pics flex"> -->
+              <img
+                class="b pro-img"
+                :src="property.property_photos[1]"
+                alt="couch"
+              />
+              <img
+                class="c pro-img"
+                :src="property.property_photos[2]"
+                alt="kitchen"
+              />
+                <!-- <div class="property-photo a"
                 :style="{backgroundImage:'url('+property.property_photos[0]+')'}">
                </div>
 
@@ -24,7 +40,7 @@
 
                 <div class="c property-photo"
                 :style="{backgroundImage:'url('+property.property_photos[2]+')'}">
-                </div>
+                </div> -->
             </div>
           </section>
 
@@ -155,7 +171,7 @@
               </div>
               <div class="text-slide">
                 <p class="color1 slide-title">Lender Rate</p>
-                <div class="mySlides flex j-btw" style="display:flex">
+                <div class="mySlides flex j-btw">
                   <img
                     src="/img/properties/firstTrust.png"
                     alt="firstTrust"
@@ -163,7 +179,7 @@
                   <p class="bold color1">12.2%</p>
                 </div>
 
-                <div class="mySlides" style="display:flex">
+                <div class="mySlides">
                   <q
                     >But man is not made for defeat. A man can be destroyed but
                     not defeated.</q
@@ -171,7 +187,7 @@
                   <p class="author">- Ernest Hemingway</p>
                 </div>
 
-                <div class="mySlides" style="display:flex">
+                <div class="mySlides" >
                   <q
                     >I have not failed. I've just found 10,000 ways that won't
                     work.</q
@@ -263,6 +279,14 @@ import general_mixin from "@/mixins/general_mixin"
 </script>
 
 <style lang="scss" scoped>
+.pro-img{
+  border-radius: 10px;
+  width: 100%;
+  // height: auto;
+}
+.flex{
+  display: flex;
+}
 /*-------------------------------------------------------------------
       icon div with right button adjustment
  --------------------------------------------------------------*/

@@ -9,15 +9,14 @@
 
             </div>
         </section>
-        <detail-modal/>
+
   </div>
 </template>
 
 <script>
-import DetailModal from './DetailModal.vue'
 import PropertyCard from './PropertyCard.vue'
   export default {
-  components: { PropertyCard, DetailModal },
+  components: { PropertyCard},
     props:{
       properties:{type:Array},
        isChoose:{type:Boolean,default:false}

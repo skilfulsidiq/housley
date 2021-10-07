@@ -1,7 +1,8 @@
 <template>
   <div>
      <div class="loading-div" >
-              <img src="/img/loading.gif" alt="">
+              <!-- <img src="/img/loading.gif" alt=""> -->
+              loading....
           </div>
   </div>
 </template>

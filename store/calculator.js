@@ -46,7 +46,7 @@ export const state = () => ({
   },
   formStep: 1,
   totalStep: 5,
-  propertyIsSelected:false
+  propertyIsSelected:true
 })
 export const mutations = {
   PREQUALIFIED_FORM(state, payload) {

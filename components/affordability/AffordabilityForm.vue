@@ -50,13 +50,13 @@
                           >
                           <input
                             type="text" v-model="monthly_income"
-                            class="form-control test-form" :class="{'is-invalid': submitted && $v.form.monthly_net_pay.$error }"
+                            class="form-control test-form" :class="{'is-invalid': submitted && $v.monthly_income.$error }"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default"
                           />
 
                   </div>
-                  <div v-if="submitted && !$v.form.monthly_net_pay.required" class="form-error">Monthly income is required</div>
+                  <div v-if="submitted && !$v.monthly_income.required" class="form-error">Monthly income is required</div>
                   </div>
 
                   <div class="q-radio">
@@ -348,8 +348,9 @@ export default {
         }
     },
     validations: {
+        monthly_income:{required},
         form: {
-            monthly_net_pay: { required},
+            // monthly_net_pay: { required},
             dob: { required,too_young },
             have_additional: { required },
             have_existing_obligation: { required },
@@ -433,7 +434,7 @@ export default {
           this.submitted=true
             this.$v.$touch();
             if (this.$v.$invalid) {
-             this.showValidationToast();
+            //  this.showValidationToast();
                this.scrollErrorSection();
                 return;
             }
@@ -469,7 +470,7 @@ export default {
             this.submitted=true
             this.$v.$touch();
             if (this.$v.$invalid) {
-                this.showValidationToast();
+                // this.showValidationToast();
               this.scrollErrorSection();
                 return;
             }

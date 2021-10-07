@@ -65,16 +65,22 @@
                             <p>{{property.property_garages}} Cars</p>
                           </div>
                         </div>
+
+                        <!-- <a @click.prevent="chooseProperty" href="@" class="green-btn s-bold hoverable">Get Prequalified</a> -->
                         <app-button text="Get Prequalified" btnclass="green-btn s-bold hoverable" :action="chooseProperty">
                           Get Prequalified
                         </app-button>
 
                       </div>
                     </div>
-                    <img
-                      src="/img/properties/modal-img.png"
+                    <div class="pro-img"
+                      :style="{backgroundImage:'url('+property.property_cover_image+')'}">
+                    </div>
+                    <!-- <img
+                    class="pro-img"
+                      :src="property.property_cover_image"
                       alt="single property"
-                    />
+                    /> -->
                     <!-- <nuxt-link :to="{name:'properties-slug',params:{slug:property.slug}}" class="last-btn flex"> -->
                       <!-- <button type="button" class="green-btn s-bold" @click="moreDetail">
                         View More
@@ -87,7 +93,7 @@
                   <schedule-tour-form :property="property"/>
                 </div>
               </div>
-            </div>
+      </div>
   </div>
 </template>
 
@@ -116,6 +122,7 @@ import ScheduleTourForm from './ScheduleTourForm.vue';
       chooseProperty(){
         //  this.$store.dispatch("property/selectPropertyAction",this.property);
            this.closeModal();
+            this.$store.commit("calculator/PROPERTY_IS_SELECTED",true);
           this.$store.commit("property/SELECTED_PROPERTY",this.property);
           this.$router.push("/affordability")
 
@@ -136,5 +143,28 @@ import ScheduleTourForm from './ScheduleTourForm.vue';
 </script>
 
 <style lang="scss" scoped>
-
+.lhs{
+  width:100% !important;
+}
+.flex{
+  display:flex;
+}
+.flex,.child-flex > * {
+    flex: none;
+    max-width: 100%;
+}
+.ppt-card-details .lower .with-icon {
+  // max-width:5rem;
+  // min-width:3rem;
+}
+.pro-img {
+    max-width: 100%;
+    vertical-align: middle;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width:100%;
+    height: 20rem;
+    border-radius: 10px;
+}
 </style>

@@ -42,6 +42,10 @@ export const mutations ={
       state.selectedProperty = payload
 
     },
+    CLEAR_SELECTED_PROPERTY(state, payload) {
+      state.selectedProperty = ''
+
+    },
     CALCULATION_REQUEST(state) {
       state.calculating = true;
     },

@@ -9,12 +9,12 @@
                   >
                     Schedule Tour
                   </button>
-                  <!-- <button
+                  <button
                     class="tablinks xsm-font"
                     onclick="openCity(event, 'requestInfo')"
                   >
                     Request info
-                  </button> -->
+                  </button>
                 </div>
 
                 <div id="scheduleTour" class="tabcontent">
@@ -98,7 +98,7 @@
                   </form>
                 </div>
 
-                <!-- <div
+                <div
                   id="requestInfo"
                   class="tabcontent"
                   style="display: none"
@@ -133,7 +133,7 @@
 
                     </app-button>
                   </form>
-                </div> -->
+                </div> 
               </div>
   </div>
 </template>

@@ -6,9 +6,8 @@
           <nuxt/>
         <affordability-modal/>
         <property-request-modal/>
-
+        <detail-modal/>
         <congration-modal/>
-
         </client-only>
       <AppFooter/>
   </div>
@@ -19,8 +18,9 @@ import headScript from '@/static/headScript'
 import AffordabilityModal from '@/components/affordability/AffordabilityModal.vue';
 import PropertyRequestModal from '@/components/property/PropertyRequestModal.vue';
 import CongrationModal from '@/components/affordability/CongrationModal.vue';
+import DetailModal from '@/components/property/DetailModal.vue';
   export default {
-  components: { AffordabilityModal,PropertyRequestModal,CongrationModal },
+  components: { AffordabilityModal,PropertyRequestModal,CongrationModal,DetailModal },
 
     head(){
       return headScript;
@@ -46,7 +46,7 @@ import CongrationModal from '@/components/affordability/CongrationModal.vue';
       }
     },
     created(){
-       this.$store.commit("calculator/PROPERTY_IS_SELECTED",false);
+
       this.fetchGeneralData();
       //  $(".se-pre-con").fadeOut(1000);
     },

@@ -87,24 +87,24 @@ html {
   color: #0D4566;
 }
 
-/* 
+/*
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
 */
-/* 
+/*
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
 */
-/* 
+/*
   ##Device = Tablets, Ipads (portrait)
   ##Screen = B/w 768px to 1024px
 */
-/* 
+/*
   ##Device = Tablets, Ipads (landscape)
   ##Screen = B/w 768px to 1024px
 */
 /* Paste this css to your style sheet file or under head tag */
-/* This only works with JavaScript, 
+/* This only works with JavaScript,
 if it's not present, don't show loader */
 .no-js #loader {
   display: none;
@@ -3864,7 +3864,7 @@ img.timeline-img {
 }
 
 .mission .bg {
-  background-image: url("../../img/about/mission.png");
+  background-image: url("../../img/about/mission.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -5739,7 +5739,7 @@ input.invalid {
 }
 
 :-ms-input-placeholder {
-  /* Internet 
+  /* Internet
   Explorer 10-11 */
   color: #0D4566;
   font-weight: 500;
@@ -5961,7 +5961,7 @@ input.invalid {
 }
 
 :-ms-input-placeholder {
-  /* Internet 
+  /* Internet
   Explorer 10-11 */
   color: #0D4566;
   font-weight: 500;
