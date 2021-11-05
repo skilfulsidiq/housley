@@ -54,7 +54,7 @@ import FormMixin from '@/mixins/form_mixin'/*  */
 import CalculatorMixin from '@/mixins/calculator_mixin'/*  */
 import general_mixin from '@/mixins/general_mixin'
 export default {
-    name:"DownPaymentModal",
+    name:"CongratulationModal",
     mixins:[FormMixin,CalculatorMixin, general_mixin],
         methods:{
         showModal(){
@@ -68,7 +68,7 @@ export default {
             this.$store.commit("calculator/CLEAR_FORM");
 
             this.hideModal();
-            this.$router.push("/");
+            return this.$router.push("/dashboard");
             // if(this.$auth.user){
             //   this.$router.push("/dashboard");
             // }else{

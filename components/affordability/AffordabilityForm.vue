@@ -50,13 +50,13 @@
                           >
                           <input
                             type="text" v-model="monthly_income"
-                            class="form-control test-form" :class="{'is-invalid': submitted && $v.monthly_income.$error }"
+                            class="form-control test-form" :class="{'is-invalid': submitted && $v.form.monthly_net_pay.$error }"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default"
                           />
 
                   </div>
-                  <div v-if="submitted && !$v.monthly_income.required" class="form-error">Monthly income is required</div>
+                  <div v-if="submitted && !$v.form.monthly_net_pay.required" class="form-error">Monthly income is required</div>
                   </div>
 
                   <div class="q-radio">
@@ -316,6 +316,7 @@ const too_young = (value, vm) =>{
     }
     return true;
 };
+export const optional = (value) => true;
 export default {
   components:{RangeSlider},
   mixins:[FormMixin,CalculatorMixin,rangeMixin,generalMixin],
@@ -348,9 +349,9 @@ export default {
         }
     },
     validations: {
-        monthly_income:{required},
+        // monthly_income:{required},
         form: {
-            // monthly_net_pay: { required},
+            monthly_net_pay: { required},
             dob: { required,too_young },
             have_additional: { required },
             have_existing_obligation: { required },
@@ -358,7 +359,9 @@ export default {
             loan_tenure: { required },
             additional_income: { required: requiredIf((form) =>form.have_additional==1)},
             outstanding_loans: { required: requiredIf((form) =>form.have_existing_obligation==1)},
-            co_borrower_monthly_income: { required: requiredIf((form) =>form.have_co_borrower==1)}
+            co_borrower_monthly_income: { required: requiredIf((form) =>form.have_co_borrower==1)},
+            age:{optional},
+            location:{optional}
 
         }
     },
@@ -435,7 +438,7 @@ export default {
             this.$v.$touch();
             if (this.$v.$invalid) {
             //  this.showValidationToast();
-               this.scrollErrorSection();
+              //  this.scrollErrorSection();
                 return;
             }
                 this.$store.dispatch("calculator/saveAffordabilityFormAction",this.form)

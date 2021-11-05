@@ -1,15 +1,16 @@
 import api from '../services/api'
 export  const state = ()=>({
   client: '',
- property_types: '',
+  property_types: [],
    property_status_list: [],
    states: [],
    cities: [],
    lender_rates: [],
    payment_options:[],
    lenders: [],
-     brokers: [],
-     developers: []
+  brokers: [],
+  developers: [],
+   mortgage_checklist: [],
 })
 export const mutations ={
   APP_CLIENT(state, payload) {
@@ -42,6 +43,9 @@ export const mutations ={
        UPDATE_FINANCE_OPTION(state, payload) {
          state.payment_options = payload
        },
+    MORTGAGE_CHECKLIST(state, payload) {
+      state.mortgage_checklist = payload
+    }
 }
 export const actions={
    async getClientAction({
@@ -109,6 +113,12 @@ export const actions={
             commit("PROPERTY_STATUS_LIST", r);
         })
     },
+    async getMortgageChecklistAction({ commit}) {
+     let res = await this.$axios.$get(api.mortgageCheckList());
+     let y = res.data;
+     commit("MORTGAGE_CHECKLIST", y);
+     return res;
+  }
 
 }
 export const getters={}

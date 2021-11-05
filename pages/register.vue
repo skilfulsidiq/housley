@@ -101,38 +101,91 @@
           }
       },
       methods:{
-        async register(){
-           this.submitted=true
-            this.$v.$touch();
-            if (this.$v.$invalid) {
-                  return;
-            }
-            let r = '';
-              try{
-              this.appLoading(true);
-              if(this.selected_action){
-                r = await this.$store.dispatch("app/registerUpdate",this.form);
-              }else{
-                r = await this.$store.dispatch("app/register",this.form);
-              }
+        async register() {
+        this.submitted=true
+        this.$v.$touch();
+        if (this.$v.$invalid) {
+              return;
+        }
+        // console.log("okayh dhdh")
+         this.busy=true
+        try{
+            // this.appLoading(true);
+            // if(this.selected_action){
+            //     r = await this.$store.dispatch("app/registerUpdate",this.form);
+            // }else{
 
-             if(r){
-               console.log(r)
-                this.appLoading(false);
-               this.$auth.strategy.token.set(r.token)
-               this.$auth.setUser(r.user);
-                this.$router.replace("/verify")
-               this.$apptoast.success('Successfully authenticated');
-             }else{
-               this.appLoading(false);
-             }
-          }catch(err){
-                this.appLoading(false);
-                console.log(err.response);
-                let e = err.response.data.data;
-              this.$apptoast.error(e)
+            // }
+          // await this.$store.dispatch("app/register",this.form);
+          let r = await this.$store.dispatch("app/register",this.form);
+          const l =  await this.$auth.loginWith('local', {
+                data: {
+                email: this.form.email,
+                password: this.form.password
+                },
+              })
+          if(l){
+            // console.log(r)
+             this.busy=false
+            // this.$auth.strategy.token.set(r.token)
+            // this.$auth.setUser(r.user);
+
+
+
+
+            // this.$store.commit("profile/PREFILL_PERSONAL_FORM",r.user)
+              this.$router.push("/")
+            // this.$apptoast.success('Successfully authenticated');
+          }else{
+             this.busy=false
+            //  this.appLoading(false);
+              // this.$apptoast.error('authentication error, try again');
           }
-        },
+        }catch(err){
+           this.busy=false
+              // this.appLoading(false);
+              // console.log(err.response);
+              let e = err.response.data.data;
+            this.$apptoast.error(e)
+        }
+
+
+
+
+
+      },
+        // async register(){
+        //    this.submitted=true
+        //     this.$v.$touch();
+        //     if (this.$v.$invalid) {
+        //           return;
+        //     }
+        //     let r = '';
+        //       try{
+        //       this.appLoading(true);
+        //       if(this.selected_action){
+        //         r = await this.$store.dispatch("app/registerUpdate",this.form);
+        //       }else{
+        //         r = await this.$store.dispatch("app/register",this.form);
+        //       }
+
+        //      if(r){
+        //        console.log(r)
+        //         this.appLoading(false);
+        //        this.$auth.strategy.token.set(r.token)
+        //        this.$auth.setUser(r.user);
+        //         this.$router.replace("/verify")
+        //        this.$apptoast.success('Successfully authenticated');
+        //      }else{
+        //        this.appLoading(false);
+        //      }
+        //   }catch(err){
+        //         this.appLoading(false);
+        //         console.log(err.response);
+        //         let e = err.response.data.data;
+        //       this.$apptoast.error(e)
+        //   }
+        // },
 
       },
       created(){

@@ -1,6 +1,6 @@
-import colors from 'vuetify/es5/util/colors'
+// import colors from 'vuetify/es5/util/colors'
 const webpack = require("webpack");
-const APIURL = process.env.NODE_ENV !== 'production' ? process.env.LOCAL_API_URL : process.env.API_URL;
+const APIURL = process.env.API_URL;
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -66,8 +66,8 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/style-resources'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -77,6 +77,7 @@ export default {
     '@nuxtjs/auth-next',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -139,40 +140,28 @@ export default {
       lang: 'en'
     }
   },
+  toast: {
+      position: 'top-center',
+      register: [ // Register custom toasts
+        {
+          name: 'my-error',
+          message: 'Oops...Something went wrong',
+          options: {
+            type: 'error'
+          }
+        }
+      ]
+  },
+  styleResources: {
+    //  scss: ['./assets/scss/*.scss']
+    scss: [
+      './assets/scss/all.scss',
+      // './assets/variables.scss',
+    ]
+  },
   loading: {
     color: '#006633',
     height: '8px'
-  },
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
-  vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: false,
-      themes: {
-        light: {
-          // primary: '#0D4566',
-          // secondary: '#006633',
-          primary: '#0D4566',
-          secondary: '#006633',
-          accent: '#039c71',
-          accent_text: '#006633',
-          error: '#FF5252',
-          info: '#FF5252',
-          success: '#C4C4C4',
-          warning: '#FFC107',
-          link: '#FF5252'
-        },
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
-    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

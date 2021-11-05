@@ -77,92 +77,40 @@ export default {
       }
     },
   computed: {
-          property_request(){
-            return this.$store.state.dashboard.property_request;
-          },
-         dob: {
-             set: function (v) {
-               this.personal_form.dob = v;
-             },
-             get: function () {
-               return moment(String(this.personal_form.dob)).format('yyyy-MM-DD')
-             }
-           },
-          //  sex:{
-          //     set(v){
-          //       this.personal_form.sex =v;
-          //     },
-          //     get(){
-          //       return this.capitalizeFirstLetter(this.personal_form.sex;)
-          //     }
-          //  },
-           issue_date: {
-             set(v) {
-               this.personal_form.id_issue_date = v;
-             },
-             get() {
-               return moment(String(this.personal_form.id_issue_date)).format('yyyy-MM-DD')
-             }
-           },
-           expire_date: {
-             set(v) {
-               this.personal_form.id_expire_date = v;
-             },
-             get() {
-               return moment(String(this.personal_form.id_expire_date)).format('yyyy-MM-DD')
-             }
-           },
-           monthly_income: {
-                 get() {
-                   return this.formatCurrency(this.personal_form.monthly_net_pay);
-                 },
-                 set(v) {
-                   this.personal_form.monthly_net_pay = this.clearCommas(v);
-                 }
-           },
-           gross_income: {
-              get() {
-                return this.formatCurrency(this.personal_form.monthly_gross_pay);
-              },
-              set(v) {
-                this.personal_form.monthly_gross_pay = this.clearCommas(v);
-              }
-           },
-           total_pay: {
-              get() {
-                return this.formatCurrency(this.personal_form.total_annual_pay);
-              },
-              set(v) {
-                this.personal_form.total_annual_pay = this.clearCommas(v);
-              }
-           },
-            loanable_amount: {
-              get() {
-                return this.formatCurrency(this.personal_form.loanable_amount);
-              },
-              set(v) {
-                this.personal_form.loanable_amount = this.clearCommas(v);
-              }
-            },
-            expenses: {
-              get() {
-                return this.formatCurrency(this.personal_form.monthly_expenses);
-              },
-              set(v) {
-                this.personal_form.monthly_expenses = this.clearCommas(v);
-              }
-            },
-           getPersonalForm(){
-             return this.$store.state.profile.profile;
-           }
+      generalAppLoading() {
+        return this.$store.state.mortgage.isLoading
+      },
+
 
   },
   methods: {
-     prefillMortgageForm() {
-       this.personal_form = this.getPersonalForm;
-      //  let r = this.$store.state.auth.user;
-      //  this.mapIncomingDataToForm(this.personal_form, r);
+      mortgageLoading(status) {
+        this.$store.commit("mortgage/MORTGAGE_LOADING", status);
+      },
+        mapIncomingDataToMortgegForm(data) {
 
-     },
+            let ob = Object.entries(data);
+            for (const [key, value] of ob) {
+
+              if (key in this.personal_form) {
+                this.personal_form[key] = value
+              }
+              //    form[key] = value;
+            }
+          },
+          prefillMainMortgageForm() {
+            let r = this.$store.state.auth.user;
+            this.mapIncomingDataToMortgegForm(r);
+
+          },
+          prefillMortgageForm() {
+            this.personal_form = this.getPersonalForm;
+            //  let r = this.$store.state.auth.user;
+            //  this.mapIncomingDataToForm(this.personal_form, r);
+
+          },
+          moveToMortgageNextStep(step) {
+            this.$store.commit("mortgage/GO_TO_STEP", step)
+          }
   },
 }

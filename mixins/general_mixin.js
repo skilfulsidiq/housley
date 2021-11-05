@@ -1,4 +1,47 @@
 import moment from "moment";
+export const optional = (value) => true;
+export const rules = {
+  required: value => !!value || "Required.",
+  counter: value => value.length <= 20 || "Max 20 characters",
+  pin: value => (value && value.length == 6) || 'Enter six digit sent to your mail',
+  email: value => {
+    const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return pattern.test(value) || "Invalid e-mail address.";
+  },
+  file: value => !value || value.size < 1000000 || 'file size should be less than 1 MB!',
+  before_date: function (value) {
+    let today = new Date();
+    let given_date = new Date(value);
+    if (given_date > today) {
+      return false
+      // return 'Date can\'t be greater than today'
+    }
+    return true
+  },
+  after_date: function (value) {
+    let today = new Date();
+    let given_date = new Date(value);
+    if (given_date < today) {
+      return false;
+      //  return 'Date cannot be below today'
+    }
+    return true
+
+  },
+  phone: function (value) {
+    return value.match(/\d/g).length === 11 || 'invalid phone number';
+  },
+  main_phone: function (value) {
+    let formats = "(999)9999-9999|999-9999-9999|99999999999";
+    let r = RegExp("^(" +
+      formats
+      .replace(/([\(\)])/g, "\\$1")
+      .replace(/9/g, "\\d") +
+      ")$");
+    return r.test(value);
+    //  return r.test(value) || "Invalid phone number";
+  }
+}
 export default{
 
   data(){

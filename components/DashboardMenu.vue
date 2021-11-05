@@ -122,7 +122,7 @@ img{
 
 .flag-man{
     width: 100%;
-    height: calc(100%-500px);
+    height: calc(100% - 500px);
 }
 
 .get-btn{

@@ -57,7 +57,8 @@ export default{
             //   rel: 'stylesheet',
             //   href: "/css/custom/responsive.css"
             // },
-            {
+
+    {
               rel: 'stylesheet',
               href: "/override.css"
             },

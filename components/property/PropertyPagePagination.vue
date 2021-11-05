@@ -75,7 +75,8 @@
     },
     methods:{
       showModal(){
-      this.$nuxt.$emit("open-affordability-modal",true);
+        this.$router.push('/pre-approval')
+      // this.$nuxt.$emit("open-affordability-modal",true);
       },
        calculateDisable(index){
         if(this.pagination.currentPage <=1 && index==0){

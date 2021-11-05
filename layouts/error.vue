@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <!-- <v-app dark> -->
 
     <div class="error-page">
         <div class="text" v-if="error.statusCode === 404">
@@ -18,7 +18,7 @@
     </div>
 
 
-  </v-app>
+  <!-- </v-app> -->
 </template>
 
 <script>

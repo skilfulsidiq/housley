@@ -1,0 +1,150 @@
+/* Nav Styles */
+
+header .nav-link {
+  letter-spacing: 2.7px;
+  font-size: 12px;
+}
+
+#navCta {
+  font-size: 12px;
+  letter-spacing: 2.7px;
+}
+
+/* Hero Styles */
+#heroHeading {
+  letter-spacing: -2px;
+}
+
+.hero-img {
+  position: absolute !important;
+  top: -5%;
+  left: 180px;
+  border-radius: 20px;
+  -webkit-box-shadow: -40px 4rem 3rem rgb(0 0 0 / 48%);
+  box-shadow: -40px 4rem 3rem rgb(0 0 0 / 48%);
+}
+
+@media only screen and (max-width: 800px) {
+  .hero-img {
+    position: relative !important;
+    width: 100%;
+    height: auto;
+    top: unset;
+    left: unset;
+  }
+}
+
+#heroCta,
+#footerCta {
+  font-size: 14px;
+  letter-spacing: 2.7px;
+}
+
+/* General Styles */
+* {
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.aone-rounded {
+  border-radius: 20px;
+}
+
+.subHeading {
+  letter-spacing: 4.7px;
+  font-size: 12px;
+}
+
+.icon-cards {
+  border-radius: 20px;
+  -webkit-transition: -webkit-box-shadow 0.5s ease-in;
+  transition: -webkit-box-shadow 0.5s ease-in;
+  transition: box-shadow 0.5s ease-in;
+  transition: box-shadow 0.5s ease-in, -webkit-box-shadow 0.5s ease-in;
+}
+
+.icon-cards:hover {
+  border-color: transparent;
+  -webkit-box-shadow: -1px 2rem 5rem rgb(0 0 0 / 12%);
+  box-shadow: -1px 2rem 5rem rgb(0 0 0 / 12%);
+  /* background-image: linear-gradient(45deg, #4d88b51f, #4caf5014, #cddc391f); */
+}
+
+/* Tab Styles */
+.tab-pane {
+  display: none !important;
+}
+
+.tab-pane.active {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.tab-pane img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* Trust Bar Styles*/
+.trustImage {
+  opacity: 0.3;
+}
+
+.trustImage:hover {
+  opacity: unset;
+}
+
+/* Footer & Contact Styles */
+#getInTouch {
+  background-color: #1b1b1b;
+}
+
+/* MObile Styles */
+@media only screen and (max-width: 800px) {
+
+  /* Hero Style */
+  .hero-img {
+    position: relative !important;
+    width: 100%;
+    height: auto;
+    top: unset;
+    left: unset;
+  }
+
+  /* How It Works */
+  #howItWorks {
+    overflow-x: hidden;
+  }
+
+  #howItWorksDescription {
+    width: 100% !important;
+    margin: unset;
+  }
+
+  .tab-pane.active {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .tab-pane.active img {
+    margin-right: 0px !important;
+    margin-top: 30px;
+    width: 100%;
+    height: auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+  .tab-pane.active p {
+    margin: 30px 0px;
+  }
+
+  /* Trust Section */
+  #trustSection h2 {
+    width: 100% !important;
+  }
+}

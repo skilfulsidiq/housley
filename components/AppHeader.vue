@@ -18,13 +18,13 @@
             <li><nuxt-link to="/info/contact">Contact Us</nuxt-link></li>
             <li><nuxt-link to="/info/faq">FAQs</nuxt-link></li>
               <li class="nav-item dropdown " v-if="$auth.user">
-                        <a class="nav-link dropdown-toggle auth-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle auth-link" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <!-- <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="25" height="25" class="rounded-circle"> -->
                           <!-- -->
                           <span class="mdi mdi-account-outline icon-size">{{$auth.user.firstname}} </span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <!-- <nuxt-link  to="/dashboard" class="dropdown-item" >Dashboard</nuxt-link> -->
+                          <nuxt-link v-if="$auth.user.have_apply_for_mortgage"  to="/dashboard" class="dropdown-item" >Dashboard</nuxt-link>
                           <!-- <a class="dropdown-item" href="#">Edit Profile</a> -->
                           <a class="dropdown-item " href="#" @click.prevent="logout">Log Out</a>
                         </div>

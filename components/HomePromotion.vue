@@ -131,8 +131,8 @@ import AppButton from './AppButton.vue';
   components: { AppButton },
     methods:{
       showModal(){
-        // this.$router.push("/pre-approval")
-        $("#AffordabilityTestModal").modal("show");
+        this.$router.push("/pre-approval")
+        // $("#AffordabilityTestModal").modal("show");
       }
     }
   }

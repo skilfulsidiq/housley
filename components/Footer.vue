@@ -97,7 +97,7 @@ export default {
     },
     methods:{
       go(){
-        
+
       }
     }
 }
@@ -122,7 +122,8 @@ export default {
     margin-bottom:0.45rem;
 }
 footer {
-    background: $secondary;
+    background: #006633;
+    // background: $secondary;
     margin: 0;
     padding: 4rem 2rem 0;
     // font-family: Airbnb Cereal App Light;
@@ -199,7 +200,8 @@ img, svg {
 }
 .footer-subscriber-form-content .subscriber-btn {
     border: 1px solid transparent;
-    background: $secondary;
+    background: #006633;
+    // background: $secondary;
     // background: linear-gradient( 249deg,#6fa73d,#00b1ab);
     color: #fff;
     font-weight: 500;

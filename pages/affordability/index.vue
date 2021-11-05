@@ -114,7 +114,7 @@ import SelectLender from '@/components/affordability/SelectLender.vue'
 import SelectBroker from '@/components/affordability/SelectBroker.vue'
   export default {
   components: { FinanceSummaryCard,SelectedProperty,AffordabilityForm,ElgibilityForm,ProfileForm,DownPaymentModal,CongrationModal,SelectLender,SelectBroker },
-    auth:false,
+    auth:true,
     mixins:[calculator_mixin],
        head(){
             return{

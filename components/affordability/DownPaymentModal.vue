@@ -124,7 +124,8 @@ export default {
 }
 .equity-content-wrapper {
     background: #e9f7fe;
-    border: 1px dashed $secondary;
+    border: 1px dashed #006633;
+    // border: 1px dashed $secondary;
     box-sizing: border-box;
     border-radius: 12px;
     padding: 1rem;
@@ -141,7 +142,8 @@ export default {
     // font-size: 15px;
     line-height: 35px;
     text-align: center;
-    color: $secondary;
+    color: #006633;
+    // color: $secondary;
 }
 .modal-footer {
     display: flex;

@@ -1,5 +1,6 @@
 import api from '@/services/api'
 export const state = () => ({
+    isLoading: false,
   mortgage_status: '',
   mortgages_list: [],
   details: '',
@@ -54,7 +55,9 @@ export const state = () => ({
   last_stage_activated:false
 })
 export const mutations = {
-
+   MORTGAGE_LOADING(state, payload) {
+     state.isLoading = payload
+   },
   MORTGAGE_STATUS(state, payload) {
     state.mortgage_status = payload
   },

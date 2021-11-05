@@ -28,7 +28,7 @@ import DetailModal from '@/components/property/DetailModal.vue';
 
     methods:{
         fetchGeneralData(){
-      this.$store.dispatch("general/getClientAction")
+      // this.$store.dispatch("general/getClientAction")
       this.$store.dispatch("general/getPropertyTypeAction")
       this.$store.dispatch("general/getPropertyStatusAction")
       this.$store.dispatch("general/getAllStatesAction")
@@ -86,6 +86,7 @@ import DetailModal from '@/components/property/DetailModal.vue';
 </script>
 
 <style lang="scss" >
+// @import '@assets/scss/variables.scss';
 @include range_slider();
 
 

@@ -1,140 +1,62 @@
 <template>
-    <div class="">
-      <v-row justify="start" no-gutters>
-        <v-col class="col-12" md="12">
-        <div class="document-upload">
-            <v-row>
-              <v-col class="col-12" md="12">
-              <h2 class="document-text">Documents Upload</h2>
-              </v-col>
-              <v-col class="col-12" md="12">
-              <div class="progress-box">
-                <div class="p-box">
-                    <v-progress-circular
-                    size="50"
-                    :value="chart_value"
-                    :width="9"
-                    :color="chart_color"
-                    ></v-progress-circular>
 
-                    <div class="progress-text"><span class="mr-1 text-bold"> {{document_count.total_uploaded}} </span> out of <span
-                    class="mx-1 text-bold"> {{document_count.total_doc}}</span> <span> Documents Uploaded</span></div>
-                </div>
-                  <nuxt-link to="/dashboard/upload"><v-btn depressed dark outlined color="#039C71">Upload</v-btn></nuxt-link>
-              </div>
-              </v-col>
-            </v-row>
+       <div class="cr_body_cover2">
+            <div class="cr_header_2">
+              <span><b>{{document_count.total_uploaded}}</b> out of <b>{{document_count.total_doc}}</b> Documents Uploaded</span>
+            </div>
+            <div class="cr-border"></div>
+
+            <div class="doc_item" v-for="p in uploaded_docs" :key="p.id">
+              <svg
+                style="margin-right: 30px"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.99996 18.9582C5.05829 18.9582 1.04163 14.9415 1.04163 9.99984C1.04163 5.05817 5.05829 1.0415 9.99996 1.0415C14.9416 1.0415 18.9583 5.05817 18.9583 9.99984C18.9583 14.9415 14.9416 18.9582 9.99996 18.9582ZM9.99996 2.2915C5.74996 2.2915 2.29163 5.74984 2.29163 9.99984C2.29163 14.2498 5.74996 17.7082 9.99996 17.7082C14.25 17.7082 17.7083 14.2498 17.7083 9.99984C17.7083 5.74984 14.25 2.2915 9.99996 2.2915Z"
+                  fill="#0FBC49"
+                />
+                <path
+                  d="M8.8167 12.9832C8.65003 12.9832 8.4917 12.9165 8.37503 12.7998L6.0167 10.4415C5.77503 10.1998 5.77503 9.79984 6.0167 9.55817C6.25837 9.3165 6.65837 9.3165 6.90003 9.55817L8.8167 11.4748L13.1 7.1915C13.3417 6.94984 13.7417 6.94984 13.9834 7.1915C14.225 7.43317 14.225 7.83317 13.9834 8.07484L9.25837 12.7998C9.1417 12.9165 8.98337 12.9832 8.8167 12.9832Z"
+                  fill="#0FBC49"
+                />
+              </svg>
+              <span>{{p.doc.name}}</span>
+            </div>
+
+            <!-- upload -->
+            <div style="margin-top: 30px">
+              <nuxt-link to="/dashboard/document" class="upl_btn">Upload documents</nuxt-link>
+            </div>
         </div>
-        </v-col>
-        </v-row>
 
-
-    </div>
 </template>
 
 <script>
-    export default {
-        name:"document",
-    data: () => ({
-      length: 3,
-      onboarding: 0,
-    }),
+  export default {
+
     computed:{
       document_count(){
         let d = this.$store.state.dashboard.document_count;
         return d;
       },
-      chart_color(){
-        if(this.document_count.total_uploaded==this.document_count.total_doc){
-          return 'green';
-        }
-        return 'orange'
-        // document_count.total_uploaded==document_count.total_doc?#5FB49C"
-      },
-      chart_value(){
-        let c = Number(this.document_count.total_uploaded/this.document_count.total_doc);
-
-          return parseInt(c*100);
+      uploaded_docs(){
+          let d = this.$store.state.dashboard.uploaded_documents;
+          return d.slice(0, 4);
       }
-    },
-
-    methods: {
-      next () {
-        this.onboarding = this.onboarding + 1 === this.length
-          ? 0
-          : this.onboarding + 1
-      },
-      prev () {
-        this.onboarding = this.onboarding - 1 < 0
-          ? this.length - 1
-          : this.onboarding - 1
-      },
-    },
     }
+  }
 </script>
 
 <style lang="scss" scoped>
-
-.document-upload{
-    height:130px;
-    width:100%;
-    border-radius: 8px;
-    background: #fff;
-    padding:1rem;
+.cr_header_2 b{
+  color:$secondary;
 }
-.document-text{
-    color: #039C71;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 22px;
-    letter-spacing: 0em;
-    text-align: left;
-    margin-bottom: 1rem;
-}
- .document-text.property{
-        margin-left:0.75rem;
-    }
-.text-bold{
-  font-weight: bold;
-}
-.progress-box{
-    display: flex;
-    align-items:center;
-    justify-content:space-between;
-    width: 100%;
-    margin-left: auto;
-    margin-top: -1.5rem;
-}
-.p-box{
-  display: flex;
-}
-.progress-text{
-  display: flex;
-  align-items: center;
-  margin-left:0.4rem;
-}
-
-
-.upload-btn{
-    color: green;
-    margin-top: -1.6rem;
-    height: 40px!important;
-}
-
-@media(max-width:900px){
-  .progress-box{
-    flex-direction: column;
-    align-items: center;
-      width: 100%;
-  }
-  .document-upload{
-    height:150px;
-    width:100%;
-    border-radius: 8px;
-    background: #fff;
-    padding:1rem;
-}
-
-  
+.upl_btn {
+    border: 1px solid $secondary;
+    color: $secondary;
 }
 </style>

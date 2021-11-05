@@ -26,7 +26,7 @@ import general_mixin from '@/mixins/general_mixin'
     export default {
   components: { AffordabilityForm },
   mixins:[calculator,general_mixin],
-        auth:false,
+        auth:true,
           head(){
             return{
                 link:[

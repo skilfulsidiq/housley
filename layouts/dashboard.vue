@@ -1,96 +1,68 @@
 <template>
-     <v-app id="inspire">
-     <dashboard-header/>
+  <div style="background: #f9fbfd;min-height:100vh;">
+    <client-only>
+    <app-header/>
+      <mobile-nav/>
+    <side-nav/>
+    <div class="start-body">
+      <div class="start-here">
+       <nuxt/>
+      </div>
+    </div>
+     <mortgage-application-modal/>
+    </client-only>
 
-    <v-main>
-      <client-only>
-
-            <nuxt/>
-      </client-only>
-
-    </v-main>
-  </v-app>
+  </div>
 </template>
 
 <script>
-
-import DashboardMenu from "../components/DashboardMenu.vue"
-import NavList from '@/components/navigation/NavList.vue'
-import SideNavProfile from '@/components/navigation/SideNavProfile.vue'
-import Breadcrumb from '@/components/Breadcrumb.vue'
-import DashboardHeader from '@/components/navigation/DashboardHeader.vue'
-    export default {
-      middleware:['verify'],
-      components:{DashboardMenu, NavList, SideNavProfile, Breadcrumb, DashboardHeader},
-        data(){
-            return{
-                drawer:null,
-                app_menu: [
-                   {icon:'mdi-view-dashboard', text:'Dashboard',link:'/dashboard'},
-                   {icon:'mdi-lan-connect', text:'My Applications',link:'/dashboard/application'},
-                  //  {icon:'mdi-home-flood', text:'Mortgage',link:'/mortgage'},
-                   {icon:'mdi-file-document-outline', text:'Property Request',link:'/request'},
-                   {icon:'mdi-file-document-outline', text:'My Docunments',link:'/dashboard/upload'},
-                  //  {icon:'mdi-ticket-confirmation-outline', text:'Property Request',link:'/propertyrequest'},
-                  //  {icon:'mdi-ticket-confirmation-outline', text:'Property Request Form',link:'/propertyrequestform'},
-                  //  {icon:'mdi-ticket-confirmation-outline', text:'Register',link:'/register'},
-                  //  {icon:'mdi-ticket-confirmation-outline', text:'Account Verification',link:'/accountverification'},
-                  //  {icon:'mdi-ticket-confirmation-outline', text:'Affordability Test',link:'/affordabilitytest'},
-                  //  {icon:'mdi-ticket-confirmation-outline', text:'Step Form',link:'/stepform'},
-
-                    // {//employee
-                    //     icon:'mdi-account-tie-outline',
-                    //     icon_alt: 'mdi-chevron-up',
-                    //     text:'Employees',
-                    //     model: false,
-                    //     prepend_icon:'mdi-chevron-down',
-                    //     hasChildren:true,
-                    //     children: [
-                    //         { text:'All Employees',link:'all_employee'},
-                    //             { text:'Holidays',link:'employee_holiday'},
-                    //             { text:'Leaves(Admin)',link:'employee_leave_admin'},
-                    //             { text:'Leaves(Employee)',link:'employee_leave_employee'},
-                    //             { text:'Leaves Settings',link:'leave_setting'},
-                    //             { text:'Attendance (Admin)',link:'attendance_admin'},
-                    //             { text:'Attendance (Employee)',link:'attendance_employee'},
-                    //             { text:'Departments',link:'department'},
-                    //             { text:'Designation',link:'designation'},
-                    //             { text:'Timesheet',link:'time_sheet'},
-                    //             { text:'Shift & Schedule',link:'shift_schedule'},
-                    //             { text:'Overtime',link:'over_time'},
-
-
-
-                    //     ],
-                    // },
-
-               ],
-               user_menu:[
-                 {icon:"mdi-account-outline",title:'Profile',link:''},
-                 {icon:"mdi-logout",title:'Logout',link:'logout'},
-               ]
-            }
-        },
+import AppHeader from '@/components/dashboard/AppHeader.vue'
+import SideNav from '@/components/dashboard/SideNav.vue'
+import MobileNav from '@/components/dashboard/MobileNav.vue'
+import MortgageApplicationModal from '@/components/dashboard/MortgageApplicationModal.vue'
+// import mortgage_mixin from '@/mixins/mortgage_mixin'
+  export default {
+  components: { AppHeader,SideNav,MobileNav,MortgageApplicationModal },
+  //  middleware:['hasProfile'],
+  //  mixins:[mortgage_mixin],
+   head(){
+      return{
+        link:[
+          {rel:'stylesheet',href:'/styles/profiler.css'},
+          {rel:'stylesheet',href:'/styles/sidebar.css'},
+          {rel:'stylesheet',href:'/styles/header.css'},
+          {rel:'stylesheet',href:'/styles/dashboard.css'},
+          {rel:'stylesheet',href:'/styles/app.css'},
+        ],
+        script:[
+          // {src:"/js/dashboard/mobileSidebar.js"}
+        ]
+      }
+    },
       methods:{
-            fetchDashboardData(){
-              this.$store.dispatch("dashboard/getDocumentCountAction")
-              this.$store.dispatch("dashboard/getDocumentListAction")
-              this.$store.dispatch("mortgage/getCurrentMortgageStatusAction")
-              this.$store.dispatch("dashboard/getUserPropertyRequestAction")
-            }
+        fetchDashboardData(){
+          this.$store.dispatch("dashboard/getDocumentCountAction")
+          this.$store.dispatch("dashboard/getDocumentListAction")
+          this.$store.dispatch("mortgage/getCurrentMortgageStatusAction")
+          this.$store.dispatch("dashboard/getUserPropertyRequestAction")
+
+            this.$store.dispatch("general/getAllStatesAction");
+    this.$store.dispatch("general/getAllFinanceOptionAction");
+    this.$store.dispatch("general/getPropertyTypeAction");
+    this.$store.dispatch("general/getMortgageChecklistAction");
+
+
         },
-        created(){
-          this.fetchDashboardData();
-        }
+
+    },
+    created(){
+      this.fetchDashboardData();
+      // this.prefillForm();
     }
+
+  }
 </script>
 
-<style lang="scss" >
-  .v-main {
-    background: #f2f2f2;
-  }
+<style lang="scss" scoped>
 
-.theme--light.v-card{
-    padding:1.5rem !important;
-  }
 </style>

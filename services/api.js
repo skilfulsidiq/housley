@@ -23,7 +23,7 @@ export default {
   },
 
   getAppClient() {
-    return 'general/app-client'
+    // return 'general/app-client'
   },
   allStates() {
     return "/general/all-states";
@@ -84,7 +84,9 @@ export default {
   saveUserRequestWithoutAuth() {
     return "/general/save-property-request-no-auth";
   },
-
+ mortgageCheckList() {
+   return "general/mortgage-checklists"
+ },
   //dashboard
   getUserProfile() {
     return "user/get-profile"
