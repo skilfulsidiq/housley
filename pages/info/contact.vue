@@ -89,5 +89,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+.sub-title{
+  margin:0;
+}
 </style>

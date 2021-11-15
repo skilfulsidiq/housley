@@ -1,9 +1,10 @@
 <template>
   <div>
-      <div id="detailModal" class="modal" v-if="property">
+      <div id="detailModal" class="modal" aria-hidden="true" v-if="property">
+          <div class="modal-dialog ">
               <!-- Modal content -->
               <div class="modal-content">
-                <span class="close" @click="closeModal">&times;</span>
+                <span class="close"  @click="closeModal">&times;</span>
                 <div class="grid gridy">
                   <div class="lhs">
                     <div class="ppt-card-details">
@@ -93,6 +94,7 @@
                   <schedule-tour-form :property="property"/>
                 </div>
               </div>
+          </div>
       </div>
   </div>
 </template>
@@ -103,16 +105,22 @@ import ScheduleTourForm from './ScheduleTourForm.vue';
   components: { ScheduleTourForm },
     data(){
       return{
-        property:''
+        property:'',
+        modal:''
       }
     },
 
     methods:{
       showModal(){
+        // this.modal.show();
+      //  var m =  new bootstrap.Modal(document.getElementById('detailModal'))
+      //  m.show();
         $('#detailModal').modal('show');
       },
       closeModal(){
-         $('#detailModal').modal('hide');
+        console.log("closeMe");
+        //  this.modal.hide();
+       $('#detailModal').modal('hide');
         //  this.$nuxt.$emit("show_detail_modal",false);
       },
       moreDetail(){
@@ -137,12 +145,16 @@ import ScheduleTourForm from './ScheduleTourForm.vue';
         }else{
           this.closeModal();
         }
-      })
+      });
+      //  this.modal = new bootstrap.Modal(document.getElementById('detailModal'))
     }
   }
 </script>
 
 <style lang="scss" scoped>
+.modal-dialog{
+  max-width:100% !important;
+}
 .lhs{
   width:100% !important;
 }

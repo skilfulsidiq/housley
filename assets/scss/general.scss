@@ -48,3 +48,100 @@
 //range slider begins
 
 // End of range slider
+/*Wasii Input*/
+.pop_text {
+  /* height: 30px; */
+  outline-color: #fff;
+  outline: none;
+  border-radius: 10px;
+  padding: 13px 15px;
+  text-align: left;
+  font-size: 15px;
+  background-color: #fafbfc;
+  transition: all 0.5s ease-in-out;
+}
+
+
+.selectlabel {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.75rem;
+  color: rgb(180, 176, 176);
+  transition: all 0.5s ease-in-out;
+
+}
+
+.pop_text:focus {
+  outline: none !important;
+  /* border: none!important; */
+}
+
+.selectbox {
+  // margin: 2rem 0;
+  position: relative;
+  background: #fff;
+  // width: 150px;
+}
+
+.pop_text:focus~label,
+.pop_text:valid~label {
+  top: -0.55rem;
+  left: 0.95rem;
+  background: #fff;
+  padding-left: .3rem;
+  padding-right: .3rem;
+  /* padding: 0.25rem 0.05rem; */
+  // color: #222 !important;
+  font-size: 0.75rem;
+  transition: 0.4s all ease-in-out;
+  font-family: Avenir Next;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: #4e5d78 !important;
+}
+
+.pop_text:valid,
+.pop_text:focus {
+  background: #fafbfc;
+  border: 1px solid #c1c7d0;
+  transition: 0.4s all ease-in-out;
+
+}
+
+/* select{
+   width: 300px;
+   outline:none!important;
+ } */
+
+/* select:valid,select:focus{
+  border-radius: 10px;
+  background: #fafbfc!important;
+  border: none!important;
+} */
+.form-control:focus {
+  box-shadow: none !important;
+  /* outline:none!important; */
+  border-color: #222 !important;
+  /* box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6)!important; */
+}
+
+.form-select:focus {
+  box-shadow: none !important;
+  background: #fafbfc !important;
+  /* outline:none!important; */
+  border-color: #222 !important;
+
+}
+
+/* .bootstrap-select .btn:focus {
+  outline: none !important;
+} */
+
+select option {
+  background: #fafbfc !important;
+  background: #fafbfc !important;
+  border-radius: 10px !important;
+  border: 1px solid #c1c7d0 !important;
+}

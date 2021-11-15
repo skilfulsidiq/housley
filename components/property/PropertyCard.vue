@@ -3,7 +3,7 @@
                 <!-- <img id="property_img" src="/img/properties/house-card.jpg" alt="" /> -->
                 <img id="property_img" :src="property.property_cover_image" alt="" class="cursor" @click="showDetail"/>
                 <div class="ppt-card-details">
-                  <div class="upper cursor" @click="showDetail">
+                  <div class="upper cursor" >
                     <div class="lhs">
                       <p class="bold color1 font-16">{{property.property_price| price}}</p>
                       <div class="located flex">
@@ -110,19 +110,52 @@
             //  this.$router.push({name:"properties-slug",params:{slug:this.property.slug}})
         },
         chooseProperty(){
-            console.log("choose property")
             if(this.isChoose){
                 this.$store.dispatch("property/selectPropertyAction",this.property);
                 //  this.$store.commit("property/SAVE_SELECTED_PROPERTY",this.property)
-                 this.$store.commit("calculator/PROPERTY_IS_SELECTED",true);
-                 this.$store.commit("calculator/GO_TO_STEP",2);
-                 this.$router.push("/affordability");
+                  let form = this.prepareRequestForm(this.property);
+                   this.$store.commit("calculator/SAVE_SELECTED_PROPERTY",form);
+                //  this.$store.dispatch("calculator/saveUserRequestWithAuthAction",form).then(res=>{
+
+                //  });
+                  this.$store.commit("calculator/GO_TO_STEP",2);
+                      this.$router.push("/affordability");
+
 
             }else{
                 // go detail page
                 this.$router.push({name:"properties-slug",params:{slug:this.property.slug}})
             }
-        }
+        },
+
+      prepareRequestForm(property){
+         let  request_form={
+            property_id :property.id,
+              property_value : property.property_price,
+              state_id : property.state_id,
+              city_id : property.city_id,
+              property_type_id  : this.mapPropertyTypeId(property.property_type),
+              property_bedroom : property.property_bedrooms,
+              property_bathroom : property.property_bathrooms,
+              found_property : 1,
+          }
+          return request_form;
+      },
+         mapPropertyTypeId(type) {
+            if(type){
+              let t = this.$store.state.general.property_types;
+              let id = '';
+              t.forEach((item)=>{
+                 if (item.name == type) {
+                   id = item.id;
+                   return id;
+                 }
+              })
+              return id;
+            }
+
+
+      },
     }
     }
 </script>

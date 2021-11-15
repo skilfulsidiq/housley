@@ -1,14 +1,17 @@
 <template>
   <div>
-       <div class="content_body">
-          <h3 class="app_head">Mortgage Documents</h3>
-          <p class="app_para">
-            Check the following documents for speedy processing of submitted
-            application
-          </p>
-        </div>
-
-        <div class="table_cover">
+     <div id="checklist" class="modal" aria-hidden="true" data-bs-backdrop="static">
+          <div class="modal-dialog ">
+              <!-- Modal content -->
+              <div class="modal-content">
+                <span class="close"  @click="closeModal">&times;</span>
+                <div class="content_body">
+                    <h3 class="app_head">Mortgage Documents</h3>
+                    <p class="app_para">
+                      Check the following documents for speedy processing of submitted
+                      application
+                    </p>
+                          <div class="table_cover">
                               <table class="table">
                                 <thead>
                                   <tr>
@@ -78,41 +81,27 @@
                             <div class="d-flex justify-content-center mt-4">
                                 <app-button type="buton" text="Submit" btnclass="button_" :loading="false" :action="submit" other_class="cursor"/>
                             </div>
-
-
-
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 </template>
 
 <script>
-import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/validators";
-import {optional} from '@/mixins/general_mixin'
   export default {
-   layout:"dashboard",
-    head(){
-      return{
-        title:'Document'
-      }
-    },
-    data(){
+      data(){
       return{
           application_data:'',
           form:{
             checklist:[],
             pending_list:[],
-            type:''
+            type:'mortgage'
 
           }
       }
     },
-    validations:{
-      form:{
-
-        checklist:{required},
-        pending_list:{optional},
-      }
-    },
-    computed:{
+     computed:{
       checklist(){
         return this.$store.state.general.mortgage_checklist;
       },
@@ -121,7 +110,14 @@ import {optional} from '@/mixins/general_mixin'
       }
     },
     methods:{
-      checkForPendingList(){
+       showModal(){
+        $('#checklist').modal('show');
+      },
+      closeModal(){
+       $('#checklist').modal('hide');
+        //  this.$nuxt.$emit("show_detail_modal",false);
+      },
+        checkForPendingList(){
         let difference = this.form.checklist
                  .filter(x => !this.checklist.includes(x))
                  .concat(this.checklist.filter(x => !this.form.checklist.includes(x)));
@@ -137,7 +133,9 @@ import {optional} from '@/mixins/general_mixin'
           return;
         }
         this.$store.dispatch("mortgage/completeMortgageAction",this.form).then((res)=>{
-                this.$router.push({name:'dashboard'});
+          this.closeModal();
+          this.$store.dispatch("profile/getProfileAction");
+          this.$router.push({name:'dashboard'});
         }).catch((err)=>{
 
         })
@@ -145,27 +143,49 @@ import {optional} from '@/mixins/general_mixin'
       }
     },
     created(){
-      // let checklist = this.$store.state.mortgage.mortgage_checklist_param;
-       let c = this.$store.state.auth.user.checklist;
-      // this.form.type=checklist.type;
-      this.form.checklist=c
-
+      this.$nuxt.$on("show_checklist_modal",(details)=>{
+        if(details){
+          this.showModal();
+        }else{
+          this.closeModal();
+        }
+      });
+      //  this.modal = new bootstrap.Modal(document.getElementById('detailModal'))
     },
     mounted(){
-      this.$nuxt.$on("mortgage_slug",(param)=>{
-        // this.application_data = param;
-        console.log("param:",param.type);
-        this.form.checklist = param.list
-        this.form.type = param.type
-      })
+      //  let checklist = this.$store.state.mortgage.mortgage_checklist_param;
+       let c = this.$store.state.auth.user.checklist;
+      // this.form.type=checklist.type;
+      if(c!=null){
+         this.form.checklist=c
+      }
+
     }
   }
 </script>
 
 <style lang="scss" scoped>
-/* The switch - the box around the slider */
+
+.content_body {
+  padding:20px 0;
+}
+@media (max-width:900px){
+  .content_body{
+     padding:20px 10px;
+  }
+  .res_table_cover {
+    padding: 0px 4px;
+    margin-top: 10px;
+}
+}
+.table_cover{
+  padding:0 0;
+}
+//Switch Style
 
 .yesno{
   margin:auto 10px;
 }
+
+
 </style>

@@ -63,7 +63,7 @@
                             <app-button v-show="step>1" type="button" text="Previous"  btnclass="xxsm-font white-btn2 s-bold " :action="stepBackward"
                             ></app-button>
 
-                            <app-button text="Continue"
+                            <app-button :text="appBusy?'Loading':'Continue'"
                             type="button"
                             id="nextBtnStep"
                             btnclass="xxsm-font green-btn s-bold hoverable"
@@ -109,13 +109,14 @@ import ElgibilityForm from '@/components/affordability/ElgibilityForm.vue'
 import ProfileForm from '@/components/affordability/ProfileForm.vue'
 import DownPaymentModal from '@/components/affordability/DownPaymentModal.vue'
 import calculator_mixin from '@/mixins/calculator_mixin'
+import general_mixin from '@/mixins/general_mixin'
 import CongrationModal from '@/components/affordability/CongrationModal.vue'
 import SelectLender from '@/components/affordability/SelectLender.vue'
 import SelectBroker from '@/components/affordability/SelectBroker.vue'
   export default {
   components: { FinanceSummaryCard,SelectedProperty,AffordabilityForm,ElgibilityForm,ProfileForm,DownPaymentModal,CongrationModal,SelectLender,SelectBroker },
     auth:true,
-    mixins:[calculator_mixin],
+    mixins:[calculator_mixin,general_mixin],
        head(){
             return{
                 link:[

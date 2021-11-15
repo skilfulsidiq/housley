@@ -9,24 +9,9 @@
           aria-hidden="true"
         >
           <div class="modal-dialog modal-dialog-one" style="display: flex; justify-content: center" >
-            <div
-              class="modal-content"
-              style="height: fit-content; border-radius: 16px"
-            >
-              <div
-                style="
-                  display: flex;
-                  justify-content: flex-end;
-                  padding: 0px 20px;
-                  padding-top: 20px;
-                "
-              >
-                <button
-                  type="button"
-                  class="btn-close"
-                  aria-label="Close"
-                  @click="closeModal"
-                ></button>
+            <div class="modal-content" style="height: fit-content; border-radius: 16px">
+              <div style=" display: flex; justify-content: flex-end; padding: 0px 20px; padding-top: 20px;" >
+                <button type="button" class="btn-close" aria-label="Close" @click="closeModal" ></button>
               </div>
 
               <div class="modal-header">
@@ -157,7 +142,17 @@ import general_mixin from '@/mixins/general_mixin'
 </script>
 
 <style lang="scss" scoped>
+.modal-content{
+  padding:0;
+}
   .button_cover{
     justify-content: center;
   }
+  @media (min-width: 576px){
+  .modal-body-two {
+    margin: 0 10px !important;
+    max-width: 800px !important;
+    margin-top: 50px;
+  }
+}
 </style>

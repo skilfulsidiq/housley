@@ -6,7 +6,7 @@
             </div>
             <div class="cr-border"></div>
 
-            <div class="doc_item" v-for="p in uploaded_docs" :key="p.id">
+            <div class="doc_item" v-for="p in checklist" :key="p.id">
               <svg
                 style="margin-right: 30px"
                 width="20"
@@ -24,12 +24,12 @@
                   fill="#0FBC49"
                 />
               </svg>
-              <span>{{p.doc.name}}</span>
+              <span>{{p.name}}</span>
             </div>
 
             <!-- upload -->
             <div style="margin-top: 30px">
-              <nuxt-link to="/dashboard/document" class="upl_btn">Upload documents</nuxt-link>
+              <nuxt-link to="/dashboard/checklist" class="upl_btn">Other Documents</nuxt-link>
             </div>
         </div>
 
@@ -46,6 +46,14 @@
       uploaded_docs(){
           let d = this.$store.state.dashboard.uploaded_documents;
           return d.slice(0, 4);
+      },
+      checklist(){
+          let d = this.$store.state.auth.user;
+          let ch = d.checklist;
+          if(Array.isArray(ch)){
+            return ch.slice(0, 4);
+          }
+
       }
     }
   }

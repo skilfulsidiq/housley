@@ -3,7 +3,7 @@
 
      <div class="content_body">
           <p class="hi">Hi Maxwell 👋🏽</p>
-          <h3 class="welcome">Welcome to AfrealOne</h3>
+          <h3 class="welcome">Welcome to Houzzley</h3>
         </div>
 
          <div class="card_container">
@@ -75,7 +75,7 @@
             </div>
           </div>
 
-          <div
+          <div @click="showChekclistModal"
             class="card_two"
             style="box-shadow: 0px 12px 16px rgba(17, 17, 17, 0.04)"
           >
@@ -198,7 +198,7 @@
 
             >
               <span class="card_three_label">Click</span>
-              <span class="card_three_text">{{have_mortgage?'View Application':' Apply for Mortgage '}} <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <span class="card_three_text">{{have_mortgage?'View Application':' Update Profile'}} <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14.22 21.6298C13.04 21.6298 11.37 20.7998 10.05 16.8298L9.33 14.6698L7.17 13.9498C3.21 12.6298 2.38 10.9598 2.38 9.77983C2.38 8.60983 3.21 6.92983 7.17 5.59983L15.66 2.76983C17.78 2.05983 19.55 2.26983 20.64 3.34983C21.73 4.42983 21.94 6.20983 21.23 8.32983L18.4 16.8198C17.07 20.7998 15.4 21.6298 14.22 21.6298ZM7.64 7.02983C4.86 7.95983 3.87 9.05983 3.87 9.77983C3.87 10.4998 4.86 11.5998 7.64 12.5198L10.16 13.3598C10.38 13.4298 10.56 13.6098 10.63 13.8298L11.47 16.3498C12.39 19.1298 13.5 20.1198 14.22 20.1198C14.94 20.1198 16.04 19.1298 16.97 16.3498L19.8 7.85983C20.31 6.31983 20.22 5.05983 19.57 4.40983C18.92 3.75983 17.66 3.67983 16.13 4.18983L7.64 7.02983Z" fill="white"/>
                 <path d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z" fill="white"/>
                 </svg>
@@ -390,7 +390,7 @@ import MortgageApplicationModal from '../../components/dashboard/MortgageApplica
         return d;
       },
       have_mortgage(){
-        let d = this.user.have_apply_for_mortgage
+        let d = this.user.has_profile
         if(d==1){
           return true
         }
@@ -399,12 +399,22 @@ import MortgageApplicationModal from '../../components/dashboard/MortgageApplica
     },
     methods:{
       applyMortgage(){
-        // if(this.have_mortgage){
-        //   // return this.$apptoast.success("You have a pending mortgage application")
-        //  return this.$router.push("/dashboard/application")
-        // }
+        if(this.have_mortgage){
+          // return this.$apptoast.success("You have a pending mortgage application")
+         return this.$router.push("/dashboard/application")
+        }
         return this.$nuxt.$emit('apply_mortgage',true)
+      },
+      showChekclistModal(){
+        let user = this.$store.state.auth.user;
+          if(user.have_apply_for_mortgage && user.checklist == null){
+              this.$nuxt.$emit("show_checklist_modal",true);
+          }
+
       }
+    },
+    mounted(){
+      this.showChekclistModal();
     }
 
 

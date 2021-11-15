@@ -3,3 +3,9 @@
 @import './mixins.scss';
 @import './params.scss';
 @import './variables.scss';
+
+.button_{
+  background-color: $secondary;
+}
+//switch style
+

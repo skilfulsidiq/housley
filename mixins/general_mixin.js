@@ -103,6 +103,9 @@ export default{
 
   },
   computed: {
+        appBusy(){
+          return this.$nuxt.$loading.show;
+        },
         loading(){
           let l = this.$store.state.app.isLoading;
           return l;

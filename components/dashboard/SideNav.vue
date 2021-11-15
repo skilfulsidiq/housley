@@ -140,8 +140,8 @@
     },
     computed:{
       have_mortgage(){
-        let u = this.$store.state.profile.profile;
-        if(u.have_apply_for_mortgage==1){
+        let u = this.$store.state.auth.user;
+        if(u.have_apply_for_mortgage==1 && u.checklist != null){
           return true
         }
         return false

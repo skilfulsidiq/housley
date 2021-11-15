@@ -17,3 +17,6 @@ import PreviewLayout from './PreviewLayout.vue'
 
   }
 </script>
+<style lang="scss" scoped>
+  
+</style>

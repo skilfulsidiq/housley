@@ -16,7 +16,7 @@
 
       <request-modal-form/>
       <request-confirmation-modal/>
-      <property-detail-modal/>
+      <!-- <property-detail-modal/> -->
   </div>
 </template>
 
@@ -27,9 +27,9 @@ import RequestModalForm from '@/components/profiling/request/RequestModalForm.vu
 import RequestConfirmationModal from '@/components/profiling/request/RequestConfirmationModal.vue'
 import PropertyListCard from '@/components/property/PropertyListCard.vue'
 import PropertyCard from '@/components/property/PropertyCard.vue'
-import PropertyDetailModal from '@/components/property/PropertyDetailModal.vue'
+// import PropertyDetailModal from '@/components/property/PropertyDetailModal.vue'
   export default {
-  components: { RequestModalForm, RequestConfirmationModal, PropertyListCard, PropertyCard, PropertyDetailModal },
+  components: { RequestModalForm, RequestConfirmationModal, PropertyListCard, PropertyCard },
     mixins:[general_mixin,form_mixin],
     computed:{
       properties(){

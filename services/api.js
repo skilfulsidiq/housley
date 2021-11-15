@@ -97,11 +97,14 @@ export default {
   updateAffordabilityInfo() {
     return 'user/affordability-test'
   },
+  updateRequestInfo() {
+    return 'user/property-request'
+  },
   userMortgageStatus() {
-    return "user/get-user-current-mortgage"
+    return "user/get-user-last-mortgage"
   },
   userMortgageList() {
-    return "user/user-mortgage-status"
+    return "user/get-user-mortgages"
   },
   userMortgageDetail(slug) {
     return "user/user-mortgage-detail/" + slug
@@ -135,7 +138,10 @@ export default {
   },
   userAgreeToMortgage() {
     return "user/agree-to-terms";
-  }
+  },
+   userCompleteMortgageApplication() {
+     return "user/complete-application";
+   }
 
 
 

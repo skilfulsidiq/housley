@@ -55,7 +55,7 @@
                 </svg>
                 <span  :class="[$route.path=='/dashboard'?'inner-item-text-active':'inner-item-text']">Dashboard</span>
               </nuxt-link>
-            </div>
+        </div>
             <!-- item 2 -->
             <div class="inner-item-cover">
               <nuxt-link to="/dashboard/application" :class="[$route.path=='/dashboard/application'?'inner-item-active':'inner-item']">
@@ -224,5 +224,8 @@ import auth_mixin from "@/mixins/auth_mixin";
 <style lang="scss" scoped>
 .inner-item-active{
   background:$secondary;
+}
+.sidenav{
+  background: #0d4566;
 }
 </style>

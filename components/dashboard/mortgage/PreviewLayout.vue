@@ -2,269 +2,269 @@
   <div>
     {{user_mortgage}}
        <v-container id="appprint" v-if="mortgage">
-                            <v-card elevation="0" class="negative">
-                              <mortgage-form-title left="" right=""  class="no-print">
-                                  <template v-slot:action>
-                                      <v-btn text @click="printPreview" class="no-print"> <v-icon size="30">mdi-printer</v-icon> &nbsp; Print</v-btn>
+          <v-card elevation="0" class="negative">
+            <mortgage-form-title left="" right=""  class="no-print">
+                <template v-slot:action>
+                    <v-btn text @click="printPreview" class="no-print"> <v-icon size="30">mdi-printer</v-icon> &nbsp; Print</v-btn>
 
-                                  </template>
-                                </mortgage-form-title>
+                </template>
+              </mortgage-form-title>
 
-                                <v-card-text>
+              <v-card-text>
 
-                                    <div class="wrapper-preview">
-                                        <div class="top-border-text">
-                                            Personal Information
-                                        </div>
-                                        <v-btn  class="top-btn" depressed dark > <v-icon size="25">mdi-pencil</v-icon></v-btn>
-                                        <div class="text-box">
-                                            <div class="text-content">
-                                                <div class="title">Title</div>
-                                                <div class="text">Mr</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">First Name</div>
-                                                <div class="text">{{checkValueExist(user.firstname)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Last Name</div>
-                                                <div class="text">{{checkValueExist(user.lastname)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Middle Name</div>
-                                                <div class="text">{{checkValueExist(user.middlename)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Address</div>
-                                                <div class="text">{{checkValueExist(user.address)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Email Address</div>
-                                                <div class="text">{{checkValueExist(user.email)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Phone Number</div>
-                                                <div class="text">{{checkValueExist(user.phone)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Date of Birth</div>
-                                                <div class="text">{{checkValueExist(user.dob )| appDate}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Sex</div>
-                                                <div class="text">{{checkValueExist(user.sex)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Marital Status</div>
-                                                <div class="text">{{checkValueExist(user.marital_status)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Place of Birth</div>
-                                                <div class="text">{{checkValueExist(user.place_of_birth)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Nationality</div>
-                                                <div class="text">{{checkValueExist(user.nationality)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">State of Origin</div>
-                                                <div class="text">{{checkValueExist(user.state_of_origin)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Education Qualification</div>
-                                                <div class="text">{{checkValueExist(user.highest_education)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Profession</div>
-                                                <div class="text">{{checkValueExist(user.profession)}}</div>
-                                            </div>
+                  <div class="wrapper-preview">
+                      <div class="top-border-text">
+                          Personal Information
+                      </div>
+                      <v-btn  class="top-btn" depressed dark > <v-icon size="25">mdi-pencil</v-icon></v-btn>
+                      <div class="text-box">
+                          <div class="text-content">
+                              <div class="title">Title</div>
+                              <div class="text">Mr</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">First Name</div>
+                              <div class="text">{{checkValueExist(user.firstname)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Last Name</div>
+                              <div class="text">{{checkValueExist(user.lastname)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Middle Name</div>
+                              <div class="text">{{checkValueExist(user.middlename)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Address</div>
+                              <div class="text">{{checkValueExist(user.address)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Email Address</div>
+                              <div class="text">{{checkValueExist(user.email)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Phone Number</div>
+                              <div class="text">{{checkValueExist(user.phone)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Date of Birth</div>
+                              <div class="text">{{checkValueExist(user.dob )| appDate}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Sex</div>
+                              <div class="text">{{checkValueExist(user.sex)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Marital Status</div>
+                              <div class="text">{{checkValueExist(user.marital_status)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Place of Birth</div>
+                              <div class="text">{{checkValueExist(user.place_of_birth)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Nationality</div>
+                              <div class="text">{{checkValueExist(user.nationality)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">State of Origin</div>
+                              <div class="text">{{checkValueExist(user.state_of_origin)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Education Qualification</div>
+                              <div class="text">{{checkValueExist(user.highest_education)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Profession</div>
+                              <div class="text">{{checkValueExist(user.profession)}}</div>
+                          </div>
 
-                                        </div>
-                                    </div>
-                                    <div class="wrapper-preview">
-                                        <div class="top-border-text">
-                                           Other Personal Information
-                                        </div>
-                                        <v-btn  class="top-btn" depressed dark > <v-icon size="25">mdi-pencil</v-icon></v-btn>
-                                        <div class="text-box">
-                                            <div class="text-content">
-                                                <div class="title">Have Children</div>
-                                                <div class="text">{{user.have_children==1?'Yes':'No'}}</div>
-                                            </div>
+                      </div>
+                  </div>
+                  <div class="wrapper-preview">
+                      <div class="top-border-text">
+                          Other Personal Information
+                      </div>
+                      <v-btn  class="top-btn" depressed dark > <v-icon size="25">mdi-pencil</v-icon></v-btn>
+                      <div class="text-box">
+                          <div class="text-content">
+                              <div class="title">Have Children</div>
+                              <div class="text">{{user.have_children==1?'Yes':'No'}}</div>
+                          </div>
 
-                                            <div class="text-content">
-                                                <div class="title">Next of Kin Name</div>
-                                                <div class="text">{{user.next_of_kin_name}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Next of Kin Age</div>
-                                                <div class="text">{{checkValueExist(user.next_of_kin_dob)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Next of Kin Email</div>
-                                                <div class="text">{{checkValueExist(user.next_of_kin_email)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Next of Kin Phone</div>
-                                                <div class="text">{{checkValueExist(user.next_of_kin_phone)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Next of Kin Address</div>
-                                                <div class="text">{{checkValueExist(user.next_of_kin_address)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Next of Kin Relationship</div>
-                                                <div class="text">{{checkValueExist(user.next_of_kin_relationship)}}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="wrapper-preview">
-                                        <div class="top-border-text">
-                                            Employment Information
-                                        </div>
-                                        <v-btn  class="top-btn" depressed dark> <v-icon size="25">mdi-pencil</v-icon></v-btn>
-                                            <div class="text-box">
-                                              <div class="text-content">
-                                                  <div class="title">Employer Name</div>
-                                                  <div class="text">{{checkValueExist(user.employer_name)}}</div>
-                                              </div>
-                                              <div class="text-content">
-                                                  <div class="title">Employer Email</div>
-                                                  <div class="text">{{checkValueExist(user.employer_email)}}</div>
-                                              </div>
-                                              <div class="text-content">
-                                                  <div class="title">Employer Phone</div>
-                                                  <div class="text">{{checkValueExist(user.employer_phone)}}</div>
-                                              </div>
-                                              <div class="text-content">
-                                                  <div class="title">Employment State</div>
-                                                  <div class="text">{{checkValueExist(user.employment_state)}}</div>
-                                              </div>
-                                              <div class="text-content">
-                                                  <div class="title">Employment Present Position</div>
-                                                  <div class="text">{{checkValueExist(user.employment_present_position)}}</div>
-                                              </div>
-                                              <div class="text-content">
-                                                  <div class="title">Year of Experience</div>
-                                                  <div class="text">{{checkValueExist(user.work_experience)}}</div>
-                                              </div>
-                                            </div>
+                          <div class="text-content">
+                              <div class="title">Next of Kin Name</div>
+                              <div class="text">{{user.next_of_kin_name}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Next of Kin Age</div>
+                              <div class="text">{{checkValueExist(user.next_of_kin_dob)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Next of Kin Email</div>
+                              <div class="text">{{checkValueExist(user.next_of_kin_email)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Next of Kin Phone</div>
+                              <div class="text">{{checkValueExist(user.next_of_kin_phone)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Next of Kin Address</div>
+                              <div class="text">{{checkValueExist(user.next_of_kin_address)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Next of Kin Relationship</div>
+                              <div class="text">{{checkValueExist(user.next_of_kin_relationship)}}</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="wrapper-preview">
+                      <div class="top-border-text">
+                          Employment Information
+                      </div>
+                      <v-btn  class="top-btn" depressed dark> <v-icon size="25">mdi-pencil</v-icon></v-btn>
+                          <div class="text-box">
+                            <div class="text-content">
+                                <div class="title">Employer Name</div>
+                                <div class="text">{{checkValueExist(user.employer_name)}}</div>
+                            </div>
+                            <div class="text-content">
+                                <div class="title">Employer Email</div>
+                                <div class="text">{{checkValueExist(user.employer_email)}}</div>
+                            </div>
+                            <div class="text-content">
+                                <div class="title">Employer Phone</div>
+                                <div class="text">{{checkValueExist(user.employer_phone)}}</div>
+                            </div>
+                            <div class="text-content">
+                                <div class="title">Employment State</div>
+                                <div class="text">{{checkValueExist(user.employment_state)}}</div>
+                            </div>
+                            <div class="text-content">
+                                <div class="title">Employment Present Position</div>
+                                <div class="text">{{checkValueExist(user.employment_present_position)}}</div>
+                            </div>
+                            <div class="text-content">
+                                <div class="title">Year of Experience</div>
+                                <div class="text">{{checkValueExist(user.work_experience)}}</div>
+                            </div>
+                          </div>
 
-                                        <!-- <div class="employ-text-box">
-                                            <h4>OTHER EMPLOYMENTS</h4>
-                                        <v-data-table
-                                            :headers="headers"
-                                            :items="desserts"
-                                            hide-default-footer
-                                            class="elevation-1 mb-8"
-                                        ></v-data-table>
-                                        </div>
-                                        <div class="text-box">
-                                            <div class="employment-text-content">
-                                                <div class="title">Employment income (total annual pay)</div>
-                                                <div class="text">4,570,00</div>
-                                            </div>
-                                            <div class="employment-text-content">
-                                                <div class="title">employment income ( monthly gross pay )</div>
-                                                <div class="text">70,000</div>
-                                            </div>
-                                            <div class="employment-text-content">
-                                                <div class="title">employment income ( monthly net pay )</div>
-                                                <div class="text">377,488</div>
-                                            </div>
-                                            <div class="employment-text-content">
-                                                <div class="title">estimated monthly living expenses</div>
-                                                <div class="text">0.00</div>
-                                            </div>
+                      <!-- <div class="employ-text-box">
+                          <h4>OTHER EMPLOYMENTS</h4>
+                      <v-data-table
+                          :headers="headers"
+                          :items="desserts"
+                          hide-default-footer
+                          class="elevation-1 mb-8"
+                      ></v-data-table>
+                      </div>
+                      <div class="text-box">
+                          <div class="employment-text-content">
+                              <div class="title">Employment income (total annual pay)</div>
+                              <div class="text">4,570,00</div>
+                          </div>
+                          <div class="employment-text-content">
+                              <div class="title">employment income ( monthly gross pay )</div>
+                              <div class="text">70,000</div>
+                          </div>
+                          <div class="employment-text-content">
+                              <div class="title">employment income ( monthly net pay )</div>
+                              <div class="text">377,488</div>
+                          </div>
+                          <div class="employment-text-content">
+                              <div class="title">estimated monthly living expenses</div>
+                              <div class="text">0.00</div>
+                          </div>
 
-                                            <h4>OTHER SOURCES OF INCOME</h4>
-                                            <v-data-table
-                                            :headers="headers_1"
-                                            :items="desserts_1"
-                                            hide-default-footer
-                                            class="table elevation-1"
-                                        ></v-data-table>
-                                            <h4 class="standing">TOTAL : 60000</h4>
-                                            <h4 class="outstanding">OUTSTANDING LOANS</h4>
-                                            <v-data-table
-                                            :headers="headers_2"
-                                            :items="desserts_2"
-                                            hide-default-footer
-                                            class="table elevation-1 mb-5"
-                                            flat
-                                        ></v-data-table>
-                                        <div class="employment-text-content">
-                                                <div class="title">outstanding loans ( if any)</div>
-                                                <div class="text">no</div>
-                                            </div>
-                                        </div> -->
-                                    </div>
+                          <h4>OTHER SOURCES OF INCOME</h4>
+                          <v-data-table
+                          :headers="headers_1"
+                          :items="desserts_1"
+                          hide-default-footer
+                          class="table elevation-1"
+                      ></v-data-table>
+                          <h4 class="standing">TOTAL : 60000</h4>
+                          <h4 class="outstanding">OUTSTANDING LOANS</h4>
+                          <v-data-table
+                          :headers="headers_2"
+                          :items="desserts_2"
+                          hide-default-footer
+                          class="table elevation-1 mb-5"
+                          flat
+                      ></v-data-table>
+                      <div class="employment-text-content">
+                              <div class="title">outstanding loans ( if any)</div>
+                              <div class="text">no</div>
+                          </div>
+                      </div> -->
+                  </div>
 
 
-                                <div class="wrapper-preview mg-bottom">
-                                        <div class="top-border-text">
-                                            Financial/Loan Information
-                                        </div>
-                                        <v-btn  class="top-btn" depressed dark> <v-icon size="25">mdi-pencil</v-icon></v-btn>
-                                        <div class="text-box">
-                                            <div class="text-content">
-                                                <div class="title">Total Annual Pay</div>
-                                                <div class="text">{{checkValueExist(user.total_annual_pay)|easy_currency}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Monthly Net Pay</div>
-                                                <div class="text">{{checkValueExist(user.monthly_net_pay)|easy_currency}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Monthly Gross Pay</div>
-                                                <div class="text">{{checkValueExist(user.monthly_gross_pay)|easy_currency}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Monthly Repayment</div>
-                                                <div class="text">{{checkValueExist(user.monthly_repayment)|easy_currency}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Property Value</div>
-                                                <div class="text">{{checkValueExist(mortgage.property_value)|easy_currency}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Loan Amount</div>
-                                                <div class="text">{{checkValueExist(mortgage.loan_amount)|easy_currency}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Down Payment</div>
-                                                <div class="text">{{checkValueExist(mortgage.down_payment)|easy_currency}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Max Loanable Amount</div>
-                                                <div class="text">{{user.loanable_amount|easy_currency}}</div>
-                                            </div>
-                                             <div class="text-content">
-                                                <div class="title">Estimated Loan Tenure</div>
-                                                <div class="text">{{checkValueExist(user.loan_tenure)}} years</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Loan type</div>
-                                                <div class="text">{{checkValueExist(mortgage.type)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Property Name</div>
-                                                <div class="text">{{checkValueExist(mortgage.property_name)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Property Title</div>
-                                                <div class="text">{{checkValueExist(mortgage.property_title)}}</div>
-                                            </div>
-                                            <div class="text-content">
-                                                <div class="title">Property Address</div>
-                                                <div class="text">{{checkValueExist(mortgage.property_address)}}</div>
-                                            </div>
+              <div class="wrapper-preview mg-bottom">
+                      <div class="top-border-text">
+                          Financial/Loan Information
+                      </div>
+                      <v-btn  class="top-btn" depressed dark> <v-icon size="25">mdi-pencil</v-icon></v-btn>
+                      <div class="text-box">
+                          <div class="text-content">
+                              <div class="title">Total Annual Pay</div>
+                              <div class="text">{{checkValueExist(user.total_annual_pay)|easy_currency}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Monthly Net Pay</div>
+                              <div class="text">{{checkValueExist(user.monthly_net_pay)|easy_currency}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Monthly Gross Pay</div>
+                              <div class="text">{{checkValueExist(user.monthly_gross_pay)|easy_currency}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Monthly Repayment</div>
+                              <div class="text">{{checkValueExist(user.monthly_repayment)|easy_currency}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Property Value</div>
+                              <div class="text">{{checkValueExist(mortgage.property_value)|easy_currency}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Loan Amount</div>
+                              <div class="text">{{checkValueExist(mortgage.loan_amount)|easy_currency}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Down Payment</div>
+                              <div class="text">{{checkValueExist(mortgage.down_payment)|easy_currency}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Max Loanable Amount</div>
+                              <div class="text">{{user.loanable_amount|easy_currency}}</div>
+                          </div>
+                            <div class="text-content">
+                              <div class="title">Estimated Loan Tenure</div>
+                              <div class="text">{{checkValueExist(user.loan_tenure)}} years</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Loan type</div>
+                              <div class="text">{{checkValueExist(mortgage.type)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Property Name</div>
+                              <div class="text">{{checkValueExist(mortgage.property_name)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Property Title</div>
+                              <div class="text">{{checkValueExist(mortgage.property_title)}}</div>
+                          </div>
+                          <div class="text-content">
+                              <div class="title">Property Address</div>
+                              <div class="text">{{checkValueExist(mortgage.property_address)}}</div>
+                          </div>
 
-                                        </div>
-                                </div>
-                                </v-card-text>
-                                    </v-card>
-                        </v-container>
+                      </div>
+              </div>
+              </v-card-text>
+                  </v-card>
+      </v-container>
                         <!-- <v-card-actions class="card-action-btn">
                         <v-btn
 

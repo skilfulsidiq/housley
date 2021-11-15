@@ -33,7 +33,7 @@
 
                   </div>
 
-                <input type='submit' id="email" name="email" value="Login">
+                <input type='submit' id="email" name="email" :value="$nuxt.$loading.show?'Loading...':'Login'">
                 <div class="signup mt-3">Do not have an account? <nuxt-link to="/register">&nbsp; Sign Up</nuxt-link> </div>
 
                 <!-- <div class="google-signon">
@@ -119,10 +119,10 @@
             this.appLoading(true);
             let response =  await this.$auth.loginWith('local', { data: this.login_form});
             let data = response.data;
-              console.log(data.data)
-              // this.$auth.strategy.token.set(data.token)
-              console.log(this.$auth.strategy.token.get());
-              //  this.$auth.setUser(data.data.user);
+
+            let u = this.$store.state.auth.user;
+            this.$store.commit("profile/PREFILL_PERSONAL_FORM",u);
+
             if(data.token){
               this.appLoading(false);
               this.$router.push("/")

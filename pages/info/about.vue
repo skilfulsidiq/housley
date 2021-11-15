@@ -189,7 +189,8 @@
         },
         methods:{
           showModal(){
-            $("#AffordabilityTestModal").modal("show")
+            // $("#AffordabilityTestModal").modal("show")
+            this.$router.push('/pre-approval')
           },
           searchHome(){
             this.$router.push('/properties')

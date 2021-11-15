@@ -33,7 +33,7 @@
        </FormulateForm> -->
        <form  ref="aform" id="regForm" class="form-tab">
                   <div class="heading" v-if="showLocation">
-                    <h1 class="big-font green bold">How much can I Afford</h1>
+                    <h1 class="big-font green bold">How much can I afford</h1>
                     <p class="sub-title color1">
                       Calculate the home loan you qualify for, and how much
                       you can expect to pay monthly on your home loan
@@ -342,7 +342,8 @@ export default {
               dob:'',
               loan_tenure:5,
               location:'',
-              age:''
+              age:'',
+              payment_option:''
           },
 
 
@@ -361,7 +362,8 @@ export default {
             outstanding_loans: { required: requiredIf((form) =>form.have_existing_obligation==1)},
             co_borrower_monthly_income: { required: requiredIf((form) =>form.have_co_borrower==1)},
             age:{optional},
-            location:{optional}
+            location:{optional},
+             payment_option:{optional}
 
         }
     },
@@ -385,49 +387,49 @@ export default {
     },
     computed:{
 
-       monthly_income:{
-            get() {
-              let r = this.formatToCommaSeperated(this.form.monthly_net_pay);
-              return r;
-            },
-            set(val) {
-              this.form.monthly_net_pay=val;
+      monthly_income:{
+          get() {
+            let r = this.formatToCommaSeperated(this.form.monthly_net_pay);
+            return r;
+          },
+          set(val) {
+            this.form.monthly_net_pay=val;
 
-            }
-       },
-       additional_income:{
-            get() {
-              let r = this.formatToCommaSeperated(this.form.additional_income);
-              // console.log(r);
-              return r;
-            },
-            set(val) {
-              this.form.additional_income=val;
+          }
+      },
+      additional_income:{
+          get() {
+            let r = this.formatToCommaSeperated(this.form.additional_income);
+            // console.log(r);
+            return r;
+          },
+          set(val) {
+            this.form.additional_income=val;
 
-            }
-       },
-       outstanding_loans:{
-            get() {
-              let r = this.formatToCommaSeperated(this.form.outstanding_loans);
-              // console.log(r);
-              return r;
-            },
-            set(val) {
-              this.form.outstanding_loans=val;
+          }
+      },
+      outstanding_loans:{
+          get() {
+            let r = this.formatToCommaSeperated(this.form.outstanding_loans);
+            // console.log(r);
+            return r;
+          },
+          set(val) {
+            this.form.outstanding_loans=val;
 
-            }
-       },
-       co_borrower:{
-            get() {
-              let r = this.formatToCommaSeperated(this.form.co_borrower_monthly_income);
-              // console.log(r);
-              return r;
-            },
-            set(val) {
-              this.form.co_borrower_monthly_income=val;
+          }
+      },
+      co_borrower:{
+          get() {
+            let r = this.formatToCommaSeperated(this.form.co_borrower_monthly_income);
+            // console.log(r);
+            return r;
+          },
+          set(val) {
+            this.form.co_borrower_monthly_income=val;
 
-            }
-       },
+          }
+      },
 
 
     },
@@ -441,6 +443,7 @@ export default {
               //  this.scrollErrorSection();
                 return;
             }
+              this.form.payment_option = 'mortgage';
                 this.$store.dispatch("calculator/saveAffordabilityFormAction",this.form)
                 this.$store.dispatch("calculator/calculateAffordabilityAction",this.form).then((r)=>{
                     this.processStepFunction(true,false);
@@ -465,7 +468,8 @@ export default {
               dob:'',
               loan_tenure:'5',
               location:'',
-              age:''
+              age:'',
+
           }
       },
 
@@ -473,10 +477,10 @@ export default {
             this.submitted=true
             this.$v.$touch();
             if (this.$v.$invalid) {
-                // this.showValidationToast();
               this.scrollErrorSection();
                 return;
             }
+             this.form.payment_option = 'mortgage';
            this.$store.dispatch("calculator/saveAffordabilityFormAction",this.form)
           this.$store.dispatch("calculator/calculateAffordabilityAction",this.form).then((r)=>{
              this.processStepFunction(true,false);

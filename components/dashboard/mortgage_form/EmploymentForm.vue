@@ -198,7 +198,13 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
            let main_form = this.$store.state.profile.profile
           this.$store.dispatch("profile/savePersonalAndEmploymentDataAction",main_form).then((res)=>{
              this.mortgageLoading(false);
-               this.moveToMortgageNextStep(4);
+             if(this.user.have_apply_for_mortgage){
+               this.$apptoast.success("Profile Info Updated")
+                this.$router.push("/dashboard");
+             }else{
+                this.moveToMortgageNextStep(4);
+             }
+
                this.$nuxt.$emit('submit_third_mortgage_form',false);
               //  this.$refs.profileform.resetValidation();
               // this.goNextFormStep('profiling');

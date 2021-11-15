@@ -1496,8 +1496,8 @@ a {
 }
 
 @media (min-width: 576px) {
-  .modal-dialog {
+  /* .modal-dialog {
     max-width: 601px !important;
     margin: 1.75rem auto;
-  }
+  } */
 }

@@ -46,14 +46,33 @@ export const state = () => ({
   },
   formStep: 1,
   totalStep: 5,
-  propertyIsSelected:true
+  propertyIsSelected:true,
+  request_form:{
+    property_value:'',
+    state_id: '',
+      city_id: '',
+      property_type_id: '',
+      property_bedroom: '',
+      property_bathroom: '',
+      property_id: '',
+      found_property: '',
+  },
+  mortgage_form:{
+    lender_id: '',
+    broker_id: '',
+    loan_amount: '',
+    down_payment: '',
+    down_rate: '',
+    property_value:'',
+    loan_tenure:'',
+    monthly_repayment:''
+  }
 })
 export const mutations = {
   PREQUALIFIED_FORM(state, payload) {
     state.form = payload
   },
   CLEAR_FORM(state, payload) {
-    console.log("stire form clear")
     state.form = {
       total_annual_pay: '',
       monthly_net_pay: '',
@@ -94,7 +113,7 @@ export const mutations = {
   },
   AFFORDABILITY_RESULT(state, payload) {
     state.form.max_loan_amount = payload.loanable_amount;
-    state.form.monthly_payment = payload.monthly_payment;
+    state.form.monthly_payment = payload.monthly_repayment;
     state.form.loan_tenure = payload.loan_tenure;
   },
   SAVE_AFFORDABILITY_FORM(state, payload) {
@@ -108,10 +127,10 @@ export const mutations = {
     state.form.age = payload.age;
   },
   SAVE_SELECTED_LENDER(state,payload){
-    state.form.lender_id = payload
+    state.mortgage_form.lender_id = payload
   },
   SAVE_SELECTED_BROKER(state,payload){
-    state.form.broker_id = payload
+    state.mortgage_form.broker_id = payload
   },
   SAVE_ELIGIBILITY_FORM(state, payload) {
     state.form.loan_amount = payload.loan_amount;
@@ -130,20 +149,24 @@ export const mutations = {
     state.pfa_name = payload.pfa_name;
   },
   SAVE_PROPERTY_REQUEST_DATA(state, payload) {
-    state.form.property_value = payload.property_value;
-    state.form.city_id = payload.city_id
-    state.form.state_id = payload.state_id
-    state.form.property_bathroom = payload.property_bathrooms
-    state.form.property_bedroom = payload.property_bedrooms
-    state.form.found_property = 0;
+    state.request_form.property_value = payload.property_value;
+    state.request_form.city_id = payload.city_id
+    state.request_form.state_id = payload.state_id
+    state.request_form.property_bathroom = payload.property_bathrooms
+    state.request_form.property_bedroom = payload.property_bedrooms
+    state.request_form.found_property = 0;
   },
   SAVE_SELECTED_PROPERTY(state, payload) {
-    state.form.city_id = payload.city_id
-    state.form.state_id = payload.state_id
-    state.form.property_bathroom = payload.property_bathrooms
-    state.form.property_bedroom = payload.property_bedrooms
-    state.form.property_id = payload.id
-    state.form.found_property = 1;
+    state.request_form=payload
+  },
+  UPDATE_USER_REQUEST(state, payload) {
+    state.request_form.property_value = payload.property_value;
+    state.request_form.city_id = payload.city_id
+    state.request_form.state_id = payload.state_id
+    state.request_form.property_bathroom = payload.property_bathrooms
+    state.request_form.property_bedroom = payload.property_bedrooms
+    state.request_form.property_id = payload.id
+    state.request_form.found_property = payload.found_property;
   },
 
   PROCESS_STATUS(state, payload) {
@@ -184,8 +207,10 @@ export const mutations = {
 export const actions = {
 
   async calculateAffordabilityAction({ commit}, form) {
-    commit("SAVE_AFFORDABILITY_FORM", form);
-    let res = await this.$axios.$post(api.calculateAffordability(), form);
+    // commit("SAVE_AFFORDABILITY_FORM", form);
+    console.log(form)
+    let res = await this.$axios.$post(api.updateAffordabilityInfo(), form);
+    // let res = await this.$axios.$post(api.calculateAffordability(), form);
     let d = res.data;
     commit("AFFORDABILITY_RESULT", d);
     return res;
@@ -240,7 +265,7 @@ export const actions = {
         if (this.$auth.user) {
           this.$auth.setUser(r);
         }
-        console.log("data submitted")
+        // console.log("data submitted")
         resolve(r);
         // return r;
       }).catch(err => {
@@ -250,12 +275,12 @@ export const actions = {
   },
   saveUserRequestWithAuthAction({
     commit
-  }, profile) {
+  }, form) {
     // commit("SAVE_PROPERTY_REQUEST_DATA".profile);
     return new Promise((resolve, reject) => {
-      this.$axios.$post(api.saveUserRequestWithoutAuth(), profile).then((res) => {
+      this.$axios.$post(api.updateRequestInfo(), form).then((res) => {
         let y = res.data;
-        // commit("UPDATE_USER_REQUEST", y);
+        commit("UPDATE_USER_REQUEST", y);
 
         resolve(y)
       }).catch((err) => {

@@ -251,6 +251,9 @@ export const actions = {
     async getProfileAction({ commit}) {
         let res = await this.$axios.$get(api.updateProfileInfo());
         let p = res.data;
+         if (this.$auth.user) {
+           this.$auth.setUser(p);
+         }
         commit("PREFILL_PERSONAL_FORM", p);
         return p;
 

@@ -52,7 +52,11 @@ export const state = () => ({
      have_existing_obligation: ""
 
   },
-  last_stage_activated:false
+  last_stage_activated:false,
+  mortgage_checklist_param: {
+    type: '',
+    list: []
+  }
 })
 export const mutations = {
    MORTGAGE_LOADING(state, payload) {
@@ -84,6 +88,9 @@ export const mutations = {
     },
     LAST_STAGE_ACTIVATED(state,payload){
       state.last_stage_activated=payload
+    },
+    MORTGAGE_CHECKLIST_PARAM(state, payload) {
+      state.mortgage_checklist_param = payload
     }
 
 
@@ -139,6 +146,21 @@ export const actions = {
     })
 
   },
+   completeMortgageAction({
+     commit
+   }, form) {
+     return new Promise((resolve, reject) => {
+       this.$axios.$post(api.userCompleteMortgageApplication(), form).then((res) => {
+         let r = res.data;
+
+         commit("MORTGAGE_DETAIL", r);
+         resolve(r)
+       }).catch((err) => {
+         reject(err);
+       });
+     })
+
+   },
   applyAgreeToMortgageAction({ commit},form) {
     return new Promise((resolve,reject)=>{
     this.$axios.$post(api.userAgreeToMortgage(), form).then((res) => {

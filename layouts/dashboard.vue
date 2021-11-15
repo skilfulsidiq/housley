@@ -1,7 +1,7 @@
 <template>
   <div style="background: #f9fbfd;min-height:100vh;">
     <client-only>
-    <app-header/>
+    <app-header />
       <mobile-nav/>
     <side-nav/>
     <div class="start-body">
@@ -10,6 +10,7 @@
       </div>
     </div>
      <mortgage-application-modal/>
+     <check-list-modal/>
     </client-only>
 
   </div>
@@ -20,10 +21,11 @@ import AppHeader from '@/components/dashboard/AppHeader.vue'
 import SideNav from '@/components/dashboard/SideNav.vue'
 import MobileNav from '@/components/dashboard/MobileNav.vue'
 import MortgageApplicationModal from '@/components/dashboard/MortgageApplicationModal.vue'
+import CheckListModal from '@/components/dashboard/CheckListModal.vue'
 // import mortgage_mixin from '@/mixins/mortgage_mixin'
   export default {
-  components: { AppHeader,SideNav,MobileNav,MortgageApplicationModal },
-  //  middleware:['hasProfile'],
+  components: { AppHeader,SideNav,MobileNav,MortgageApplicationModal,CheckListModal },
+   middleware:['have_mortgage'],
   //  mixins:[mortgage_mixin],
    head(){
       return{
@@ -32,10 +34,15 @@ import MortgageApplicationModal from '@/components/dashboard/MortgageApplication
           {rel:'stylesheet',href:'/styles/sidebar.css'},
           {rel:'stylesheet',href:'/styles/header.css'},
           {rel:'stylesheet',href:'/styles/dashboard.css'},
+          {rel:'stylesheet',href:'/styles/main.css'},
           {rel:'stylesheet',href:'/styles/app.css'},
+          {rel:'stylesheet',href:'/styles/form_slider.css'},
         ],
         script:[
-          // {src:"/js/dashboard/mobileSidebar.js"}
+          // {src:"/js/dashboard/popper.min.js"},/*  */
+          // {src:"/js/dashboard/bootstrap.min.js"},/*  */
+          // {src:"/js/dashboard/mobileSidebar.js"},/*  */
+
         ]
       }
     },
@@ -54,9 +61,11 @@ import MortgageApplicationModal from '@/components/dashboard/MortgageApplication
 
         },
 
+
     },
     created(){
       this.fetchDashboardData();
+
       // this.prefillForm();
     }
 

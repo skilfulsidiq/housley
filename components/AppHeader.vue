@@ -118,7 +118,9 @@
 //     .trasparent-container .action-buttons .signup{
 // border: 1px solid #0d4566;
 //     }
-
+.nav-link{
+  // padding:.5rem 1rem;
+}
 .auth-ul{
   list-style: none;
 }

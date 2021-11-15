@@ -41,7 +41,7 @@
 
                 <!-- <div class="forgot-password"><span>This must be corrected with the password</span></div> -->
 
-                <input type='submit'  value="Signup">
+                <input type='submit'  :value="appBusy?'Loading...':'Signup'">
                 <div class="signup">Already have an account? <nuxt-link to="/login">&nbsp; Login</nuxt-link>
                    </div>
 <!--
@@ -124,6 +124,8 @@
                 password: this.form.password
                 },
               })
+                 let u = this.$store.state.auth.user;
+              this.$store.commit("profile/PREFILL_PERSONAL_FORM",u);
           if(l){
             // console.log(r)
              this.busy=false

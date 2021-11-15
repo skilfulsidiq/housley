@@ -48,7 +48,7 @@
                       <div class="user_info_body" style="margin-top: 20px">
                         <div class="info_detials">
                           <h6 class="info_h6">Title</h6>
-                          <span class="info_span">{{user.sex.toLowerCase()=='male'?'Mr':'Mrs'}}</span>
+                          <span class="info_span" v-if="user.sex">{{user.sex.toLowerCase()=='male'?'Mr':'Mrs'}}</span>
                         </div>
                         <div class="info_detials">
                           <h6 class="info_h6">First Name</h6>
