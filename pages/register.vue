@@ -41,7 +41,7 @@
 
                 <!-- <div class="forgot-password"><span>This must be corrected with the password</span></div> -->
 
-                <input type='submit'  :value="appBusy?'Loading...':'Signup'">
+                <input type='submit'  :value="loading?'Loading...':'Signup'">
                 <div class="signup">Already have an account? <nuxt-link to="/login">&nbsp; Login</nuxt-link>
                    </div>
 <!--
@@ -136,7 +136,7 @@
 
 
             // this.$store.commit("profile/PREFILL_PERSONAL_FORM",r.user)
-              this.$router.push("/")
+              // this.$router.push("/")
             // this.$apptoast.success('Successfully authenticated');
           }else{
              this.busy=false

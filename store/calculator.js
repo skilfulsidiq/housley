@@ -149,15 +149,27 @@ export const mutations = {
     state.pfa_name = payload.pfa_name;
   },
   SAVE_PROPERTY_REQUEST_DATA(state, payload) {
-    state.request_form.property_value = payload.property_value;
-    state.request_form.city_id = payload.city_id
-    state.request_form.state_id = payload.state_id
-    state.request_form.property_bathroom = payload.property_bathrooms
-    state.request_form.property_bedroom = payload.property_bedrooms
-    state.request_form.found_property = 0;
+    state.form.property_value = payload.property_value;
+    state.form.city_id = payload.city_id
+    state.form.state_id = payload.state_id
+    state.form.property_bathroom = payload.property_bathrooms
+    state.form.property_bedroom = payload.property_bedrooms
+    state.form.found_property = 0;
+    // state.request_form.property_value = payload.property_value;
+    // state.request_form.city_id = payload.city_id
+    // state.request_form.state_id = payload.state_id
+    // state.request_form.property_bathroom = payload.property_bathrooms
+    // state.request_form.property_bedroom = payload.property_bedrooms
+    // state.request_form.found_property = 0;
   },
   SAVE_SELECTED_PROPERTY(state, payload) {
     state.request_form=payload
+    state.form.property_value = payload.property_value;
+    state.form.city_id = payload.city_id
+    state.form.state_id = payload.state_id
+    state.form.property_bathroom = payload.property_bathrooms
+    state.form.property_bedroom = payload.property_bedrooms
+    state.form.found_property = 1;
   },
   UPDATE_USER_REQUEST(state, payload) {
     state.request_form.property_value = payload.property_value;

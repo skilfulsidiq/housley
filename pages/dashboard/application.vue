@@ -31,34 +31,35 @@
                 <td>{{a.down_payment|easy_currency}}</td>
                 <td>{{a.loan_tenure}} Years</td>
                 <td class="td-text">
-                  <mortgage-status-badge v-if="a.is_completed" :status="a.status.status"/>
-                  <mortgage-status-badge v-else status="incomplete"/>
+                  <mortgage-status-badge v-if="determineStatus(a)" :status="a.status.status"/>
+                  <mortgage-status-badge v-if="!determineStatus(a)" status="incomplete"/>
                   </td>
                 <td class="td-text">
 
                   <div class="d-flex">
-                  <div v-if="!a.is_completed" class="action cursor"  @click="completeMortgage"> <i class="fa fa-pencil text-primary"></i> </div>
-
-                    <div class="action cursor" @click=" goDetail(a)">
-                    <svg
-                      class="svg-icon"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M9.99994 13.6083C8.00827 13.6083 6.3916 11.9916 6.3916 9.99994C6.3916 8.00827 8.00827 6.3916 9.99994 6.3916C11.9916 6.3916 13.6083 8.00827 13.6083 9.99994C13.6083 11.9916 11.9916 13.6083 9.99994 13.6083ZM9.99994 7.6416C8.69994 7.6416 7.6416 8.69994 7.6416 9.99994C7.6416 11.2999 8.69994 12.3583 9.99994 12.3583C11.2999 12.3583 12.3583 11.2999 12.3583 9.99994C12.3583 8.69994 11.2999 7.6416 9.99994 7.6416Z"
-                        fill="#38CB89"
-                      />
-                      <path
-                        d="M9.9999 17.5167C6.86657 17.5167 3.90824 15.6834 1.8749 12.5001C0.991569 11.1251 0.991569 8.8834 1.8749 7.50006C3.91657 4.31673 6.8749 2.4834 9.9999 2.4834C13.1249 2.4834 16.0832 4.31673 18.1166 7.50006C18.9999 8.87506 18.9999 11.1167 18.1166 12.5001C16.0832 15.6834 13.1249 17.5167 9.9999 17.5167ZM9.9999 3.7334C7.30824 3.7334 4.73324 5.35006 2.93324 8.17507C2.30824 9.15006 2.30824 10.8501 2.93324 11.8251C4.73324 14.6501 7.30824 16.2667 9.9999 16.2667C12.6916 16.2667 15.2666 14.6501 17.0666 11.8251C17.6916 10.8501 17.6916 9.15006 17.0666 8.17507C15.2666 5.35006 12.6916 3.7334 9.9999 3.7334Z"
-                        fill="#38CB89"
-                      />
-                    </svg>
-
+                  <div v-if="!determineStatus(a)" class="action cursor"  @click="completeMortgage"> <i class="fa fa-pencil text-primary"></i>
                   </div>
+
+                      <div class="action cursor" @click=" goDetail(a)">
+                      <svg
+                        class="svg-icon"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.99994 13.6083C8.00827 13.6083 6.3916 11.9916 6.3916 9.99994C6.3916 8.00827 8.00827 6.3916 9.99994 6.3916C11.9916 6.3916 13.6083 8.00827 13.6083 9.99994C13.6083 11.9916 11.9916 13.6083 9.99994 13.6083ZM9.99994 7.6416C8.69994 7.6416 7.6416 8.69994 7.6416 9.99994C7.6416 11.2999 8.69994 12.3583 9.99994 12.3583C11.2999 12.3583 12.3583 11.2999 12.3583 9.99994C12.3583 8.69994 11.2999 7.6416 9.99994 7.6416Z"
+                          fill="#38CB89"
+                        />
+                        <path
+                          d="M9.9999 17.5167C6.86657 17.5167 3.90824 15.6834 1.8749 12.5001C0.991569 11.1251 0.991569 8.8834 1.8749 7.50006C3.91657 4.31673 6.8749 2.4834 9.9999 2.4834C13.1249 2.4834 16.0832 4.31673 18.1166 7.50006C18.9999 8.87506 18.9999 11.1167 18.1166 12.5001C16.0832 15.6834 13.1249 17.5167 9.9999 17.5167ZM9.9999 3.7334C7.30824 3.7334 4.73324 5.35006 2.93324 8.17507C2.30824 9.15006 2.30824 10.8501 2.93324 11.8251C4.73324 14.6501 7.30824 16.2667 9.9999 16.2667C12.6916 16.2667 15.2666 14.6501 17.0666 11.8251C17.6916 10.8501 17.6916 9.15006 17.0666 8.17507C15.2666 5.35006 12.6916 3.7334 9.9999 3.7334Z"
+                          fill="#38CB89"
+                        />
+                      </svg>
+
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -98,14 +99,14 @@
             <div class="res_table_">
               <span class="res_table_label">Status</span>
 
-              <div v-if="a.is_completed" class="pill_p res_info"><mortgage-status-badge :status="a.status.status"/></div>
-              <div v-if="!a.is_completed" class="pill_r res_info"><mortgage-status-badge status="incomplete"/></div>
+              <div v-if="determineStatus(a)" class="pill_p res_info"><mortgage-status-badge :status="a.status.status"/></div>
+              <div v-if="!determineStatus(a)" class="pill_r res_info"><mortgage-status-badge status="incomplete"/></div>
             </div>
             <!-- 4 -->
             <div class="res_table_">
               <span class="res_table_label">Action</span>
                 <div class="d-flex">
-                  <div  v-if="!a.is_completed" class="action res_info cursor" @click="completeMortgage"> <i class="fa fa-pencil text-primary"></i>&nbsp;&nbsp; Update </div>
+                  <div  v-if="!determineStatus(a)" class="action res_info cursor" @click="completeMortgage"> <i class="fa fa-pencil text-primary"></i>&nbsp;&nbsp; Update </div>
                   <div class="action res_info cursor" @click=" goDetail(a)">
                   <svg
                     class="svg-icon"
@@ -179,8 +180,16 @@ import MortgageDetailForUser from '@/components/dashboard/MortgageDetailForUser.
         console.log('mylist', r)
         return r;
       },
+
       },
     methods:{
+      determineStatus(a){
+        let u = this.$store.state.profile.profile;
+        if(u.has_profile==1 && a.is_completed==1){
+          return true;
+        }
+        return false;
+      },
         goDetail(item){
           this.appLoading(true);
            this.$store.dispatch("dashboard/getMortgageDetailsAction", item.slug).then((res)=>{

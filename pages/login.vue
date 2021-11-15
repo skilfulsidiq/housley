@@ -33,7 +33,7 @@
 
                   </div>
 
-                <input type='submit' id="email" name="email" :value="$nuxt.$loading.show?'Loading...':'Login'">
+                <input type='submit' id="email" name="email" :value="loading?'Loading...':'Login'">
                 <div class="signup mt-3">Do not have an account? <nuxt-link to="/register">&nbsp; Sign Up</nuxt-link> </div>
 
                 <!-- <div class="google-signon">
@@ -71,6 +71,7 @@
     return {
       show_pass: false,
       submitted:false,
+      busy:false,
       login_form: {
         email: "",
         password: ""

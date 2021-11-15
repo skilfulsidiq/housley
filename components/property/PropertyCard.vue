@@ -112,7 +112,7 @@
         chooseProperty(){
             if(this.isChoose){
                 this.$store.dispatch("property/selectPropertyAction",this.property);
-                //  this.$store.commit("property/SAVE_SELECTED_PROPERTY",this.property)
+                //  this.$store.commit("property/SELECTED_PROPERTY",this.property)
                   let form = this.prepareRequestForm(this.property);
                    this.$store.commit("calculator/SAVE_SELECTED_PROPERTY",form);
                 //  this.$store.dispatch("calculator/saveUserRequestWithAuthAction",form).then(res=>{
