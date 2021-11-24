@@ -81,6 +81,9 @@ export default {
   propertyEnquiry() {
     return "/general/property-enquiry";
   },
+  saveUserRequest() {
+    return "user/property-request"
+  },
   saveUserRequestWithoutAuth() {
     return "/general/save-property-request-no-auth";
   },

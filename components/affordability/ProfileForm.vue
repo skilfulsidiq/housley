@@ -203,6 +203,14 @@ export default {
                   // }
                   this.$store.dispatch("calculator/saveProfileFormAction",data);
                   let all = this.$store.state.calculator.form;
+                  let r = this.$store.state.calculator.request_form;
+                   let ob = Object.entries(r);
+                  for (const [key, value] of ob) {
+                    if (key in all) {
+                      all[key] = value
+                    }
+                    //    form[key] = value;
+                  }
 
                   this.$store.dispatch("calculator/submitPreQualifiedAction",all).then((res)=>{
                         this.$nuxt.$emit('prequalified-modal',true);
@@ -213,6 +221,16 @@ export default {
                   }).catch((err)=>{
                     console.log(err.response);
                   })
+            },
+            fillInRequest(){
+
+               let ob = Object.entries(payload);
+                  for (const [key, value] of ob) {
+                    if (key in state.profile) {
+                      state.profile[key] = value
+                    }
+                    //    form[key] = value;
+                  }
             },
             fillAuthUserData(){
               if(this.$auth.user){

@@ -166,9 +166,9 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
           monthly_gross_pay:{required},
           profession:{required},
           employment_present_position:{required},
-          work_experience:{required},
-          employer_address:{required},
+           employer_address:{required},
           employment_state:{required},
+          work_experience:{required},
           year_to_retirement:{optional},
           nhf_registration_number:{optional},
           employment_is_confirmed:{required}
@@ -198,12 +198,15 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
            let main_form = this.$store.state.profile.profile
           this.$store.dispatch("profile/savePersonalAndEmploymentDataAction",main_form).then((res)=>{
              this.mortgageLoading(false);
-             if(this.user.have_apply_for_mortgage){
-               this.$apptoast.success("Profile Info Updated")
-                this.$router.push("/dashboard");
-             }else{
-                this.moveToMortgageNextStep(4);
-             }
+             console.log("profile submitted")
+            //  if(this.user.have_apply_for_mortgage){
+              //  this.$apptoast.success("Profile Info Updated")
+               this.nuxt.$emit('apply_mortgage',false);
+               this.nuxt.$emit('show_checklist_modal',true);
+                // this.$router.push("/dashboard");
+            //  }else{
+            //     this.moveToMortgageNextStep(4);
+            //  }
 
                this.$nuxt.$emit('submit_third_mortgage_form',false);
               //  this.$refs.profileform.resetValidation();
@@ -218,16 +221,28 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
         },
           prefillForm(){
         let r = this.$store.state.profile.profile;
-        this.mapIncomingDataToForm(this.form, r);
+        // this.mapIncomingDataToForm(this.form, r);
+      //    this.form.profession  = r.profession;
+      //  this.form.monthly_gross_pay  = r.monthly_gross_pay;
+      // // this.form.employment_id = r.employment_id,
+      // this.form.employment_present_position=r.employment_present_position,
+      // this.form.employer_address=r.employer_address,
+      // this.form.employment_state=r.employment_state,
+      // this.form.work_experience=r.work_experience,
+      // this.form.year_to_retirement=r.year_to_retirement,
+      // this.form.nhf_registration_number=r.nhf_registration_number,
+      // this.form.employment_status=r.employment_status,
+      // this.form.employer_name=r.employer_name
+      this.mapIncomingDataToForm(this.form, r);
 
       },
     },
     created(){
-       this.prefillForm();
+
           this.$store.commit("mortgage/GO_TO_STEP", 3);
     },
     mounted(){
-
+        this.prefillForm();
       this.$nuxt.$on('submit_third_mortgage_form',(param)=>{
         if(param){
             // if(this.$refs.employment){

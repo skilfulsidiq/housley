@@ -14,7 +14,7 @@
           <div class="modal_dash">
             <div class="modal-header">
               <h5 class="modal-title" id="staticBackdropLabel">
-                Affordability Result
+                Property Request
               </h5>
               <p class="modal-p">
                 This is a summary of your preffered property please click Submit
@@ -187,6 +187,18 @@ import { required, email,minLength} from "vuelidate/lib/validators";
 
             }
           },
+        prefillFromRequest(request) {
+              this.form.property_id = request.property_id
+              this.form.property_value = request.property_value
+              this.form.state_id = request.state_id
+              this.form.city_id = request.city_id
+              this.form.property_type_id  = request.property_type_id
+              this.form.property_bedroom = request.property_bedroom
+              this.form.property_bathroom = request.property_bathrooms
+              this.form.found_property = 0;
+
+
+          },
           resetForm(){
               this.form = {
                 property_id:'',
@@ -222,6 +234,7 @@ import { required, email,minLength} from "vuelidate/lib/validators";
                 }
 
                 // this.appLoading(true);
+                console.log("request submit")
                 this.$store.dispatch("profile/saveUserRequestAction",this.form).then((res)=>{
                     // this.appLoading(false);
                       this.$store.dispatch("dashboard/getUserPropertyRequestAction")
@@ -245,6 +258,14 @@ import { required, email,minLength} from "vuelidate/lib/validators";
               this.closeModal();
             }
         })
+        this.$nuxt.$on("update_request_modal",(param)=>{
+               if(param.status){
+                 this.prefillFromRequest(param.request)
+              this.showModal();
+            }else{
+              this.closeModal();
+            }
+        })
         // this.prefillRequestForm(this.selectedProperty);
         this.$nuxt.$on("selected_property",(param)=>{
             if(param.status){
@@ -262,17 +283,7 @@ import { required, email,minLength} from "vuelidate/lib/validators";
         })
 
       },
-      mounted(){
-        // if(!this.prefill){
-        //   if(this.$refs.requestform){
-        //     this.$refs.requestform.reset();
-        //   }
 
-        // }
-      },
-      unmounted() {
-        // this.$refs.requestform.reset();
-      },
   }
 
 
@@ -281,6 +292,9 @@ import { required, email,minLength} from "vuelidate/lib/validators";
 <style lang="scss" scoped>
   .modal-header {
     padding-top: 50px !important;
+  }
+  .modal-content{
+    padding:20px !important;
   }
   .general_user_info{
     border:none;

@@ -2,7 +2,7 @@
   <div >
 
      <div class="content_body">
-          <p class="hi">Hi Maxwell 👋🏽</p>
+          <p class="hi">Hi {{user.firstname}} 👋🏽</p>
           <h3 class="welcome">Welcome to Houzzley</h3>
         </div>
 
@@ -407,7 +407,7 @@ import MortgageApplicationModal from '../../components/dashboard/MortgageApplica
       },
       showChekclistModal(){
         let user = this.$store.state.auth.user;
-          if(user.have_apply_for_mortgage && user.checklist == null){
+          if(user.have_apply_for_mortgage ==1 && user.checklist.length >0){
               this.$nuxt.$emit("show_checklist_modal",true);
           }
 

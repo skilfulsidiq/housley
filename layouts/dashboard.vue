@@ -53,10 +53,10 @@ import CheckListModal from '@/components/dashboard/CheckListModal.vue'
           this.$store.dispatch("mortgage/getCurrentMortgageStatusAction")
           this.$store.dispatch("dashboard/getUserPropertyRequestAction")
 
-            this.$store.dispatch("general/getAllStatesAction");
-    this.$store.dispatch("general/getAllFinanceOptionAction");
-    this.$store.dispatch("general/getPropertyTypeAction");
-    this.$store.dispatch("general/getMortgageChecklistAction");
+          this.$store.dispatch("general/getAllStatesAction");
+          this.$store.dispatch("general/getAllFinanceOptionAction");
+          this.$store.dispatch("general/getPropertyTypeAction");
+          this.$store.dispatch("general/getMortgageChecklistAction");
 
 
         },

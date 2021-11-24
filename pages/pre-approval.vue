@@ -1,10 +1,10 @@
 <template>
     <div>
           <main class="page-content">
-      <div class="pre-approval-form-container  preapproval-content">
+      <div class="pre-approval-form-container  preapproval-content" >
         <!-- <img class="modal-close" src="/img/close.svg" data-dismiss="modal" alt="close"> -->
 
-          <affordability-form :formType="true" :showLocation="true">
+          <affordability-form :formType="true" :showLocation="true" >
                   <template v-slot:button>
 
                            <app-button btnid="continue" btnclass="next xxsm-font green-btn s-bold hoverable" text="Continue" :action="submitModalAffordability" :btnloading="loading" />
@@ -23,10 +23,12 @@
 import AffordabilityForm from '@/components/affordability/AffordabilityForm.vue'
 import calculator from '@/mixins/calculator_mixin'
 import general_mixin from '@/mixins/general_mixin'
+import store_mixin from '@/mixins/store_mixin'
     export default {
   components: { AffordabilityForm },
-  mixins:[calculator,general_mixin],
+  mixins:[calculator,general_mixin,store_mixin],
         auth:true,
+        middleware:['have_apply_for_mortgage'],
           head(){
             return{
                 link:[

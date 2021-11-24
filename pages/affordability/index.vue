@@ -2,7 +2,8 @@
   <div>
     <main class="page-content">
       <section>
-        <div class="padded-content">
+        <have-application  />
+        <div class="padded-content" >
           <section class="preapproval">
             <finance-summary-card :result="finance"/>
             <selected-property/>
@@ -17,7 +18,7 @@
               </div>
                               <!-- Circles which indicates the steps of the form: -->
 
-              <section class="step-indicator steps">
+            <section class="step-indicator steps">
                 <div class="step step1 ">
                     <div class="step-icon number " :class="[step==1?'active':step>1?'finish':'']">{{step>1?'✓':'1'}} </div>
                     <p  class="text bold " :class="[step==1?'active ':step>1?'finish':'']">Affordability Test</p>
@@ -110,13 +111,15 @@ import ProfileForm from '@/components/affordability/ProfileForm.vue'
 import DownPaymentModal from '@/components/affordability/DownPaymentModal.vue'
 import calculator_mixin from '@/mixins/calculator_mixin'
 import general_mixin from '@/mixins/general_mixin'
+import store_mixin from '@/mixins/store_mixin'
 import CongrationModal from '@/components/affordability/CongrationModal.vue'
 import SelectLender from '@/components/affordability/SelectLender.vue'
 import SelectBroker from '@/components/affordability/SelectBroker.vue'
   export default {
   components: { FinanceSummaryCard,SelectedProperty,AffordabilityForm,ElgibilityForm,ProfileForm,DownPaymentModal,CongrationModal,SelectLender,SelectBroker },
     auth:true,
-    mixins:[calculator_mixin,general_mixin],
+     middleware:['have_apply_for_mortgage'],
+    mixins:[calculator_mixin,general_mixin,store_mixin],
        head(){
             return{
                 link:[

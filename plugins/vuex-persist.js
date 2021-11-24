@@ -1,4 +1,5 @@
 import createPersistedState from 'vuex-persistedstate'
+import VuexPersistence from 'vuex-persist'
 import * as Cookies from 'js-cookie'
 import cookie from 'cookie'
 
@@ -28,11 +29,13 @@ import cookie from 'cookie'
 //   })(store)
 // }
 
-import VuexPersistence from 'vuex-persist'
 
+const vuexLocal = new VuexPersistence({
+  storage: window.sessionStorage
+})
 export default ({ store}) => {
   new VuexPersistence({
-    key: 'vuex', // The key to store the state on in the storage provider.
+    // key: 'vuex', // The key to store the state on in the storage provider.
     storage: window.sessionStorage // or window.sessionStorage or localForage
   }).plugin(store);
 }

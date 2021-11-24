@@ -36,11 +36,11 @@
             </svg>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li>
-                <nuxt-link to="/" class="dropdown-item cursor" href="#" style="color: tomato"
+                <nuxt-link to="/" class="dropdown-item cursor" href="#" style="color: #0D4566"
                   >Home</nuxt-link>
               </li>
               <li>
-                <a @click="logout" class="dropdown-item cursor" href="#" style="color: tomato"
+                <a @click="logout" class="dropdown-item cursor" href="#" style="color: #0D4566"
                   >Logout</a
                 >
               </li>

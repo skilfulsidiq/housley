@@ -172,6 +172,12 @@ export const mutations = {
     state.form.found_property = 1;
   },
   UPDATE_USER_REQUEST(state, payload) {
+     state.form.property_value = payload.property_value;
+     state.form.city_id = payload.city_id
+     state.form.state_id = payload.state_id
+     state.form.property_bathroom = payload.property_bathrooms
+     state.form.property_bedroom = payload.property_bedrooms
+     state.form.found_property = 1;
     state.request_form.property_value = payload.property_value;
     state.request_form.city_id = payload.city_id
     state.request_form.state_id = payload.state_id

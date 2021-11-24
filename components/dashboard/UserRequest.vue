@@ -65,7 +65,8 @@
             <!-- end carousel -->
             <div class="req_prop">
               <a>Request property</a>
-              <button v-if="user.have_apply_for_mortgage !=1" type="button" @click="updateRequest()" class="btn  edit-request"><i class="fa fa-pencil edit-request-icon"></i> </button>
+              <button  type="button" @click="updateRequest()" class="btn  edit-request"><i class="fa fa-pencil edit-request-icon"></i> </button>
+              <!-- <button v-if="user.have_apply_for_mortgage !=1" type="button" @click="updateRequest()" class="btn  edit-request"><i class="fa fa-pencil edit-request-icon"></i> </button> -->
               <!-- <span class="edit-request cursor"><i class="fa fa-pencil edit-request-icon"></i> Update Request</span> -->
             </div>
             <!-- sb -->
@@ -110,7 +111,7 @@ import FormModal from '../request/FormModal.vue';
     methods:{
       updateRequest(){
         console.log('request_modal')
-         this.$nuxt.$emit('request_modal',true);
+         this.$nuxt.$emit('update_request_modal',{status:true,request:this.user_request});
       }
     }
   }

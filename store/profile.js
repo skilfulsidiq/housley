@@ -95,36 +95,42 @@ export const mutations = {
    },
 
   SAVE_PERSONAL_FORM(state, payload) {
+       let ob = Object.entries(payload);
+       for (const [key, value] of ob) {
+         if (key in state.profile) {
+           state.profile[key] = value
+         }
+         //    form[key] = value;
+       }
+    // state.profile.firstname = payload.firstname;
+    // state.profile.lastname = payload.lastname;
+    // state.profile.middlename = payload.middlename;
+    // state.profile.phone = payload.phone;
+    // state.profile.current_apartment_status = payload.current_apartment_status;
+    // state.profile.address = payload.address;
+    // state.profile.dob = payload.dob;
+    // state.profile.marital_status = payload.marital_status;
+    // state.profile.state_of_origin = payload.state_of_origin;
+    // state.profile.place_of_birth = payload.place_of_birth;
+    // state.profile.mode_of_contact = payload.mode_of_contact;
+    // state.profile.no_of_dependents = payload.no_of_dependents;
+    // state.profile.nationality = payload.nationality;
 
-    state.profile.firstname = payload.firstname;
-    state.profile.lastname = payload.lastname;
-    state.profile.middlename = payload.middlename;
-    state.profile.phone = payload.phone;
-    state.profile.current_apartment_status = payload.current_apartment_status;
-    state.profile.address = payload.address;
-    state.profile.dob = payload.dob;
-    state.profile.marital_status = payload.marital_status;
-    state.profile.state_of_origin = payload.state_of_origin;
-    state.profile.place_of_birth = payload.place_of_birth;
-    state.profile.mode_of_contact = payload.mode_of_contact;
-    state.profile.no_of_dependents = payload.no_of_dependents;
-    state.profile.nationality = payload.nationality;
-
-      state.profile.mother_middle_name=payload.mother_middle_name
-       state.profile.means_of_identification=payload.means_of_identification
-       state.profile.id_number=payload.id_number
-       state.profile.id_issue_date=payload.id_issue_date
-       state.profile.id_expire_date=payload.id_expire_date
-       state.profile.profession=payload.profession
-       state.profile.highest_education=payload.highest_education
-       state.profile.have_children=payload.have_children
-       state.profile.children=payload.children
-       state.profile.next_of_kin_name=payload.next_of_kin_name
-       state.profile.next_of_kin_phone=payload.next_of_kin_phone
-       state.profile.next_of_kin_address=payload.next_of_kin_address
-       state.profile.next_of_kin_dob=payload.next_of_kin_dob
-       state.profile.next_of_kin_relationship=payload.next_of_kin_relationship
-       state.profile.other_source_of_income=payload.other_source_of_income
+    //   state.profile.mother_middle_name=payload.mother_middle_name
+    //    state.profile.means_of_identification=payload.means_of_identification
+    //    state.profile.id_number=payload.id_number
+    //    state.profile.id_issue_date=payload.id_issue_date
+    //    state.profile.id_expire_date=payload.id_expire_date
+    //    state.profile.profession=payload.profession
+    //    state.profile.highest_education=payload.highest_education
+    //    state.profile.have_children=payload.have_children
+    //    state.profile.children=payload.children
+    //    state.profile.next_of_kin_name=payload.next_of_kin_name
+    //    state.profile.next_of_kin_phone=payload.next_of_kin_phone
+    //    state.profile.next_of_kin_address=payload.next_of_kin_address
+    //    state.profile.next_of_kin_dob=payload.next_of_kin_dob
+    //    state.profile.next_of_kin_relationship=payload.next_of_kin_relationship
+    //    state.profile.other_source_of_income=payload.other_source_of_income
 
     },
   SAVE_EMPLOYMENT_FORM(state,payload){
@@ -303,9 +309,11 @@ export const actions = {
     saveUserRequestAction({
       commit
     }, profile) {
+       console.log(profile)
       return new Promise((resolve, reject) => {
         this.$axios.$post(api.saveUserRequest(), profile).then((res) => {
           let y = res.data.data;
+
           commit("UPDATE_USER_REQUEST", y);
 
           resolve(y)

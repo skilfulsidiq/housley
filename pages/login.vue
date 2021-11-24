@@ -126,7 +126,7 @@
 
             if(data.token){
               this.appLoading(false);
-              this.$router.push("/")
+              this.$router.push("/dashboard")
               this.$apptoast.success('Successfully authenticated');
             }else{
                 this.appLoading(false);

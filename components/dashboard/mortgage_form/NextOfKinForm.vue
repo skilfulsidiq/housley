@@ -130,7 +130,7 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
         },
         submitSecondProfileForm(){
               this.submitted=true;
-                this.$v.$touch();
+              this.$v.$touch();
               if(this.$v.$invalid){
                   return;
             }
@@ -139,7 +139,7 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
 
           // this.prefillFromNextKinToPersonal();
           //  return;
-          this.$store.commit("profile/SAVE_PERSONAL_FORM",this.form);
+           this.$store.dispatch("profile/savePersonalInfoFormAction",this.form);
           this.moveToMortgageNextStep(3);
           this.$nuxt.$emit('submit_second_mortgage_form',false);
            this.mortgageLoading(false);
@@ -162,11 +162,20 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
 
         },
         prefillFromPersonalToNextKin(){
+            let r = this.$store.state.profile.profile;
             this.form.next_of_kin_name= "oab"
             this.form.next_of_kin_name= this.personal_form.next_of_kin_name
             this.form.next_of_kin_phone=  this.personal_form.next_of_kin_phone
             this.form.next_of_kin_address=  this.personal_form.next_of_kin_address
             this.form.next_of_kin_relationship= this.personal_form.next_of_kin_relationship
+
+        },
+        prefillManual(){
+            let r = this.$store.state.profile.profile;
+            this.form.next_of_kin_name= r.next_of_kin_name
+            this.form.next_of_kin_phone=  r.next_of_kin_phone
+            this.form.next_of_kin_address=  r.next_of_kin_address
+            this.form.next_of_kin_relationship= r.next_of_kin_relationship
 
         },
          prefillForm(){
@@ -176,12 +185,12 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
       },
     },
     created(){
-       this.prefillForm();
+
         this.$store.commit("mortgage/GO_TO_STEP", 2);
           // this.$store.commit("profile/GO_TO_STEP", 1);
     },
     mounted(){
-
+       this.prefillForm();
       this.$nuxt.$on('submit_second_mortgage_form',(param)=>{
         if(param){
             // if(this.$refs.personal_second){

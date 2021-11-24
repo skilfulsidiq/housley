@@ -226,22 +226,7 @@
                       How long do you want this Loan for?
                     </p>
                   </div>
-                  <!-- <div ref="range_wrap" class="range-wrap flex">
-                    <input v-model="form.loan_tenure"
-                      class="range"
-                      type="range"
-                      :min="min_range"
-                      :max="max_range"
-                      step="1"
-                    />
-                    <p class="min color1 abs-value">{{min}}&nbsp; Yrs </p>
-                    <p class="max color1 abs-value">{{max}}&nbsp; Yrs</p>
-
-                    <div class="flex bubbled">
-                      <output class="color1 bubble"></output
-                      ><span> &nbsp;Years</span>
-                    </div>
-                  </div> -->
+                  
                       <range-slider class="range-slider" :min="min_range" :max="max_range" step="1" v-model="form.loan_tenure">
                                     <template slot="knob">
                                         <div class="knobby">

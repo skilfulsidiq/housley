@@ -432,9 +432,32 @@ import moment from 'moment';
         },
       prefillForm(){
         let r = this.$store.state.profile.profile;
+
         this.mapIncomingDataToForm(this.personal_form, r);
 
       },
+        fillAuthUserData(){
+              let r = this.$store.state.profile.profile;
+                this.personal_form.firstname = r.firstname;
+                this.personal_form.lastname = r.lastname;
+                this.personal_form.email = r.email;
+                this.personal_form.phone = r.phone;
+                  this.personal_form.address=r.address
+              this.personal_form.current_apartment_status=r.current_apartment_status
+              this.personal_form.annual_rent_valu=r.annual_rent_valu
+              this.personal_form.sex=r.sex
+              this.personal_form.dob=r.dob
+              this.personal_form.bvn=r.bvn
+              this.personal_form.marital_status=r.marital_status
+              this.personal_form.state_of_origin=r.state_of_origin
+              this.personal_form.no_of_dependents=r.no_of_dependents
+
+              this.personal_form.means_of_identification=r.means_of_identification
+              this.personal_form.id_number=r.id_number
+              this.personal_form.id_issue_date=r.id_issue_date
+              this.personal_form.id_expire_date=r.id_expire_date
+              this.personal_form.highest_education=r.highest_education
+            }
 
 
     },
