@@ -111,7 +111,8 @@ import FormModal from '../request/FormModal.vue';
     methods:{
       updateRequest(){
         console.log('request_modal')
-         this.$nuxt.$emit('update_request_modal',{status:true,request:this.user_request});
+        //  this.$nuxt.$emit('update_request_modal',{status:true,request:this.user_request});
+        this.$router.push({name:'dashboard-request'})
       }
     }
   }

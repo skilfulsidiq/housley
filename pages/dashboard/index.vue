@@ -408,7 +408,7 @@ import MortgageApplicationModal from '../../components/dashboard/MortgageApplica
       showChekclistModal(){
         let user = this.$store.state.auth.user;
           if(user.have_apply_for_mortgage ==1 && user.checklist.length >0){
-              this.$nuxt.$emit("show_checklist_modal",true);
+              // this.$nuxt.$emit("show_checklist_modal",true);
           }
 
       }

@@ -1,22 +1,30 @@
 <template>
-  <div class="givme_mb">
-      <!-- <div class="d-flex justify-space-between flex-wrap">
+  <div class="container">
+         <div class="ppt-heading mt-5">
+                          <h3 class="title bold big-font">Update Property Request</h3>
+                          <p class="sub-titl color1">
+                            Select a property to update your property request
+                            <!-- Based on your affordability result, we have filtered down <br>properties that are suitable and affordable to you -->
+                          </p>
+                        </div>
+      <div class="row mt-5">
+        <div class="col-md-4" v-for="p in properties" :key="p.id">
+           <request-property-card :property="p" :isChoose="true"/>
+        </div>
 
-      </div> -->
-      <v-row>
-        <v-col cols="12" md="4" v-for="p in properties" :key="p.id">
-          <property-card :property="p"/>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" md="8" offset-md="2">
-           <paginator  :pagination="pagination" title="Affordability" mutator="AFFORDABLE_PROPERTIES" method="get" />
-        </v-col>
-      </v-row>
 
-      <request-modal-form/>
-      <request-confirmation-modal/>
-      <detail-modal/>
+        <!-- <v-col cols="12" md="8" offset-md="2"> -->
+          <div class="col-md-12">
+            <paginator  :pagination="pagination" title="Affordability" mutator="AFFORDABLE_PROPERTIES" method="get" />
+          </div>
+
+
+
+      </div>
+
+      <!-- <request-modal-form/> -->
+      <!-- <request-confirmation-modal/> -->
+      <!-- <detail-modal/> -->
   </div>
 </template>
 
@@ -28,8 +36,9 @@ import RequestConfirmationModal from '@/components/profiling/request/RequestConf
 import PropertyListCard from '@/components/property/PropertyListCard.vue'
 import PropertyCard from '@/components/property/PropertyCard.vue'
 import DetailModal from '@/components/property/DetailModal.vue'
+import RequestPropertyCard from '@/components/property/RequestPropertyCard.vue'
   export default {
-  components: { RequestModalForm, RequestConfirmationModal, PropertyListCard, PropertyCard,DetailModal,  },
+  components: { RequestModalForm, RequestConfirmationModal, PropertyListCard, PropertyCard,DetailModal,RequestPropertyCard,  },
     mixins:[general_mixin,form_mixin],
         layout:'dashboard',
     computed:{
@@ -43,7 +52,6 @@ import DetailModal from '@/components/property/DetailModal.vue'
       },
       amount(){
         let t = this.$store.state.auth.user;
-        console.log(t.loanable_amount);
         return t.loanable_amount;
       }
     },
@@ -60,7 +68,7 @@ import DetailModal from '@/components/property/DetailModal.vue'
         // },
       },
       created(){
-         this.$store.commit("profile/GO_TO_STEP", 4);
+        //  this.$store.commit("profile/GO_TO_STEP", 4);
         this.getAffordableProperties();
       }
 
@@ -110,4 +118,5 @@ import DetailModal from '@/components/property/DetailModal.vue'
     text-align: center;
     color: #666;
 }
+
 </style>

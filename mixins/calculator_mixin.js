@@ -12,7 +12,7 @@ export default{
       return age;
     },
     calculateMaxTenure(v) {
-      let retire_age = 55;
+      let retire_age = 60;
       let age_diff = retire_age - v;
       if (age_diff > 30) {
         return 30;
