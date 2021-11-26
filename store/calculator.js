@@ -72,6 +72,15 @@ export const mutations = {
   PREQUALIFIED_FORM(state, payload) {
     state.form = payload
   },
+  PREFILL_FORM(state,payload){
+       let ob = Object.entries(payload);
+       for (const [key, value] of ob) {
+         if (key in state.form) {
+           state.form[key] = value
+         }
+         //    form[key] = value;
+       }
+  },
   CLEAR_FORM(state, payload) {
     state.form = {
       total_annual_pay: '',
@@ -279,7 +288,8 @@ export const actions = {
     return new Promise((resolve, reject) => {
       this.$axios.$post(api.savePrequalified(), data).then((res) => {
         let r = res.data;
-        commit("PREQUALIFIED_FORM", r)
+        commit("PREQUALIFIED_FORM", r);
+         commit('profile/PREFILL_PERSONAL_FORM', r, { root: true })
         if (this.$auth.user) {
           this.$auth.setUser(r);
         }

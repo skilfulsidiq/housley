@@ -123,13 +123,14 @@ import Preview from '@/components/dashboard/mortgage_form/Preview.vue';
     },
     created(){
       //  this.prefillForm();
-      this.$nuxt.$on("apply_mortgage",(param)=>{
-        if(param){
-          this.showModal();
-        }else{
-          this.closeModal();
-        }
-      })
+      // this.$nuxt.$on("apply_mortgage",(param)=>{
+      //   if(param){
+      //     this.showModal();
+      //   }else{
+      //     this.closeModal();
+      //   }
+      // });
+      // this.$store.dispatch("general/getProfileAction");
     }
   }
 </script>

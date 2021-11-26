@@ -168,7 +168,7 @@ export const actions = {
        this.$axios.$get(api.userSubmitMortgageApplication()).then((res) => {
          let r = res.data;
         this.$auth.setUser(r);
-        commit('profile/PREFILL_PERSONAL_FORM', null, { root: true })
+        commit('profile/PREFILL_PERSONAL_FORM', r, { root: true })
         //  commit("MORTGAGE_DETAIL", r);
          resolve(r)
        }).catch((err) => {

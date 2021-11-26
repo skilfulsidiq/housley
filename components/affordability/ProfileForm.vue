@@ -202,15 +202,18 @@ export default {
                   //       return;
                   // }
                   this.$store.dispatch("calculator/saveProfileFormAction",data);
-                  let all = this.$store.state.calculator.form;
                   let r = this.$store.state.calculator.request_form;
-                   let ob = Object.entries(r);
-                  for (const [key, value] of ob) {
-                    if (key in all) {
-                      all[key] = value
-                    }
-                    //    form[key] = value;
-                  }
+                  this.$store.commit('calculator/PREFILL_FORM',r)
+                  let all = this.$store.state.calculator.form;
+                  // let b = all;
+
+                  //  let ob = Object.entries(r);
+                  // for (const [key, value] of ob) {
+                  //   if (key in b) {
+                  //     b[key] = value
+                  //   }
+                  //   //    form[key] = value;
+                  // }
 
                   this.$store.dispatch("calculator/submitPreQualifiedAction",all).then((res)=>{
                         this.$nuxt.$emit('prequalified-modal',true);

@@ -318,7 +318,6 @@ import moment from 'moment';
           personal_form:{
               firstname: "",
               lastname: "",
-              // middlename: "",
               address: "",
               current_apartment_status: "",
               annual_rent_value:"",
@@ -328,10 +327,8 @@ import moment from 'moment';
               marital_status: "",
               state_of_origin: "",
               phone: "",
-              // whatapp: "",
               email: "",
               no_of_dependents: "",
-
               means_of_identification: '',
               id_number: '',
               id_issue_date: '',
@@ -340,7 +337,7 @@ import moment from 'moment';
           }
         }
       },
-        validations: {
+    validations: {
         personal_form: {
            email:{optional},
           firstname:{required},
@@ -353,7 +350,6 @@ import moment from 'moment';
           marital_status:{required},
           bvn:{optional,numeric},
           sex:{required},
-          // email:{required,email},
           state_of_origin:{optional},
           phone:{required,minLength:rules.main_phone,numeric},
           no_of_dependents:{required,numeric},
@@ -365,7 +361,7 @@ import moment from 'moment';
 
         }
     },
-      computed:{
+    computed:{
            rent_value() {
               if (this.personal_form.current_apartment_status == 'Rented') {
                 return true
@@ -380,14 +376,14 @@ import moment from 'moment';
                 this.personal_form.annual_rent_value = this.clearCommas(v);
               }
             },
-         dob: {
+            dob: {
              set: function (v) {
                this.personal_form.dob = v;
              },
              get: function () {
               return moment(new Date(this.personal_form.dob)).format('yyyy-MM-DD')
              }
-           },
+            },
            issue_date: {
              set(v) {
                this.personal_form.id_issue_date = v;
@@ -404,8 +400,8 @@ import moment from 'moment';
                return moment(new Date(this.personal_form.id_expire_date)).format('yyyy-MM-DD')
              }
            },
-      },
-      methods:{
+    },
+    methods:{
 
         submitFirstProfileForm(){
             this.submitted=true;
@@ -445,7 +441,6 @@ import moment from 'moment';
         },
       prefillForm(){
         let r = this.$store.state.profile.profile;
-
         this.mapIncomingDataToForm(this.personal_form, r);
 
       },
@@ -471,29 +466,20 @@ import moment from 'moment';
             this.personal_form.id_expire_date=r.id_expire_date
             this.personal_form.highest_education=r.highest_education
       }
-
-
     },
     created(){
-
+        this.prefillForm();
       this.$store.commit("profile/GO_TO_STEP", 1);
     },
     mounted(){
-        this.prefillForm();
       this.$nuxt.$on('submit_first_mortgage_form',(param)=>{
         if(param){
-            // if(this.$refs.personal){
-                this.submitFirstProfileForm();
-            // }
-
+          this.submitFirstProfileForm();
         }
 
 
       })
 
-    },
-    unmounted() {
-      // this.$refs.personal.reset();
     },
   }
 </script>

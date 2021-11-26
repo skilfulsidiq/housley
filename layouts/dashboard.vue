@@ -57,6 +57,9 @@ import CheckListModal from '@/components/dashboard/CheckListModal.vue'
           this.$store.dispatch("general/getAllFinanceOptionAction");
           this.$store.dispatch("general/getPropertyTypeAction");
           this.$store.dispatch("general/getMortgageChecklistAction");
+          // this.$store.dispatch("general/getProfileAction");
+
+          // this.$store.commit('profile/PREFIL')
 
 
         },
