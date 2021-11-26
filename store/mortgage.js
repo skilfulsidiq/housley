@@ -161,6 +161,22 @@ export const actions = {
      })
 
    },
+   submitMortgageAction({
+     commit
+   }) {
+     return new Promise((resolve, reject) => {
+       this.$axios.$get(api.userSubmitMortgageApplication()).then((res) => {
+         let r = res.data;
+        this.$auth.setUser(r);
+        commit('profile/PREFILL_PERSONAL_FORM', null, { root: true })
+        //  commit("MORTGAGE_DETAIL", r);
+         resolve(r)
+       }).catch((err) => {
+         reject(err);
+       });
+     })
+
+   },
   applyAgreeToMortgageAction({ commit},form) {
     return new Promise((resolve,reject)=>{
     this.$axios.$post(api.userAgreeToMortgage(), form).then((res) => {

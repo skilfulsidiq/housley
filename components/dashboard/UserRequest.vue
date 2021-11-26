@@ -65,7 +65,7 @@
             <!-- end carousel -->
             <div class="req_prop">
               <a>Request property</a>
-              <button  type="button" @click="updateRequest()" class="btn  edit-request"><i class="fa fa-pencil edit-request-icon"></i> </button>
+              <button v-if="user.have_apply_for_mortgage !=1"  type="button" @click="updateRequest()" class="btn  edit-request"><i class="fa fa-pencil edit-request-icon"></i> </button>
               <!-- <button v-if="user.have_apply_for_mortgage !=1" type="button" @click="updateRequest()" class="btn  edit-request"><i class="fa fa-pencil edit-request-icon"></i> </button> -->
               <!-- <span class="edit-request cursor"><i class="fa fa-pencil edit-request-icon"></i> Update Request</span> -->
             </div>
@@ -125,9 +125,15 @@ import FormModal from '../request/FormModal.vue';
     background-color: #f5f5f5;
     border-radius: 16px;
   }
+  .carousel-inner {  height: 20rem !important;
+  }
+  .cr_body_cover {
+
+    padding-bottom: 2rem;
+}
   .pro_img{
     width:100%;
-    height: 15rem;
+    height: 20rem;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

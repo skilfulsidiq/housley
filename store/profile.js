@@ -1,5 +1,6 @@
 import api from '../services/api'
 export const state = () => ({
+  toggle_edit:false,
   profile: {
      total_annual_pay: '',
      monthly_net_pay: '',
@@ -90,6 +91,9 @@ export const state = () => ({
    totalStep: 4,
 })
 export const mutations = {
+  TOGGLE_EDIT(state,payload){
+    state.toggle_edit = payload
+  },
   PREFILL_PERSONAL_FORM(state, payload) {
      state.profile = payload
    },

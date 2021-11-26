@@ -190,31 +190,28 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
         submitThirdProfileForm(){
               this.submitted=true;
           this.$v.$touch();
-        if(this.$v.$invalid){
-            return;
-        }
+          if(this.$v.$invalid){
+              return;
+          }
+             let isForEdit = this.$store.state.profile.toggle_edit;
+
           this.mortgageLoading(true);
            this.$store.dispatch("profile/savePersonalInfoFormAction",this.form);
            let main_form = this.$store.state.profile.profile
           this.$store.dispatch("profile/savePersonalAndEmploymentDataAction",main_form).then((res)=>{
-             this.mortgageLoading(false);
-             console.log("profile submitted")
-            //  if(this.user.have_apply_for_mortgage){
-              //  this.$apptoast.success("Profile Info Updated")
-               this.nuxt.$emit('apply_mortgage',false);
-               this.nuxt.$emit('show_checklist_modal',true);
-                // this.$router.push("/dashboard");
-            //  }else{
-            //     this.moveToMortgageNextStep(4);
-            //  }
+              this.mortgageLoading(false);
+              if(isForEdit){
+                this.moveToMortgageNextStep(5);
+                  this.$store.commit("profile/TOGGLE_EDIT",false);
+              }else{
+                this.moveToMortgageNextStep(4);
+              }
 
                this.$nuxt.$emit('submit_third_mortgage_form',false);
-              //  this.$refs.profileform.resetValidation();
-              // this.goNextFormStep('profiling');
-              // this.$router.push(this.next_form_step)
           }).catch(err=>{
              this.mortgageLoading(false);
           })
+            
 
 
 

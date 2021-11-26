@@ -134,12 +134,22 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
               if(this.$v.$invalid){
                   return;
             }
+             let isForEdit = this.$store.state.profile.toggle_edit;
+              this.$store.dispatch("profile/savePersonalInfoFormAction",this.form);
+            if(isForEdit){
 
+              let main_form = this.$store.state.profile.profile
+              this.$store.dispatch("profile/savePersonalAndEmploymentDataAction",main_form).then((res)=>{
+                this.mortgageLoading(false);
+                  this.moveToMortgageNextStep(5);
+                  this.$store.commit("profile/TOGGLE_EDIT",false);
+                  this.$nuxt.$emit('submit_third_mortgage_form',false);
+              }).catch(err=>{
+                this.mortgageLoading(false);
+              })
+
+            }else{
           this.mortgageLoading(true);
-
-          // this.prefillFromNextKinToPersonal();
-          //  return;
-           this.$store.dispatch("profile/savePersonalInfoFormAction",this.form);
           this.moveToMortgageNextStep(3);
           this.$nuxt.$emit('submit_second_mortgage_form',false);
            this.mortgageLoading(false);
@@ -150,7 +160,7 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
           // }).catch(err=>{
           //   //  this.mortgageLoading(false);
           // })
-
+        }
 
 
         },

@@ -28,7 +28,7 @@
             </div>
 
             <!-- upload -->
-            <div style="margin-top: 30px">
+            <div style="margin-top: 6rem">
               <nuxt-link to="/dashboard/checklist" class="upl_btn">Other Documents</nuxt-link>
             </div>
         </div>

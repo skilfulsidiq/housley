@@ -1,6 +1,6 @@
 <template>
   <div>
-        <div class="top-title d-flex justify-space-between">
+        <div class="top-title d-flex justify-content-between">
                <p>{{left}} | {{right}}</p>
                <slot name="action"></slot>
             </div>

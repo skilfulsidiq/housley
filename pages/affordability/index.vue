@@ -2,7 +2,6 @@
   <div>
     <main class="page-content">
       <section>
-        <have-application  />
         <div class="padded-content" >
           <section class="preapproval">
             <finance-summary-card :result="finance"/>

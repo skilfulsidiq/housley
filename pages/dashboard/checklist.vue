@@ -100,7 +100,7 @@ import {optional} from '@/mixins/general_mixin'
           form:{
             checklist:[],
             pending_list:[],
-            type:''
+            type:'mortgage'
 
           }
       }

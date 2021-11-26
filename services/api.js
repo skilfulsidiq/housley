@@ -142,8 +142,11 @@ export default {
   userAgreeToMortgage() {
     return "user/agree-to-terms";
   },
-   userCompleteMortgageApplication() {
+  userCompleteMortgageApplication() {
      return "user/complete-application";
+  },
+  userSubmitMortgageApplication() {
+     return "user/submit-application";
    }
 
 

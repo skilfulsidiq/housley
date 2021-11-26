@@ -413,8 +413,21 @@ import moment from 'moment';
         if(this.$v.$invalid){
             return;
         }
-          this.mortgageLoading(true);
-         this.$store.dispatch("profile/savePersonalInfoFormAction",this.personal_form);
+        let isForEdit = this.$store.state.profile.toggle_edit;
+         this.$store.dispatch("profile/savePersonalInfoFormAction",this.form);
+        if(isForEdit){
+
+           let main_form = this.$store.state.profile.profile
+          this.$store.dispatch("profile/savePersonalAndEmploymentDataAction",main_form).then((res)=>{
+             this.mortgageLoading(false);
+              this.moveToMortgageNextStep(5);
+              this.$store.commit("profile/TOGGLE_EDIT",false);
+               this.$nuxt.$emit('submit_third_mortgage_form',false);
+          }).catch(err=>{
+             this.mortgageLoading(false);
+          })
+
+        }else{
            this.moveToMortgageNextStep(2);
             this.mortgageLoading(false);
           //   let main_form = this.$store.state.profile.profile
@@ -426,7 +439,7 @@ import moment from 'moment';
           // }).catch(err=>{
 
           // })
-
+        }
 
 
         },
@@ -436,28 +449,28 @@ import moment from 'moment';
         this.mapIncomingDataToForm(this.personal_form, r);
 
       },
-        fillAuthUserData(){
-              let r = this.$store.state.profile.profile;
-                this.personal_form.firstname = r.firstname;
-                this.personal_form.lastname = r.lastname;
-                this.personal_form.email = r.email;
-                this.personal_form.phone = r.phone;
-                  this.personal_form.address=r.address
-              this.personal_form.current_apartment_status=r.current_apartment_status
-              this.personal_form.annual_rent_valu=r.annual_rent_valu
-              this.personal_form.sex=r.sex
-              this.personal_form.dob=r.dob
-              this.personal_form.bvn=r.bvn
-              this.personal_form.marital_status=r.marital_status
-              this.personal_form.state_of_origin=r.state_of_origin
-              this.personal_form.no_of_dependents=r.no_of_dependents
+      fillAuthUserData(){
+            let r = this.$store.state.profile.profile;
+              this.personal_form.firstname = r.firstname;
+              this.personal_form.lastname = r.lastname;
+              this.personal_form.email = r.email;
+              this.personal_form.phone = r.phone;
+                this.personal_form.address=r.address
+            this.personal_form.current_apartment_status=r.current_apartment_status
+            this.personal_form.annual_rent_valu=r.annual_rent_valu
+            this.personal_form.sex=r.sex
+            this.personal_form.dob=r.dob
+            this.personal_form.bvn=r.bvn
+            this.personal_form.marital_status=r.marital_status
+            this.personal_form.state_of_origin=r.state_of_origin
+            this.personal_form.no_of_dependents=r.no_of_dependents
 
-              this.personal_form.means_of_identification=r.means_of_identification
-              this.personal_form.id_number=r.id_number
-              this.personal_form.id_issue_date=r.id_issue_date
-              this.personal_form.id_expire_date=r.id_expire_date
-              this.personal_form.highest_education=r.highest_education
-            }
+            this.personal_form.means_of_identification=r.means_of_identification
+            this.personal_form.id_number=r.id_number
+            this.personal_form.id_issue_date=r.id_issue_date
+            this.personal_form.id_expire_date=r.id_expire_date
+            this.personal_form.highest_education=r.highest_education
+      }
 
 
     },
@@ -466,7 +479,7 @@ import moment from 'moment';
       this.$store.commit("profile/GO_TO_STEP", 1);
     },
     mounted(){
-      this.prefillForm();
+        this.prefillForm();
       this.$nuxt.$on('submit_first_mortgage_form',(param)=>{
         if(param){
             // if(this.$refs.personal){

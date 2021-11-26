@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-         <div class="ppt-heading mt-5">
-                          <h3 class="title bold big-font">Update Property Request</h3>
-                          <p class="sub-titl color1">
-                            Select a property to update your property request
-                            <!-- Based on your affordability result, we have filtered down <br>properties that are suitable and affordable to you -->
-                          </p>
-                        </div>
+    <!-- <a href="#"> <i class="fas fa-back"></i> Back </a> -->
+     <div class="content_body" style="text-align:center;">
+          <!-- <p class="hi">Hi {{user.firstname}} 👋🏽</p> -->
+           <h3 class="title bold big-font mt-8">Update Property Request</h3>
+          <p class="sub-titl color1">Select a property to update your property request</p>
+      </div>
+
       <div class="row mt-5">
         <div class="col-md-4" v-for="p in properties" :key="p.id">
            <request-property-card :property="p" :isChoose="true"/>
@@ -15,7 +15,7 @@
 
         <!-- <v-col cols="12" md="8" offset-md="2"> -->
           <div class="col-md-12">
-            <paginator  :pagination="pagination" title="Affordability" mutator="AFFORDABLE_PROPERTIES" method="get" />
+            <paginator  :pagination="pagination" title="Affordability" mutator="AFFORDABLE_PROPERTIES" method="post" />
           </div>
 
 
@@ -59,7 +59,7 @@ import RequestPropertyCard from '@/components/property/RequestPropertyCard.vue'
       methods:{
         getAffordableProperties(){
           console.log(this.amount);
-          let pro = this.$store.dispatch("property/getAffordablePropertiesAction",this.amount);
+         this.$store.dispatch("property/affordablePropertiesAction",{price:this.amount});
         },
         // prefillForm(){
         //   let r = this.$store.state.auth.user;

@@ -4,7 +4,7 @@
      <div class="content_body">
           <p class="hi">Hi {{user.firstname}} 👋🏽</p>
           <h3 class="welcome">Welcome to Houzzley</h3>
-        </div>
+      </div>
 
          <div class="card_container">
           <div class="card_one cursor">
@@ -390,8 +390,9 @@ import MortgageApplicationModal from '../../components/dashboard/MortgageApplica
         return d;
       },
       have_mortgage(){
-        let d = this.user.has_profile
-        if(d==1){
+        let p = this.user.has_profile
+        let m = this.user.have_apply_for_mortgage;
+        if(p==1 && m==1){
           return true
         }
         return false;
@@ -403,7 +404,8 @@ import MortgageApplicationModal from '../../components/dashboard/MortgageApplica
           // return this.$apptoast.success("You have a pending mortgage application")
          return this.$router.push("/dashboard/application")
         }
-        return this.$nuxt.$emit('apply_mortgage',true)
+        // return this.$nuxt.$emit('apply_mortgage',true)
+          return this.$router.push("/dashboard/profile")
       },
       showChekclistModal(){
         let user = this.$store.state.auth.user;
