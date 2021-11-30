@@ -6,7 +6,7 @@
 
               <label class="form_one_label custom-field one custom-field one">
                 <input class="form_one_input" type="text" placeholder=" " v-model="personal_form.firstname"/>
-                <span class="placeholder2">Firstname</span>
+                <span class="placeholder2">Firstname <required-input/></span>
                 <div v-if="submitted && !$v.personal_form.firstname.required" class="error">
                   <small class="error-message">first name is required</small>
                 </div>
@@ -17,7 +17,7 @@
 
               <label class="form_one_label custom-field one">
                  <input class="form_one_input" type="text" placeholder=" " v-model="personal_form.lastname"/>
-                <span class="placeholder2">Lastname</span>
+                <span class="placeholder2">Lastname <required-input/></span>
                 <div v-if="submitted && !$v.personal_form.lastname.required" class="error">
                   <small class="error-message">last name is required</small>
                 </div>
@@ -33,7 +33,7 @@
               placeholder=" "
               v-model="personal_form.address"
               />
-              <span class="placeholder2">Address</span>
+              <span class="placeholder2">Address <required-input/></span>
                <div v-if="submitted && !$v.personal_form.address.required" class="error">
                   <small class="error-message">Address is required</small>
                 </div>
@@ -49,7 +49,7 @@
                 placeholder=" "
                 v-model="personal_form.phone"
                 />
-                <span class="placeholder2">Phone Number</span>
+                <span class="placeholder2">Phone Number <required-input/></span>
                  <div v-if="submitted && !$v.personal_form.phone.required" class="error">
                   <small class="error-message">Phone is required</small>
                 </div>
@@ -71,7 +71,7 @@
                 placeholder=" "
                 v-model="dob"
                 />
-                <span class="placeholder2">Date of Birth</span>
+                <span class="placeholder2">Date of Birth <required-input/></span>
                 <div v-if="submitted && !$v.personal_form.dob.required" class="error">
                   <small class="error-message">Date of Birth is required</small>
                 </div>
@@ -87,7 +87,7 @@
                     <option value="Divorced"> Divorced</option>
                     <option value="Widow"> Window</option>
                     </select>
-                  <label class="selectlabel" for="pick">Marital Status</label>
+                  <label class="selectlabel" for="pick">Marital Status <required-input/></label>
               </div>
                  <!-- <cool-select
                 v-model="personal_form.marital_status"
@@ -108,7 +108,7 @@
                     <option value="Male"> Male</option>
                     <option value="Female"> Female</option>
                     </select>
-                  <label class="selectlabel" for="pick">Gender</label>
+                  <label class="selectlabel" for="pick">Gender <required-input/></label>
               </div>
                  <!-- <cool-select
                 v-model="personal_form.sex"
@@ -128,7 +128,7 @@
                     <option value="Rented"> Rented</option>
                     <option value="Owned"> Owned</option>
                     </select>
-                  <label class="selectlabel" for="pick">Current Apartment Status</label>
+                  <label class="selectlabel" for="pick">Current Apartment Status <required-input/></label>
               </div>
 
                  <!-- <cool-select
@@ -151,7 +151,7 @@
                 placeholder=" "
                 v-model="annual_rent"
                 />
-                <span class="placeholder2">Annual Rent Value</span>
+                <span class="placeholder2">Annual Rent Value <required-input/></span>
                 <div v-if="submitted && !$v.personal_form.annual_rent_value.required" class="error">
                   <small class="error-message">Annual Rent is required</small>
                 </div>
@@ -164,7 +164,7 @@
                     <option value=""></option>
                     <option v-bind:value="p.id" v-for="p in allStates" :key="p.id">{{p.name}}</option>
                     </select>
-                  <label class="selectlabel" for="pick">State of Origin</label>
+                  <label class="selectlabel" for="pick">State of Origin <required-input/></label>
               </div>
                <!-- <div v-if="submitted && !$v.personal_form.state_of_origin.required" class="error">
                   <small class="error-message">State of origin is required</small>
@@ -182,7 +182,7 @@
                     <option value="NCE">NCE</option>
                     <option value="SSCE">NSSCE</option>
                     </select>
-                  <label class="selectlabel" for="pick">Highest Educational Qualification</label>
+                  <label class="selectlabel" for="pick">Highest Educational Qualification <required-input/></label>
               </div>
                <div v-if="submitted && !$v.personal_form.highest_education.required" class="error">
                   <small class="error-message">Education level  is required</small>
@@ -198,7 +198,7 @@
                 placeholder=" "
                 v-model="personal_form.no_of_dependents"
                 />
-                <span class="placeholder2">Number of Dependents</span>
+                <span class="placeholder2">Number of Dependents <required-input/></span>
                  <div v-if="submitted && !$v.personal_form.no_of_dependents.required" class="error">
                   <small class="error-message">Number of dependents is required</small>
                 </div>
@@ -232,7 +232,7 @@
                     <option value="Voter Card ID">Voter Card ID</option>
                     <option value="Driver Licence">Driver Licence</option>
                     </select>
-                  <label class="selectlabel" for="pick">Means of Identification</label>
+                  <label class="selectlabel" for="pick">Means of Identification <required-input/></label>
               </div>
                <div v-if="submitted && !$v.personal_form.means_of_identification.required" class="error">
                   <small class="error-message">Means of identification is required</small>
@@ -247,7 +247,7 @@
                 placeholder=" "
                 v-model="personal_form.id_number"
                 />
-                <span class="placeholder2">ID Number</span>
+                <span class="placeholder2">ID Number <required-input/></span>
                 <div v-if="submitted && !$v.personal_form.id_number.required" class="error">
                   <small class="error-message">ID number is required</small>
                 </div>
@@ -263,7 +263,7 @@
                 placeholder=" "
                 v-model="issue_date"
                 />
-                <span class="placeholder2">ID Issue Date</span>
+                <span class="placeholder2">ID Issue Date <required-input/></span>
                 <div v-if="submitted && !$v.personal_form.id_issue_date.required" class="error">
                   <small class="error-message">ID Issue date is required</small>
                 </div>
@@ -281,7 +281,7 @@
                 placeholder=" "
                 v-model="expire_date"
                 />
-                <span class="placeholder2">ID Expire Date</span>
+                <span class="placeholder2">ID Expire Date <required-input/></span>
                 <div v-if="submitted && !$v.personal_form.id_expire_date.required" class="error">
                   <small class="error-message">ID expire date is required</small>
                 </div>

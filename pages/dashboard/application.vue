@@ -31,13 +31,13 @@
                 <td>{{a.down_payment|easy_currency}}</td>
                 <td>{{a.loan_tenure}} Years</td>
                 <td class="td-text">
-                  <mortgage-status-badge v-if="determineStatus(a)" :status="a.status.status"/>
-                  <mortgage-status-badge v-if="!determineStatus(a)" status="incomplete"/>
+                  <mortgage-status-badge  :status="a.status.status"/>
+                  <!-- <mortgage-status-badge v-if="!determineStatus(a)" status="incomplete"/> -->
                   </td>
                 <td class="td-text">
 
                   <div class="d-flex">
-                  <div v-if="!determineStatus(a)" class="action cursor"  @click="completeMortgage"> <i class="fa fa-pencil text-primary"></i>
+                  <div v-if="determineStatus(a)" class="action cursor"  @click="completeMortgage"> <i class="fa fa-pencil text-primary"></i>
                   </div>
 
                       <div class="action cursor" @click=" goDetail(a)">
@@ -99,14 +99,14 @@
             <div class="res_table_">
               <span class="res_table_label">Status</span>
 
-              <div v-if="determineStatus(a)" class="pill_p res_info"><mortgage-status-badge :status="a.status.status"/></div>
-              <div v-if="!determineStatus(a)" class="pill_r res_info"><mortgage-status-badge status="incomplete"/></div>
+              <div  class="pill_p res_info"><mortgage-status-badge :status="a.status.status"/></div>
+              <!-- <div v-if="!determineStatus(a)" class="pill_r res_info"><mortgage-status-badge status="incomplete"/></div> -->
             </div>
             <!-- 4 -->
             <div class="res_table_">
               <span class="res_table_label">Action</span>
                 <div class="d-flex">
-                  <div  v-if="!determineStatus(a)" class="action res_info cursor" @click="completeMortgage"> <i class="fa fa-pencil text-primary"></i>&nbsp;&nbsp; Update </div>
+                  <div  v-if="determineStatus(a)" class="action res_info cursor" @click="completeMortgage"> <i class="fa fa-pencil text-primary"></i>&nbsp;&nbsp; Update </div>
                   <div class="action res_info cursor" @click=" goDetail(a)">
                   <svg
                     class="svg-icon"
@@ -177,7 +177,6 @@ import MortgageDetailForUser from '@/components/dashboard/MortgageDetailForUser.
       computed:{
          mortgage_list() {
         let r = this.$store.state.dashboard.user_mortgages;
-        console.log('mylist', r)
         return r;
       },
 
@@ -185,7 +184,7 @@ import MortgageDetailForUser from '@/components/dashboard/MortgageDetailForUser.
     methods:{
       determineStatus(a){
         let u = this.$store.state.profile.profile;
-        if(u.has_profile==1 && a.is_completed==1){
+        if(u.has_profile==1 && a.open_for_edit==1){
           return true;
         }
         return false;
@@ -204,7 +203,8 @@ import MortgageDetailForUser from '@/components/dashboard/MortgageDetailForUser.
 
       },
       completeMortgage(){
-        this.$nuxt.$emit("apply_mortgage",true);
+        // this.$nuxt.$emit("apply_mortgage",true);
+        this.$router.push({name:'dashboard-profile'});
       },
       fetchMortgageList() {
       this.$store.dispatch("dashboard/getMortgageListAction");

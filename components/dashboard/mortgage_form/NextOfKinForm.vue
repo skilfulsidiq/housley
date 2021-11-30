@@ -5,7 +5,7 @@
 
               <label class="form_one_label custom-field one">
                  <input class="form_one_input" type="text" placeholder=" " v-model="form.next_of_kin_name"/>
-                <span class="placeholder2">Next of Kin's Name</span>
+                <span class="placeholder2">Next of Kin's Name <required-input/></span>
                 <div v-if="submitted && !$v.form.next_of_kin_name.required" class="error">
                   <small class="error-message">name is required</small>
                 </div>
@@ -21,7 +21,7 @@
                 placeholder=" "
                 v-model="form.next_of_kin_phone"
                 />
-                <span class="placeholder2">Next of Kin's Phone Number</span>
+                <span class="placeholder2">Next of Kin's Phone Number <required-input/></span>
                  <div v-if="submitted && !$v.form.next_of_kin_phone.required" class="error">
                   <small class="error-message">Phone is required</small>
                 </div>
@@ -43,7 +43,7 @@
               placeholder=" "
               v-model="form.next_of_kin_address"
               />
-              <span class="placeholder2">Next of Kin's Address</span>
+              <span class="placeholder2">Next of Kin's Address <required-input/></span>
                <div v-if="submitted && !$v.form.next_of_kin_address.required" class="error">
                   <small class="error-message">Address is required</small>
                 </div>
@@ -54,7 +54,7 @@
 
               <label class="form_one_label custom-field one">
                  <input class="form_one_input" type="text" placeholder=" " v-model="form.next_of_kin_relationship"/>
-                <span class="placeholder2">Next of Kin's Relationship</span>
+                <span class="placeholder2">Next of Kin's Relationship <required-input/></span>
                 <div v-if="submitted && !$v.form.next_of_kin_relationship.required" class="error">
                   <small class="error-message">Relationship is required</small>
                 </div>

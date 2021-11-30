@@ -5,13 +5,18 @@
                <div class='row'>
                   <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                       <FormulateInput v-model="form.firstname"
-                      label="First Name"
+                        label="First Name"
                           name="firstname"
                           input-class="form-control"
                           error-class="form-error"
                           validation="required"
                           error-behavior="value"
-                        />
+                        > <template #label="{ label, id }">
+                          <label :for="id">
+                            {{label}} <required-input/>
+                          </label>
+                          </template>
+                      </FormulateInput>
                   </div>
                   <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                       <FormulateInput v-model="form.lastname"
@@ -20,7 +25,13 @@
                            error-class="form-error"
                           input-class="form-control"
                           validation="required"
-                        />
+                        >
+                        <template #label="{ label, id }">
+                          <label :for="id">
+                            {{label}} <required-input/>
+                          </label>
+                          </template>
+                      </FormulateInput>
                   </div>
                   <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                       <FormulateInput type="email" v-model="form.email"
@@ -29,14 +40,24 @@
                           input-class="form-control"
                            error-class="form-error"
                           validation="required|email"
-                        />
+                        ><template #label="{ label, id }">
+                          <label :for="id">
+                            {{label}} <required-input/>
+                          </label>
+                          </template>
+                      </FormulateInput>
                   </div>
                   <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                       <FormulateInput type="date" v-model="dob"
                       label="Date of birth" readonly
                           name="dob"
                           input-class="form-control"
-                        />
+                        ><template #label="{ label, id }">
+                          <label :for="id">
+                            {{label}} <required-input/>
+                          </label>
+                          </template>
+                      </FormulateInput>
                   </div>
                   <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                       <FormulateInput v-model="form.phone"
@@ -46,7 +67,12 @@
                           validation="required|number|min:10,length"
                            error-class="form-error"
                           validation-name="Phone number"
-                        />
+                        ><template #label="{ label, id }">
+                          <label :for="id">
+                            {{label}} <required-input/>
+                          </label>
+                          </template>
+                      </FormulateInput>
                   </div>
                   <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                       <FormulateInput type="select" v-model="form.employment_status"
@@ -62,7 +88,12 @@
                               { value: 'unemployed', label: 'Unemployed' },
                               { value: 'self-employed', label: 'Self Employed'},
                             ]"
-                        />
+                        ><template #label="{ label, id }">
+                          <label :for="id">
+                            {{label}} <required-input/>
+                          </label>
+                          </template>
+                      </FormulateInput>
                   </div>
                    <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12' v-if="form.employment_status=='employed'">
                       <FormulateInput type="text" v-model="form.employer_name"
@@ -75,7 +106,12 @@
                               requiredIf: ({ value }) => form.employment_status=='employed'
                             }"
                           validation-name="Employer Name"
-                        />
+                        ><template #label="{ label, id }">
+                          <label :for="id">
+                            {{label}} <required-input/>
+                          </label>
+                          </template>
+                      </FormulateInput>
                   </div>
                      <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                       <FormulateInput type="select" v-model="form.is_rsa_holder"
@@ -89,7 +125,12 @@
                               { value: '1', label:'Yes' },
                               { value: '0', label: 'No' }
                             ]"
-                        />
+                        ><template #label="{ label, id }">
+                          <label :for="id">
+                            {{label}} <required-input/>
+                          </label>
+                          </template>
+                      </FormulateInput>
                   </div>
                      <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12' v-if="form.is_rsa_holder=='1'">
                       <FormulateInput type="text" v-model="form.pfa_name"
@@ -102,7 +143,12 @@
                               requiredIf: ({ value }) => form.is_rsa_holder=='1'
                             }"
                           validation-name="Pension Fund Administrator"
-                        />
+                        ><template #label="{ label, id }">
+                          <label :for="id">
+                            {{label}} <required-input/>
+                          </label>
+                          </template>
+                      </FormulateInput>
                   </div>
                     <div class=' col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                       <FormulateInput v-model="form.address"
@@ -111,7 +157,12 @@
                           input-class="form-control"
                           validation="required"
                            error-class="form-error"
-                        />
+                        ><template #label="{ label, id }">
+                          <label :for="id">
+                            {{label}} <required-input/>
+                          </label>
+                          </template>
+                      </FormulateInput>
                   </div>
 
                </div>

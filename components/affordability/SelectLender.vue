@@ -2,7 +2,7 @@
   <div>
     <div class=" gri">
         <div class="grid-child">
-          <h6 class="select-heading">Select Lending Institution</h6>
+          <h6 class="select-heading">Select Lending Institution <required-input/></h6>
             <div class="select select-modal2">
               <select id="location" :class="{ 'is-invalid': submitted && $v.form.lender_id.$error }"
                                 v-model="form.lender_id">

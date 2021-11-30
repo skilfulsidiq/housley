@@ -41,7 +41,7 @@
                     </p>
                   </div>
                   <div class="form-group">
-                     <label class="color1 xsm-font" for="incomeYes" >Monthly Net income</label >
+                     <label class="color1 xsm-font" for="incomeYes" >Monthly Net income <required-input/></label >
                       <div class="input-group mb-3">
                           <span
                             class="input-group-text color1"
@@ -197,7 +197,7 @@
                   <div v-if="submitted && !$v.form.co_borrower_monthly_income.required" class="form-error">Co Borrower Monthly income is required</div>
                   </div>
                   <div class="form-group">
-                     <label class="color1 xsm-font" for="incomeYes" >Date of Birth</label >
+                     <label class="color1 xsm-font" for="incomeYes" >Date of Birth <required-input/></label >
                        <div class="input-group mb-3">
                     <span
                       class="input-group-text color1"
@@ -226,7 +226,7 @@
                       How long do you want this Loan for?
                     </p>
                   </div>
-                  
+
                       <range-slider class="range-slider" :min="min_range" :max="max_range" step="1" v-model="form.loan_tenure">
                                     <template slot="knob">
                                         <div class="knobby">

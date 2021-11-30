@@ -3,8 +3,8 @@
         <!-- <div class="text" > -->
            <img src="https://img.icons8.com/ios-filled/150/26e07f/checked--v1.png"/>
             <h3 class="mt-3">{{msg}}</h3>
-            <NuxtLink class="mt-3 next xxsm-font green-btn s-bold hoverable text-center" to="/">
-              Home page
+            <NuxtLink class="mt-3 next xxsm-font green-btn s-bold hoverable text-center" to="/dashboard/application">
+              View Application
             </NuxtLink>
         <!-- </div> -->
     </div>

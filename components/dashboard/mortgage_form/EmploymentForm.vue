@@ -8,7 +8,7 @@
                 type="text"
                 placeholder=" "
                 />
-                <span class="placeholder2">Employer Name</span>
+                <span class="placeholder2">Employer Name <required-input/></span>
               </label>
               <div v-if="submitted && !$v.form.employer_name.required" class="error">
                   <small class="error-message">Employer Name  is required</small>
@@ -17,7 +17,7 @@
              <div class="col-md-6 col-xs-12">
                 <label class="form_one_label custom-field one">
                       <input class="form_one_input"  type="text" placeholder=" " v-model="gross_income"/>
-                    <span class="placeholder2">Monthly Gross Income</span>
+                    <span class="placeholder2">Monthly Gross Income <required-input/></span>
                     <div v-if="submitted && !$v.form.monthly_gross_pay.required" class="error">
                       <small class="error-message">Monthly Gross Income is required</small>
                     </div>
@@ -31,7 +31,7 @@
               type="text"
               placeholder=" "
               />
-              <span class="placeholder2">Profession</span>
+              <span class="placeholder2">Profession <required-input/></span>
             </label>
             <div v-if="submitted && !$v.form.profession.required" class="error">
                   <small class="error-message">Profession is required</small>
@@ -45,7 +45,7 @@
               type="text"
               placeholder=" "
               />
-              <span class="placeholder2">Employment Position</span>
+              <span class="placeholder2">Employment Position <required-input/></span>
             </label>
             <div v-if="submitted && !$v.form.employment_present_position.required" class="error">
                 <small class="error-message">Employment position is required</small>
@@ -58,7 +58,7 @@
               type="number"
               placeholder=" "
               />
-              <span class="placeholder2">Years of Experience</span>
+              <span class="placeholder2">Years of Experience <required-input/></span>
                 <div v-if="submitted && !$v.form.work_experience.required" class="error">
                 <small class="error-message">Work experience is required</small>
               </div>
@@ -71,7 +71,7 @@
                     <option value=""></option>
                     <option v-bind:value="p.id" v-for="p in allStates" :key="p.id">{{p.name}}</option>
                     </select>
-                  <label class="selectlabel" for="pick">Employment State</label>
+                  <label class="selectlabel" for="pick">Employment State <required-input/></label>
               </div>
               <div v-if="submitted && !$v.form.employment_state.required" class="error">
                   <small class="error-message">Employment State is required</small>
@@ -86,7 +86,7 @@
               type="text"
               placeholder=" "
               />
-              <span class="placeholder2">Employer's Address</span>
+              <span class="placeholder2">Employer's Address <required-input/></span>
               <div v-if="submitted && !$v.form.employer_address.required" class="error">
                   <small class="error-message">Employment address is required</small>
                 </div>
@@ -110,21 +110,21 @@
                   <select v-model="form.employment_is_confirmed" class="form-select pop_text" aria-label="Default select example">
                     <option v-bind:value="p.value" v-for="p in yesNoOption" :key="p.text">{{p.text}}</option>
                     </select>
-                  <label class="selectlabel" for="pick">Has your employment been confirmed?</label>
+                  <label class="selectlabel" for="pick">Has your employment been confirmed? <required-input/></label>
               </div>
               <div v-if="submitted && !$v.form.employment_is_confirmed.required" class="error">
                   <small class="error-message">Employment Confirmation is required</small>
                 </div>
           </div>
           <div class="col-md-6 col-xs-12">
-            <label class="form_one_label custom-field one">
+            <!-- <label class="form_one_label custom-field one">
               <input v-model="form.nhf_registration_number"
               class="form_one_input"
               type="text"
               placeholder=" "
               />
               <span class="placeholder2">NHF Number</span>
-            </label>
+            </label> -->
           </div>
       </div>
   </div>
@@ -154,7 +154,7 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
                 employment_state:"",
                 work_experience:"",
                 year_to_retirement:"",
-                nhf_registration_number:"",
+                // nhf_registration_number:"",
                 employment_is_confirmed:""
 
                 },
@@ -170,7 +170,7 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
           employment_state:{required},
           work_experience:{required},
           year_to_retirement:{optional},
-          nhf_registration_number:{optional},
+          // nhf_registration_number:{optional},
           employment_is_confirmed:{required}
 
         }
@@ -211,7 +211,7 @@ import { required, email,minLength,requiredIf,numeric} from "vuelidate/lib/valid
           }).catch(err=>{
              this.mortgageLoading(false);
           })
-            
+
 
 
 

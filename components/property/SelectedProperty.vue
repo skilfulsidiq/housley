@@ -55,7 +55,7 @@ import form_mixin from '@/mixins/form_mixin'
     methods:{
       showDetail(){
         let d = {status:true,property:this.property};
-        this.$nuxt.$emit("show_detail_modal",d);
+        this.$nuxt.$emit("show_selected_property_modal",d);
       }
     }
   }

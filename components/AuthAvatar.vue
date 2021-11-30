@@ -39,6 +39,10 @@
                 <nuxt-link to="/" class="dropdown-item cursor" href="#" style="color: #0D4566"
                   >Home</nuxt-link>
               </li>
+              <!-- <li>
+                <nuxt-link to="/dashboard/setting/change-password" class="dropdown-item cursor" href="#" style="color: #0D4566"
+                  >Change password</nuxt-link>
+              </li> -->
               <li>
                 <a @click="logout" class="dropdown-item cursor" href="#" style="color: #0D4566"
                   >Logout</a

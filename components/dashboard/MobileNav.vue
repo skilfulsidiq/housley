@@ -88,7 +88,7 @@
                 </nuxt-link>
             </div>
             <!-- item 3 -->
-            <div class="inner-item-cover" v-if="have_mortgage">
+            <!-- <div class="inner-item-cover" v-if="have_mortgage">
               <nuxt-link to="/dashboard/checklist" :class="[$route.path=='/dashboard/checklist'?'inner-item-active':'inner-item']">
                 <svg
                   class="svg-icon"
@@ -136,7 +136,7 @@
                 </svg>
                 <span :class="[$route.path=='/dashboard/checklist'?'inner-item-text-active':'inner-item-text']" >Documents</span>
               </nuxt-link >
-            </div>
+            </div> -->
       </div>
 
       <div

@@ -144,7 +144,7 @@
                   <div class="content-left timeline-content">
 
                     <img class="timeline-icon" src='/img/home/how-it-works/dream.svg' >
-                    <h3 class="timeline-heading army-green">Contact a Loan Advisors</h3>
+                    <h3 class="timeline-heading army-green">Contact a Loan Advisor</h3>
                     <p class="timeline-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non nisl sed adipiscing id egestas scelerisque ipsum tristique consectetur adipiscing elit. Praesent non nisl sed adipiscing.</p>
 
 

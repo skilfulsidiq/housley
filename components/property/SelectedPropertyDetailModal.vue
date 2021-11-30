@@ -5,7 +5,7 @@
               <!-- Modal content -->
               <div class="modal-content">
                 <span class="close"  @click="closeModal">&times;</span>
-                <div class="grid2 gridy">
+                <div class="grid gridy2">
                   <div class="lhs">
                     <div class="ppt-card-details">
                       <div class="upper grid">
@@ -67,33 +67,29 @@
                           </div>
                         </div>
 
-                        <!-- <a @click.prevent="chooseProperty" href="@" class="green-btn s-bold hoverable">Get Prequalified</a> -->
-                        <app-button text="Get Prequalified" btnclass="green-btn s-bold hoverable" :action="chooseProperty">
-                          Get Prequalified
-                        </app-button>
-
                       </div>
                     </div>
 
-                    <!-- <div class="pro-img"
-                      :style="{backgroundImage:'url('+property.property_cover_image+')'}">
-                    </div> -->
-                    <property-image-glide :cover="property.property_cover_image" :images="property.property_photos"/>
-                    <!-- <img
-                    class="pro-img"
-                      :src="property.property_cover_image"
-                      alt="single property"
-                    /> -->
-                    <!-- <nuxt-link :to="{name:'properties-slug',params:{slug:property.slug}}" class="last-btn flex"> -->
-                      <!-- <button type="button" class="green-btn s-bold" @click="moreDetail">
-                        View More
-                      </button> -->
-                      <a href="#" class="last-btn flex" @click="moreDetail">
-                      <app-button text="View More" btnclass="green-btn s-bold hoverable mb-3" :action="moreDetail"/>
-                      </a>
-                    <!-- </nuxt-link> -->
+                      <div class="main-parent">
+                          <div class="full-image"  :style="{backgroundImage:'url('+active_img+')'}"></div>
+                          <div class="small-images row">
+                              <div v-for="img in property.property_photos" :key="img.id" @click="changeImage(img)"  class=" img cursor" :style="{backgroundImage:'url('+img+')'}"></div>
+                          </div>
+                      </div>
+
+
+
                   </div>
-                  <schedule-tour-form :property="property"/>
+                  <div class="boxed-details">
+                <p class="boxed-title bold color1 upward">Amenities</p>
+                <div class="boxed-body boxed-body-grid grid" v-if="property.property_amenities">
+                  <div class="ticked flex" v-for="(item,i) in property.property_amenities" :key="i">
+                    <img src="/img/properties/tick.svg" alt="tick" />
+                    <p class="ticked-text color1">{{item.name}}</p>
+                  </div>
+
+                </div>
+              </div>
                 </div>
               </div>
           </div>
@@ -109,11 +105,15 @@ import ScheduleTourForm from './ScheduleTourForm.vue';
     data(){
       return{
         property:'',
-        modal:''
+        modal:'',
+        active_img:''
       }
     },
 
     methods:{
+      changeImage(img){
+        this.active_img = img;
+      },
       showModal(){
         // this.modal.show();
       //  var m =  new bootstrap.Modal(document.getElementById('detailModal'))
@@ -141,7 +141,8 @@ import ScheduleTourForm from './ScheduleTourForm.vue';
       }
     },
     created(){
-      this.$nuxt.$on("show_detail_modal",(details)=>{
+       this.active_img = this.property.property_cover_image;
+      this.$nuxt.$on("show_selected_property_modal",(details)=>{
         if(details.status){
           this.showModal();
           this.property = details.property;
@@ -182,4 +183,34 @@ import ScheduleTourForm from './ScheduleTourForm.vue';
     height: 20rem;
     border-radius: 10px;
 }
+  .main-parent{
+    width:100%;
+    
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+
+    .full-image{
+      @include img-background(100%,30rem,10px);
+      margin-bottom: 1rem;
+      vertical-align: middle;
+      // background-color: $card-border-color;
+    }
+    .small-images{
+
+     display: flex;
+     overflow: scroll;
+    }
+     .img{
+         @include img-background(100px,100px,10px);
+        // width:80px;
+        // height: 80px;
+        margin: 0 5px;
+        // vertical-align: middle;
+      }
+    .small-images::-webkit-scrollbar{
+      width:0;
+    }
+    // ..small-images::-moz-sc
+  }
 </style>

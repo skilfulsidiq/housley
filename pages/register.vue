@@ -92,7 +92,7 @@
                   lastname: { required},
                   email: { required, email },
                   password: { required,minLength:minLength(6) },
-                  confirm_password:{ sameAsPassword: sameAs('password')},
+                  confirm_password:{sameAsPassword: sameAs('password')},
             }
       },
       computed:{
