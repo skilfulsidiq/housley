@@ -41,7 +41,7 @@
 
                 <!-- <div class="forgot-password"><span>This must be corrected with the password</span></div> -->
 
-                <input type='submit'  :value="loading?'Loading...':'Signup'">
+                <input type='submit'  :value="busy?'Loading...':'Signup'">
                 <div class="signup">Already have an account? <nuxt-link to="/login">&nbsp; Login</nuxt-link>
                    </div>
 <!--
@@ -60,6 +60,7 @@
 <script>
  import { required, email, minLength, sameAs,requiredIf,numeric } from "vuelidate/lib/validators";
   import general_mixin from "@/mixins/general_mixin";
+  import {optional,sameValue} from '@/mixins/general_mixin'
  import form_mixin from "@/mixins/form_mixin";
   export default {
     layout:'auth',
@@ -77,13 +78,15 @@
           return{
             submitted:false,
             selected_action:false,
+            busy:false,
             form:{
               firstname:'',
               lastname:"",
               email:'',
               password:'',
               confirm_password:''
-            }
+            },
+            password_err:false
           }
         },
         validations: {
@@ -92,7 +95,8 @@
                   lastname: { required},
                   email: { required, email },
                   password: { required,minLength:minLength(6) },
-                  confirm_password:{sameAsPassword: sameAs('password')},
+                  confirm_password:{required,sameAsPassword: sameAs('password')
+                  }
             }
       },
       computed:{
@@ -107,6 +111,7 @@
         if (this.$v.$invalid) {
               return;
         }
+        // return;
         // console.log("okayh dhdh")
          this.busy=true
         try{
@@ -117,6 +122,7 @@
 
             // }
           // await this.$store.dispatch("app/register",this.form);
+          // return;
           let r = await this.$store.dispatch("app/register",this.form);
           const l =  await this.$auth.loginWith('local', {
                 data: {
@@ -124,6 +130,7 @@
                 password: this.form.password
                 },
               })
+              this.busy=false
                  let u = this.$store.state.auth.user;
               this.$store.commit("profile/PREFILL_PERSONAL_FORM",u);
           if(l){

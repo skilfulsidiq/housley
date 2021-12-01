@@ -7,7 +7,7 @@
         <affordability-modal/>
         <property-request-modal/>
         <detail-modal/>
-        <selected-property-detail-modal/>
+        <!-- <selected-property-detail-modal/> -->
         <congration-modal/>
         </client-only>
       <AppFooter/>
@@ -20,9 +20,8 @@ import AffordabilityModal from '@/components/affordability/AffordabilityModal.vu
 import PropertyRequestModal from '@/components/property/PropertyRequestModal.vue';
 import CongrationModal from '@/components/affordability/CongrationModal.vue';
 import DetailModal from '@/components/property/DetailModal.vue';
-import SelectedPropertyDetailModal from '@/components/property/SelectedPropertyDetailModal.vue';
   export default {
-  components: { AffordabilityModal,PropertyRequestModal,CongrationModal,DetailModal,SelectedPropertyDetailModal },
+  components: { AffordabilityModal,PropertyRequestModal,CongrationModal,DetailModal},
 
     head(){
       return headScript;

@@ -1,5 +1,14 @@
 import moment from "moment";
 export const optional = (value) => true;
+export const sameValue = (value,formal)=>{
+    console.log(formal)
+    console.log(value)
+  if (value == formal){
+
+    return true;
+  }
+  return false;
+}
 export const rules = {
   required: value => !!value || "Required.",
   counter: value => value.length <= 20 || "Max 20 characters",

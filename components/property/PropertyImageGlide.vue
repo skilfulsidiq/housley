@@ -5,7 +5,7 @@
             <div class="col-md-12 col-xs-8"> -->
               <div class="small-images">
               <div v-for="img in images" :key="img.id" @click="changeImage(img)"  class=" img cursor" :style="{backgroundImage:'url('+img+')'}"></div>
-              <div v-for="img in images" :key="img.id" @click="changeImage(img)"  class=" img cursor" :style="{backgroundImage:'url('+img+')'}"></div>
+              <!-- <div v-for="img in images" :key="img.id" @click="changeImage(img)"  class=" img cursor" :style="{backgroundImage:'url('+img+')'}"></div> -->
           <!-- </div>
             </div> -->
           </div>

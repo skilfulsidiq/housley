@@ -1,11 +1,11 @@
 <template>
   <div>
-      <div id="detailModal" class="modal" aria-hidden="true" v-if="property">
+      <div id="selecteddetailModal" class="modal" aria-hidden="true" v-if="property">
           <div class="modal-dialog ">
               <!-- Modal content -->
               <div class="modal-content">
                 <span class="close"  @click="closeModal">&times;</span>
-                <div class="grid gridy2">
+                <div class="grid2 gridy2">
                   <div class="lhs">
                     <div class="ppt-card-details">
                       <div class="upper grid">
@@ -118,12 +118,13 @@ import ScheduleTourForm from './ScheduleTourForm.vue';
         // this.modal.show();
       //  var m =  new bootstrap.Modal(document.getElementById('detailModal'))
       //  m.show();
-        $('#detailModal').modal('show');
+        this.active_img = this.property.property_cover_image;
+        $('#selecteddetailModal').modal('show');
       },
       closeModal(){
         console.log("closeMe");
         //  this.modal.hide();
-       $('#detailModal').modal('hide');
+       $('#selecteddetailModal').modal('hide');
         //  this.$nuxt.$emit("show_detail_modal",false);
       },
       moreDetail(){
@@ -141,7 +142,7 @@ import ScheduleTourForm from './ScheduleTourForm.vue';
       }
     },
     created(){
-       this.active_img = this.property.property_cover_image;
+
       this.$nuxt.$on("show_selected_property_modal",(details)=>{
         if(details.status){
           this.showModal();
@@ -151,6 +152,9 @@ import ScheduleTourForm from './ScheduleTourForm.vue';
         }
       });
       //  this.modal = new bootstrap.Modal(document.getElementById('detailModal'))
+    },
+    mounted(){
+        // this.active_img = this.property.property_cover_image;
     }
   }
 </script>
@@ -185,7 +189,7 @@ import ScheduleTourForm from './ScheduleTourForm.vue';
 }
   .main-parent{
     width:100%;
-    
+
     // display: flex;
     // flex-direction: column;
     // justify-content: center;

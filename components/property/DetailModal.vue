@@ -5,7 +5,7 @@
               <!-- Modal content -->
               <div class="modal-content">
                 <span class="close"  @click="closeModal">&times;</span>
-                <div class="grid2 gridy">
+                <div class="grid gridy">
                   <div class="lhs">
                     <div class="ppt-card-details">
                       <div class="upper grid">

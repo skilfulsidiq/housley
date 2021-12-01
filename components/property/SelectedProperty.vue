@@ -29,15 +29,15 @@
                 </div>
               </div>
             </div>
-             <detail-modal/>
+             <selected-property-detail-modal/>
   </div>
 </template>
 
 <script>
-import DetailModal from './DetailModal.vue';
 import form_mixin from '@/mixins/form_mixin'
+import SelectedPropertyDetailModal from './SelectedPropertyDetailModal.vue';
   export default {
-  components: { DetailModal },
+  components: { SelectedPropertyDetailModal },
   mixins:[form_mixin],
 
     computed:{
