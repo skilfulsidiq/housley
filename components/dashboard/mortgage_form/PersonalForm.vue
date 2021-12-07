@@ -285,7 +285,7 @@
                 <div v-if="submitted && !$v.personal_form.id_expire_date.required" class="error">
                   <small class="error-message">ID expire date is required</small>
                 </div>
-                 <div v-if="submitted && !$v.personal_form.id_issue_date.after" class="error">
+                 <div v-if="submitted && !$v.personal_form.id_expire_date.after" class="error">
                   <small class="error-message">Date cannot be below today</small>
                 </div>
               </label>
@@ -327,7 +327,7 @@ import moment from 'moment';
               marital_status: "",
               state_of_origin: "",
               phone: "",
-              email: "",
+              // email: "",
               no_of_dependents: "",
               means_of_identification: '',
               id_number: '',
@@ -339,7 +339,7 @@ import moment from 'moment';
       },
     validations: {
         personal_form: {
-           email:{optional},
+          //  email:{optional},
           firstname:{required},
           lastname:{required},
           address:{required},
@@ -389,7 +389,7 @@ import moment from 'moment';
                this.personal_form.id_issue_date = v;
              },
              get() {
-               return moment(new Date(this.personal_form.id_issue_date)).format('yyyy-MM-DD')
+               return moment(this.personal_form.id_issue_date).format('yyyy-MM-DD')
              }
            },
            expire_date: {
@@ -397,7 +397,7 @@ import moment from 'moment';
                this.personal_form.id_expire_date = v;
              },
              get() {
-               return moment(new Date(this.personal_form.id_expire_date)).format('yyyy-MM-DD')
+               return moment(this.personal_form.id_expire_date).format('yyyy-MM-DD')
              }
            },
     },

@@ -18,7 +18,7 @@ export const rules = {
     return pattern.test(value) || "Invalid e-mail address.";
   },
   file: value => !value || value.size < 1000000 || 'file size should be less than 1 MB!',
-  before_date: function (value) {
+  before_date: (value) => {
     let today = new Date();
     let given_date = new Date(value);
     if (given_date > today) {
@@ -27,13 +27,14 @@ export const rules = {
     }
     return true
   },
-  after_date: function (value) {
+  after_date:  (value) =>{
     let today = new Date();
     let given_date = new Date(value);
     if (given_date < today) {
       return false;
       //  return 'Date cannot be below today'
     }
+    console.log("am true")
     return true
 
   },
@@ -112,6 +113,7 @@ export default{
 
   },
   computed: {
+
         appBusy(){
           return this.$nuxt.$loading.show;
         },

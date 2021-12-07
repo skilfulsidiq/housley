@@ -127,6 +127,9 @@ import FormModal from '../request/FormModal.vue';
   }
   .carousel-inner {  height: 20rem !important;
   }
+  .property_specs_ {
+    margin-right: 1rem;
+}
   .cr_body_cover {
 
     padding-bottom: 2rem;
