@@ -53,7 +53,7 @@
           <div class="lending-institution-container">
 
                 <div class="heading">
-                <h2>Lending Institution</h2> <span class="line"></span>
+                <h2>Participating Lending Institutions</h2> <span class="line"></span>
 
                 </div>
 

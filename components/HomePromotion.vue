@@ -23,7 +23,9 @@
 
                                             <div class="right">
                                                 <h1>Not sure what amount you qualify for? Take the affordability test and get a pre approval. </h1>
+                                                <!-- <h1></h1> -->
                                                 <h3>With your pre-approval, connect with developers and lenders, view available properties and start your journey</h3>
+                                                <!-- <h3></h3> -->
                                            <div class="button">
                            <app-button btnclass="" btnid="modal-trigger" text=" Take the Affordability Test "
                       :action="showModal"/>

@@ -146,9 +146,9 @@
     <section class="ctas">
       <div class="ctas-container">
 
-          <service-step-card img="/img/mortgage/we-find-your-perfect-mortgage.svg" title="We find your perfect mortgage" details="Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit. Praesent non nisl sed adipiscing." btn=">Search Home"/>
+          <service-step-card img="/img/mortgage/we-find-your-perfect-mortgage.svg" title="We find your perfect mortgage" details="Search and select affordable home built by pre-qualified property developers on our portal." btn=">Search Home"/>
 
-          <service-step-card img="/img/mortgage/get-your-mortgage-approved.svg" title="Get your Mortgage Approved" details="Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit. Praesent non nisl sed adipiscing." btn=">View Rates"/>
+          <service-step-card img="/img/mortgage/get-your-mortgage-approved.svg" title="Get your Mortgage Approved" details="Our loan advisors will work with you to perfect your paperwork, so you look forward to signing you loan documents" btn=">View Rates"/>
 
           <service-step-card img="/img/mortgage/get-your-keys.svg" title="Get your Keys" details="Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit. Praesent non nisl sed adipiscing." btn=">Get screened"/>
 

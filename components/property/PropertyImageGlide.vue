@@ -4,7 +4,8 @@
           <!-- <div class="row">
             <div class="col-md-12 col-xs-8"> -->
               <div class="small-images">
-              <div v-for="img in images" :key="img.id" @click="changeImage(img)"  class=" img cursor" :style="{backgroundImage:'url('+img+')'}"></div>
+                    <div v-for="img in images" :key="img.id" @click="changeImage(img)"  class="img cursor" :style="{backgroundImage:'url('+img+')'}"></div>
+
               <!-- <div v-for="img in images" :key="img.id" @click="changeImage(img)"  class=" img cursor" :style="{backgroundImage:'url('+img+')'}"></div> -->
           <!-- </div>
             </div> -->
@@ -39,9 +40,9 @@
 <style lang="scss" scoped>
   .main-parent{
     width:100%;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     .full-image{
       @include img-background(100%,20rem,10px);
@@ -52,11 +53,17 @@
     .small-images{
 
      display: flex;
-     overflow: auto;
+     flex-direction: row;
+    //  align-items: flex-start;
+     overflow: scroll;
+    //  position: relative;
      width:100%;
+     height: 120px;
     }
      .img{
          @include img-background(100px,100px,10px);
+        //  position: absolute;
+        flex-shrink: 0;
         // width:80px;
         // height: 80px;
         margin: 0 5px;

@@ -32,7 +32,8 @@
             <div class="about-houzzley">
                 <a href="/"> <img src="/img/logo/houzzley-white-logo.svg"> </a>
 
-                <p>Houzzley has gone above and beyond in helping is with our first home. From advice and working around our schedules to sending us assistance and minor renovations</p>
+                <!-- <p>Houzzley has gone above and beyond in helping is with our first home. From advice and working around our schedules to sending us assistance and minor renovations</p> -->
+                <p>Houzzley is a digital platform providing housing solutions that will democratise access to affordable housing by matching home buyers with affordable homes from pre-qualified developers and accessible home loans from participating lending banks on our platform.</p>
 
             </div>
 
@@ -59,8 +60,12 @@
                 </ul>
             </div>
             <div class="address">
-                <h5>Our Address</h5>
-                <p>Plot 15A Abayomi Durosinmi-Etti Street, Lekki Phase 1 (Ocean Side), Lagos</p>
+                <h5>Contact</h5>
+                <p> +234 809 053 3000<br>
+                Houzzley Technologies Limited<br>
+                RC No. 1839116</p>
+                <!-- <p>Plot 15A Abayomi Durosinmi-Etti Street, Lekki Phase 1 (Ocean Side), Lagos</p> -->
+
             </div>
 
 

@@ -133,7 +133,7 @@
 
                     </app-button>
                   </form>
-                </div> 
+                </div>
               </div>
   </div>
 </template>
@@ -250,6 +250,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .tab-form{
+    // width:100%;
+  }
   .tour-form-label{
     float:left;
     // width:.125rem;

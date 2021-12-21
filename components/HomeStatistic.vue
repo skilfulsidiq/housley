@@ -3,8 +3,11 @@
     <section   class="statistics">
     <div class="statistics-container">
         <div class="left item">
-            <h1>We have achieved this in less than a year through hard work</h1>
-            <p>With innovative technology and strategic partnerships we create a new value network and redefine the cost structure for homeownership so that more people can access affordable homes and save money.</p>
+            <!-- <h1>We have achieved this in less than a year through hard work</h1> -->
+            <h1>We are working hard to create value for all our stakeholders</h1>
+
+            <!-- <p>With innovative technology and strategic partnerships we create a new value network and redefine the cost structure for homeownership so that more people can access affordable homes and save money.</p> -->
+            <p>We are putting the customer first  to deliver service at at better value so that more people can access affordable homes and save money. We are pround of the positive impact these numbers have on people's lives</p>
 
         </div>
 
