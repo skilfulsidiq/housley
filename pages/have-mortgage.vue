@@ -7,7 +7,7 @@
               View Application
             </NuxtLink>
         <!-- </div> -->
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 

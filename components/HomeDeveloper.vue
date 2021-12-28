@@ -11,32 +11,32 @@
                  <splide :options="options" class="developers">
                   <splide-slide>
                     <div class="developer splide__slide">
-                        <img src="/img/home/real-estate-developer/alpha.svg">
-                        <div class="button"><a href="#">View Properties 1</a></div>
+                        <img src="/img/home/developer/hsf/Alpha-logo.svg">
+                        <!-- <div class="button"><a href="#">View Properties 1</a></div> -->
                     </div>
                   </splide-slide>
                   <splide-slide>
                    <div class="developer splide__slide">
-                        <img src="/img/home/real-estate-developer/brain.svg">
-                        <div class="button"><a href="#">View Properties 1 & 1</a></div>
+                        <img src="/img/home/developer/hsf/brains-hammers-logo2-2.png">
+                        <!-- <div class="button"><a href="#">View Properties 1 & 1</a></div> -->
                     </div>
                   </splide-slide>
                   <splide-slide>
                    <div class="developer splide__slide">
-                          <img src="/img/home/real-estate-developer/mixta.svg">
-                          <div class="button"><a href="#">View Properties 2</a></div>
+                          <img src="/img/home/developer/hsf/mixta.svg">
+                          <!-- <div class="button"><a href="#">View Properties 2</a></div> -->
                       </div>
                   </splide-slide>
                   <splide-slide>
                    <div class="developer splide__slide">
-                        <img src="/img/home/real-estate-developer/urban.svg">
-                        <div class="button"><a href="#">View Properties 3</a></div>
+                        <img src="/img/home/developer/hsf/shelter.svg">
+                        <!-- <div class="button"><a href="#">View Properties 3</a></div> -->
                     </div>
                   </splide-slide>
                   <splide-slide>
                     <div class="developer splide__slide">
-                        <img src="/img/home/real-estate-developer/alpha.svg">
-                        <div class="button"><a href="#">View Properties 4</a></div>
+                        <img src="/img/home/developer/hsf/alpha.svg">
+                        <!-- <div class="button"><a href="#">View Properties 4</a></div> -->
                     </div>
                   </splide-slide>
                 </splide>
@@ -61,12 +61,12 @@
 
 
                                 <div class="">
-                                    <img src="/img/mortgage/first-trust.svg">
+                                    <img src="/img/home/developer/hsf/first-trust-logo_white.svg">
 
                                 </div>
 
                                 <div class="">
-                                    <img src="/img/mortgage/imperial-home.png">
+                                    <img src="/img/home/developer/hsf/Imperial-Homes-Logo-Usable-1.svg">
 
                                 </div>
 
@@ -137,5 +137,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .real-estate-developer,.lending-institution{
+    background-color: #f6f6f3;
+  }
 </style>
