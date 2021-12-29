@@ -8,38 +8,35 @@
                   <h2>Real Estate Developer</h2> <span class="line"></span>
 
                 </div>
-                 <splide :options="options" class="developers">
-                  <splide-slide>
-                    <div class="developer splide__slide">
+
+                <div class="logo-for-desktop">
+                  <div class="dev-logo" >
                         <img src="/img/home/developer/hsf/Alpha-logo.svg">
-                        <!-- <div class="button"><a href="#">View Properties 1</a></div> -->
-                    </div>
-                  </splide-slide>
-                  <splide-slide>
-                   <div class="developer splide__slide">
+                        <!-- <div class="button"><a href="#">View Properties 1</a></div>
+                        :style="{backgroundImage:'url(/img/home/developer/hsf/Alpha-logo.svg)'}"-->
+                  </div>
+                  <div class="dev-logo" >
                         <img src="/img/home/developer/hsf/brains-hammers-logo2-2.png">
-                        <!-- <div class="button"><a href="#">View Properties 1 & 1</a></div> -->
-                    </div>
-                  </splide-slide>
-                  <splide-slide>
-                   <div class="developer splide__slide">
-                          <img src="/img/home/developer/hsf/mixta.svg">
-                          <!-- <div class="button"><a href="#">View Properties 2</a></div> -->
-                      </div>
-                  </splide-slide>
-                  <splide-slide>
-                   <div class="developer splide__slide">
+                        <!-- <div class="button"><a href="#">View Properties 1 & 1</a></div>
+                        :style="{backgroundImage:'url(/img/home/developer/hsf/brains-hammers-logo2-2.png)'}"-->
+                  </div>
+                   <div class="dev-logo" >
+                        <img src="/img/home/developer/hsf/mixta.svg">
+                          <!-- <div class="button"><a href="#">View Properties 2</a></div>
+                          :style="{backgroundImage:'url(/img/home/developer/hsf/mixta.svg)'}"-->
+                  </div>
+                  <div class="dev-logo" >
                         <img src="/img/home/developer/hsf/shelter.svg">
-                        <!-- <div class="button"><a href="#">View Properties 3</a></div> -->
+                        <!-- <div class="button"><a href="#">View Properties 3</a></div>
+                        :style="{backgroundImage:'url(/img/home/developer/hsf/shelter.svg)'}" -->
                     </div>
-                  </splide-slide>
-                  <splide-slide>
-                    <div class="developer splide__slide">
-                        <img src="/img/home/developer/hsf/alpha.svg">
-                        <!-- <div class="button"><a href="#">View Properties 4</a></div> -->
-                    </div>
-                  </splide-slide>
-                </splide>
+                    <!-- <div class="dev-logo" > -->
+                        <!-- <img src="/img/home/developer/hsf/alpha.svg"> -->
+                        <!-- <div class="button"><a href="#">View Properties 4</a></div>
+                        :style="{backgroundImage:'url(/img/home/developer/hsf/alpha.svg)'}" -->
+                    <!-- </div> -->
+
+                </div>
 
 
 
@@ -137,7 +134,68 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.real-estate-developer {
+  display:block;
+}
+  .real-estate-developer-container {
+    max-width: 100%;
+    padding:50px;
+}
+.real-estate-developer-container .heading {
+    // grid-template-columns: 250px 20%;
+}
   .real-estate-developer,.lending-institution{
+    // background-color: #fff;
     background-color: #f6f6f3;
   }
+  .lending-institution-container .institutions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .lending-institution-container .institutions div img{
+    width: 200px;
+    height: 55px;
+  }
+
+  .dev-logo{
+    // width:200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:1.5rem;
+  }
+  .dev-logo img{
+    object-fit: contain;
+    width:200px;
+    height: 100px;
+    vertical-align: middle;
+        // margin:1.5rem;
+  }
+  .logo-for-desktop{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+  }
+
+
+
+  @media  (max-width:900px){
+     .logo-for-desktop{
+       margin-top:10px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      // flex-wrap: wrap;
+  }
+  .dev-logo{
+      margin:0;
+
+      // margin-right: 2rem;
+   }
+
+  }
+
 </style>
