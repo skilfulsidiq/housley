@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-dev">
      <section   class="real-estate-developer">
 
           <div class="real-estate-developer-container">
@@ -8,35 +8,43 @@
                   <h2>Real Estate Developer</h2> <span class="line"></span>
 
                 </div>
-
-                <div class="logo-for-desktop">
+                  <splide :options="options" class="developers mobile2">
+                  <splide-slide>
+                <!-- <div class="logo-for-desktop"> -->
                   <div class="dev-logo" >
-                        <img src="/img/home/developer/hsf/Alpha-logo.svg">
+                        <img src="/img/home/developer/hsf/Alpha-logo.svg" class="margin-dev2">
                         <!-- <div class="button"><a href="#">View Properties 1</a></div>
                         :style="{backgroundImage:'url(/img/home/developer/hsf/Alpha-logo.svg)'}"-->
                   </div>
+                  </splide-slide>
+                   <splide-slide>
                   <div class="dev-logo" >
-                        <img src="/img/home/developer/hsf/brains-hammers-logo2-2.png">
+                        <img src="/img/home/developer/hsf/brains-hammers-logo2-2.png" class="margin-dev">
                         <!-- <div class="button"><a href="#">View Properties 1 & 1</a></div>
                         :style="{backgroundImage:'url(/img/home/developer/hsf/brains-hammers-logo2-2.png)'}"-->
                   </div>
+                   </splide-slide>
+                      <splide-slide>
                    <div class="dev-logo" >
-                        <img src="/img/home/developer/hsf/mixta.svg">
+                        <img src="/img/home/developer/hsf/mixta.png" class="margin-dev">
                           <!-- <div class="button"><a href="#">View Properties 2</a></div>
                           :style="{backgroundImage:'url(/img/home/developer/hsf/mixta.svg)'}"-->
                   </div>
+                      </splide-slide>
+                         <splide-slide>
                   <div class="dev-logo" >
-                        <img src="/img/home/developer/hsf/shelter.svg">
+                        <img src="/img/home/developer/hsf/shelter.svg" class="margin-dev">
                         <!-- <div class="button"><a href="#">View Properties 3</a></div>
                         :style="{backgroundImage:'url(/img/home/developer/hsf/shelter.svg)'}" -->
                     </div>
+                         </splide-slide>
                     <!-- <div class="dev-logo" > -->
                         <!-- <img src="/img/home/developer/hsf/alpha.svg"> -->
                         <!-- <div class="button"><a href="#">View Properties 4</a></div>
                         :style="{backgroundImage:'url(/img/home/developer/hsf/alpha.svg)'}" -->
                     <!-- </div> -->
-
-                </div>
+                  </splide>
+                <!-- </div> -->
 
 
 
@@ -50,7 +58,7 @@
           <div class="lending-institution-container">
 
                 <div class="heading">
-                <h2>Participating Lending Institutions</h2> <span class="line"></span>
+                <h2>Lending Institution</h2> <span class="line"></span>
 
                 </div>
 
@@ -134,12 +142,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.real-estate-developer {
-  display:block;
-}
-  .real-estate-developer-container {
-    max-width: 100%;
-    padding:50px;
+// .real-estate-developer {
+//   display:block;
+// }
+.real-estate-developer-container .developers {
+    padding: 70px 40px 70px 0;
+    width: 100%;
 }
 .real-estate-developer-container .heading {
     // grid-template-columns: 250px 20%;
@@ -147,7 +155,12 @@ export default {
   .real-estate-developer,.lending-institution{
     // background-color: #fff;
     background-color: #f6f6f3;
+    height: 20rem;
   }
+  .lending-institution-container {
+    display: block;
+    /* grid-template-columns: 1fr; */
+}
   .lending-institution-container .institutions{
     display: flex;
     justify-content: center;
@@ -158,17 +171,21 @@ export default {
     height: 55px;
   }
 
+  .margin-dev{
+    // margin:0 3rem;
+    // margin-left:3rem;
+  }
   .dev-logo{
     // width:200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin:1.5rem;
+    margin:1.5rem 0;
   }
   .dev-logo img{
     object-fit: contain;
     width:200px;
-    height: 100px;
+    height: 60px;
     vertical-align: middle;
         // margin:1.5rem;
   }
